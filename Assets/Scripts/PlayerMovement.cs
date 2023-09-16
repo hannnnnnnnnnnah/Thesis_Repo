@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = sprintSpeed;
-                stepRateSet = 0.2f;
+                stepRateSet = 0.25f;
 
             }
             else

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 
 public class DeathTimer : MonoBehaviour
@@ -19,8 +18,7 @@ public class DeathTimer : MonoBehaviour
     {
         if(deathTime == 0)
         {
-            SceneManager.LoadScene("LightDeath_Test");
-            RespawnManager.instance.deathCount++;
+            RespawnManager.instance.Die();
         }
     }
 

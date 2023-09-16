@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RespawnManager : MonoBehaviour
 {
-    [SerializeField] Animator animator;
+    public Animator animator;
     [SerializeField] AudioSource inhale;
 
     public int deathCount = 1;
@@ -38,5 +38,12 @@ public class RespawnManager : MonoBehaviour
                 inhale.Play();
             }
         }
+    }
+
+    public void Die()
+    {
+        animator.SetBool("Respawn", false);
+        SceneManager.LoadScene("Main_Proto1");
+        deathCount++;
     }
 }
