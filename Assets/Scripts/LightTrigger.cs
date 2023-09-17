@@ -7,6 +7,10 @@ public class LightTrigger : MonoBehaviour
     Light lightRef;
     public float deathTimeReset;
 
+    [SerializeField] AudioSource source;
+    [SerializeField] bool lightExplodes = false;
+    [SerializeField] Animator animator;
+
 
     private void Start()
     {
@@ -26,5 +30,11 @@ public class LightTrigger : MonoBehaviour
     {
         Debug.Log("light area exited");
         other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());
+
+        if (lightExplodes)
+        {
+            source.Play();
+            animator.SetBool("LightExplode", true);
+        }
     }
 }
