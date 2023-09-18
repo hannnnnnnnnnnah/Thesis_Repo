@@ -3415,6 +3415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 84359021}
+  victims: {fileID: 0}
 --- !u!65 &669263580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5674,6 +5675,10 @@ PrefabInstance:
     - target: {fileID: 8745473615949742017, guid: 66b260520e2f98c49974628ab30e79c9, type: 3}
       propertyPath: m_Name
       value: Spot Light (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745473615949742026, guid: 66b260520e2f98c49974628ab30e79c9, type: 3}
+      propertyPath: lightExplodes
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8745473615949742028, guid: 66b260520e2f98c49974628ab30e79c9, type: 3}
       propertyPath: m_RootOrder
