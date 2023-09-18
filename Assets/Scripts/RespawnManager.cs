@@ -10,6 +10,8 @@ public class RespawnManager : MonoBehaviour
 
     public int deathCount = 1;
 
+    public bool exitTriggered = false;
+
     public static RespawnManager instance;
 
     void Awake()
@@ -42,8 +44,16 @@ public class RespawnManager : MonoBehaviour
 
     public void Die()
     {
-        animator.SetBool("Respawn", false);
-        SceneManager.LoadScene("Main_Proto1");
-        deathCount++;
+        if(!exitTriggered) 
+        {
+            animator.SetBool("Respawn", false);
+            SceneManager.LoadScene("Main_Proto1");
+            deathCount++;
+        }
+        else if(exitTriggered)
+        {
+            animator.SetBool("Respawn", false);
+            SceneManager.LoadScene("Main");
+        }
     }
 }
