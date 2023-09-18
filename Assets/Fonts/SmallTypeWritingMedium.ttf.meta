@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f847cdbf686e614b9ad4053eee91641
+guid: a413e8e16cd52b843be5dd7a5577a584
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,9 +9,8 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Kiona
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 23f354da48696954bae895d505cff2ce, type: 3}
+  - SmallTypeWriting-Medium
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1c856a895c0a46a45bd20781f5bf6651
+guid: 8e3c697e524c1cf4ebaa8af015d63174
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - 18thCentury
+  - Filth of Icarus
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
