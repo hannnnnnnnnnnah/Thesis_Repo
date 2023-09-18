@@ -11,8 +11,11 @@ public class RespawnManager : MonoBehaviour
     public int deathCount = 1;
 
     public bool exitTriggered = false;
+    public bool gameStart = false; 
 
     public static RespawnManager instance;
+
+    Canvas canvas;
 
     void Awake()
     {
@@ -28,11 +31,20 @@ public class RespawnManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        canvas = GetComponentInChildren<Canvas>();   
+    }
+
     private void OnLevelWasLoaded(int level)
     {
         if(level == 0)
+            canvas.enabled = false;
+
+        if(level == 1 && gameStart)
         {
             Debug.Log("Death count:" + deathCount);
+            canvas.enabled = true;
 
             if (deathCount > 0)
             {
@@ -53,7 +65,7 @@ public class RespawnManager : MonoBehaviour
         else if(exitTriggered)
         {
             animator.SetBool("Respawn", false);
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("TitleScreen");
         }
     }
 }

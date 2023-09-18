@@ -25,6 +25,12 @@ public class PlayerMovement : MonoBehaviour
         speed = walkSpeed;
     }
 
+    private void Start()
+    {
+        RespawnManager.instance.gameStart = true;
+        RespawnManager.instance.exitTriggered = false;
+    }
+
     void Update()
     {
         Move();

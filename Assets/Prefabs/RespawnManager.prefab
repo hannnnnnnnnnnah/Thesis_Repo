@@ -50,6 +50,7 @@ MonoBehaviour:
   animator: {fileID: 1791131658182666554}
   inhale: {fileID: 1791131658182666557}
   deathCount: 0
+  exitTriggered: 0
 --- !u!82 &1791131658182666557
 AudioSource:
   m_ObjectHideFlags: 0
@@ -301,7 +302,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &1791131658765720694
 MonoBehaviour:

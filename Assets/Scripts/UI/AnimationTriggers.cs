@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class AnimationTriggers : MonoBehaviour
 {
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     void ButtonHoverSound()
     {
         SoundManager.PlaySound("hit");
