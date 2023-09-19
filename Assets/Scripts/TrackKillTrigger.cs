@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class TrackKillTrigger : MonoBehaviour
 {
     Animator animator;
-    [SerializeField] GameObject ghost;
+    [SerializeField] Animator ghost;
     [SerializeField] AudioSource metro;
     [SerializeField] Volume vol;
 
@@ -19,10 +19,14 @@ public class TrackKillTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            //other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());
-            animator.SetBool("TrainKill", true);
-            metro.Play();
-            ghost.SetActive(true);
+            StartTrain();
         }
+    }
+
+    public void StartTrain()
+    {
+        animator.SetBool("TrainKill", true);
+        metro.Play();
+        ghost.SetBool("GhostTracks", true);
     }
 }
