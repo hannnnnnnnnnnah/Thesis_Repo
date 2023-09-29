@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,6 +30,13 @@ public class RespawnManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += OnLevelLoad;
+    }
+
+    private void OnDisable()
+    {
+         SceneManager.sceneLoaded -= OnLevelLoad;
     }
 
     private void Start()
@@ -36,7 +44,25 @@ public class RespawnManager : MonoBehaviour
         canvas = GetComponentInChildren<Canvas>();   
     }
 
-    private void OnLevelWasLoaded(int level)
+    void OnLevelLoad(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.buildIndex == 0)
+            canvas.enabled = false;
+
+        if(scene.buildIndex == 1 && gameStart)
+        {
+            Debug.Log("Death count:" + deathCount);
+            canvas.enabled = true;
+
+            if (deathCount > 0)
+            {
+                animator.SetBool("Respawn", true);
+                inhale.Play();
+            }
+        }
+    }
+
+    /*private void OnLevelWasLoaded(int level)
     {
         if(level == 0)
             canvas.enabled = false;
@@ -52,14 +78,14 @@ public class RespawnManager : MonoBehaviour
                 inhale.Play();
             }
         }
-    }
+    }*/
 
     public void Die()
     {
         if(!exitTriggered) 
         {
             animator.SetBool("Respawn", false);
-            SceneManager.LoadScene("Main_Proto1");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             deathCount++;
         }
         else if(exitTriggered)
