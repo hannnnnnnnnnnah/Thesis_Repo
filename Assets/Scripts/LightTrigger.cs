@@ -8,30 +8,33 @@ public class LightTrigger : MonoBehaviour
     public float deathTimeReset;
 
     [SerializeField] AudioSource source;
-    [SerializeField] bool lightExplodes = false;
-    [SerializeField] Animator animator;
+    Animator animator;
 
 
     private void Start()
     {
-        lightRef = GetComponent<Light>();          
+        lightRef = GetComponent<Light>();       
+        animator = GetComponentInParent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("light area entered");
+        //Death effects are reset
         other.GetComponent<DeathTimer>().deathTime = deathTimeReset;
-        //other.GetComponent<DeathTimer>().StopCoroutine(other.GetComponent<DeathTimer>().DeathTime());
         other.GetComponent<DeathTimer>().StopAllCoroutines();
         other.GetComponent<DeathTimer>().DeathEffectsCancel();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("light area exited");
+        //Sanity is decreased
+        InteractionManager.instance.sanity--;
+        InteractionManager.instance.UpdateSanity();
+
+        //Death effects start
         other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());
 
-        if (lightExplodes)
+        if (InteractionManager.instance.lightExplodes)
         {
             source.Play();
             animator.SetBool("LightExplode", true);

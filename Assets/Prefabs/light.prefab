@@ -411,7 +411,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathTimeReset: 11
   source: {fileID: 5970550645509202921}
-  lightExplodes: 1
   animator: {fileID: 0}
 --- !u!82 &4851229015740915091
 AudioSource:
@@ -1104,6 +1103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7879876424512774287}
+  - component: {fileID: 5519915492532767892}
   m_Layer: 0
   m_Name: light
   m_TagString: Untagged
@@ -1118,7 +1118,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4072706239974948446}
-  m_LocalRotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: 6.123234e-17}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 29.446337, y: 26.5, z: -43.632225}
   m_LocalScale: {x: 0.0076864394, y: 0.0076864394, z: 0.0076864394}
   m_ConstrainProportionsScale: 0
@@ -1131,7 +1131,27 @@ Transform:
   - {fileID: 1668562138226477840}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!95 &5519915492532767892
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072706239974948446}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c505143c9f8bd584981b4ce697640b93, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5358279045476628897
 GameObject:
   m_ObjectHideFlags: 0

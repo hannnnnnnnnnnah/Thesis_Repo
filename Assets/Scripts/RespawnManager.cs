@@ -87,6 +87,7 @@ public class RespawnManager : MonoBehaviour
             animator.SetBool("Respawn", false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             deathCount++;
+            InteractionManager.instance.ResetSanity();
         }
         else if(exitTriggered)
         {
