@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] AudioSource audioFoot;
 
+    [SerializeField] GameObject SurroundSound;
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -29,6 +31,24 @@ public class PlayerMovement : MonoBehaviour
     {
         RespawnManager.instance.gameStart = true;
         RespawnManager.instance.exitTriggered = false;
+    }
+
+    public void StartSurroundSound()
+    {
+        SurroundSound.GetComponent<Animator>().SetBool("Rotate", true);
+        SurroundSound.GetComponent<AudioSource>().Play();
+
+        if (!InteractionManager.instance.steps)
+        {
+            SurroundSound.GetComponent<Animator>().SetBool("Rotate", false);
+            SurroundSound.GetComponent<AudioSource>().Stop();
+        }
+            
+    }
+
+    public void StopSurroundSound()
+    {
+        SurroundSound.GetComponent<Animator>().SetBool("Rotate", false);
     }
 
     void Update()

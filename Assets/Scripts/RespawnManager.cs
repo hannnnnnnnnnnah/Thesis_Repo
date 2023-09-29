@@ -62,24 +62,6 @@ public class RespawnManager : MonoBehaviour
         }
     }
 
-    /*private void OnLevelWasLoaded(int level)
-    {
-        if(level == 0)
-            canvas.enabled = false;
-
-        if(level == 1 && gameStart)
-        {
-            Debug.Log("Death count:" + deathCount);
-            canvas.enabled = true;
-
-            if (deathCount > 0)
-            {
-                animator.SetBool("Respawn", true);
-                inhale.Play();
-            }
-        }
-    }*/
-
     public void Die()
     {
         if(!exitTriggered) 

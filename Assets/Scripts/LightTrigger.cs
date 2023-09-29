@@ -31,6 +31,10 @@ public class LightTrigger : MonoBehaviour
         InteractionManager.instance.sanity--;
         InteractionManager.instance.UpdateSanity();
 
+        //Start surround sound
+        if(InteractionManager.instance.steps)
+            other.GetComponent<PlayerMovement>().StartSurroundSound();
+
         //Death effects start
         other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());
 

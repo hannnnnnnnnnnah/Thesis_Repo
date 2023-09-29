@@ -10,9 +10,9 @@ public class InteractionManager : MonoBehaviour
 
     int sanitySet = 10;
     public int sanity = 10;
-    public bool lightExplodes = false;
+    public bool lightExplodes, steps = false;
 
-    [SerializeField] GameObject laughing, steps;
+    [SerializeField] GameObject laughing;
 
     void Awake()
     {
@@ -42,10 +42,11 @@ public class InteractionManager : MonoBehaviour
         {
             case 10:
                 lightExplodes = false;
+                steps = false;
                 break;
 
             case 9:
-                //placeholder
+                steps = true;
                 break;
 
             case 8:
