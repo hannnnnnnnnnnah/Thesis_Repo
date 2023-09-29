@@ -84,8 +84,6 @@ AnimationClip:
     script: {fileID: 0}
   m_PPtrCurves:
   - curve:
-    - time: 0
-      value: {fileID: 2100000, guid: 043d1fab398131d448ba38a14a06eb5a, type: 2}
     - time: 0.64
       value: {fileID: 2100000, guid: d0f789ecf69de0843b6afb2d7e9e69b0, type: 2}
     attribute: m_Materials.Array.data[0]
@@ -93,12 +91,17 @@ AnimationClip:
     classID: 23
     script: {fileID: 0}
   - curve:
-    - time: 0
-      value: {fileID: 2100000, guid: 043d1fab398131d448ba38a14a06eb5a, type: 2}
     - time: 0.64
       value: {fileID: 2100000, guid: d0f789ecf69de0843b6afb2d7e9e69b0, type: 2}
     attribute: m_Materials.Array.data[0]
     path: light/right/pSphere1
+    classID: 23
+    script: {fileID: 0}
+  - curve:
+    - time: 0.64
+      value: {fileID: 2100000, guid: d0f789ecf69de0843b6afb2d7e9e69b0, type: 2}
+    attribute: m_Materials.Array.data[0]
+    path: light/right1/pSphere1
     classID: 23
     script: {fileID: 0}
   - curve:
@@ -107,7 +110,25 @@ AnimationClip:
     - time: 0.64
       value: {fileID: 2100000, guid: d0f789ecf69de0843b6afb2d7e9e69b0, type: 2}
     attribute: m_Materials.Array.data[0]
-    path: light/right1/pSphere1
+    path: front1/pSphere1
+    classID: 23
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 2100000, guid: 043d1fab398131d448ba38a14a06eb5a, type: 2}
+    - time: 0.64
+      value: {fileID: 2100000, guid: d0f789ecf69de0843b6afb2d7e9e69b0, type: 2}
+    attribute: m_Materials.Array.data[0]
+    path: right/pSphere1
+    classID: 23
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 2100000, guid: 043d1fab398131d448ba38a14a06eb5a, type: 2}
+    - time: 0.64
+      value: {fileID: 2100000, guid: d0f789ecf69de0843b6afb2d7e9e69b0, type: 2}
+    attribute: m_Materials.Array.data[0]
+    path: right1/pSphere1
     classID: 23
     script: {fileID: 0}
   m_SampleRate: 50
@@ -152,7 +173,31 @@ AnimationClip:
       typeID: 23
       customType: 21
       isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 3466635078
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 23
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 1228878803
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 23
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 2617912422
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 23
+      customType: 21
+      isPPtrCurve: 1
     pptrCurveMapping:
+    - {fileID: 2100000, guid: d0f789ecf69de0843b6afb2d7e9e69b0, type: 2}
+    - {fileID: 2100000, guid: d0f789ecf69de0843b6afb2d7e9e69b0, type: 2}
+    - {fileID: 2100000, guid: d0f789ecf69de0843b6afb2d7e9e69b0, type: 2}
     - {fileID: 2100000, guid: 043d1fab398131d448ba38a14a06eb5a, type: 2}
     - {fileID: 2100000, guid: d0f789ecf69de0843b6afb2d7e9e69b0, type: 2}
     - {fileID: 2100000, guid: 043d1fab398131d448ba38a14a06eb5a, type: 2}
