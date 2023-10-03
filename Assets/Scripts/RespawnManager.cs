@@ -46,10 +46,10 @@ public class RespawnManager : MonoBehaviour
 
     void OnLevelLoad(Scene scene, LoadSceneMode mode)
     {
-        if(scene.buildIndex == 0)
+        if(scene.name == "")
             canvas.enabled = false;
 
-        if(scene.buildIndex == 1 && gameStart)
+        if(scene.name == "FigureTest" && gameStart)
         {
             Debug.Log("Death count:" + deathCount);
             canvas.enabled = true;
