@@ -12,8 +12,6 @@ public class InteractionManager : MonoBehaviour
     public int sanity = 10;
     public bool lightExplodes, steps = false;
 
-    [SerializeField] GameObject laughing;
-
     void Awake()
     {
         if (instance == null)

@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class LightTrigger : MonoBehaviour
 {
-    Light lightRef;
     public float deathTimeReset;
 
     [SerializeField] AudioSource source;
     Animator animator;
 
-
     private void Start()
     {
-        lightRef = GetComponent<Light>();       
         animator = GetComponentInParent<Animator>();
     }
 
