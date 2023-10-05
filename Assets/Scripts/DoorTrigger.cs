@@ -5,14 +5,14 @@ using UnityEngine;
 public class DoorTrigger : MonoBehaviour
 {
     [SerializeField] Animator animator;
-    [SerializeField] AudioSource audio;
+    [SerializeField] AudioSource d_audio;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
             animator.SetBool("OpenDoor", true);
-            audio.Play();
+            d_audio.Play();
         }
     }
 }

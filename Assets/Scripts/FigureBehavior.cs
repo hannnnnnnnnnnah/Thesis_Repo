@@ -10,8 +10,9 @@ public class FigureBehavior : MonoBehaviour
     [SerializeField] Collider dist1, dist2, dist3;
     [SerializeField] GameObject loc1, loc2;
     [SerializeField] float speed;
+    float distRange = 5f;
 
-    Vector3 pos1, pos2;
+    Vector3 pos2;
 
     bool move = false;
 
@@ -21,14 +22,15 @@ public class FigureBehavior : MonoBehaviour
         {
             if (dist1.bounds.Intersects(other.bounds))
             { 
-                Run(transform.position, loc1.transform.position);
-                //gameObject.transform.position = loc1.transform.position;
+                pos2 = loc1.transform.position;
+                move = true;
                 dist1.enabled = false;
             }
 
             if (dist2.bounds.Intersects(other.bounds))
             {
-                transform.position = loc2.transform.position;
+                pos2 = loc2.transform.position;
+                move = true;
                 dist2.enabled = false;
             }
 
@@ -40,23 +42,18 @@ public class FigureBehavior : MonoBehaviour
         }
     }
 
-    private void Run(Vector3 _pos1, Vector3 _pos2)
+    private void FixedUpdate()
     {
-        pos1 = _pos1;
-        pos2 = _pos2;   
-        move = true;
-    }
-
-    private void Update()
-    {
-        var step = speed * Time.deltaTime;
-
-        if (move && Mathf.Clamp((transform.position)f, pos1, pos2) != pos2)
+        float step = speed * Time.fixedDeltaTime;
+        float dist = Vector3.Distance(transform.position, pos2);
+        
+        if (move)
         {
-            //transform.position = Vector3.MoveTowards(pos1, pos2, step);
-            transform.position = Vector3.Lerp(pos1, pos2, step);
+            Debug.Log(dist);
+            transform.Translate(Vector3.right * step);
+
+            if (dist <= distRange)
+                move = false;
         }     
-        else
-            move = false;
     }
 }

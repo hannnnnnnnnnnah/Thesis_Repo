@@ -6,14 +6,14 @@ using UnityEngine;
 public class TrainMove : MonoBehaviour
 {
     [SerializeField] Animator animator;
-    [SerializeField] AudioSource audio;
+    [SerializeField] AudioSource t_audio;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
             animator.SetBool("TrainMove", true);
-            audio.Play();
+            t_audio.Play();
         }
     }
 }

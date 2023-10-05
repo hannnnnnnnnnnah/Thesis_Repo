@@ -6,8 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
     CharacterController characterController;
 
-    [SerializeField] float sprintSpeed, walkSpeed, gravity;
+    [SerializeField] float sprintSpeed, walkSpeed, gravity, sprintLength, sprintDelay;
     [SerializeField] int minAngle, maxAngle;
+
+    [SerializeField] bool sprintDisabled, isSprinting = false;
 
     public int sensitivity = 140;
 
@@ -69,11 +71,13 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = new Vector3(horizontalMove, 0, verticalMove);
             moveDirection = transform.TransformDirection(moveDirection);
 
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift) && !sprintDisabled)
             {
                 speed = sprintSpeed;
                 stepRateSet = 0.25f;
 
+                if (!isSprinting)
+                    StartCoroutine(Sprint());
             }
             else
             {
@@ -99,6 +103,19 @@ public class PlayerMovement : MonoBehaviour
         {
             characterController.Move(moveDirection * speed * Time.deltaTime);
         }
+    }
+
+    IEnumerator Sprint()
+    {
+        Debug.Log("Sprint started");
+        isSprinting = true;
+        yield return new WaitForSeconds(sprintLength);
+        sprintDisabled = true;
+        yield return new WaitWhile(() => Input.GetKey(KeyCode.LeftShift));
+        Debug.Log("shift is not being spammed");
+        yield return new WaitForSeconds(sprintDelay);
+        sprintDisabled = false;
+        isSprinting = false;
     }
 
     private void Rotate()
