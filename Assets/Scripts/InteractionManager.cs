@@ -10,7 +10,7 @@ public class InteractionManager : MonoBehaviour
 
     int sanitySet = 10;
     public int sanity = 10;
-    public bool lightExplodes, steps = false;
+    public bool lightExplodes, steps, bFigureSpawn = false;
 
     void Awake()
     {
@@ -48,6 +48,14 @@ public class InteractionManager : MonoBehaviour
                 break;
 
             case 8:
+                //lightExplodes = true;
+                break;
+
+            case 5:
+                bFigureSpawn = true;
+                break;
+
+            case 3:
                 lightExplodes = true;
                 break;
         }

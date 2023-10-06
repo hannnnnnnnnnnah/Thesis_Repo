@@ -57,7 +57,6 @@ public class DeathTimer : MonoBehaviour
                 if (!breathing.isPlaying)
                 {
                     breathing.Play();
-                    Debug.Log("breathing");
                 }
                 break;
 
@@ -73,7 +72,6 @@ public class DeathTimer : MonoBehaviour
                 if (!heartbeat.isPlaying)
                 {
                     heartbeat.Play();
-                    Debug.Log("heartbeat");
                 }
                 break;
         }

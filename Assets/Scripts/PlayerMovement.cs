@@ -107,12 +107,12 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Sprint()
     {
-        Debug.Log("Sprint started");
+        //Debug.Log("Sprint started");
         isSprinting = true;
         yield return new WaitForSeconds(sprintLength);
         sprintDisabled = true;
         yield return new WaitWhile(() => Input.GetKey(KeyCode.LeftShift));
-        Debug.Log("shift is not being spammed");
+        //Debug.Log("shift is not being spammed");
         yield return new WaitForSeconds(sprintDelay);
         sprintDisabled = false;
         isSprinting = false;

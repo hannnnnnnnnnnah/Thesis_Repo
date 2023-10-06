@@ -49,7 +49,6 @@ public class FigureBehavior : MonoBehaviour
         
         if (move)
         {
-            Debug.Log(dist);
             transform.Translate(Vector3.right * step);
 
             if (dist <= distRange)
