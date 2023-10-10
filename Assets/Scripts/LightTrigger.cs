@@ -33,7 +33,7 @@ public class LightTrigger : MonoBehaviour
         InteractionManager.instance.UpdateSanity();
 
         //Start surround sound
-        if(InteractionManager.instance.steps)
+        if(InteractionManager.instance.surroundSound)
             other.GetComponent<PlayerMovement>().StartSurroundSound();
 
         //Figure starts chasing

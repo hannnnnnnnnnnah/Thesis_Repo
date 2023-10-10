@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 camRotation, moveDirection;
     private Camera mainCamera;
 
-    [SerializeField] AudioSource audioFoot, audioBreath;
+    [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper;
 
     [SerializeField] GameObject SurroundSound;
 
@@ -38,12 +38,17 @@ public class PlayerMovement : MonoBehaviour
     public void StartSurroundSound()
     {
         SurroundSound.GetComponent<Animator>().SetBool("Rotate", true);
-        SurroundSound.GetComponent<AudioSource>().Play();
+
+        if(InteractionManager.instance.steps)
+            other_steps.Play();
+        if(InteractionManager.instance.whisper)
+            whisper.Play();
 
         if (!InteractionManager.instance.steps)
         {
             SurroundSound.GetComponent<Animator>().SetBool("Rotate", false);
-            SurroundSound.GetComponent<AudioSource>().Stop();
+            other_steps.Stop();
+            whisper.Stop();
         }
             
     }

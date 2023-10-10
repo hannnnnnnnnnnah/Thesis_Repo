@@ -10,9 +10,11 @@ public class FigureApproach : MonoBehaviour
     bool approaching = false;
     Animator animator;
 
-    [SerializeField] AudioSource steps, buzz;
+    [SerializeField] AudioSource steps, buzz, laugh;
 
     [SerializeField] float speed;
+
+    [SerializeField] GameObject strand;
 
     public static FigureApproach instance;
 
@@ -65,5 +67,27 @@ public class FigureApproach : MonoBehaviour
         steps.Play();
         buzz.Play();
         approaching = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            approaching = false;
+            approachPlayer = false;
+            steps.Stop();
+            other.GetComponent<CharacterController>().enabled = false;
+            Debug.Log("GOT YOU");
+            StartCoroutine(emmaRevenge());
+            //InteractionManager.instance.sanity = -5;
+
+        }
+    }
+
+    IEnumerator emmaRevenge()
+    {
+        laugh.Play();
+        yield return new WaitForSeconds(3f);
+        gameObject.SetActive(false);
     }
 }

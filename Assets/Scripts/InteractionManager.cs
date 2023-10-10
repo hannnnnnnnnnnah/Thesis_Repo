@@ -10,7 +10,7 @@ public class InteractionManager : MonoBehaviour
 
     int sanitySet = 10;
     public int sanity = 5;
-    public bool lightExplodes, steps = false;
+    public bool lightExplodes, surroundSound, whisper, steps = false;
 
     [SerializeField] GameObject figureSpawner;
 
@@ -42,14 +42,16 @@ public class InteractionManager : MonoBehaviour
         {
             case 5:
                 lightExplodes = false;
-                steps = false;
+                surroundSound = false;
                 break;
 
             case 4:
+                surroundSound = true;
                 steps = true;
                 break;
 
             case 3:
+                whisper = true;
                 lightExplodes = true;
                 break;
 
@@ -58,6 +60,9 @@ public class InteractionManager : MonoBehaviour
                 break;
             
             case 1:
+                break;
+
+            case -5:
                 break;
         }
     }
