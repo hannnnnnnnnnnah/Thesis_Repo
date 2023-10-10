@@ -20,6 +20,10 @@ public class LightTrigger : MonoBehaviour
         other.GetComponent<DeathTimer>().deathTime = deathTimeReset;
         other.GetComponent<DeathTimer>().StopAllCoroutines();
         other.GetComponent<DeathTimer>().DeathEffectsCancel();
+
+        //Figure stops chasing
+        if (InteractionManager.instance.sanity <= 2)
+            FigureApproach.instance.approachPlayer = false;
     }
 
     private void OnTriggerExit(Collider other)
@@ -31,6 +35,11 @@ public class LightTrigger : MonoBehaviour
         //Start surround sound
         if(InteractionManager.instance.steps)
             other.GetComponent<PlayerMovement>().StartSurroundSound();
+
+        //Figure starts chasing
+        if (InteractionManager.instance.sanity <= 2)
+            FigureApproach.instance.approachPlayer = true;
+
 
         //Death effects start
         other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());

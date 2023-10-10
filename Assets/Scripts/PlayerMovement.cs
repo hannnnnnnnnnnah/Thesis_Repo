@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 camRotation, moveDirection;
     private Camera mainCamera;
 
-    [SerializeField] AudioSource audioFoot;
+    [SerializeField] AudioSource audioFoot, audioBreath;
 
     [SerializeField] GameObject SurroundSound;
 
@@ -111,11 +111,13 @@ public class PlayerMovement : MonoBehaviour
         isSprinting = true;
         yield return new WaitForSeconds(sprintLength);
         sprintDisabled = true;
+        audioBreath.Play();
         yield return new WaitWhile(() => Input.GetKey(KeyCode.LeftShift));
         //Debug.Log("shift is not being spammed");
         yield return new WaitForSeconds(sprintDelay);
         sprintDisabled = false;
         isSprinting = false;
+        audioBreath.Stop();
     }
 
     private void Rotate()

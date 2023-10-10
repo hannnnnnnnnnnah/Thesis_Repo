@@ -10,7 +10,7 @@ public class FigureBehavior : MonoBehaviour
     [SerializeField] Collider dist1, dist2, dist3;
     [SerializeField] GameObject loc1, loc2;
     [SerializeField] float speed;
-    float distRange = 5f;
+    float distRange = 10f;
 
     Vector3 pos2;
 

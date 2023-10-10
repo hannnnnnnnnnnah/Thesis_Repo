@@ -9,8 +9,10 @@ public class InteractionManager : MonoBehaviour
     public static InteractionManager instance;
 
     int sanitySet = 10;
-    public int sanity = 10;
-    public bool lightExplodes, steps, bFigureSpawn = false;
+    public int sanity = 5;
+    public bool lightExplodes, steps = false;
+
+    [SerializeField] GameObject figureSpawner;
 
     void Awake()
     {
@@ -23,7 +25,7 @@ public class InteractionManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     public void ResetSanity()
@@ -38,25 +40,24 @@ public class InteractionManager : MonoBehaviour
 
         switch (sanity)
         {
-            case 10:
+            case 5:
                 lightExplodes = false;
                 steps = false;
                 break;
 
-            case 9:
+            case 4:
                 steps = true;
-                break;
-
-            case 8:
-                //lightExplodes = true;
-                break;
-
-            case 5:
-                bFigureSpawn = true;
                 break;
 
             case 3:
                 lightExplodes = true;
+                break;
+
+            case 2:
+                figureSpawner.GetComponent<FigureSpawner>().figureSpawn();
+                break;
+            
+            case 1:
                 break;
         }
     }
