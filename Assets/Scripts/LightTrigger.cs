@@ -5,6 +5,7 @@ using UnityEngine;
 public class LightTrigger : MonoBehaviour
 {
     public float deathTimeReset;
+    Collider playerC;
 
     [SerializeField] AudioSource source;
     Animator animator;
@@ -16,6 +17,8 @@ public class LightTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        playerC = other;
+
         //Death effects are reset
         other.GetComponent<DeathTimer>().deathTime = deathTimeReset;
         other.GetComponent<DeathTimer>().StopAllCoroutines();
@@ -49,5 +52,10 @@ public class LightTrigger : MonoBehaviour
             source.Play();
             animator.SetBool("LightExplode", true);
         }
+    }
+
+    private void OnDisable()
+    {
+        //playerC.GetComponent<DeathTimer>().StartCoroutine(playerC.GetComponent<DeathTimer>().DeathTime());
     }
 }

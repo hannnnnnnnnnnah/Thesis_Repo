@@ -4823,9 +4823,9 @@ GameObject:
   - component: {fileID: 3762519767160957970}
   - component: {fileID: 4574803346421184169}
   - component: {fileID: 1395146818}
+  - component: {fileID: 1954467471606576181}
   - component: {fileID: 3287601896468784057}
   - component: {fileID: 1395146820}
-  - component: {fileID: 1954467471606576181}
   - component: {fileID: 1395146822}
   m_Layer: 0
   m_Name: Emma
@@ -4833,7 +4833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3762519767160957970
 Transform:
   m_ObjectHideFlags: 0
@@ -4889,6 +4889,19 @@ MonoBehaviour:
   laugh: {fileID: 1395146822}
   speed: 0.85
   strand: {fileID: 0}
+--- !u!65 &1954467471606576181
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4574803346421184168}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6214352, y: 7.6740484, z: 2.4864979}
+  m_Center: {x: 0.048840523, y: 3.3370242, z: 0.28709507}
 --- !u!82 &3287601896468784057
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5081,19 +5094,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &1954467471606576181
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4574803346421184168}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.6214352, y: 7.6740484, z: 2.4864979}
-  m_Center: {x: 0.048840523, y: 3.3370242, z: 0.28709507}
 --- !u!82 &1395146822
 AudioSource:
   m_ObjectHideFlags: 0

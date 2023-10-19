@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool sprintDisabled, isSprinting = false;
 
     public int sensitivity = 140;
+    LayerMask layerMask;  
 
     private float speed, stepRate, stepCoolDown, stepRateSet;
     private Vector3 camRotation, moveDirection;
@@ -31,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        layerMask = LayerMask.GetMask("Seeable");
+
         RespawnManager.instance.gameStart = true;
         RespawnManager.instance.exitTriggered = false;
     }
@@ -62,6 +66,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
         Rotate();
+
+        //raycasting stuff
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+
+        if (Physics.Raycast(transform.position, fwd, 10, layerMask))
+            print("There is something in front of the object!");
     }
 
     private void Move()

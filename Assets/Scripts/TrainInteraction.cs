@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorTrigger : MonoBehaviour
+public class TrainInteraction : MonoBehaviour
 {
-    [SerializeField] AudioSource d_audio;
-    [SerializeField] AudioSource d_audioClose;
+    [SerializeField] AudioSource door;
+
     Animator animator;
 
     private void Start()
@@ -18,7 +18,7 @@ public class DoorTrigger : MonoBehaviour
         if(other.tag == "Player")
         {
             animator.SetBool("NearDoor", true);
-            d_audio.Play();
+            door.Play();
         }
     }
 
@@ -26,8 +26,8 @@ public class DoorTrigger : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            animator.SetBool("NearDoor", false); 
-            d_audio.Play();
+            animator.SetBool("NearDoor", false);
+            door.Play();
         }
     }
 }
