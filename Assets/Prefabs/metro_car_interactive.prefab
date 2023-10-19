@@ -3803,7 +3803,7 @@ GameObject:
   - component: {fileID: 5852119503094908132}
   - component: {fileID: 4375186969722854069}
   m_Layer: 0
-  m_Name: metro_car (1)
+  m_Name: metro_car_interactive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

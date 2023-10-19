@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool sprintDisabled, isSprinting = false;
 
     public int sensitivity = 140;
-    LayerMask layerMask;  
+    public LayerMask layerMask;
 
     private float speed, stepRate, stepCoolDown, stepRateSet;
     private Vector3 camRotation, moveDirection;
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        layerMask = LayerMask.GetMask("Seeable");
+        //layerMask = LayerMask.GetMask("Seeable");
 
         RespawnManager.instance.gameStart = true;
         RespawnManager.instance.exitTriggered = false;
@@ -68,10 +68,16 @@ public class PlayerMovement : MonoBehaviour
         Rotate();
 
         //raycasting stuff
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
-        if (Physics.Raycast(transform.position, fwd, 10, layerMask))
-            print("There is something in front of the object!");
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hitData;
+        Debug.DrawRay(ray.origin, ray.direction);
+
+        if (Physics.Raycast(ray, out hitData, Mathf.Infinity, layerMask))
+        {
+            FigureDisappear.instance.Disappear();
+        }
+
     }
 
     private void Move()
@@ -123,12 +129,15 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Sprint()
     {
         //Debug.Log("Sprint started");
+
         isSprinting = true;
         yield return new WaitForSeconds(sprintLength);
         sprintDisabled = true;
         audioBreath.Play();
         yield return new WaitWhile(() => Input.GetKey(KeyCode.LeftShift));
+
         //Debug.Log("shift is not being spammed");
+
         yield return new WaitForSeconds(sprintDelay);
         sprintDisabled = false;
         isSprinting = false;
