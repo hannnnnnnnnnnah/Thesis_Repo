@@ -5,24 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class FigureDisappear : MonoBehaviour
 { 
-    public static FigureDisappear instance;
     int LayerIgnoreRaycast;
 
     Animator animator;
 
-    void Awake()
+    void Start()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-
-        //DontDestroyOnLoad(gameObject);
-
         LayerIgnoreRaycast = LayerMask.NameToLayer("Ignore Raycast");
         animator = GetComponent<Animator>();
     }

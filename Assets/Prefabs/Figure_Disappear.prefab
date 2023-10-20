@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7619212102513352297}
   m_Layer: 3
   m_Name: pCube6
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 349615003914524844}
   m_Layer: 3
   m_Name: hand_done3
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 4574803346501976361}
   m_Layer: 3
   m_Name: Figure_Disappear
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,7 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d05e5caeb7175d4287e9b1aa98ac240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 8296344110280235290}
 --- !u!95 &4574803346501976361
 Animator:
   serializedVersion: 4
@@ -319,7 +318,7 @@ GameObject:
   - component: {fileID: 1797395302810740681}
   m_Layer: 3
   m_Name: transform11
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -352,7 +351,7 @@ GameObject:
   - component: {fileID: 2008428100764689231}
   m_Layer: 3
   m_Name: Particle System
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5162,7 +5161,7 @@ GameObject:
   - component: {fileID: 1665485463279977590}
   m_Layer: 3
   m_Name: transform1
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5193,7 +5192,7 @@ GameObject:
   - component: {fileID: 6226088532539480657}
   m_Layer: 3
   m_Name: hand_done1
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5225,7 +5224,7 @@ GameObject:
   - component: {fileID: 619468929591809404}
   m_Layer: 3
   m_Name: transform2
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5256,7 +5255,7 @@ GameObject:
   - component: {fileID: 904340803627691451}
   m_Layer: 3
   m_Name: transform12
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5287,7 +5286,7 @@ GameObject:
   - component: {fileID: 6315700502728230819}
   m_Layer: 3
   m_Name: pCube2
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5319,7 +5318,7 @@ GameObject:
   - component: {fileID: 2473296435865581236}
   m_Layer: 3
   m_Name: transform13
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5350,7 +5349,7 @@ GameObject:
   - component: {fileID: 3332403001504575361}
   m_Layer: 3
   m_Name: pCube3
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5382,7 +5381,7 @@ GameObject:
   - component: {fileID: 527973598808853812}
   m_Layer: 3
   m_Name: transform14
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5413,7 +5412,7 @@ GameObject:
   - component: {fileID: 8676564768231261088}
   m_Layer: 3
   m_Name: base_model_prototype2
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5453,7 +5452,7 @@ GameObject:
   - component: {fileID: 3276449837010801382}
   m_Layer: 3
   m_Name: pCube1
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5485,7 +5484,7 @@ GameObject:
   - component: {fileID: 7717364917171707669}
   m_Layer: 3
   m_Name: hand_done2
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5520,7 +5519,7 @@ GameObject:
   - component: {fileID: 2635500518007105338}
   m_Layer: 3
   m_Name: hand_done4
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

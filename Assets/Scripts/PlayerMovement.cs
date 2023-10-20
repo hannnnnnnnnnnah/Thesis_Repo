@@ -13,7 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool sprintDisabled, isSprinting = false;
 
     public int sensitivity = 140;
-    public LayerMask layerMask;
+
+    public LayerMask checkRaycast;
 
     private float speed, stepRate, stepCoolDown, stepRateSet;
     private Vector3 camRotation, moveDirection;
@@ -33,8 +34,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        //layerMask = LayerMask.GetMask("Seeable");
-
         RespawnManager.instance.gameStart = true;
         RespawnManager.instance.exitTriggered = false;
     }
@@ -71,11 +70,16 @@ public class PlayerMovement : MonoBehaviour
 
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hitData;
-        Debug.DrawRay(ray.origin, ray.direction);
 
-        if (Physics.Raycast(ray, out hitData, Mathf.Infinity, layerMask))
+        /*if (Physics.Raycast(ray, out hitData, Mathf.Infinity, layerMask))
         {
-            FigureDisappear.instance.Disappear();
+            hitData.collider.gameObject.GetComponent<FigureDisappear>().Disappear();
+        }*/
+
+        if (Physics.Raycast(ray, out hitData, Mathf.Infinity, checkRaycast))
+        {
+            if (hitData.collider.gameObject.tag == "Figure")
+                hitData.collider.gameObject.GetComponent<FigureDisappear>().Disappear();
         }
 
     }
