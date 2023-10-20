@@ -16,22 +16,6 @@ public class FigureApproach : MonoBehaviour
 
     [SerializeField] GameObject strand;
 
-    public static FigureApproach instance;
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-
-        //DontDestroyOnLoad(gameObject);
-    }
-
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -48,8 +32,10 @@ public class FigureApproach : MonoBehaviour
                 setAnim();
 
             Debug.Log("I AM CHASING YOU");
-            transform.position = Vector3.Lerp(transform.position, player.transform.position, step);
 
+            transform.position = Vector3.Lerp(transform.position, player.transform.position, step);
+            Vector3 newDirection = Vector3.RotateTowards(transform.position, player.transform.position, step * .5f, 0.0f);
+            transform.rotation = Quaternion.LookRotation(newDirection);
         }
 
         if (!approachPlayer && approaching)

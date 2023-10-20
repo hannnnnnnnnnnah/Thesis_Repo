@@ -12,7 +12,7 @@ public class InteractionManager : MonoBehaviour
     public int sanity = 5;
     public bool lightExplodes, surroundSound, whisper, steps = false;
 
-    [SerializeField] GameObject figureSpawner;
+    GameObject figureSpawner;
 
     void Awake()
     {
@@ -24,8 +24,6 @@ public class InteractionManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        //DontDestroyOnLoad(gameObject);
     }
 
     public void ResetSanity()
@@ -56,7 +54,8 @@ public class InteractionManager : MonoBehaviour
                 break;
 
             case 2:
-                figureSpawner.GetComponent<FigureSpawner>().figureSpawn();
+                figureSpawner = GameObject.FindGameObjectWithTag("FigureSpawner");
+                figureSpawner.GetComponent<FigureSpawner>().SpawnEmma();
                 break;
             
             case 1:

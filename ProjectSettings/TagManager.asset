@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Figure
+  - FigureSpawner
+  - Emma
   layers:
   - Default
   - TransparentFX

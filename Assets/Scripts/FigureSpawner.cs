@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class FigureSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject bFigure;
+    [SerializeField] GameObject Emma;
+    [SerializeField] GameObject behindPos;
 
-    public void figureSpawn()
+    public void SpawnEmma()
     { 
-        bFigure.SetActive(true);
-
+        Instantiate(Emma, behindPos.transform);
+        Debug.Log("emma is spawned");
     }
 }

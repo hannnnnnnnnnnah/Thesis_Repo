@@ -26,7 +26,7 @@ public class LightTrigger : MonoBehaviour
 
         //Figure stops chasing
         if (InteractionManager.instance.sanity <= 2)
-            FigureApproach.instance.approachPlayer = false;
+            GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = false;
     }
 
     private void OnTriggerExit(Collider other)
@@ -41,7 +41,7 @@ public class LightTrigger : MonoBehaviour
 
         //Figure starts chasing
         if (InteractionManager.instance.sanity <= 2)
-            FigureApproach.instance.approachPlayer = true;
+            GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = true;
 
 
         //Death effects start
