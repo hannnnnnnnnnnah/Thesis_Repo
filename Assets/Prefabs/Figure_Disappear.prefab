@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1266432103269914124}
   - component: {fileID: 3043512910762352120}
   - component: {fileID: 7619212102513352297}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: pCube6
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 349615003914524844}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: hand_done3
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665829826195395286}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -28.09, y: 4.0000005, z: 8.536783}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -316,7 +316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1797395302810740681}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: transform11
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 2008428100764689230}
   - component: {fileID: 2008428100764689224}
   - component: {fileID: 2008428100764689231}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Particle System
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -5159,7 +5159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1665485463279977590}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: transform1
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -5190,7 +5190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6226088532539480657}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: hand_done1
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -5222,7 +5222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 619468929591809404}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: transform2
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -5253,7 +5253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 904340803627691451}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: transform12
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -5284,7 +5284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6315700502728230819}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: pCube2
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -5316,7 +5316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2473296435865581236}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: transform13
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -5347,7 +5347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3332403001504575361}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: pCube3
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -5379,7 +5379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 527973598808853812}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: transform14
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -5410,7 +5410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8676564768231261088}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: base_model_prototype2
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -5450,7 +5450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3276449837010801382}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: pCube1
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -5482,7 +5482,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7717364917171707669}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: hand_done2
   m_TagString: Figure
   m_Icon: {fileID: 0}
@@ -5517,7 +5517,7 @@ GameObject:
   - component: {fileID: 4617590052229273531}
   - component: {fileID: 4904263722963256858}
   - component: {fileID: 2635500518007105338}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: hand_done4
   m_TagString: Figure
   m_Icon: {fileID: 0}

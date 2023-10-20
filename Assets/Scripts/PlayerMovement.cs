@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Physics.Raycast(ray, out hitData, Mathf.Infinity, checkRaycast))
         {
-            if (hitData.collider.gameObject.tag == "Figure")
+            if (hitData.collider.gameObject.tag == "Figure" && !hitData.collider.gameObject.GetComponent<Animator>().GetBool("Disappear"))
                 hitData.collider.gameObject.GetComponent<FigureDisappear>().Disappear();
         }
 
