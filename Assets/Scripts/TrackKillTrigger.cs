@@ -5,15 +5,7 @@ using UnityEngine.Rendering;
 
 public class TrackKillTrigger : MonoBehaviour
 {
-    Animator animator;
-    [SerializeField] Animator ghost;
-    [SerializeField] AudioSource metro;
-    [SerializeField] Volume vol;
-
-    private void Start()
-    {
-        animator = GetComponent<Animator>();    
-    }
+    public GameObject[] metrocars;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,8 +17,7 @@ public class TrackKillTrigger : MonoBehaviour
 
     public void StartTrain()
     {
-        animator.SetBool("TrainKill", true);
-        metro.Play();
-        ghost.SetBool("GhostTracks", true);
+        foreach(GameObject metrocar in metrocars)
+            metrocar.GetComponent<TrainMove>().move = true;
     }
 }

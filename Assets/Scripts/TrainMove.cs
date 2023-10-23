@@ -5,15 +5,42 @@ using UnityEngine;
 
 public class TrainMove : MonoBehaviour
 {
-    [SerializeField] Animator animator;
-    [SerializeField] AudioSource t_audio;
+    AudioSource t_audio;
+
+    [SerializeField] float speed;
+
+    [SerializeField] bool move_right;
+    [SerializeField] bool move_left;
+
+    public bool move;
+
+    private void Start()
+    {
+        t_audio = GetComponent<AudioSource>();
+    }
+
+    private void FixedUpdate()
+    {
+        float step = speed * Time.fixedDeltaTime;
+
+        if (move)
+        {
+            if(!t_audio.isPlaying)
+                t_audio.Play();
+
+            if (move_right)
+                transform.Translate(Vector3.back * step);
+
+            if (move_left)
+                transform.Translate(Vector3.forward * step);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
-            animator.SetBool("TrainMove", true);
-            t_audio.Play();
+            RespawnManager.instance.Die();
         }
     }
 }

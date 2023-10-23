@@ -64,7 +64,6 @@ public class DeathTimer : MonoBehaviour
                 if (!metro.isPlaying)
                 {
                     metro.Play();
-                    Debug.Log("dark entered");
                 }
                 break;
 

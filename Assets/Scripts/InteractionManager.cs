@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class InteractionManager : MonoBehaviour
@@ -13,6 +14,7 @@ public class InteractionManager : MonoBehaviour
     public bool lightExplodes, surroundSound, whisper, steps = false;
 
     GameObject figureSpawner;
+    [SerializeField] Volume sanityVolume;
 
     void Awake()
     {
@@ -46,19 +48,23 @@ public class InteractionManager : MonoBehaviour
             case 4:
                 surroundSound = true;
                 steps = true;
+                sanityVolume.weight += .2f;
                 break;
 
             case 3:
                 whisper = true;
                 lightExplodes = true;
+                sanityVolume.weight += .2f;
                 break;
 
             case 2:
                 figureSpawner = GameObject.FindGameObjectWithTag("FigureSpawner");
                 figureSpawner.GetComponent<FigureSpawner>().SpawnEmma();
+                sanityVolume.weight += .2f;
                 break;
             
             case 1:
+                sanityVolume.weight += .2f;
                 break;
 
             case -5:

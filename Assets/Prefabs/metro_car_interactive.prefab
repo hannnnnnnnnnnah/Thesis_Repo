@@ -6118,6 +6118,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 317319066830752706}
     m_Modifications:
+    - target: {fileID: 3254627611687905615, guid: 66b260520e2f98c49974628ab30e79c9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8745473615949742017, guid: 66b260520e2f98c49974628ab30e79c9, type: 3}
       propertyPath: m_Name
       value: Spot Light (1)
@@ -6817,6 +6821,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 317319066830752706}
     m_Modifications:
+    - target: {fileID: 3254627611687905615, guid: 66b260520e2f98c49974628ab30e79c9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8745473615949742017, guid: 66b260520e2f98c49974628ab30e79c9, type: 3}
       propertyPath: m_Name
       value: Spot Light

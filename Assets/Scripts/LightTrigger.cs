@@ -8,11 +8,15 @@ public class LightTrigger : MonoBehaviour
     Collider playerC;
 
     [SerializeField] AudioSource source;
+    [SerializeField] bool lightFlicker;
+
     Animator animator;
 
     private void Start()
     {
         animator = GetComponentInParent<Animator>();
+        if (lightFlicker)
+            animator.SetBool("LightFlicker", true);
     }
 
     private void OnTriggerEnter(Collider other)
