@@ -60,7 +60,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: base_model_prototype2
+    path: base_model_3
     classID: 1
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -72,7 +72,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3760428036
+      path: 433926853
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -143,7 +143,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: base_model_prototype2
+    path: base_model_3
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []

@@ -33,7 +33,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: base_model_prototype2
+    path: Particle System
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -52,7 +52,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Particle System
+    path: base_model_3
     classID: 1
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -64,14 +64,14 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3760428036
+      path: 922205677
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 922205677
+      path: 433926853
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -115,7 +115,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: base_model_prototype2
+    path: Particle System
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -134,7 +134,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Particle System
+    path: base_model_3
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []
