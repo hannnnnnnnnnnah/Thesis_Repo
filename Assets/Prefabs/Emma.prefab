@@ -4887,7 +4887,7 @@ MonoBehaviour:
   steps: {fileID: 3287601896468784057}
   buzz: {fileID: 1395146820}
   laugh: {fileID: 1395146822}
-  speed: 0.85
+  speed: 0.8
   strand: {fileID: 0}
 --- !u!65 &1954467471606576181
 BoxCollider:
@@ -4914,7 +4914,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3e5e8bd36bbce3c46bd5bc231ce94dc4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.65
+  m_Volume: 0.381
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5010,7 +5010,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b40b44c500d9c8943954b88622d2d137, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.576
+  m_Volume: 0.375
   m_Pitch: 1
   Loop: 1
   Mute: 0

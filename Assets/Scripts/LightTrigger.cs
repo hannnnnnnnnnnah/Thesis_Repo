@@ -5,12 +5,12 @@ using UnityEngine;
 public class LightTrigger : MonoBehaviour
 {
     public float deathTimeReset;
-    Collider playerC;
 
     [SerializeField] AudioSource source;
     [SerializeField] bool lightFlicker;
 
     Animator animator;
+    bool lightBroken = false;
 
     private void Start()
     {
@@ -21,16 +21,17 @@ public class LightTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        playerC = other;
+        if (!lightBroken)
+        {
+            //Death effects are reset
+            other.GetComponent<DeathTimer>().deathTime = deathTimeReset;
+            other.GetComponent<DeathTimer>().StopAllCoroutines();
+            other.GetComponent<DeathTimer>().DeathEffectsCancel();
 
-        //Death effects are reset
-        other.GetComponent<DeathTimer>().deathTime = deathTimeReset;
-        other.GetComponent<DeathTimer>().StopAllCoroutines();
-        other.GetComponent<DeathTimer>().DeathEffectsCancel();
-
-        //Figure stops chasing
-        if (InteractionManager.instance.sanity <= 2)
-            GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = false;
+            //Figure stops chasing
+            if (InteractionManager.instance.sanity <= 2)
+                GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = false;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -55,11 +56,7 @@ public class LightTrigger : MonoBehaviour
         {
             source.Play();
             animator.SetBool("LightExplode", true);
+            lightBroken = true;
         }
-    }
-
-    private void OnDisable()
-    {
-        //playerC.GetComponent<DeathTimer>().StartCoroutine(playerC.GetComponent<DeathTimer>().DeathTime());
     }
 }

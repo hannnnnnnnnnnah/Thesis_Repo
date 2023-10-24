@@ -28,14 +28,16 @@ public class FigureBehavior : MonoBehaviour
             if (dist2.bounds.Intersects(other.bounds))
             {
                 pos2 = loc2.transform.position;
-                move = true;
+                move = false;
                 dist2.enabled = false;
             }
 
             if (dist3.bounds.Intersects(other.bounds))
             {
+                move = false;
                 Debug.Log("wooaoaoaooao push");
                 dist3.enabled = false;
+                other.GetComponent<PlayerMovement>().Push();
             }
         }
     }
