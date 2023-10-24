@@ -180,6 +180,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd69b494a1840274d9fe670a7191b270, type: 3}
+--- !u!1 &62285660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 62285661}
+  m_Layer: 0
+  m_Name: Revenge
+  m_TagString: Revenge
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &62285661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62285660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.14, y: 6.27, z: -169.4392}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 34
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &78707764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,7 +401,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1668562138226477846, guid: d604f7ff46a786940bcb668f70a08556, type: 3}
       propertyPath: lightFlicker
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4072706239974948446, guid: d604f7ff46a786940bcb668f70a08556, type: 3}
       propertyPath: m_Name
@@ -755,11 +786,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2041792861859530860, guid: 5286a163d3a33a048ae055f8f627b38c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -83.12
+      value: -73.03
       objectReference: {fileID: 0}
     - target: {fileID: 2041792861859530860, guid: 5286a163d3a33a048ae055f8f627b38c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.86992645
+      value: -0.40117022
       objectReference: {fileID: 0}
     - target: {fileID: 2041792861859530860, guid: 5286a163d3a33a048ae055f8f627b38c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -767,7 +798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2041792861859530860, guid: 5286a163d3a33a048ae055f8f627b38c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.49318144
+      value: -0.9160035
       objectReference: {fileID: 0}
     - target: {fileID: 2041792861859530860, guid: 5286a163d3a33a048ae055f8f627b38c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -779,7 +810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2041792861859530860, guid: 5286a163d3a33a048ae055f8f627b38c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 419.1
+      value: 492.69702
       objectReference: {fileID: 0}
     - target: {fileID: 2041792861859530860, guid: 5286a163d3a33a048ae055f8f627b38c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1005,6 +1036,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1700221575}
     m_Modifications:
+    - target: {fileID: 1668562138226477846, guid: d604f7ff46a786940bcb668f70a08556, type: 3}
+      propertyPath: lightFlicker
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4072706239974948446, guid: d604f7ff46a786940bcb668f70a08556, type: 3}
       propertyPath: m_Name
       value: Light_5
@@ -1133,6 +1168,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1700221575}
     m_Modifications:
+    - target: {fileID: 1668562138226477846, guid: d604f7ff46a786940bcb668f70a08556, type: 3}
+      propertyPath: lightFlicker
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4072706239974948446, guid: d604f7ff46a786940bcb668f70a08556, type: 3}
       propertyPath: m_Name
       value: Light_8

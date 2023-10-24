@@ -34,7 +34,7 @@ public class FigureApproach : MonoBehaviour
             Debug.Log("I AM CHASING YOU");
 
             transform.position = Vector3.Lerp(transform.position, player.transform.position, step);
-            Vector3 newDirection = Vector3.RotateTowards(transform.position, player.transform.position, step * .5f, 0.0f);
+            Vector3 newDirection = Vector3.RotateTowards(transform.position, player.transform.position, step * .1f, 0.0f);
             transform.rotation = Quaternion.LookRotation(newDirection);
         }
 
@@ -65,6 +65,8 @@ public class FigureApproach : MonoBehaviour
             other.GetComponent<CharacterController>().enabled = false;
             Debug.Log("GOT YOU");
             StartCoroutine(emmaRevenge());
+            other.gameObject.transform.position = GameObject.FindGameObjectWithTag("Revenge").GetComponent<Transform>().position;
+            other.GetComponent<CharacterController>().enabled = true;
             //InteractionManager.instance.sanity = -5;
 
         }
@@ -73,7 +75,7 @@ public class FigureApproach : MonoBehaviour
     IEnumerator emmaRevenge()
     {
         laugh.Play();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
     }
 }
