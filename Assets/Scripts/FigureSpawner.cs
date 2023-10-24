@@ -12,4 +12,9 @@ public class FigureSpawner : MonoBehaviour
         Instantiate(Emma, behindPos.transform);
         Debug.Log("emma is spawned");
     }
+
+    public void KillEmma()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("Emma")); 
+    }
 }

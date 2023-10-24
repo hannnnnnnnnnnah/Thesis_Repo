@@ -13,6 +13,14 @@ public class FigureBehavior : MonoBehaviour
     Vector3 pos2;
 
     bool move = false;
+    bool push = false;
+
+    Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();    
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,6 +38,7 @@ public class FigureBehavior : MonoBehaviour
                 pos2 = loc2.transform.position;
                 move = false;
                 dist2.enabled = false;
+   
             }
 
             if (dist3.bounds.Intersects(other.bounds))
@@ -37,7 +46,7 @@ public class FigureBehavior : MonoBehaviour
                 move = false;
                 Debug.Log("wooaoaoaooao push");
                 dist3.enabled = false;
-                other.GetComponent<PlayerMovement>().Push();
+                animator.SetBool("Push", true);
             }
         }
     }
@@ -49,10 +58,15 @@ public class FigureBehavior : MonoBehaviour
         
         if (move)
         {
+            animator.SetBool("Turn", false);
             transform.Translate(Vector3.right * step);
 
             if (dist <= distRange)
                 move = false;
-        }     
+        }
+        else if(!move)
+        {
+            animator.SetBool("Turn", true);
+        }
     }
 }

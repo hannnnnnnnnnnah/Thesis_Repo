@@ -9,7 +9,7 @@ public class InteractionManager : MonoBehaviour
 {
     public static InteractionManager instance;
 
-    int sanitySet = 10;
+    int sanitySet = 5;
     public int sanity = 5;
     public bool lightExplodes, surroundSound, whisper, steps = false;
 
@@ -28,6 +28,14 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            ResetSanity();
+        }
+    }
+
     public void ResetSanity()
     {
         sanity = sanitySet;
@@ -43,6 +51,7 @@ public class InteractionManager : MonoBehaviour
             case 5:
                 lightExplodes = false;
                 surroundSound = false;
+                sanityVolume.weight = 0.0f;
                 break;
 
             case 4:

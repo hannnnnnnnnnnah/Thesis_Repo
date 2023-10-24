@@ -16,7 +16,7 @@ public class RespawnManager : MonoBehaviour
 
     public static RespawnManager instance;
 
-    Canvas canvas;
+    [SerializeField] Canvas canvas;
 
     void Awake()
     {
@@ -34,6 +34,15 @@ public class RespawnManager : MonoBehaviour
         SceneManager.sceneLoaded += OnLevelLoad;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            animator.SetBool("Respawn", false);
+            SceneManager.LoadScene("TitleScreen");
+        }
+    }
+
     private void OnDisable()
     {
          SceneManager.sceneLoaded -= OnLevelLoad;
@@ -46,8 +55,11 @@ public class RespawnManager : MonoBehaviour
 
     void OnLevelLoad(Scene scene, LoadSceneMode mode)
     {
-        if(scene.name == "")
-            canvas.enabled = false;
+        if(scene.name == "TitleScreen")
+        {
+            if(canvas != null)
+                canvas.enabled = false;
+        }
 
         if(scene.name == "FigureTest" && gameStart)
         {
@@ -71,10 +83,10 @@ public class RespawnManager : MonoBehaviour
             deathCount++;
             InteractionManager.instance.ResetSanity();
         }
-        else if(exitTriggered)
-        {
-            animator.SetBool("Respawn", false);
-            SceneManager.LoadScene("TitleScreen");
-        }
+        //else if(exitTriggered)
+        //{
+        //    animator.SetBool("Respawn", false);
+        //    SceneManager.LoadScene("TitleScreen");
+        //}
     }
 }

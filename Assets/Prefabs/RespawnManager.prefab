@@ -51,6 +51,8 @@ MonoBehaviour:
   inhale: {fileID: 1791131658182666557}
   deathCount: 0
   exitTriggered: 0
+  gameStart: 0
+  canvas: {fileID: 1791131658765720695}
 --- !u!82 &1791131658182666557
 AudioSource:
   m_ObjectHideFlags: 0

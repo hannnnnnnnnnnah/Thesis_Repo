@@ -23,6 +23,9 @@ public class LightTrigger : MonoBehaviour
     {
         if (!lightBroken)
         {
+            if(!InteractionManager.instance.surroundSound)
+                other.GetComponent<PlayerMovement>().StopSurroundSound();
+
             //Death effects are reset
             other.GetComponent<DeathTimer>().deathTime = deathTimeReset;
             other.GetComponent<DeathTimer>().StopAllCoroutines();
@@ -40,9 +43,12 @@ public class LightTrigger : MonoBehaviour
         InteractionManager.instance.sanity--;
         InteractionManager.instance.UpdateSanity();
 
-        //Start surround sound
+        //Start / stop surround sound
         if(InteractionManager.instance.surroundSound)
             other.GetComponent<PlayerMovement>().StartSurroundSound();
+
+        if (!InteractionManager.instance.surroundSound)
+            other.GetComponent<PlayerMovement>().StopSurroundSound();
 
         //Figure starts chasing
         if (InteractionManager.instance.sanity <= 2)

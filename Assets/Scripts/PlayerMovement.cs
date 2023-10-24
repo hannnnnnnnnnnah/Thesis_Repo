@@ -148,11 +148,6 @@ public class PlayerMovement : MonoBehaviour
         audioBreath.Stop();
     }
 
-    public void Push()
-    {
-
-    }
-
     private void Rotate()
     {
         transform.Rotate(Vector3.up * sensitivity * Time.deltaTime * (Input.GetAxis("Mouse X")));
