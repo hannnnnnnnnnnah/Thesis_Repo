@@ -8,6 +8,7 @@ public class LightTrigger : MonoBehaviour
 
     [SerializeField] AudioSource source;
     [SerializeField] bool lightFlicker;
+    [SerializeField] bool lightCanExplode;
 
     Animator animator;
     bool lightBroken = false;
@@ -32,8 +33,8 @@ public class LightTrigger : MonoBehaviour
             other.GetComponent<DeathTimer>().DeathEffectsCancel();
 
             //Figure stops chasing
-            if (InteractionManager.instance.sanity <= 2)
-                GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = false;
+            //if (InteractionManager.instance.sanity <= 2)
+            //    GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = false;
         }
     }
 
@@ -51,14 +52,14 @@ public class LightTrigger : MonoBehaviour
             other.GetComponent<PlayerMovement>().StopSurroundSound();
 
         //Figure starts chasing
-        if (InteractionManager.instance.sanity <= 2)
+        /*if (InteractionManager.instance.sanity <= 2)
             GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = true;
-
+        */
 
         //Death effects start
         other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());
 
-        if (InteractionManager.instance.lightExplodes)
+        if (InteractionManager.instance.lightExplodes && lightCanExplode)
         {
             source.Play();
             animator.SetBool("LightExplode", true);

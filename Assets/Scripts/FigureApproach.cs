@@ -62,13 +62,15 @@ public class FigureApproach : MonoBehaviour
             approaching = false;
             approachPlayer = false;
             steps.Stop();
+
+            /*
             other.GetComponent<CharacterController>().enabled = false;
             Debug.Log("GOT YOU");
             StartCoroutine(emmaRevenge());
             other.gameObject.transform.position = GameObject.FindGameObjectWithTag("Revenge").GetComponent<Transform>().position;
             other.GetComponent<CharacterController>().enabled = true;
             //InteractionManager.instance.sanity = -5;
-
+            */
         }
     }
 

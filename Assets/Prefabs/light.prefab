@@ -273,6 +273,7 @@ GameObject:
   - component: {fileID: 1668562138226477846}
   - component: {fileID: 4851229015740915091}
   - component: {fileID: 5970550645509202921}
+  - component: {fileID: 8635919516009396007}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -387,7 +388,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1668562138226477853}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 9.807663
   m_Height: 23.564104
   m_Direction: 1
@@ -407,6 +408,7 @@ MonoBehaviour:
   deathTimeReset: 11
   source: {fileID: 5970550645509202921}
   lightFlicker: 0
+  lightCanExplode: 0
 --- !u!82 &4851229015740915091
 AudioSource:
   m_ObjectHideFlags: 0
@@ -599,6 +601,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &8635919516009396007
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668562138226477853}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.997675, y: 17.58181, z: 19.784885}
+  m_Center: {x: 0.9063474, y: 0.4279491, z: 9.392445}
 --- !u!1 &1837582613774650886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,7 +1207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5573564503398327979
 Transform:
   m_ObjectHideFlags: 0
@@ -1236,7 +1251,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7791486788655378091, guid: 86f23a0eebb968a469fb230b23688974, type: 3}
+  - {fileID: 2100000, guid: 9e8c07097057ae446b58758b805a05bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

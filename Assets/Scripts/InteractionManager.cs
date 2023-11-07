@@ -67,8 +67,8 @@ public class InteractionManager : MonoBehaviour
                 break;
 
             case 2:
-                figureSpawner = GameObject.FindGameObjectWithTag("FigureSpawner");
-                figureSpawner.GetComponent<FigureSpawner>().SpawnEmma();
+                //figureSpawner = GameObject.FindGameObjectWithTag("FigureSpawner");
+                //figureSpawner.GetComponent<FigureSpawner>().SpawnEmma();
                 sanityVolume.weight += .2f;
                 break;
             
