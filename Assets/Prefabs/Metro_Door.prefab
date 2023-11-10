@@ -146,8 +146,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 499.75977, y: 553.0742, z: 375.8667}
-  m_Center: {x: 584.56323, y: 358.63007, z: -1169.3787}
+  m_Size: {x: 696.5697, y: 553.0742, z: 375.8667}
+  m_Center: {x: 682.9682, y: 358.63007, z: -1169.3787}
 --- !u!82 &4421915042800990110
 AudioSource:
   m_ObjectHideFlags: 0
@@ -305,7 +305,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3217074026247768264, guid: 84af4233a9545f544b2047422c0b36bf, type: 3}
+  - {fileID: 2100000, guid: 1822452877549cc408b640321a6b2cd5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -388,7 +388,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3217074026247768264, guid: 84af4233a9545f544b2047422c0b36bf, type: 3}
+  - {fileID: 2100000, guid: 1822452877549cc408b640321a6b2cd5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
