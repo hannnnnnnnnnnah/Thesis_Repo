@@ -134,7 +134,7 @@ MonoBehaviour:
   deathTimeReset: 11
   source: {fileID: 6486622687734706783}
   lightFlicker: 0
-  lightCanExplode: 1
+  lightCanExplode: 0
 --- !u!82 &8825435239422443301
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979535708461803058}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50f41364b7b927845afb11aada5867a4, type: 3}
   m_Name: 
@@ -1036,7 +1036,7 @@ MonoBehaviour:
   deathTimeReset: 11
   source: {fileID: 5675038546661137356}
   lightFlicker: 0
-  lightCanExplode: 1
+  lightCanExplode: 0
 --- !u!82 &3388770691097491535
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1238,7 +1238,7 @@ BoxCollider:
   m_GameObject: {fileID: 979535708461803058}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 13.090701, y: 3.1871943, z: 19.784887}
   m_Center: {x: -0.19756792, y: -0.14691325, z: 9.392445}
@@ -3322,7 +3322,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5134883389984626584}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50f41364b7b927845afb11aada5867a4, type: 3}
   m_Name: 
@@ -3330,7 +3330,7 @@ MonoBehaviour:
   deathTimeReset: 11
   source: {fileID: 7588771578515598728}
   lightFlicker: 0
-  lightCanExplode: 1
+  lightCanExplode: 0
 --- !u!82 &4632385553865494596
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3532,7 +3532,7 @@ BoxCollider:
   m_GameObject: {fileID: 5134883389984626584}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 13.090701, y: 3.1871943, z: 19.784887}
   m_Center: {x: -0.19756792, y: -0.14691325, z: 9.392445}
@@ -3867,7 +3867,7 @@ MonoBehaviour:
   deathTimeReset: 11
   source: {fileID: 2006052946794665255}
   lightFlicker: 0
-  lightCanExplode: 1
+  lightCanExplode: 0
 --- !u!82 &305307060063465095
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5453,7 +5453,7 @@ MonoBehaviour:
   deathTimeReset: 11
   source: {fileID: 4013624432090436011}
   lightFlicker: 0
-  lightCanExplode: 1
+  lightCanExplode: 0
 --- !u!82 &2905125817529808177
 AudioSource:
   m_ObjectHideFlags: 0

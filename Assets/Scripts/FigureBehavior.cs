@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class FigureBehavior : MonoBehaviour
 {
-    [SerializeField] Collider dist1, dist2, dist3;
-    [SerializeField] GameObject loc1, loc2;
     [SerializeField] float speed;
     float distRange = 10f;
 
@@ -16,6 +14,7 @@ public class FigureBehavior : MonoBehaviour
     bool push = false;
 
     Animator animator;
+    [SerializeField] Animator ghostAnim;
 
     private void Start()
     {
@@ -25,29 +24,11 @@ public class FigureBehavior : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
-        {
-            if (dist1.bounds.Intersects(other.bounds))
-            { 
-                pos2 = loc1.transform.position;
-                move = true;
-                dist1.enabled = false;
-            }
-
-            if (dist2.bounds.Intersects(other.bounds))
-            {
-                pos2 = loc2.transform.position;
-                move = false;
-                dist2.enabled = false;
-   
-            }
-
-            if (dist3.bounds.Intersects(other.bounds))
-            {
-                move = false;
-                Debug.Log("wooaoaoaooao push");
-                dist3.enabled = false;
-                animator.SetBool("Push", true);
-            }
+        { 
+            move = false;
+            Debug.Log("wooaoaoaooao push");
+            animator.SetBool("Push", true);
+            ghostAnim.SetBool("Spawn", true);
         }
     }
 

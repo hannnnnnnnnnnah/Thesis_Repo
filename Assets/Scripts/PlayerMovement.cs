@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,12 +22,15 @@ public class PlayerMovement : MonoBehaviour
     private Camera mainCamera;
 
     [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper;
-
     [SerializeField] GameObject SurroundSound;
+
+    Light flashlight;
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        flashlight = GetComponentInChildren<Light>();
+
         Cursor.lockState = CursorLockMode.Locked;
         mainCamera = Camera.main;
         speed = walkSpeed;
@@ -66,15 +70,23 @@ public class PlayerMovement : MonoBehaviour
         Move();
         Rotate();
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log("f pressed");
+            
+            if(flashlight.intensity == 0)
+                flashlight.intensity = 300;
+
+            else if (flashlight.intensity != 0)
+                flashlight.intensity = 0;
+        }
+            
+
+
         //raycasting stuff
 
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hitData;
-
-        /*if (Physics.Raycast(ray, out hitData, Mathf.Infinity, layerMask))
-        {
-            hitData.collider.gameObject.GetComponent<FigureDisappear>().Disappear();
-        }*/
 
         if (Physics.Raycast(ray, out hitData, Mathf.Infinity, checkRaycast))
         {
