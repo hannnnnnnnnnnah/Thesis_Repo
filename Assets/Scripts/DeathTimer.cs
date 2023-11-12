@@ -19,6 +19,8 @@ public class DeathTimer : MonoBehaviour
         if(deathTime == 0)
         {
             RespawnManager.instance.Die();
+            DeathEffectsCancel();
+            deathTime = 11;
         }
     }
 
@@ -28,6 +30,11 @@ public class DeathTimer : MonoBehaviour
             vol.weight += 0.002f;
         if(playVisuals == false && vol.weight > 0)
             vol.weight -= 0.01f;
+    }
+
+    public void startDeathTimer()
+    {
+        StartCoroutine(DeathTime());
     }
 
     public IEnumerator DeathTime()

@@ -6,15 +6,16 @@ using UnityEngine;
 public class FigureBehavior : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] Animator ghostAnim;
+    [SerializeField] GameObject figures;
+
     float distRange = 10f;
 
     Vector3 pos2;
 
     bool move = false;
-    bool push = false;
 
     Animator animator;
-    [SerializeField] Animator ghostAnim;
 
     private void Start()
     {
@@ -26,9 +27,17 @@ public class FigureBehavior : MonoBehaviour
         if (other.gameObject.tag == "Player")
         { 
             move = false;
-            Debug.Log("wooaoaoaooao push");
             animator.SetBool("Push", true);
             ghostAnim.SetBool("Spawn", true);
+            Scene1Manager.instance.figureKilled = true;
+            Scene1Manager.instance.TriggerLevelSwitch();
+
+            //spawn figures
+            figures.SetActive(true);
+
+            //Sanity is decreased
+            InteractionManager.instance.sanity--;
+            InteractionManager.instance.UpdateSanity();
         }
     }
 

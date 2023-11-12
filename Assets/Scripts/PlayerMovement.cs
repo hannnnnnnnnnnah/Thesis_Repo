@@ -21,13 +21,26 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 camRotation, moveDirection;
     private Camera mainCamera;
 
-    [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper;
+    [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper, voice;
     [SerializeField] GameObject SurroundSound;
 
     Light flashlight;
 
-    private void Awake()
+    /*private void Awake()
     {
+        characterController = GetComponent<CharacterController>();
+        flashlight = GetComponentInChildren<Light>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        mainCamera = Camera.main;
+        speed = walkSpeed;
+    }*/
+
+    private void Start()
+    {
+        gameObject.transform.position = RespawnManager.instance.spawnPoint;
+        //RespawnManager.instance.gameStart = true;
+
         characterController = GetComponent<CharacterController>();
         flashlight = GetComponentInChildren<Light>();
 
@@ -36,11 +49,6 @@ public class PlayerMovement : MonoBehaviour
         speed = walkSpeed;
     }
 
-    private void Start()
-    {
-        RespawnManager.instance.gameStart = true;
-        RespawnManager.instance.exitTriggered = false;
-    }
 
     public void StartSurroundSound()
     {
@@ -72,8 +80,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("f pressed");
-            
             if(flashlight.intensity == 0)
                 flashlight.intensity = 300;
 
@@ -81,16 +87,25 @@ public class PlayerMovement : MonoBehaviour
                 flashlight.intensity = 0;
         }
             
-
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            if (!voice.isPlaying) 
+            {
+                voice.Play();
+            }
+        }
 
         //raycasting stuff
 
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hitData;
 
-        if (Physics.Raycast(ray, out hitData, Mathf.Infinity, checkRaycast))
+        if (Physics.Raycast(ray, out hitData, 15f, checkRaycast))
         {
-            if (hitData.collider.gameObject.tag == "Figure" && !hitData.collider.gameObject.GetComponent<Animator>().GetBool("Disappear"))
+            if (hitData.collider.gameObject.tag == "Figure" && !hitData.collider.gameObject.GetComponent<Animator>().GetBool("Disappear") && flashlight.intensity > 0)
+                hitData.collider.gameObject.GetComponent<FigureDisappear>().Die();
+
+            if (hitData.collider.gameObject.tag == "Figure" && !hitData.collider.gameObject.GetComponent<Animator>().GetBool("Disappear") && voice.isPlaying)
                 hitData.collider.gameObject.GetComponent<FigureDisappear>().Disappear();
         }
 
@@ -125,6 +140,8 @@ public class PlayerMovement : MonoBehaviour
             //step audio
 
             stepCoolDown -= Time.deltaTime;
+
+            //&& characterController.velocity.y == 0
 
             if (characterController.velocity.magnitude > 0 && characterController.velocity.y == 0 && stepCoolDown < 0f)
             {

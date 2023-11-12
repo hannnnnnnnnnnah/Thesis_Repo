@@ -33,18 +33,14 @@ public class LightTrigger : MonoBehaviour
             other.GetComponent<DeathTimer>().DeathEffectsCancel();
 
             //Figure stops chasing
-            //if (InteractionManager.instance.sanity <= 2)
-            //    GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = false;
+            if (InteractionManager.instance.sanity <= 2)
+                GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = false;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //Sanity is decreased
-        InteractionManager.instance.sanity--;
-        InteractionManager.instance.UpdateSanity();
-
-        //Start / stop surround sound
+        //Start and stop surround sound
         if(InteractionManager.instance.surroundSound)
             other.GetComponent<PlayerMovement>().StartSurroundSound();
 
@@ -52,9 +48,9 @@ public class LightTrigger : MonoBehaviour
             other.GetComponent<PlayerMovement>().StopSurroundSound();
 
         //Figure starts chasing
-        /*if (InteractionManager.instance.sanity <= 2)
+        if (InteractionManager.instance.sanity <= 2)
             GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = true;
-        */
+        
 
         //Death effects start
         other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());

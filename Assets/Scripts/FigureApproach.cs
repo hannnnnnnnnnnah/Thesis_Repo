@@ -34,8 +34,9 @@ public class FigureApproach : MonoBehaviour
             Debug.Log("I AM CHASING YOU");
 
             transform.position = Vector3.Lerp(transform.position, player.transform.position, step);
-            Vector3 newDirection = Vector3.RotateTowards(transform.position, player.transform.position, step * .1f, 0.0f);
-            transform.rotation = Quaternion.LookRotation(newDirection);
+            //Vector3 newDirection = Vector3.RotateTowards(transform.position, player.transform.position, step * .1f, 0.0f);
+            //transform.rotation = Quaternion.LookRotation(newDirection);
+            //transform.rotation = Quaternion.LookRotation(player.transform.position);
         }
 
         if (!approachPlayer && approaching)

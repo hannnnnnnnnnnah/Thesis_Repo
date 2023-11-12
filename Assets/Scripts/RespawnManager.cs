@@ -6,17 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class RespawnManager : MonoBehaviour
 {
-    public Animator animator;
     [SerializeField] AudioSource inhale;
+    Canvas canvas;
+    GameObject Player;
 
+    public Animator animator;
     public int deathCount = 1;
-
-    public bool exitTriggered = false;
-    public bool gameStart = false; 
+    public bool gameStart = false;
+    public bool spawnChange = false;
+    public Vector3 spawnPoint;
 
     public static RespawnManager instance;
-
-    [SerializeField] Canvas canvas;
 
     void Awake()
     {
@@ -34,12 +34,23 @@ public class RespawnManager : MonoBehaviour
         SceneManager.sceneLoaded += OnLevelLoad;
     }
 
+    private void Start()
+    {
+        canvas = GetComponentInChildren<Canvas>();
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             animator.SetBool("Respawn", false);
             SceneManager.LoadScene("TitleScreen");
+        }
+
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            Debug.Log(spawnPoint);
         }
     }
 
@@ -48,45 +59,44 @@ public class RespawnManager : MonoBehaviour
          SceneManager.sceneLoaded -= OnLevelLoad;
     }
 
-    private void Start()
-    {
-        canvas = GetComponentInChildren<Canvas>();   
-    }
-
     void OnLevelLoad(Scene scene, LoadSceneMode mode)
     {
-        if(scene.name == "TitleScreen")
+        if (scene.name != "TitleScreen")
         {
-            if(canvas != null)
+            if (!spawnChange)
+                spawnPoint = GameObject.FindGameObjectWithTag("SpawnStart").transform.position;
+
+            if (canvas != null)
+                canvas.enabled = true;
+        }
+        else
+        {
+            if (canvas != null)
                 canvas.enabled = false;
         }
+    }
 
-        if(scene.name == "FigureTest" && gameStart)
-        {
-            Debug.Log("Death count:" + deathCount);
-            canvas.enabled = true;
-
-            if (deathCount > 0)
-            {
-                animator.SetBool("Respawn", true);
-                inhale.Play();
-            }
-        }
+    public void ChangeSpawn(Vector3 newSpawn)
+    {
+        spawnPoint = newSpawn;
+        spawnChange = true;
     }
 
     public void Die()
     {
-        if(!exitTriggered) 
-        {
-            animator.SetBool("Respawn", false);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            deathCount++;
-            InteractionManager.instance.ResetSanity();
-        }
-        //else if(exitTriggered)
-        //{
-        //    animator.SetBool("Respawn", false);
-        //    SceneManager.LoadScene("TitleScreen");
-        //}
+        //animator.SetBool("Respawn", false);
+
+        //Set player position to spawn point
+        Player.GetComponent<CharacterController>().enabled = false;
+        Player.transform.position = spawnPoint;
+        Player.GetComponent<CharacterController>().enabled = true;
+
+        //"Awaken" effects
+        inhale.Play();
+        animator.SetBool("Respawn", true);
+
+        //Increase death count
+        deathCount++;
+        Debug.Log("Death count:" + deathCount);
     }
 }

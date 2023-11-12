@@ -8,6 +8,7 @@ TagManager:
   - FigureSpawner
   - Emma
   - Revenge
+  - SpawnStart
   layers:
   - Default
   - TransparentFX

@@ -33,7 +33,6 @@ public class Exit : MonoBehaviour
             ghosts.SetBool("GhostTracks", true);
             audioSource.Play();
             victims.Play();
-            RespawnManager.instance.exitTriggered = true;
             other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());
             exitEntered = true;
         }
