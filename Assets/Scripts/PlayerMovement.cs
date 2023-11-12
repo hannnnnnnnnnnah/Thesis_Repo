@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         Move();
         Rotate();
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetMouseButtonDown(0))
         {
             if(flashlight.intensity == 0)
                 flashlight.intensity = 300;

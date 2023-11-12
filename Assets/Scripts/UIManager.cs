@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI controlText;
     string moveText = "Use WASD to move";
+    public bool flashlightShown = false;
 
     public static UIManager instance;
 

@@ -30,6 +30,12 @@ public class FigureDisappear : MonoBehaviour
         if(Vector3.Distance(player.transform.position, transform.position) <= 15f && !approachPlayer) 
         { 
             approachPlayer = true;
+
+            if (!UIManager.instance.flashlightShown)
+            {
+                UIManager.instance.ShowText("Toggle flashlight with left mouse button");
+                UIManager.instance.flashlightShown = true;
+            }
         }
 
         if (approachPlayer)
