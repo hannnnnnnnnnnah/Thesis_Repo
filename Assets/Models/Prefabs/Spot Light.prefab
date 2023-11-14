@@ -147,8 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathTimeReset: 11
   source: {fileID: 4369175166800222005}
-  lightExplodes: 0
-  animator: {fileID: 0}
+  lightFlicker: 0
+  lightCanExplode: 0
 --- !u!82 &3254627611687905615
 AudioSource:
   m_ObjectHideFlags: 0
@@ -156,12 +156,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8745473615949742017}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: faa33797cbea3124e8916bc097469625, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.042
   m_Pitch: 1
   Loop: 1
   Mute: 0

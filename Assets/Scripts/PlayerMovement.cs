@@ -8,33 +8,25 @@ public class PlayerMovement : MonoBehaviour
 {
     CharacterController characterController;
 
-    [SerializeField] float sprintSpeed, walkSpeed, gravity, sprintLength, sprintDelay;
+    [SerializeField] float sprintSpeed, walkSpeed, sneakSpeed, gravity, sprintLength, sprintDelay;
     [SerializeField] int minAngle, maxAngle;
 
-    [SerializeField] bool sprintDisabled, isSprinting = false;
+    [SerializeField] bool sprintDisabled, isSprinting= false;
+
+    public bool inTracks = false;
 
     public int sensitivity = 140;
 
     public LayerMask checkRaycast;
+    public Light flashlight;
 
-    private float speed, stepRate, stepCoolDown, stepRateSet;
+    public float speed;
+    private float stepRate, stepCoolDown, stepRateSet;
     private Vector3 camRotation, moveDirection;
     private Camera mainCamera;
 
-    [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper, voice;
+    [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper, voice, flash_on, flash_off;
     [SerializeField] GameObject SurroundSound;
-
-    Light flashlight;
-
-    /*private void Awake()
-    {
-        characterController = GetComponent<CharacterController>();
-        flashlight = GetComponentInChildren<Light>();
-
-        Cursor.lockState = CursorLockMode.Locked;
-        mainCamera = Camera.main;
-        speed = walkSpeed;
-    }*/
 
     private void Start()
     {
@@ -49,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
         speed = walkSpeed;
     }
 
-
     public void StartSurroundSound()
     {
         SurroundSound.GetComponent<Animator>().SetBool("Rotate", true);
@@ -58,40 +49,42 @@ public class PlayerMovement : MonoBehaviour
             other_steps.Play();
         if(InteractionManager.instance.whisper)
             whisper.Play();
-
-        if (!InteractionManager.instance.steps)
-        {
-            SurroundSound.GetComponent<Animator>().SetBool("Rotate", false);
-            other_steps.Stop();
-            whisper.Stop();
-        }
-            
     }
 
     public void StopSurroundSound()
     {
         SurroundSound.GetComponent<Animator>().SetBool("Rotate", false);
+        other_steps.Stop();
+        whisper.Stop();
     }
 
     void Update()
     {
         Move();
         Rotate();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            if(flashlight.intensity == 0)
-                flashlight.intensity = 300;
-
-            else if (flashlight.intensity != 0)
-                flashlight.intensity = 0;
-        }
             
         if(Input.GetKeyDown(KeyCode.E))
         {
             if (!voice.isPlaying) 
             {
                 voice.Play();
+            }
+        }
+
+        //flashlight
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (flashlight.intensity == 0)
+            {
+                flashlight.intensity = 300;
+                flash_on.Play();
+            }
+               
+            else if (flashlight.intensity != 0)
+            {
+                flashlight.intensity = 0;
+                flash_off.Play();
             }
         }
 
@@ -105,10 +98,12 @@ public class PlayerMovement : MonoBehaviour
             if (hitData.collider.gameObject.tag == "Figure" && !hitData.collider.gameObject.GetComponent<Animator>().GetBool("Disappear") && flashlight.intensity > 0)
                 hitData.collider.gameObject.GetComponent<FigureDisappear>().Die();
 
-            if (hitData.collider.gameObject.tag == "Figure" && !hitData.collider.gameObject.GetComponent<Animator>().GetBool("Disappear") && voice.isPlaying)
-                hitData.collider.gameObject.GetComponent<FigureDisappear>().Disappear();
+            if (hitData.collider.gameObject.tag == "Emma" && flashlight.intensity > 0 && !hitData.collider.gameObject.GetComponent<FigureApproach>().gettingInjured)
+            {
+                StartCoroutine(hitData.collider.gameObject.GetComponent<FigureApproach>().Injure());
+                Debug.Log("this is working");
+            }
         }
-
     }
 
     private void Move()
@@ -123,6 +118,12 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = new Vector3(horizontalMove, 0, verticalMove);
             moveDirection = transform.TransformDirection(moveDirection);
 
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                isSprinting = false;
+                StopCoroutine(Sprint());
+            }  
+
             if (Input.GetKey(KeyCode.LeftShift) && !sprintDisabled)
             {
                 speed = sprintSpeed;
@@ -130,6 +131,11 @@ public class PlayerMovement : MonoBehaviour
 
                 if (!isSprinting)
                     StartCoroutine(Sprint());
+            }
+            else if(Input.GetKey(KeyCode.Space) && !Input.GetKey(KeyCode.LeftShift))
+            {
+                speed = sneakSpeed;
+                stepRateSet = 0.6f;
             }
             else
             {

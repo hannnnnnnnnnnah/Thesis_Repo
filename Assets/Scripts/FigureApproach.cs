@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class FigureApproach : MonoBehaviour
 {
     GameObject player;
     public bool approachPlayer;
-    bool approaching = false;
+    public bool dying, approaching, gettingInjured = false;
     Animator animator;
 
-    [SerializeField] AudioSource steps, buzz, laugh;
-
-    [SerializeField] float speed;
-
-    [SerializeField] GameObject strand;
+    [SerializeField] AudioSource steps, buzz, laugh, scream, injured;
+    [SerializeField] float health;
+    public float speed;
 
     private void Start()
     {
@@ -26,7 +25,7 @@ public class FigureApproach : MonoBehaviour
     {
         float step = speed * Time.deltaTime;
 
-        if (approachPlayer)
+        if (approachPlayer && !player.GetComponent<PlayerMovement>().inTracks)
         {
             if (!approaching)
                 setAnim();
@@ -34,9 +33,7 @@ public class FigureApproach : MonoBehaviour
             Debug.Log("I AM CHASING YOU");
 
             transform.position = Vector3.Lerp(transform.position, player.transform.position, step);
-            //Vector3 newDirection = Vector3.RotateTowards(transform.position, player.transform.position, step * .1f, 0.0f);
-            //transform.rotation = Quaternion.LookRotation(newDirection);
-            //transform.rotation = Quaternion.LookRotation(player.transform.position);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, player.transform.rotation, step);
         }
 
         if (!approachPlayer && approaching)
@@ -45,7 +42,39 @@ public class FigureApproach : MonoBehaviour
             steps.Stop();
             buzz.Stop();
             approaching = false;
-        }     
+        }
+
+        if (health <= 0 && !dying)
+            StartCoroutine(Die());
+    }
+
+    public void Despawn()
+    {
+        InteractionManager.instance.emmaSpawned = false;
+        Destroy(gameObject);
+    }
+
+    public IEnumerator Injure()
+    {
+        gettingInjured = true;
+        Debug.Log("emma health:" + " " + health);
+        health--;
+        animator.SetBool("Injure", true);
+        yield return new WaitForSeconds(1f);
+        animator.SetBool("Injure", false);
+        gettingInjured = false;
+    }
+
+    public IEnumerator Die()
+    {
+        InteractionManager.instance.emmaSpawned = false;
+        dying = true;
+        approaching = false;
+        approachPlayer = false;
+        scream.Play();
+        animator.SetBool("Die", true);
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
 
     void setAnim()
@@ -58,20 +87,18 @@ public class FigureApproach : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && !other.GetComponent<PlayerMovement>().inTracks)
         {
             approaching = false;
             approachPlayer = false;
             steps.Stop();
 
-            /*
+            //revenge
             other.GetComponent<CharacterController>().enabled = false;
             Debug.Log("GOT YOU");
             StartCoroutine(emmaRevenge());
             other.gameObject.transform.position = GameObject.FindGameObjectWithTag("Revenge").GetComponent<Transform>().position;
             other.GetComponent<CharacterController>().enabled = true;
-            //InteractionManager.instance.sanity = -5;
-            */
         }
     }
 
@@ -79,6 +106,6 @@ public class FigureApproach : MonoBehaviour
     {
         laugh.Play();
         yield return new WaitForSeconds(1f);
-        gameObject.SetActive(false);
+        Despawn();
     }
 }

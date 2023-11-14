@@ -73,6 +73,8 @@ public class RespawnManager : MonoBehaviour
         {
             if (canvas != null)
                 canvas.enabled = false;
+
+            spawnChange = false;
         }
     }
 
@@ -84,8 +86,6 @@ public class RespawnManager : MonoBehaviour
 
     public void Die()
     {
-        //animator.SetBool("Respawn", false);
-
         //Set player position to spawn point
         Player.GetComponent<CharacterController>().enabled = false;
         Player.transform.position = spawnPoint;
@@ -94,6 +94,14 @@ public class RespawnManager : MonoBehaviour
         //"Awaken" effects
         inhale.Play();
         animator.SetBool("Respawn", true);
+
+        //Reset player
+        Player.GetComponent<PlayerMovement>().inTracks = false;
+        Player.GetComponent<PlayerMovement>().StopSurroundSound();
+
+        //Sanity is reset
+        InteractionManager.instance.sanity = 5;
+        InteractionManager.instance.UpdateSanity();
 
         //Increase death count
         deathCount++;

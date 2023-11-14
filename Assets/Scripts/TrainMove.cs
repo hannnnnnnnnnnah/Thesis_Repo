@@ -5,18 +5,23 @@ using UnityEngine;
 
 public class TrainMove : MonoBehaviour
 {
-    AudioSource t_audio;
+    public AudioSource t_audio;
 
     [SerializeField] float speed;
 
     [SerializeField] bool move_right;
     [SerializeField] bool move_left;
 
+    [SerializeField] GameObject killTrigger;
+
     public bool move;
+
+    Vector3 storePos;
 
     private void Start()
     {
         t_audio = GetComponent<AudioSource>();
+        storePos = transform.position;
     }
 
     private void FixedUpdate()
@@ -40,6 +45,9 @@ public class TrainMove : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            killTrigger.GetComponent<TrackKillTrigger>().StopTrain();
+            transform.position = storePos;
+            t_audio.Stop();
             RespawnManager.instance.Die();
         }
     }

@@ -10,7 +10,10 @@ public class FigureDisappear : MonoBehaviour
     public bool approachPlayer;
     bool approaching = false;
 
-    [SerializeField] float speed;
+    [SerializeField] float speed, sightDistance, hearingDistance;
+    [SerializeField] AudioSource scream;
+
+    public LayerMask checkRaycast;
 
     int LayerIgnoreRaycast;
 
@@ -27,7 +30,18 @@ public class FigureDisappear : MonoBehaviour
     {
         float step = speed * Time.deltaTime;
 
-        if(Vector3.Distance(player.transform.position, transform.position) <= 15f && !approachPlayer) 
+        //raycasting stuff
+
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hitData;
+
+        if (Physics.Raycast(ray, out hitData, sightDistance, checkRaycast))
+        {
+            if (hitData.collider.gameObject.tag == "Player")
+                approachPlayer = true;
+        }
+
+        if (Vector3.Distance(player.transform.position, transform.position) <= hearingDistance && !approachPlayer && player.GetComponent<PlayerMovement>().speed > 3f) 
         { 
             approachPlayer = true;
 
@@ -41,9 +55,7 @@ public class FigureDisappear : MonoBehaviour
         if (approachPlayer)
         {
             transform.position = Vector3.Lerp(transform.position, player.transform.position, step);
-            //Vector3 newDirection = Vector3.RotateTowards(transform.position, player.transform.position, step * .1f, 0.0f);
-            //transform.rotation = Quaternion.LookRotation(newDirection);
-            //transform.rotation = Quaternion.LookRotation(player.transform.position);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, player.transform.rotation, step);
         }
 
         if (!approachPlayer && approaching)
@@ -58,6 +70,16 @@ public class FigureDisappear : MonoBehaviour
         {
             approachPlayer = false;
             Debug.Log("caught");
+
+            //Sanity is decreased
+            InteractionManager.instance.sanity--;
+            InteractionManager.instance.UpdateSanity();
+
+            //turn off flashlight
+            other.GetComponent<PlayerMovement>().flashlight.intensity = 0;
+            other.GetComponent<PlayerMovement>().speed = 5;
+
+            Disappear();
         }
     }
 
@@ -65,15 +87,26 @@ public class FigureDisappear : MonoBehaviour
     {
         animator.SetBool("Disappear", true);
         gameObject.layer = LayerIgnoreRaycast;
+
+        StartCoroutine(Despawn());
     }
 
     public void Die()
     {
         animator.SetBool("Disappear", true);
+        scream.Play();
         gameObject.layer = LayerIgnoreRaycast;
 
         //Sanity is decreased
         InteractionManager.instance.sanity--;
         InteractionManager.instance.UpdateSanity();
+
+        StartCoroutine(Despawn());
+    }
+
+    IEnumerator Despawn()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
     }
 }

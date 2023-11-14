@@ -11,7 +11,7 @@ public class InteractionManager : MonoBehaviour
 
     int sanitySet = 5;
     public int sanity = 5;
-    public bool lightExplodes, surroundSound, whisper, steps = false;
+    public bool lightExplodes, surroundSound, whisper, steps, emmaSpawned = false;
 
     GameObject figureSpawner;
     [SerializeField] Volume sanityVolume;
@@ -43,6 +43,7 @@ public class InteractionManager : MonoBehaviour
             case 5:
                 lightExplodes = false;
                 surroundSound = false;
+                emmaSpawned = false;
                 sanityVolume.weight = 0.0f;
                 break;
 
@@ -58,17 +59,19 @@ public class InteractionManager : MonoBehaviour
                 sanityVolume.weight += .2f;
                 break;
 
-            case 2:
-                figureSpawner = GameObject.FindGameObjectWithTag("FigureSpawner");
-                figureSpawner.GetComponent<FigureSpawner>().SpawnEmma();
-                sanityVolume.weight += .2f;
-                break;
-            
-            case 1:
-                sanityVolume.weight += .2f;
-                break;
+            case <= 2:
+                if (!emmaSpawned)
+                {
+                    figureSpawner = GameObject.FindGameObjectWithTag("FigureSpawner");
+                    figureSpawner.GetComponent<FigureSpawner>().SpawnEmma();
+                    emmaSpawned = true;
+                }
 
-            case -5:
+                if(emmaSpawned)
+                    GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().speed += .1f;
+
+                sanityVolume.weight += .2f;
+
                 break;
         }
     }

@@ -43,6 +43,9 @@ public class Scene1Manager : MonoBehaviour
         RespawnManager.instance.ChangeSpawn(newSpawn.transform.position);
         overheadLight.SetActive(false);
 
+        if (InteractionManager.instance.emmaSpawned)
+            GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().Despawn();
+
         if (figureKilled)
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<DeathTimer>().startDeathTimer();

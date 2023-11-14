@@ -7,7 +7,7 @@ public class FigureBehavior : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] Animator ghostAnim;
-    [SerializeField] GameObject figures;
+    [SerializeField] GameObject figures, textPrompt;
 
     float distRange = 10f;
 
@@ -34,10 +34,7 @@ public class FigureBehavior : MonoBehaviour
 
             //spawn figures
             figures.SetActive(true);
-
-            //Sanity is decreased
-            InteractionManager.instance.sanity--;
-            InteractionManager.instance.UpdateSanity();
+            textPrompt.SetActive(true);
         }
     }
 
