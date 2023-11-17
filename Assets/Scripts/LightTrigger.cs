@@ -41,12 +41,15 @@ public class LightTrigger : MonoBehaviour
         }
 
         if(other.tag == "Figure")
+        {
+            Debug.Log("figure died in the light uwu");
             other.GetComponent<FigureDisappear>().Disappear();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (RespawnManager.instance.spawnChange)
+        if (RespawnManager.instance.spawnChange && !other.GetComponent<PlayerMovement>().inTracks)
         {
             //Start and stop surround sound
             if (InteractionManager.instance.surroundSound)

@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float sprintSpeed, walkSpeed, sneakSpeed, gravity, sprintLength, sprintDelay;
     [SerializeField] int minAngle, maxAngle;
 
-    [SerializeField] bool sprintDisabled, isSprinting= false;
+    [SerializeField] bool sprintDisabled, isSprinting, hasFlashlight = false;
 
     public bool inTracks = false;
 
@@ -63,17 +63,9 @@ public class PlayerMovement : MonoBehaviour
         Move();
         Rotate();
             
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            if (!voice.isPlaying) 
-            {
-                voice.Play();
-            }
-        }
-
         //flashlight
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && hasFlashlight)
         {
             if (flashlight.intensity == 0)
             {
@@ -132,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
                 if (!isSprinting)
                     StartCoroutine(Sprint());
             }
-            else if(Input.GetKey(KeyCode.Space) && !Input.GetKey(KeyCode.LeftShift))
+            else if(Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftShift))
             {
                 speed = sneakSpeed;
                 stepRateSet = 0.6f;

@@ -45,11 +45,12 @@ public class FigureDisappear : MonoBehaviour
         { 
             approachPlayer = true;
 
+            /*
             if (!UIManager.instance.flashlightShown)
             {
                 UIManager.instance.ShowText("Toggle flashlight with left mouse button");
                 UIManager.instance.flashlightShown = true;
-            }
+            }*/
         }
 
         if (approachPlayer)
@@ -75,8 +76,7 @@ public class FigureDisappear : MonoBehaviour
             InteractionManager.instance.sanity--;
             InteractionManager.instance.UpdateSanity();
 
-            //turn off flashlight
-            other.GetComponent<PlayerMovement>().flashlight.intensity = 0;
+            //Punish player?
             other.GetComponent<PlayerMovement>().speed = 5;
 
             Disappear();
