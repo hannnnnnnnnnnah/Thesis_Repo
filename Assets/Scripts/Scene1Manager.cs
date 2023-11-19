@@ -1,14 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Scene1Manager : MonoBehaviour
 {
-    [SerializeField] GameObject overheadLight;
-    [SerializeField] GameObject startSpawn;
-    [SerializeField] GameObject newSpawn;
-    [SerializeField] GameObject firstVictim;
+    [SerializeField] GameObject overheadLight, startSpawn, newSpawn, firstVictim;
 
     public bool figureKilled = false;
 
@@ -24,16 +18,12 @@ public class Scene1Manager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        //DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
         if (!RespawnManager.instance.spawnChange)
-        {
             RespawnManager.instance.spawnPoint = startSpawn.transform.position;
-        }
         else
             TriggerLevelSwitch();
     }
@@ -52,9 +42,7 @@ public class Scene1Manager : MonoBehaviour
             UIManager.instance.ShowText("Hold shift to sprint");
         }
         else
-        {
             firstVictim.SetActive(false);
-        }
     }
 
 }

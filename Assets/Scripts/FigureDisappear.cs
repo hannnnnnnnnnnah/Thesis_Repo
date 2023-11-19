@@ -1,26 +1,24 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class FigureDisappear : MonoBehaviour
 {
-    GameObject player;
-    public bool approachPlayer;
-    bool approaching = false;
-
-    [SerializeField] float speed, sightDistance, hearingDistance;
+    [SerializeField] float speed, sightDistance, hearingDistance, alertTime;
     [SerializeField] AudioSource scream;
 
+    public bool approachPlayer;
     public LayerMask checkRaycast;
 
+    bool approaching, alertTimeDecreasing = false;
     int LayerIgnoreRaycast;
+    float alertTimeSet = 6f;
 
+    GameObject player;
     Animator animator;
 
     void Start()
     {
+        alertTime = alertTimeSet;
         LayerIgnoreRaycast = LayerMask.NameToLayer("Ignore Raycast");
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -41,27 +39,73 @@ public class FigureDisappear : MonoBehaviour
                 approachPlayer = true;
         }
 
-        if (Vector3.Distance(player.transform.position, transform.position) <= hearingDistance && !approachPlayer && player.GetComponent<PlayerMovement>().speed > 3f) 
-        { 
-            approachPlayer = true;
+        if (Vector3.Distance(player.transform.position, transform.position) <= hearingDistance && !approachPlayer) 
+        {
+            UIManager.instance.animator.SetBool("ShowImage", true);
 
-            /*
-            if (!UIManager.instance.flashlightShown)
+            if (player.GetComponent<PlayerMovement>().isSprinting)
             {
-                UIManager.instance.ShowText("Toggle flashlight with left mouse button");
-                UIManager.instance.flashlightShown = true;
-            }*/
+                Debug.Log("this is working :3");
+                alertTimeDecreasing = false;
+                StopAllCoroutines();
+                UIManager.instance.animator.SetBool("EyeAwake", true);
+                alertTime = 0;
+            }
+
+            if (!player.GetComponent<PlayerMovement>().isCrouching) 
+            {
+                UIManager.instance.animator.SetBool("EyeAwake", true);
+                startAlertTimer();
+            }
+            else
+            {
+                Debug.Log("#1 works");
+                //reset everything
+
+                alertTimeDecreasing = false;
+                StopAllCoroutines();
+                alertTime = alertTimeSet;
+
+                //change UI
+
+                UIManager.instance.animator.SetBool("EyeAwake", false);
+                UIManager.instance.animator.SetBool("EyeAware", false);
+                UIManager.instance.animator.SetBool("ShowImage", false);
+            }
         }
 
-        if (approachPlayer)
+        //approach the player
+
+        if (alertTime == 0)
         {
+            approachPlayer = true;
+
+            UIManager.instance.animator.SetBool("EyeAware", true);
+
             transform.position = Vector3.Lerp(transform.position, player.transform.position, step);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, player.transform.rotation, step);
         }
 
-        if (!approachPlayer && approaching)
+        if (alertTime >= 0 && approaching)
         {
             approaching = false;
+        }
+    }
+
+    public void startAlertTimer()
+    {
+        if(!alertTimeDecreasing)
+            StartCoroutine(AlertTime());
+    }
+
+    public IEnumerator AlertTime()
+    {
+        while (alertTime > 0)
+        {
+            alertTimeDecreasing = true;
+            yield return new WaitForSeconds(1f);
+            alertTime--;
+            Debug.Log(alertTime);
         }
     }
 
@@ -72,12 +116,17 @@ public class FigureDisappear : MonoBehaviour
             approachPlayer = false;
             Debug.Log("caught");
 
+            //Turn off alert & reset time
+
+            UIManager.instance.animator.SetBool("EyeAware", false);
+            UIManager.instance.animator.SetBool("EyeAwake", false);
+            UIManager.instance.animator.SetBool("ShowImage", false);
+            alertTime = alertTimeSet;
+
             //Sanity is decreased
+
             InteractionManager.instance.sanity--;
             InteractionManager.instance.UpdateSanity();
-
-            //Punish player?
-            other.GetComponent<PlayerMovement>().speed = 5;
 
             Disappear();
         }
@@ -98,6 +147,7 @@ public class FigureDisappear : MonoBehaviour
         gameObject.layer = LayerIgnoreRaycast;
 
         //Sanity is decreased
+
         InteractionManager.instance.sanity--;
         InteractionManager.instance.UpdateSanity();
 

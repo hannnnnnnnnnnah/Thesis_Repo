@@ -1,20 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TrainMove : MonoBehaviour
 {
-    public AudioSource t_audio;
-
+    [SerializeField] bool move_right, move_left;
     [SerializeField] float speed;
-
-    [SerializeField] bool move_right;
-    [SerializeField] bool move_left;
-
     [SerializeField] GameObject killTrigger;
 
     public bool move;
+    public AudioSource t_audio;
 
     Vector3 storePos;
 

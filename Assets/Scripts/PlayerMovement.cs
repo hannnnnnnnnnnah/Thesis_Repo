@@ -1,43 +1,39 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerMovement : MonoBehaviour
 {
-    CharacterController characterController;
+    [SerializeField] bool sprintDisabled, hasFlashlight = false;
+    [SerializeField] float speed, sprintSpeed, walkSpeed, sneakSpeed, gravity, sprintLength, sprintDelay;
+    [SerializeField] int minAngle, maxAngle, sensitivity;
+    [SerializeField] GameObject SurroundSound, camHeight, camCrouch;
+    [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper, voice, flash_on, flash_off;
 
-    [SerializeField] float sprintSpeed, walkSpeed, sneakSpeed, gravity, sprintLength, sprintDelay;
-    [SerializeField] int minAngle, maxAngle;
-
-    [SerializeField] bool sprintDisabled, isSprinting, hasFlashlight = false;
-
-    public bool inTracks = false;
-
-    public int sensitivity = 140;
-
+    public bool isSprinting, isCrouching, inTracks;
     public LayerMask checkRaycast;
     public Light flashlight;
 
-    public float speed;
     private float stepRate, stepCoolDown, stepRateSet;
     private Vector3 camRotation, moveDirection;
     private Camera mainCamera;
 
-    [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper, voice, flash_on, flash_off;
-    [SerializeField] GameObject SurroundSound;
+    CharacterController characterController;
 
     private void Start()
     {
+        //Sets player position to spawn point
+
         gameObject.transform.position = RespawnManager.instance.spawnPoint;
-        //RespawnManager.instance.gameStart = true;
+
+        //Camera stuff
+
+        mainCamera = Camera.main;
+        mainCamera.transform.position = camHeight.transform.position;
 
         characterController = GetComponent<CharacterController>();
         flashlight = GetComponentInChildren<Light>();
-
         Cursor.lockState = CursorLockMode.Locked;
-        mainCamera = Camera.main;
+
         speed = walkSpeed;
     }
 
@@ -93,7 +89,6 @@ public class PlayerMovement : MonoBehaviour
             if (hitData.collider.gameObject.tag == "Emma" && flashlight.intensity > 0 && !hitData.collider.gameObject.GetComponent<FigureApproach>().gettingInjured)
             {
                 StartCoroutine(hitData.collider.gameObject.GetComponent<FigureApproach>().Injure());
-                Debug.Log("this is working");
             }
         }
     }
@@ -110,36 +105,33 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = new Vector3(horizontalMove, 0, verticalMove);
             moveDirection = transform.TransformDirection(moveDirection);
 
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                isSprinting = false;
-                StopCoroutine(Sprint());
-            }  
-
             if (Input.GetKey(KeyCode.LeftShift) && !sprintDisabled)
             {
+                isSprinting = true;
                 speed = sprintSpeed;
                 stepRateSet = 0.25f;
-
-                if (!isSprinting)
-                    StartCoroutine(Sprint());
             }
             else if(Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftShift))
             {
+                isCrouching = true;
                 speed = sneakSpeed;
                 stepRateSet = 0.6f;
+                mainCamera.transform.position = camCrouch.transform.position;
             }
             else
             {
+                isSprinting = false;
+                isCrouching = false;
+
+                //Set walk speed to normal
                 speed = walkSpeed;
                 stepRateSet = stepRate;
+                mainCamera.transform.position = camHeight.transform.position;
             }
 
             //step audio
 
             stepCoolDown -= Time.deltaTime;
-
-            //&& characterController.velocity.y == 0
 
             if (characterController.velocity.magnitude > 0 && characterController.velocity.y == 0 && stepCoolDown < 0f)
             {
@@ -157,6 +149,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /*
     IEnumerator Sprint()
     {
         //Debug.Log("Sprint started");
@@ -173,8 +166,9 @@ public class PlayerMovement : MonoBehaviour
         sprintDisabled = false;
         isSprinting = false;
         audioBreath.Stop();
-    }
+    }*/
 
+    //Camera rotation stuff
     private void Rotate()
     {
         transform.Rotate(Vector3.up * sensitivity * Time.deltaTime * (Input.GetAxis("Mouse X")));

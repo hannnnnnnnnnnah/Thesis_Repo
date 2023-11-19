@@ -6,14 +6,15 @@ using static UnityEngine.GraphicsBuffer;
 
 public class FigureApproach : MonoBehaviour
 {
-    GameObject player;
-    public bool approachPlayer;
-    public bool dying, approaching, gettingInjured = false;
-    Animator animator;
-
-    [SerializeField] AudioSource steps, buzz, laugh, scream, injured;
     [SerializeField] float health;
+    [SerializeField] AudioSource steps, buzz, laugh, scream, injured;
+
+    public bool dying, approaching, gettingInjured = false;
+    public bool approachPlayer;
     public float speed;
+
+    GameObject player;
+    Animator animator;
 
     private void Start()
     {

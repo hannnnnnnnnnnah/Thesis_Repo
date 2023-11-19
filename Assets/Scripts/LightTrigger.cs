@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LightTrigger : MonoBehaviour
 {
+    [SerializeField] bool lightFlicker, lightCanExplode;
+    [SerializeField] AudioSource source;
+
     public float deathTimeReset;
 
-    [SerializeField] AudioSource source;
-    [SerializeField] bool lightFlicker;
-    [SerializeField] bool lightCanExplode;
-
-    Animator animator;
     bool lightBroken = false;
+    Animator animator;
 
     private void Start()
     {
         animator = GetComponentInParent<Animator>();
+
         if (lightFlicker)
             animator.SetBool("LightFlicker", true);
     }
@@ -61,7 +59,6 @@ public class LightTrigger : MonoBehaviour
             //Figure starts chasing
             if (InteractionManager.instance.emmaSpawned)
                 GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = true;
-
 
             //Death effects start
             other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());

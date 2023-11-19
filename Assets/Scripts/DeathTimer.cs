@@ -1,18 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class DeathTimer : MonoBehaviour
 {
-    public float deathTime = 11;
-    public bool playVisuals = false;
-
-    [SerializeField] AudioSource breathing;
-    [SerializeField] AudioSource heartbeat;
-    [SerializeField] AudioSource metro;
+    [SerializeField] AudioSource breathing, heartbeat, metro;
     [SerializeField] Volume vol;
     [SerializeField] Animator animator;
+
+    public bool playVisuals = false;
+    public float deathTime = 11;
 
     private void Update()
     {
@@ -50,7 +47,6 @@ public class DeathTimer : MonoBehaviour
 
     public void DeathAudioTrigger() 
     {
-
         switch (deathTime)
         {
             case 11:
@@ -81,7 +77,6 @@ public class DeathTimer : MonoBehaviour
                 }
                 break;
         }
-
     }
 
     public IEnumerator DeathEffectFade()

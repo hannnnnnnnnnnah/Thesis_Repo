@@ -1,20 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
 
 public class InteractionManager : MonoBehaviour
 {
-    public static InteractionManager instance;
+    [SerializeField] Volume sanityVolume;
+
+    public bool lightExplodes, surroundSound, whisper, steps, emmaSpawned = false;
+    public int sanity = 5;
 
     int sanitySet = 5;
-    public int sanity = 5;
-    public bool lightExplodes, surroundSound, whisper, steps, emmaSpawned = false;
 
     GameObject figureSpawner;
-    [SerializeField] Volume sanityVolume;
+
+    public static InteractionManager instance;
 
     void Awake()
     {

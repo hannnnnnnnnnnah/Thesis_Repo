@@ -1,20 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RespawnManager : MonoBehaviour
 {
     [SerializeField] AudioSource inhale;
+
+    public bool gameStart, spawnChange = false;
+    public int deathCount = 1;
+    public Animator animator;
+    public Vector3 spawnPoint;
+
     Canvas canvas;
     GameObject Player;
-
-    public Animator animator;
-    public int deathCount = 1;
-    public bool gameStart = false;
-    public bool spawnChange = false;
-    public Vector3 spawnPoint;
 
     public static RespawnManager instance;
 

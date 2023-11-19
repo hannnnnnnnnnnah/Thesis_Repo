@@ -1,32 +1,31 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI controlText;
+    [SerializeField] Image eye;
+
+    public bool flashlightShown, sneakShown, eyeShown, eyeAwake, eyeAware = false;
+    public Animator animator;
+
     string moveText = "Use WASD to move";
-    public bool flashlightShown, sneakShown = false;
 
     public static UIManager instance;
 
     void Awake()
     {
         if (instance == null)
-        {
             instance = this;
-        }
         else if (instance != this)
-        {
             Destroy(gameObject);
-        }
-
-        //DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         ShowText(moveText);
     }
 
@@ -35,14 +34,20 @@ public class UIManager : MonoBehaviour
         if (RespawnManager.instance.deathCount == 0)
         {
             controlText.SetText(text);
-            controlText.GetComponent<Animator>().SetBool("ShowText", true);
-            StartCoroutine(textFade(controlText));
+            animator.SetBool("ShowText", true);
+            StartCoroutine(TextFade());
         }
     }
 
-    public IEnumerator textFade(TextMeshProUGUI _text)
+    public IEnumerator TextFade()
     {
         yield return new WaitForSeconds(2f);
-        _text.GetComponent<Animator>().SetBool("ShowText", false);
+        animator.SetBool("ShowText", false);
+    }
+
+    public void ResetEye()
+    {
+        animator.SetBool("EyeAwake", false);
+        animator.SetBool("EyeAware", false);
     }
 }
