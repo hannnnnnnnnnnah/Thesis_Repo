@@ -9,7 +9,7 @@ public class FigureDisappear : MonoBehaviour
     public bool approachPlayer;
     public LayerMask checkRaycast;
 
-    bool approaching, alertTimeDecreasing = false;
+    bool approaching, alertTimeDecreasing, figureDespawning = false;
     int LayerIgnoreRaycast;
     float alertTimeSet = 6f;
 
@@ -39,7 +39,7 @@ public class FigureDisappear : MonoBehaviour
                 approachPlayer = true;
         }
 
-        if (Vector3.Distance(player.transform.position, transform.position) <= hearingDistance && !approachPlayer)
+        if (Vector3.Distance(player.transform.position, transform.position) <= hearingDistance && !approachPlayer && !figureDespawning)
         {
             if (!player.GetComponent<PlayerMovement>().isCrouching)
             {
@@ -111,16 +111,21 @@ public class FigureDisappear : MonoBehaviour
             approachPlayer = false;
             Debug.Log("caught");
 
-            //Turn off alert & reset time
+            //reset everything
 
-            UIManager.instance.ResetEye("EyeVisible", false);
+            alertTimeDecreasing = false;
+            StopAllCoroutines();
             alertTime = alertTimeSet;
+
+            //change UI
+            UIManager.instance.ResetEye("EyeVisible", false);
 
             //Sanity is decreased
 
             InteractionManager.instance.sanity--;
             InteractionManager.instance.UpdateSanity();
 
+            figureDespawning = true;
             Disappear();
         }
     }
@@ -149,14 +154,20 @@ public class FigureDisappear : MonoBehaviour
 
     IEnumerator Despawn()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 
     public void PlayerLeft()
     {
-        UIManager.instance.ResetEye("EyeVisible", false);
+        //reset everything
+
+        alertTimeDecreasing = false;
+        StopAllCoroutines();
         alertTime = alertTimeSet;
+
+        //change UI
+        UIManager.instance.ResetEye("EyeVisible", false);
     }
 } 
 

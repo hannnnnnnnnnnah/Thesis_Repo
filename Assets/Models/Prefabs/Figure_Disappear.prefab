@@ -65,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   sightDistance: 10
-  hearingDistance: 15
+  hearingDistance: 10
   alertTime: 0
   scream: {fileID: 4898246152441581321}
   approachPlayer: 0
@@ -5057,8 +5057,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13.383344, y: 6.7423, z: 7.112428}
-  m_Center: {x: -0.10515976, y: 2.87115, z: -1.1135752}
+  m_Size: {x: 20, y: 8.533059, z: 20}
+  m_Center: {x: 0, y: 4.23, z: 0}
 --- !u!114 &104909659159192527
 MonoBehaviour:
   m_ObjectHideFlags: 0

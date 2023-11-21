@@ -10,6 +10,7 @@ public class UIFigureTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Debug.Log("NEAR FIGURE");
             UIManager.instance.ResetEye("EyeVisible", true);
         }
     }
@@ -19,6 +20,7 @@ public class UIFigureTrigger : MonoBehaviour
         if(other.tag == "Player")
         {
             //UIManager.instance.ResetEye("EyeVisible", false);
+            Debug.Log("LEFT FIGURE");
             figureDisappear.PlayerLeft();
         }
     }
