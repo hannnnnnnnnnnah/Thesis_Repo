@@ -39,27 +39,15 @@ public class FigureDisappear : MonoBehaviour
                 approachPlayer = true;
         }
 
-        if (Vector3.Distance(player.transform.position, transform.position) <= hearingDistance && !approachPlayer) 
+        if (Vector3.Distance(player.transform.position, transform.position) <= hearingDistance && !approachPlayer)
         {
-            UIManager.instance.animator.SetBool("ShowImage", true);
-
-            if (player.GetComponent<PlayerMovement>().isSprinting)
+            if (!player.GetComponent<PlayerMovement>().isCrouching)
             {
-                Debug.Log("this is working :3");
-                alertTimeDecreasing = false;
-                StopAllCoroutines();
-                UIManager.instance.animator.SetBool("EyeAwake", true);
-                alertTime = 0;
-            }
-
-            if (!player.GetComponent<PlayerMovement>().isCrouching) 
-            {
-                UIManager.instance.animator.SetBool("EyeAwake", true);
+                UIManager.instance.ResetEye("EyeAware", true);
                 startAlertTimer();
             }
             else
             {
-                Debug.Log("#1 works");
                 //reset everything
 
                 alertTimeDecreasing = false;
@@ -67,10 +55,17 @@ public class FigureDisappear : MonoBehaviour
                 alertTime = alertTimeSet;
 
                 //change UI
+                UIManager.instance.ResetEye("EyeVisible", true);
+            }
 
-                UIManager.instance.animator.SetBool("EyeAwake", false);
-                UIManager.instance.animator.SetBool("EyeAware", false);
-                UIManager.instance.animator.SetBool("ShowImage", false);
+            if (player.GetComponent<PlayerMovement>().isSprinting)
+            {
+                alertTimeDecreasing = false;
+                StopAllCoroutines();
+
+                UIManager.instance.ResetEye("EyeRed", true);
+
+                alertTime = 0;
             }
         }
 
@@ -80,7 +75,7 @@ public class FigureDisappear : MonoBehaviour
         {
             approachPlayer = true;
 
-            UIManager.instance.animator.SetBool("EyeAware", true);
+            UIManager.instance.ResetEye("EyeRed", true);
 
             transform.position = Vector3.Lerp(transform.position, player.transform.position, step);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, player.transform.rotation, step);
@@ -94,7 +89,7 @@ public class FigureDisappear : MonoBehaviour
 
     public void startAlertTimer()
     {
-        if(!alertTimeDecreasing)
+        if (!alertTimeDecreasing)
             StartCoroutine(AlertTime());
     }
 
@@ -111,16 +106,14 @@ public class FigureDisappear : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             approachPlayer = false;
             Debug.Log("caught");
 
             //Turn off alert & reset time
 
-            UIManager.instance.animator.SetBool("EyeAware", false);
-            UIManager.instance.animator.SetBool("EyeAwake", false);
-            UIManager.instance.animator.SetBool("ShowImage", false);
+            UIManager.instance.ResetEye("EyeVisible", false);
             alertTime = alertTimeSet;
 
             //Sanity is decreased
@@ -159,4 +152,11 @@ public class FigureDisappear : MonoBehaviour
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
-}
+
+    public void PlayerLeft()
+    {
+        UIManager.instance.ResetEye("EyeVisible", false);
+        alertTime = alertTimeSet;
+    }
+} 
+

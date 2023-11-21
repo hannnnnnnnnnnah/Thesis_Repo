@@ -81,14 +81,17 @@ public class PlayerMovement : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hitData;
 
-        if (Physics.Raycast(ray, out hitData, 15f, checkRaycast))
+        if (hasFlashlight)
         {
-            if (hitData.collider.gameObject.tag == "Figure" && !hitData.collider.gameObject.GetComponent<Animator>().GetBool("Disappear") && flashlight.intensity > 0)
-                hitData.collider.gameObject.GetComponent<FigureDisappear>().Die();
-
-            if (hitData.collider.gameObject.tag == "Emma" && flashlight.intensity > 0 && !hitData.collider.gameObject.GetComponent<FigureApproach>().gettingInjured)
+            if (Physics.Raycast(ray, out hitData, 15f, checkRaycast))
             {
-                StartCoroutine(hitData.collider.gameObject.GetComponent<FigureApproach>().Injure());
+                if (hitData.collider.gameObject.tag == "Figure" && !hitData.collider.gameObject.GetComponent<Animator>().GetBool("Disappear") && flashlight.intensity > 0)
+                    hitData.collider.gameObject.GetComponent<FigureDisappear>().Die();
+
+                if (hitData.collider.gameObject.tag == "Emma" && flashlight.intensity > 0 && !hitData.collider.gameObject.GetComponent<FigureApproach>().gettingInjured)
+                {
+                    StartCoroutine(hitData.collider.gameObject.GetComponent<FigureApproach>().Injure());
+                }
             }
         }
     }
