@@ -184,10 +184,8 @@ MonoBehaviour:
   eye: {fileID: 2561553271413644088}
   flashlightShown: 0
   sneakShown: 0
-  eyeShown: 0
-  eyeAwake: 0
-  eyeAware: 0
-  animator: {fileID: 0}
+  animator: {fileID: 8306975374502714441}
+  textAnimator: {fileID: 4942426985786835182}
 --- !u!95 &8306975374502714441
 Animator:
   serializedVersion: 4
@@ -331,7 +329,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177134489698684601}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.546, z: 0.58}
+  m_LocalPosition: {x: 0, y: 0.569, z: 0.58}
   m_LocalScale: {x: 1, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -516,6 +514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6184abf4d8e36840b7ca893df4ec530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprintDisabled: 0
+  hasFlashlight: 0
+  speed: 0
   sprintSpeed: 15
   walkSpeed: 6
   sneakSpeed: 3
@@ -524,16 +525,10 @@ MonoBehaviour:
   sprintDelay: 3
   minAngle: -45
   maxAngle: 45
-  sprintDisabled: 0
-  isSprinting: 0
-  hasFlashlight: 0
-  inTracks: 0
   sensitivity: 80
-  checkRaycast:
-    serializedVersion: 2
-    m_Bits: 8
-  flashlight: {fileID: 0}
-  speed: 0
+  SurroundSound: {fileID: 7355836924932058856}
+  camHeight: {fileID: 177134489698684601}
+  camCrouch: {fileID: 8483788584246799139}
   audioFoot: {fileID: 3033862207555161545}
   audioBreath: {fileID: 1963335283}
   other_steps: {fileID: 5973447810356893738}
@@ -541,9 +536,13 @@ MonoBehaviour:
   voice: {fileID: 2529849945407746036}
   flash_on: {fileID: 5213421673022883882}
   flash_off: {fileID: 3939695924661142068}
-  SurroundSound: {fileID: 7355836924932058856}
-  camHeight: {fileID: 177134489698684601}
-  camCrouch: {fileID: 8483788584246799139}
+  isSprinting: 0
+  isCrouching: 0
+  inTracks: 0
+  checkRaycast:
+    serializedVersion: 2
+    m_Bits: 8
+  flashlight: {fileID: 0}
 --- !u!114 &3033862207555161544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,13 +555,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e90731f9773974dac8dde97c8e061d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathTime: 11
-  playVisuals: 0
   breathing: {fileID: 2074735087}
   heartbeat: {fileID: 824110730361596461}
   metro: {fileID: 1550487796}
   vol: {fileID: 49128362}
   animator: {fileID: 2107482198}
+  playVisuals: 0
+  deathTime: 11
 --- !u!143 &3033862207555161590
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1677,6 +1676,7 @@ GameObject:
   - component: {fileID: 4483377603877646616}
   - component: {fileID: 3519528409145955788}
   - component: {fileID: 2561553271413644088}
+  - component: {fileID: 4942426985786835182}
   m_Layer: 6
   m_Name: eye
   m_TagString: Untagged
@@ -1742,6 +1742,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &4942426985786835182
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4847647966663848628}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aa16980acc23fa34cb5db8245d824c4d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5003130438695945316
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,7 +2149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8483788584246799139}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.017, z: 0.58}
+  m_LocalPosition: {x: 0, y: -0.036, z: 0.58}
   m_LocalScale: {x: 1, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

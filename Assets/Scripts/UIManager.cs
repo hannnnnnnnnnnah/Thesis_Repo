@@ -8,8 +8,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI controlText;
     [SerializeField] Image eye;
 
-    public bool flashlightShown, sneakShown, eyeShown, eyeAwake, eyeAware = false;
-    public Animator animator;
+    public bool flashlightShown, sneakShown = false;
+    public Animator animator, textAnimator;
 
     string moveText = "Use WASD to move";
 
@@ -45,9 +45,11 @@ public class UIManager : MonoBehaviour
         animator.SetBool("ShowText", false);
     }
 
-    public void ResetEye()
+    public void ResetEye(string anim, bool set)
     {
-        animator.SetBool("EyeAwake", false);
-        animator.SetBool("EyeAware", false);
+        textAnimator.SetBool("EyeVisible", false);
+        textAnimator.SetBool("EyeAware", false);
+        textAnimator.SetBool("EyeRed", false);
+        textAnimator.SetBool(anim, set);
     }
 }

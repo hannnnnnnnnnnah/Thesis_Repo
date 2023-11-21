@@ -34,6 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7051751051315478124}
+  - {fileID: 3935430953888115563}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -62,11 +63,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d05e5caeb7175d4287e9b1aa98ac240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  approachPlayer: 0
   speed: 0.5
   sightDistance: 10
   hearingDistance: 15
+  alertTime: 0
   scream: {fileID: 4898246152441581321}
+  approachPlayer: 0
   checkRaycast:
     serializedVersion: 2
     m_Bits: 64
@@ -212,7 +214,7 @@ GameObject:
   - component: {fileID: 2008428100764689231}
   m_Layer: 3
   m_Name: Particle System
-  m_TagString: Untagged
+  m_TagString: Figure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5011,6 +5013,65 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &5932439644745796595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3935430953888115563}
+  - component: {fileID: 2061698485716403048}
+  - component: {fileID: 104909659159192527}
+  m_Layer: 3
+  m_Name: UITrigger
+  m_TagString: Figure
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3935430953888115563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932439644745796595}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2041792861859530860}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2061698485716403048
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932439644745796595}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.383344, y: 6.7423, z: 7.112428}
+  m_Center: {x: -0.10515976, y: 2.87115, z: -1.1135752}
+--- !u!114 &104909659159192527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932439644745796595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381e4e2c308c5134c80a57625bc3efeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  figureDisappear: {fileID: 2910099420199740541}
 --- !u!1001 &7374190589288913287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5088,7 +5149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6865a2baab98b694e8b6f70de7bd794c, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Figure
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6865a2baab98b694e8b6f70de7bd794c, type: 3}
