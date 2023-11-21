@@ -88,6 +88,9 @@ public class RespawnManager : MonoBehaviour
         Player.transform.position = spawnPoint;
         Player.GetComponent<CharacterController>().enabled = true;
 
+        //UI reset
+        UIManager.instance.ResetEye("EyeVisible", false);
+
         //"Awaken" effects
         inhale.Play();
         animator.SetBool("Respawn", true);

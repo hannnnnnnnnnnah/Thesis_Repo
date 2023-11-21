@@ -11,7 +11,7 @@ public class FigureDisappear : MonoBehaviour
 
     bool approaching, alertTimeDecreasing, figureDespawning = false;
     int LayerIgnoreRaycast;
-    float alertTimeSet = 6f;
+    float alertTimeSet = 3f;
 
     GameObject player;
     Animator animator;
@@ -30,14 +30,14 @@ public class FigureDisappear : MonoBehaviour
 
         //raycasting stuff
 
-        Ray ray = new Ray(transform.position, transform.forward);
+        /*Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hitData;
 
         if (Physics.Raycast(ray, out hitData, sightDistance, checkRaycast))
         {
             if (hitData.collider.gameObject.tag == "Player")
                 approachPlayer = true;
-        }
+        }*/
 
         if (Vector3.Distance(player.transform.position, transform.position) <= hearingDistance && !approachPlayer && !figureDespawning)
         {
@@ -146,8 +146,8 @@ public class FigureDisappear : MonoBehaviour
 
         //Sanity is decreased
 
-        InteractionManager.instance.sanity--;
-        InteractionManager.instance.UpdateSanity();
+        //InteractionManager.instance.sanity--;
+        //InteractionManager.instance.UpdateSanity();
 
         StartCoroutine(Despawn());
     }

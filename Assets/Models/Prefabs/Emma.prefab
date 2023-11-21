@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3728310573015664433}
   m_Layer: 3
   m_Name: Particle System
-  m_TagString: Emma
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4885,16 +4885,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dcba909caadd2048aa026fd11272c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  approachPlayer: 0
-  dying: 0
-  approaching: 0
-  gettingInjured: 0
+  health: 10
   steps: {fileID: 3287601896468784057}
   buzz: {fileID: 1395146820}
   laugh: {fileID: 1395146822}
   scream: {fileID: 8429381847986918564}
   injured: {fileID: 307817169912794439}
-  health: 10
+  dying: 0
+  approaching: 0
+  gettingInjured: 0
+  approachPlayer: 0
   speed: 0.8
 --- !u!65 &1954467471606576181
 BoxCollider:
@@ -5466,7 +5466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6865a2baab98b694e8b6f70de7bd794c, type: 3}
       propertyPath: m_TagString
-      value: Emma
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6865a2baab98b694e8b6f70de7bd794c, type: 3}

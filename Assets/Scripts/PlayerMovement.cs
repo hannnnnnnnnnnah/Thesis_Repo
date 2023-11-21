@@ -110,9 +110,12 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKey(KeyCode.LeftShift) && !sprintDisabled)
             {
-                isSprinting = true;
+                //if(!isSprinting)
+                //    StartCoroutine(Sprint());
+
                 speed = sprintSpeed;
                 stepRateSet = 0.25f;
+                isSprinting = true;
             }
             else if(Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftShift))
             {
@@ -123,6 +126,13 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                /*if (isSprinting)
+                {
+                    StopAllCoroutines();
+                    sprintDisabled = false;
+                    isSprinting = false;
+                }*/
+                
                 isSprinting = false;
                 isCrouching = false;
 
@@ -152,8 +162,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    /*
-    IEnumerator Sprint()
+    /*IEnumerator Sprint()
     {
         //Debug.Log("Sprint started");
 
@@ -161,14 +170,14 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(sprintLength);
         sprintDisabled = true;
         audioBreath.Play();
-        yield return new WaitWhile(() => Input.GetKey(KeyCode.LeftShift));
-
-        //Debug.Log("shift is not being spammed");
-
         yield return new WaitForSeconds(sprintDelay);
-        sprintDisabled = false;
-        isSprinting = false;
-        audioBreath.Stop();
+
+        if (!Input.GetKey(KeyCode.LeftShift))
+        {
+            sprintDisabled = false;
+            isSprinting = false;
+            audioBreath.Stop();
+        }
     }*/
 
     //Camera rotation stuff
