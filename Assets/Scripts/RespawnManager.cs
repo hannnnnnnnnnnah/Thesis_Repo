@@ -28,13 +28,14 @@ public class RespawnManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        Player = GameObject.FindGameObjectWithTag("Player");
         SceneManager.sceneLoaded += OnLevelLoad;
     }
 
     private void Start()
     {
         canvas = GetComponentInChildren<Canvas>();
-        Player = GameObject.FindGameObjectWithTag("Player");
+        //Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
@@ -83,6 +84,8 @@ public class RespawnManager : MonoBehaviour
 
     public void Die()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
+
         //Set player position to spawn point
         Player.GetComponent<CharacterController>().enabled = false;
         Player.transform.position = spawnPoint;

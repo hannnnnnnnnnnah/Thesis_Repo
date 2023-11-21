@@ -41,7 +41,7 @@ public class DeathTimer : MonoBehaviour
             DeathAudioTrigger();
             yield return new WaitForSeconds(1f);
             deathTime--;
-            Debug.Log(deathTime);
+            //Debug.Log(deathTime);
         }    
     }
 
