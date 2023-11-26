@@ -11,7 +11,7 @@ public class RespawnManager : MonoBehaviour
     public Vector3 spawnPoint;
 
     Canvas canvas;
-    GameObject Player;
+    //GameObject Player;
 
     public static RespawnManager instance;
 
@@ -28,7 +28,7 @@ public class RespawnManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        Player = GameObject.FindGameObjectWithTag("Player");
+        //Player = GameObject.FindGameObjectWithTag("Player");
         SceneManager.sceneLoaded += OnLevelLoad;
     }
 
@@ -84,12 +84,12 @@ public class RespawnManager : MonoBehaviour
 
     public void Die()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        //Player = GameObject.FindGameObjectWithTag("Player");
 
         //Set player position to spawn point
-        Player.GetComponent<CharacterController>().enabled = false;
-        Player.transform.position = spawnPoint;
-        Player.GetComponent<CharacterController>().enabled = true;
+        PlayerMovement.instance.GetComponent<CharacterController>().enabled = false;
+        PlayerMovement.instance.transform.position = spawnPoint;
+        PlayerMovement.instance.GetComponent<CharacterController>().enabled = true;
 
         //UI reset
         UIManager.instance.ResetEye("EyeVisible", false);
@@ -99,8 +99,8 @@ public class RespawnManager : MonoBehaviour
         animator.SetBool("Respawn", true);
 
         //Reset player
-        Player.GetComponent<PlayerMovement>().inTracks = false;
-        Player.GetComponent<PlayerMovement>().StopSurroundSound();
+        PlayerMovement.instance.inTracks = false;
+        PlayerMovement.instance.StopSurroundSound();
 
         //Sanity is reset
         InteractionManager.instance.sanity = 5;

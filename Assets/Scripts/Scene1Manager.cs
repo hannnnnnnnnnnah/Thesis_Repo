@@ -6,7 +6,7 @@ public class Scene1Manager : MonoBehaviour
 
     public bool figureKilled = false;
 
-    GameObject player;
+    //GameObject player;
 
     public static Scene1Manager instance;
 
@@ -24,7 +24,7 @@ public class Scene1Manager : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
 
         if (!RespawnManager.instance.spawnChange)
             RespawnManager.instance.spawnPoint = startSpawn.transform.position;
@@ -42,7 +42,7 @@ public class Scene1Manager : MonoBehaviour
 
         if (figureKilled)
         {
-            player.GetComponent<DeathTimer>().startDeathTimer();
+            PlayerMovement.instance.StartDeathTimer();
             UIManager.instance.ShowText("Hold shift to sprint");
         }
         else

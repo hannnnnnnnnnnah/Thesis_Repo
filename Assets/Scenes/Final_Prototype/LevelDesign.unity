@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 156368358}
   - component: {fileID: 156368357}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5405,7 +5405,6 @@ MonoBehaviour:
   startSpawn: {fileID: 1596974081}
   newSpawn: {fileID: 360156821}
   firstVictim: {fileID: 2145580229}
-  player: {fileID: 874482002}
   figureKilled: 0
 --- !u!1001 &1739597635
 PrefabInstance:

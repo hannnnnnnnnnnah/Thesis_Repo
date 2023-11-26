@@ -4,20 +4,35 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] bool sprintDisabled, hasFlashlight = false;
-    [SerializeField] float speed, sprintSpeed, walkSpeed, sneakSpeed, gravity, sprintLength, sprintDelay;
+    [SerializeField] float speed, sprintSpeed, walkSpeed, sneakSpeed, gravity, stamina;
     [SerializeField] int minAngle, maxAngle, sensitivity;
     [SerializeField] GameObject SurroundSound, camHeight, camCrouch;
     [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper, voice, flash_on, flash_off;
+    [SerializeField] DeathTimer deathTimer;
 
     public bool isSprinting, isCrouching, inTracks;
     public LayerMask checkRaycast;
     public Light flashlight;
 
-    private float stepRate, stepCoolDown, stepRateSet;
+    private float stepRate, stepCoolDown, stepRateSet, staminaSet;
     private Vector3 camRotation, moveDirection;
     private Camera mainCamera;
 
     CharacterController characterController;
+
+    public static PlayerMovement instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -35,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         speed = walkSpeed;
+        staminaSet = stamina;
     }
 
     public void StartSurroundSound()
@@ -108,16 +124,42 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = new Vector3(horizontalMove, 0, verticalMove);
             moveDirection = transform.TransformDirection(moveDirection);
 
-            if (Input.GetKey(KeyCode.LeftShift) && !sprintDisabled)
+            if (Input.GetKey(KeyCode.LeftShift) && !sprintDisabled && stamina > 0)
             {
-                //if(!isSprinting)
-                //    StartCoroutine(Sprint());
+                Debug.Log("sprinting");
+                Debug.Log("stamina: " + stamina);
 
                 speed = sprintSpeed;
                 stepRateSet = 0.25f;
                 isSprinting = true;
+
+                stamina--;
             }
-            else if(Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftShift))
+            else if (stamina == 0)
+            {
+                Debug.Log("triggered");
+                Debug.Log("stamina: " + stamina);
+                isSprinting = false;
+                sprintDisabled = true;
+
+                //Set walk speed to normal
+                speed = walkSpeed;
+                stepRateSet = stepRate;
+
+                //regen stamina
+
+                while(stamina < staminaSet)
+                {
+                    stamina++;
+                }
+
+                if(stamina == staminaSet)
+                {
+                    sprintDisabled = false;
+                }
+                    
+            }
+            else if (Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftShift))
             {
                 isCrouching = true;
                 speed = sneakSpeed;
@@ -126,13 +168,6 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                /*if (isSprinting)
-                {
-                    StopAllCoroutines();
-                    sprintDisabled = false;
-                    isSprinting = false;
-                }*/
-                
                 isSprinting = false;
                 isCrouching = false;
 
@@ -162,24 +197,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    /*IEnumerator Sprint()
-    {
-        //Debug.Log("Sprint started");
-
-        isSprinting = true;
-        yield return new WaitForSeconds(sprintLength);
-        sprintDisabled = true;
-        audioBreath.Play();
-        yield return new WaitForSeconds(sprintDelay);
-
-        if (!Input.GetKey(KeyCode.LeftShift))
-        {
-            sprintDisabled = false;
-            isSprinting = false;
-            audioBreath.Stop();
-        }
-    }*/
-
     //Camera rotation stuff
     private void Rotate()
     {
@@ -189,5 +206,10 @@ public class PlayerMovement : MonoBehaviour
         camRotation.x = Mathf.Clamp(camRotation.x, minAngle, maxAngle);
 
         mainCamera.transform.localEulerAngles = camRotation;
+    }
+
+    public void StartDeathTimer()
+    {
+        deathTimer.startDeathTimer();
     }
 }

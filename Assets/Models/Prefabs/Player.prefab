@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsGlobal: 0
-  priority: 2.92
+  priority: 5
   blendDistance: 0.88
   weight: 0
   sharedProfile: {fileID: 11400000, guid: 1c5ce745dde545140b02dd3b925f613d, type: 2}
@@ -61,8 +61,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5749419
-  m_Center: {x: 0, y: 0, z: 0.6715872}
+  m_Radius: 2.4062319
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1431771326
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,9 +328,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177134489698684601}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.569, z: 0.58}
-  m_LocalScale: {x: 1, y: 0.4, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.95, z: 0.196}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3033862207555161588}
@@ -521,8 +521,7 @@ MonoBehaviour:
   walkSpeed: 6
   sneakSpeed: 3
   gravity: 2
-  sprintLength: 5
-  sprintDelay: 3
+  stamina: 500
   minAngle: -45
   maxAngle: 45
   sensitivity: 80
@@ -536,6 +535,7 @@ MonoBehaviour:
   voice: {fileID: 2529849945407746036}
   flash_on: {fileID: 5213421673022883882}
   flash_off: {fileID: 3939695924661142068}
+  deathTimer: {fileID: 3033862207555161544}
   isSprinting: 0
   isCrouching: 0
   inTracks: 0
@@ -1375,7 +1375,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3033862208218539582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.841, z: 0}
+  m_LocalPosition: {x: 0, y: 1.436, z: -0.951}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2149,7 +2149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8483788584246799139}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.036, z: 0.58}
+  m_LocalPosition: {x: 0, y: 0.339, z: 0.196}
   m_LocalScale: {x: 1, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
