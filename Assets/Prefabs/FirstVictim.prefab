@@ -4896,6 +4896,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   ghostAnim: {fileID: 7823919751726735512}
+  figures: {fileID: 0}
+  textPrompt: {fileID: 0}
 --- !u!1001 &354347491394129847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5008,7 +5010,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6865a2baab98b694e8b6f70de7bd794c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.48
+      value: 4.41
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6865a2baab98b694e8b6f70de7bd794c, type: 3}
       propertyPath: m_LocalPosition.z
