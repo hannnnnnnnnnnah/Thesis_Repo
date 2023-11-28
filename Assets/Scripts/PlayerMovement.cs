@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] bool sprintDisabled, hasFlashlight = false;
-    [SerializeField] float speed, sprintSpeed, walkSpeed, sneakSpeed, gravity, stamina;
+    [SerializeField] float speed, sprintSpeed, walkSpeed, sneakSpeed, gravity;
     [SerializeField] int minAngle, maxAngle, sensitivity;
     [SerializeField] GameObject SurroundSound, camHeight, camCrouch;
     [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper, voice, flash_on, flash_off;
@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask checkRaycast;
     public Light flashlight;
 
-    private float stepRate, stepCoolDown, stepRateSet, staminaSet;
+    private float stepRate, stepCoolDown, stepRateSet;
     private Vector3 camRotation, moveDirection;
     private Camera mainCamera;
 
@@ -50,7 +50,6 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         speed = walkSpeed;
-        staminaSet = stamina;
     }
 
     public void StartSurroundSound()
@@ -124,40 +123,11 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = new Vector3(horizontalMove, 0, verticalMove);
             moveDirection = transform.TransformDirection(moveDirection);
 
-            if (Input.GetKey(KeyCode.LeftShift) && !sprintDisabled && stamina > 0)
+            if (Input.GetKey(KeyCode.LeftShift) && !sprintDisabled)
             {
-                Debug.Log("sprinting");
-                Debug.Log("stamina: " + stamina);
-
                 speed = sprintSpeed;
                 stepRateSet = 0.25f;
                 isSprinting = true;
-
-                stamina--;
-            }
-            else if (stamina == 0)
-            {
-                Debug.Log("triggered");
-                Debug.Log("stamina: " + stamina);
-                isSprinting = false;
-                sprintDisabled = true;
-
-                //Set walk speed to normal
-                speed = walkSpeed;
-                stepRateSet = stepRate;
-
-                //regen stamina
-
-                while(stamina < staminaSet)
-                {
-                    stamina++;
-                }
-
-                if(stamina == staminaSet)
-                {
-                    sprintDisabled = false;
-                }
-                    
             }
             else if (Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftShift))
             {

@@ -25,7 +25,11 @@ public class DeathTimer : MonoBehaviour
     {
         //if (deathTime < 11 && vol.weight < 1 && playVisuals == true)
         if (vol.weight < 1 && playVisuals == true)
+        {
             vol.weight += 0.002f;
+            Debug.Log("working");
+        }
+            
         if(playVisuals == false && vol.weight > 0)
             vol.weight -= 0.01f;
     }

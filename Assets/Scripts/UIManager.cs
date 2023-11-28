@@ -9,7 +9,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image eye;
 
     public bool flashlightShown, sneakShown = false;
-    public Animator animator, textAnimator;
+    public Animator textAnimator;
+
+    Animator animator;
 
     string moveText = "Use WASD to move";
 

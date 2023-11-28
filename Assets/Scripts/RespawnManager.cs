@@ -6,7 +6,7 @@ public class RespawnManager : MonoBehaviour
     [SerializeField] AudioSource inhale;
 
     public bool gameStart, spawnChange = false;
-    public int deathCount = 1;
+    public int deathCount = 0;
     public Animator animator;
     public Vector3 spawnPoint;
 
@@ -28,14 +28,12 @@ public class RespawnManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        //Player = GameObject.FindGameObjectWithTag("Player");
         SceneManager.sceneLoaded += OnLevelLoad;
     }
 
     private void Start()
     {
         canvas = GetComponentInChildren<Canvas>();
-        //Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
@@ -84,8 +82,6 @@ public class RespawnManager : MonoBehaviour
 
     public void Die()
     {
-        //Player = GameObject.FindGameObjectWithTag("Player");
-
         //Set player position to spawn point
         PlayerMovement.instance.GetComponent<CharacterController>().enabled = false;
         PlayerMovement.instance.transform.position = spawnPoint;
