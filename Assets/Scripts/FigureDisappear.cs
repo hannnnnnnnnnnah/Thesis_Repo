@@ -71,7 +71,7 @@ public class FigureDisappear : MonoBehaviour
 
         //approach the player
 
-        if (alertTime == 0)
+        if (alertTime == 0 && !PlayerMovement.instance.inTracks)
         {
             approachPlayer = true;
 

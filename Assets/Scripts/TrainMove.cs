@@ -8,8 +8,7 @@ public class TrainMove : MonoBehaviour
 
     public bool move;
     public AudioSource t_audio;
-
-    Vector3 storePos;
+    public Vector3 storePos;
 
     private void Start()
     {
@@ -39,7 +38,6 @@ public class TrainMove : MonoBehaviour
         if (other.tag == "Player")
         {
             killTrigger.GetComponent<TrackKillTrigger>().StopTrain();
-            transform.position = storePos;
             t_audio.Stop();
             RespawnManager.instance.Die();
         }

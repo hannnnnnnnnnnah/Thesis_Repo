@@ -6,8 +6,8 @@ public class LightTrigger : MonoBehaviour
     [SerializeField] AudioSource source;
 
     public float deathTimeReset;
-
-    bool lightBroken = false;
+    public bool lightBroken = false;
+    
     Animator animator;
 
     private void Start()

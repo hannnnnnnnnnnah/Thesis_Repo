@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 camRotation, moveDirection;
     private Camera mainCamera;
 
+    Animator animator;
+
     CharacterController characterController;
 
     public static PlayerMovement instance;
@@ -44,7 +46,8 @@ public class PlayerMovement : MonoBehaviour
 
         mainCamera = Camera.main;
         mainCamera.transform.position = camHeight.transform.position;
-
+        
+        animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         flashlight = GetComponentInChildren<Light>();
         Cursor.lockState = CursorLockMode.Locked;
@@ -128,12 +131,17 @@ public class PlayerMovement : MonoBehaviour
                 speed = sprintSpeed;
                 stepRateSet = 0.25f;
                 isSprinting = true;
+
+                animator.SetBool("StartCrouch", false);
+                mainCamera.transform.position = camHeight.transform.position;
             }
-            else if (Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftShift))
+            else if (Input.GetKey(KeyCode.LeftControl) && !isSprinting)
             {
                 isCrouching = true;
                 speed = sneakSpeed;
                 stepRateSet = 0.6f;
+
+                animator.SetBool("StartCrouch", true);
                 mainCamera.transform.position = camCrouch.transform.position;
             }
             else
@@ -144,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
                 //Set walk speed to normal
                 speed = walkSpeed;
                 stepRateSet = stepRate;
+                animator.SetBool("StartCrouch", false);
                 mainCamera.transform.position = camHeight.transform.position;
             }
 

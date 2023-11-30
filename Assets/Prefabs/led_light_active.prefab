@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8139676075817961351}
   - component: {fileID: 8139676075817961369}
   - component: {fileID: 8139676075817961368}
-  - component: {fileID: 3183248269028867278}
   - component: {fileID: 4052692163980190148}
   m_Layer: 0
   m_Name: Spot Light
@@ -135,8 +134,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightFlicker: 0
   lightCanExplode: 0
-  source: {fileID: 0}
+  source: {fileID: 4052692163980190148}
   deathTimeReset: 11
+  lightBroken: 0
 --- !u!65 &8139676075817961368
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -148,28 +148,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5147.0093, y: 5092.875, z: 10010.262}
-  m_Center: {x: 187.6893, y: 143.59285, z: 4763.883}
---- !u!95 &3183248269028867278
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540828850945488626}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b1edf08468a5bff4c91fc089277563ea, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_Size: {x: 5147.0093, y: 6116.052, z: 10010.262}
+  m_Center: {x: 187.68921, y: -41.526985, z: 4763.8823}
 --- !u!82 &4052692163980190148
 AudioSource:
   m_ObjectHideFlags: 0
@@ -358,6 +338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6427747513670566597}
+  - component: {fileID: 1071961253664930577}
   m_Layer: 0
   m_Name: led_light_active
   m_TagString: Untagged
@@ -381,6 +362,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1071961253664930577
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5942538063456262271}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1edf08468a5bff4c91fc089277563ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7994679033117759381
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class TrackKillTrigger : MonoBehaviour
             other.GetComponent<DeathTimer>().StopAllCoroutines();
             other.GetComponent<DeathTimer>().DeathEffectsCancel();
 
-            //set bool
+            //Set bool
             other.GetComponent<PlayerMovement>().inTracks = true;
 
             StartTrain();
@@ -25,15 +25,23 @@ public class TrackKillTrigger : MonoBehaviour
     public void StartTrain()
     {
         foreach(GameObject metrocar in metrocars)
+        {
+            metrocar.gameObject.SetActive(true);
             metrocar.GetComponent<TrainMove>().move = true;
+        }
     }
 
     public void StopTrain()
     {
+        //Show normal trains
+        Scene1Manager.instance.ShowTrains();
+
         foreach (GameObject metrocar in metrocars)
         {
             metrocar.GetComponent<TrainMove>().move = false;
             metrocar.GetComponent<TrainMove>().t_audio.Stop();
+            metrocar.gameObject.transform.position = metrocar.GetComponent<TrainMove>().storePos;
+            metrocar.gameObject.SetActive(false);
         }
            
     }
