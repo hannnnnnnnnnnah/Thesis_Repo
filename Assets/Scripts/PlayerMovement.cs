@@ -176,6 +176,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    IEnumerator StaminaDeplete()
+    {
+        yield return null;
+    }
+
+    IEnumerator StaminaRecharge()
+    {
+        yield return null;
+    }
+
+
     //Camera rotation stuff
     private void Rotate()
     {
