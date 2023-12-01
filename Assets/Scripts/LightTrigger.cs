@@ -38,7 +38,7 @@ public class LightTrigger : MonoBehaviour
             }
         }
 
-        if(other.tag == "Figure")
+        if(other.gameObject.tag == "Figure")
         {
             Debug.Log("figure died in the light uwu");
             other.GetComponent<FigureDisappear>().Die();

@@ -9,9 +9,9 @@ public class FigureDisappear : MonoBehaviour
     public bool approachPlayer;
     public LayerMask checkRaycast;
 
-    bool approaching, alertTimeDecreasing, figureDespawning = false;
+    bool approaching, alertTimeDecreasing, figureDespawning, playerLeft = false;
     int LayerIgnoreRaycast;
-    float alertTimeSet = 3f;
+    float alertTimeSet = 4f;
 
     GameObject player;
     Animator animator;
@@ -30,17 +30,23 @@ public class FigureDisappear : MonoBehaviour
 
         //raycasting stuff
 
-        /*Ray ray = new Ray(transform.position, transform.forward);
+        
+        Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hitData;
 
         if (Physics.Raycast(ray, out hitData, sightDistance, checkRaycast))
         {
-            if (hitData.collider.gameObject.tag == "Player")
+            if (hitData.collider.gameObject.layer == 3)
+            {
+                Debug.Log("figure saw player");
                 approachPlayer = true;
-        }*/
+            }
+        }
 
         if (Vector3.Distance(player.transform.position, transform.position) <= hearingDistance && !approachPlayer && !figureDespawning)
         {
+            animator.SetBool("Aware", true);
+
             if (!player.GetComponent<PlayerMovement>().isCrouching)
             {
                 UIManager.instance.ResetEye("EyeAware", true);
@@ -66,6 +72,15 @@ public class FigureDisappear : MonoBehaviour
                 UIManager.instance.ResetEye("EyeRed", true);
 
                 alertTime = 0;
+            }
+        }
+        else
+        {
+            if (!playerLeft)
+            {
+                animator.SetBool("Aware", false);
+                PlayerLeft();
+                playerLeft = true;
             }
         }
 
@@ -111,14 +126,7 @@ public class FigureDisappear : MonoBehaviour
             approachPlayer = false;
             Debug.Log("caught");
 
-            //reset everything
-
-            alertTimeDecreasing = false;
-            StopAllCoroutines();
-            alertTime = alertTimeSet;
-
-            //change UI
-            UIManager.instance.ResetEye("EyeVisible", false);
+            PlayerLeft();
 
             //Sanity is decreased
 
@@ -154,20 +162,26 @@ public class FigureDisappear : MonoBehaviour
 
     IEnumerator Despawn()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.25f);
         Destroy(gameObject);
     }
 
     public void PlayerLeft()
     {
         //reset everything
-
         alertTimeDecreasing = false;
         StopAllCoroutines();
         alertTime = alertTimeSet;
 
         //change UI
         UIManager.instance.ResetEye("EyeVisible", false);
+
+        playerLeft = false;
+    }
+
+    public void BackForthPatrol()
+    {
+        transform.Rotate(new Vector3(0, 180, 0), Space.World);
     }
 } 
 
