@@ -6,7 +6,7 @@ public class FigureDisappear : MonoBehaviour
     [SerializeField] float speed, sightDistance, hearingDistance, alertTime;
     [SerializeField] AudioSource scream;
 
-    public bool approachPlayer;
+    public bool approachPlayer, patrol1;
     public LayerMask checkRaycast;
 
     bool approaching, alertTimeDecreasing, figureDespawning, playerLeft = false;
@@ -22,25 +22,25 @@ public class FigureDisappear : MonoBehaviour
         LayerIgnoreRaycast = LayerMask.NameToLayer("Ignore Raycast");
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
+
+        if (patrol1)
+            animator.SetBool("BackForth", true);
     }
 
     private void Update()
     {
         float step = speed * Time.deltaTime;
+        float rotateStep = 165f * Time.deltaTime;
 
         //raycasting stuff
 
-        
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hitData;
 
         if (Physics.Raycast(ray, out hitData, sightDistance, checkRaycast))
         {
-            if (hitData.collider.gameObject.layer == 3)
-            {
-                Debug.Log("figure saw player");
-                approachPlayer = true;
-            }
+            Debug.Log("figure saw player");
+            approachPlayer = true;
         }
 
         if (Vector3.Distance(player.transform.position, transform.position) <= hearingDistance && !approachPlayer && !figureDespawning)
@@ -55,7 +55,6 @@ public class FigureDisappear : MonoBehaviour
             else
             {
                 //reset everything
-
                 alertTimeDecreasing = false;
                 StopAllCoroutines();
                 alertTime = alertTimeSet;
@@ -84,22 +83,29 @@ public class FigureDisappear : MonoBehaviour
             }
         }
 
-        //approach the player
+        //rotate towards the player
 
         if (alertTime == 0 && !PlayerMovement.instance.inTracks)
         {
-            approachPlayer = true;
-
             UIManager.instance.ResetEye("EyeRed", true);
-
-            transform.position = Vector3.Lerp(transform.position, player.transform.position, step);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, player.transform.rotation, step);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, player.transform.rotation, -rotateStep);
         }
 
-        if (alertTime >= 0 && approaching)
+        //approach the player
+
+        if (approachPlayer)
         {
-            approaching = false;
+            animator.SetBool("BackForth", false);
+            animator.SetBool("Aware", true);
+            UIManager.instance.ResetEye("EyeRed", true);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, player.transform.rotation, -rotateStep);
+            transform.position = Vector3.Lerp(transform.position, player.transform.position, step);
         }
+       
+        //kill player when close enough
+
+        if(Vector3.Distance(player.transform.position, transform.position) <= 3f && !figureDespawning)
+            Disappear();
     }
 
     public void startAlertTimer()
@@ -119,27 +125,26 @@ public class FigureDisappear : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            approachPlayer = false;
-            Debug.Log("caught");
-
-            PlayerLeft();
-
-            //Sanity is decreased
-
-            InteractionManager.instance.sanity--;
-            InteractionManager.instance.UpdateSanity();
-
-            figureDespawning = true;
-            Disappear();
-        }
-    }
-
     public void Disappear()
     {
+        figureDespawning = true;
+
+        approachPlayer = false;
+        Debug.Log("caught");
+
+        //reset everything
+        alertTimeDecreasing = false;
+        StopAllCoroutines();
+        alertTime = alertTimeSet;
+
+        //change UI
+        UIManager.instance.ResetEye("EyeVisible", false);
+
+        //Sanity is decreased
+
+        InteractionManager.instance.sanity--;
+        InteractionManager.instance.UpdateSanity();
+
         animator.SetBool("Disappear", true);
         gameObject.layer = LayerIgnoreRaycast;
 
@@ -148,22 +153,24 @@ public class FigureDisappear : MonoBehaviour
 
     public void Die()
     {
+        UIManager.instance.ResetEye("EyeVisible", false);
+
+        figureDespawning = true;
         animator.SetBool("Disappear", true);
-        scream.Play();
+        //scream.Play();
         gameObject.layer = LayerIgnoreRaycast;
 
-        //Sanity is decreased
+        Destroy(gameObject);
+        //StartCoroutine(Despawn());
 
-        //InteractionManager.instance.sanity--;
-        //InteractionManager.instance.UpdateSanity();
-
-        StartCoroutine(Despawn());
+        figureDespawning = false;
     }
 
     IEnumerator Despawn()
     {
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(.2f);
         Destroy(gameObject);
+        Debug.Log("despawned");
     }
 
     public void PlayerLeft()
@@ -176,12 +183,8 @@ public class FigureDisappear : MonoBehaviour
         //change UI
         UIManager.instance.ResetEye("EyeVisible", false);
 
+        approachPlayer = false;
         playerLeft = false;
-    }
-
-    public void BackForthPatrol()
-    {
-        transform.Rotate(new Vector3(0, 180, 0), Space.World);
     }
 } 
 

@@ -47,6 +47,11 @@ public class FigureApproach : MonoBehaviour
 
         if (health <= 0 && !dying)
             StartCoroutine(Die());
+
+        if (Vector3.Distance(player.transform.position, transform.position) <= 3f && !player.GetComponent<PlayerMovement>().inTracks)
+        {
+            StartCoroutine(emmaRevenge());
+        }
     }
 
     public void Despawn()
@@ -86,25 +91,18 @@ public class FigureApproach : MonoBehaviour
         approaching = true;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player" && !other.GetComponent<PlayerMovement>().inTracks)
-        {
-            approaching = false;
-            approachPlayer = false;
-            steps.Stop();
-
-            //revenge
-            other.GetComponent<CharacterController>().enabled = false;
-            Debug.Log("GOT YOU");
-            StartCoroutine(emmaRevenge());
-            other.gameObject.transform.position = GameObject.FindGameObjectWithTag("Revenge").GetComponent<Transform>().position;
-            other.GetComponent<CharacterController>().enabled = true;
-        }
-    }
-
     IEnumerator emmaRevenge()
     {
+        approaching = false;
+        approachPlayer = false;
+        steps.Stop();
+
+        //revenge
+        player.GetComponent<CharacterController>().enabled = false;
+        Debug.Log("GOT YOU");
+        player.gameObject.transform.position = GameObject.FindGameObjectWithTag("Revenge").GetComponent<Transform>().position;
+        player.GetComponent<CharacterController>().enabled = true;
+
         laugh.Play();
         yield return new WaitForSeconds(1f);
         Despawn();

@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 4200555067165690110}
   - component: {fileID: 6145887256551563251}
   - component: {fileID: 2631366815637894523}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CamHeight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1894,7 +1894,7 @@ GameObject:
   - component: {fileID: 4379693189018716977}
   - component: {fileID: 4771714954579136326}
   - component: {fileID: 3963339121937710908}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CrouchVisuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2203,7 +2203,7 @@ GameObject:
   - component: {fileID: 4828267351409885681}
   - component: {fileID: 4578795508204802272}
   - component: {fileID: 2118640357240409850}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CamCrouch
   m_TagString: Untagged
   m_Icon: {fileID: 0}

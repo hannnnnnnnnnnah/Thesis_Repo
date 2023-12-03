@@ -38,36 +38,40 @@ public class LightTrigger : MonoBehaviour
             }
         }
 
-        if(other.gameObject.tag == "Figure")
+        if (other.tag == "Figure")
         {
             Debug.Log("figure died in the light uwu");
-            other.GetComponent<FigureDisappear>().Die();
+            other.gameObject.GetComponent<FigureDisappear>().Die();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (RespawnManager.instance.spawnChange && !other.GetComponent<PlayerMovement>().inTracks)
+        if(other.tag == "Player")
         {
-            //Start and stop surround sound
-            if (InteractionManager.instance.surroundSound)
-                other.GetComponent<PlayerMovement>().StartSurroundSound();
 
-            if (!InteractionManager.instance.surroundSound)
-                other.GetComponent<PlayerMovement>().StopSurroundSound();
-
-            //Figure starts chasing
-            if (InteractionManager.instance.emmaSpawned)
-                GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = true;
-
-            //Death effects start
-            other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());
-
-            if (InteractionManager.instance.lightExplodes && lightCanExplode)
+            if (RespawnManager.instance.spawnChange && !other.GetComponent<PlayerMovement>().inTracks)
             {
-                source.Play();
-                animator.SetBool("LightExplode", true);
-                lightBroken = true;
+                //Start and stop surround sound
+                if (InteractionManager.instance.surroundSound)
+                    other.GetComponent<PlayerMovement>().StartSurroundSound();
+
+                if (!InteractionManager.instance.surroundSound)
+                    other.GetComponent<PlayerMovement>().StopSurroundSound();
+
+                //Figure starts chasing
+                if (InteractionManager.instance.emmaSpawned)
+                    GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = true;
+
+                //Death effects start
+                other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());
+
+                if (InteractionManager.instance.lightExplodes && lightCanExplode)
+                {
+                    source.Play();
+                    animator.SetBool("LightExplode", true);
+                    lightBroken = true;
+                }
             }
         }
     }
