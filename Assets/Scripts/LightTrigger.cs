@@ -38,9 +38,10 @@ public class LightTrigger : MonoBehaviour
             }
         }
 
-        if (other.tag == "Figure")
+        if (other.gameObject.layer == 3)
         {
             Debug.Log("figure died in the light uwu");
+            Debug.Log(other);
             other.gameObject.GetComponent<FigureDisappear>().Die();
         }
     }
@@ -49,7 +50,6 @@ public class LightTrigger : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-
             if (RespawnManager.instance.spawnChange && !other.GetComponent<PlayerMovement>().inTracks)
             {
                 //Start and stop surround sound

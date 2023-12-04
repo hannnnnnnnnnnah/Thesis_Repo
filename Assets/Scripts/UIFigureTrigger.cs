@@ -19,9 +19,18 @@ public class UIFigureTrigger : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            //UIManager.instance.ResetEye("EyeVisible", false);
+            UIManager.instance.ResetEye("EyeVisible", false);
             Debug.Log("LEFT FIGURE");
             figureDisappear.PlayerLeft();
+        }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.gameObject.tag == "Player")
+        {
+            Debug.Log("NEAR FIGURE collider");
+            UIManager.instance.ResetEye("EyeVisible", true);
         }
     }
 }

@@ -41,12 +41,7 @@ public class RespawnManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             animator.SetBool("Respawn", false);
-            SceneManager.LoadScene("TitleScreen");
-        }
-
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            Debug.Log(spawnPoint);
+            //SceneManager.LoadScene("TitleScreen");
         }
     }
 

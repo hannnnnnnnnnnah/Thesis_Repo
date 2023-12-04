@@ -60,7 +60,7 @@ public class Scene1Manager : MonoBehaviour
         if (figureKilled)
         {
             PlayerMovement.instance.StartDeathTimer();
-            UIManager.instance.ShowText("Hold shift to sprint");
+            //UIManager.instance.ShowText("Hold shift to sprint");
         }
         else
             firstVictim.SetActive(false);

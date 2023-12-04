@@ -12,6 +12,8 @@ public class LeaveGame : MonoBehaviour
     {
         leaveButton = GetComponent<Button>();
         leaveButton.onClick.AddListener(TaskOnClick);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void TaskOnClick()

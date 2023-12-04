@@ -5,11 +5,12 @@ public class FigureDisappear : MonoBehaviour
 {
     [SerializeField] float speed, sightDistance, hearingDistance, alertTime;
     [SerializeField] AudioSource scream;
+    [SerializeField] GameObject Stop;
 
-    public bool approachPlayer, patrol1;
+    public bool approachPlayer, isPatrolling;
     public LayerMask checkRaycast;
 
-    bool approaching, alertTimeDecreasing, figureDespawning, playerLeft = false;
+    bool approaching, alertTimeDecreasing, figureDespawning = false;
     int LayerIgnoreRaycast;
     float alertTimeSet = 4f;
 
@@ -22,9 +23,6 @@ public class FigureDisappear : MonoBehaviour
         LayerIgnoreRaycast = LayerMask.NameToLayer("Ignore Raycast");
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-
-        if (patrol1)
-            animator.SetBool("BackForth", true);
     }
 
     private void Update()
@@ -43,9 +41,15 @@ public class FigureDisappear : MonoBehaviour
             approachPlayer = true;
         }
 
-        if (Vector3.Distance(player.transform.position, transform.position) <= hearingDistance && !approachPlayer && !figureDespawning)
+        if (isPatrolling)
+        {
+            Patrol(rotateStep, step, Stop);
+        }
+
+        if (Vector3.Distance(player.transform.position, transform.position) <= sightDistance && !approachPlayer && !figureDespawning)
         {
             animator.SetBool("Aware", true);
+            //UIManager.instance.ResetEye("EyeVisible", true);
 
             if (!player.GetComponent<PlayerMovement>().isCrouching)
             {
@@ -73,20 +77,12 @@ public class FigureDisappear : MonoBehaviour
                 alertTime = 0;
             }
         }
-        else
-        {
-            if (!playerLeft)
-            {
-                animator.SetBool("Aware", false);
-                PlayerLeft();
-                playerLeft = true;
-            }
-        }
 
         //rotate towards the player
 
         if (alertTime == 0 && !PlayerMovement.instance.inTracks)
         {
+            isPatrolling = false;
             UIManager.instance.ResetEye("EyeRed", true);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, player.transform.rotation, -rotateStep);
         }
@@ -95,7 +91,6 @@ public class FigureDisappear : MonoBehaviour
 
         if (approachPlayer)
         {
-            animator.SetBool("BackForth", false);
             animator.SetBool("Aware", true);
             UIManager.instance.ResetEye("EyeRed", true);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, player.transform.rotation, -rotateStep);
@@ -157,34 +152,39 @@ public class FigureDisappear : MonoBehaviour
 
         figureDespawning = true;
         animator.SetBool("Disappear", true);
-        //scream.Play();
+        scream.Play();
         gameObject.layer = LayerIgnoreRaycast;
-
-        Destroy(gameObject);
-        //StartCoroutine(Despawn());
-
         figureDespawning = false;
+        StartCoroutine(Despawn());
     }
 
     IEnumerator Despawn()
     {
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.4f);
         Destroy(gameObject);
         Debug.Log("despawned");
     }
 
     public void PlayerLeft()
     {
+        approachPlayer = false;
+
         //reset everything
         alertTimeDecreasing = false;
         StopAllCoroutines();
         alertTime = alertTimeSet;
 
+        //reset animation
+        animator.SetBool("Aware", false);
+
         //change UI
         UIManager.instance.ResetEye("EyeVisible", false);
+    }
 
-        approachPlayer = false;
-        playerLeft = false;
+    public void Patrol(float step1, float step2, GameObject point)
+    {
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, point.transform.rotation, -step1);
+        transform.position = Vector3.Lerp(transform.position, point.transform.position, step2);
     }
 } 
 

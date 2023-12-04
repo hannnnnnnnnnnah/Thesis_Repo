@@ -13,6 +13,8 @@ public class ContinueGame : MonoBehaviour
     {
         continueButton = GetComponent<Button>();
         continueButton.onClick.AddListener(TaskOnClick);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void TaskOnClick()
@@ -22,6 +24,8 @@ public class ContinueGame : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
         }
 
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         pausedUi.SetActive(false);
         Time.timeScale = 1;
     }

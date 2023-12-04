@@ -126,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = new Vector3(horizontalMove, 0, verticalMove);
             moveDirection = transform.TransformDirection(moveDirection);
 
-            if (Input.GetKey(KeyCode.LeftShift) && !sprintDisabled)
+            /*if (Input.GetKey(KeyCode.LeftShift) && !sprintDisabled)
             {
                 speed = sprintSpeed;
                 stepRateSet = 0.25f;
@@ -134,8 +134,8 @@ public class PlayerMovement : MonoBehaviour
 
                 animator.SetBool("StartCrouch", false);
                 mainCamera.transform.position = camHeight.transform.position;
-            }
-            else if (Input.GetKey(KeyCode.LeftControl) && !isSprinting)
+            }*/
+            if (Input.GetKey(KeyCode.LeftControl) && !isSprinting)
             {
                 isCrouching = true;
                 speed = sneakSpeed;
