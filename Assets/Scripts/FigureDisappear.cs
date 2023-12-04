@@ -99,7 +99,7 @@ public class FigureDisappear : MonoBehaviour
        
         //kill player when close enough
 
-        if(Vector3.Distance(player.transform.position, transform.position) <= 3f && !figureDespawning)
+        if(Vector3.Distance(player.transform.position, transform.position) <= 1.5f && !figureDespawning)
             Disappear();
     }
 
