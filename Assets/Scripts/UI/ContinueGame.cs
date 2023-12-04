@@ -13,6 +13,10 @@ public class ContinueGame : MonoBehaviour
     {
         continueButton = GetComponent<Button>();
         continueButton.onClick.AddListener(TaskOnClick);
+    }
+
+    private void OnEnable()
+    {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }

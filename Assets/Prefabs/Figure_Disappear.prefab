@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4574803346501976361}
   - component: {fileID: 4898246152441581321}
   - component: {fileID: 3242219570729738602}
+  - component: {fileID: 2893460874833448602}
   m_Layer: 3
   m_Name: Figure_Disappear
   m_TagString: Figure
@@ -50,9 +51,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.46851563
-  m_Height: 5.575206
+  m_Height: 4.8487105
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.36324763, z: 0}
 --- !u!114 &2910099420199740541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,8 +71,12 @@ MonoBehaviour:
   hearingDistance: 12
   alertTime: 0
   scream: {fileID: 4898246152441581321}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   approachPlayer: 0
-  patrol1: 0
+  isPatrolling: 1
   checkRaycast:
     serializedVersion: 2
     m_Bits: 64
@@ -207,6 +212,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!195 &2893460874833448602
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665829826195395286}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 5
+  m_BaseOffset: 2.12
+  m_WalkableMask: 1
+  m_ObstacleAvoidanceType: 2
 --- !u!1 &2293483946648377353
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,15 +369,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a1f55a1b7e152240b66086966fbeba2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.01063047
+      value: 0.01175131
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a1f55a1b7e152240b66086966fbeba2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.010630465
+      value: 0.011751305
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a1f55a1b7e152240b66086966fbeba2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.01063047
+      value: 0.01175131
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a1f55a1b7e152240b66086966fbeba2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -358,7 +385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a1f55a1b7e152240b66086966fbeba2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.1006
+      value: -2.0976
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a1f55a1b7e152240b66086966fbeba2, type: 3}
       propertyPath: m_LocalPosition.z

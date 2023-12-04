@@ -1,28 +1,33 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class FigureDisappear : MonoBehaviour
 {
     [SerializeField] float speed, sightDistance, hearingDistance, alertTime;
     [SerializeField] AudioSource scream;
-    [SerializeField] GameObject Stop;
+    [SerializeField] GameObject[] waypoints;
 
     public bool approachPlayer, isPatrolling;
     public LayerMask checkRaycast;
 
     bool approaching, alertTimeDecreasing, figureDespawning = false;
-    int LayerIgnoreRaycast;
+    int LayerIgnoreRaycast, waypointLoop;
     float alertTimeSet = 4f;
 
-    GameObject player;
+    GameObject currentWaypoint;
     Animator animator;
+    NavMeshAgent agent;
 
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+        currentWaypoint = waypoints[waypoints.Length - 1];
+        waypointLoop = 2;
+
         alertTime = alertTimeSet;
         LayerIgnoreRaycast = LayerMask.NameToLayer("Ignore Raycast");
         animator = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
@@ -35,23 +40,22 @@ public class FigureDisappear : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hitData;
 
+        if (isPatrolling)
+            Patrol();
+
+
         if (Physics.Raycast(ray, out hitData, sightDistance, checkRaycast))
         {
             Debug.Log("figure saw player");
             approachPlayer = true;
         }
 
-        if (isPatrolling)
-        {
-            Patrol(rotateStep, step, Stop);
-        }
-
-        if (Vector3.Distance(player.transform.position, transform.position) <= sightDistance && !approachPlayer && !figureDespawning)
+        if (Vector3.Distance(PlayerMovement.instance.gameObject.transform.position, transform.position) <= sightDistance && !approachPlayer && !figureDespawning)
         {
             animator.SetBool("Aware", true);
             //UIManager.instance.ResetEye("EyeVisible", true);
 
-            if (!player.GetComponent<PlayerMovement>().isCrouching)
+            if (!PlayerMovement.instance.isCrouching)
             {
                 UIManager.instance.ResetEye("EyeAware", true);
                 startAlertTimer();
@@ -67,7 +71,7 @@ public class FigureDisappear : MonoBehaviour
                 UIManager.instance.ResetEye("EyeVisible", true);
             }
 
-            if (player.GetComponent<PlayerMovement>().isSprinting)
+            if (PlayerMovement.instance.isSprinting)
             {
                 alertTimeDecreasing = false;
                 StopAllCoroutines();
@@ -82,9 +86,8 @@ public class FigureDisappear : MonoBehaviour
 
         if (alertTime == 0 && !PlayerMovement.instance.inTracks)
         {
-            isPatrolling = false;
             UIManager.instance.ResetEye("EyeRed", true);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, player.transform.rotation, -rotateStep);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, PlayerMovement.instance.gameObject.transform.rotation, -rotateStep);
         }
 
         //approach the player
@@ -93,13 +96,13 @@ public class FigureDisappear : MonoBehaviour
         {
             animator.SetBool("Aware", true);
             UIManager.instance.ResetEye("EyeRed", true);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, player.transform.rotation, -rotateStep);
-            transform.position = Vector3.Lerp(transform.position, player.transform.position, step);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, PlayerMovement.instance.gameObject.transform.rotation, -rotateStep);
+            transform.position = Vector3.Lerp(transform.position, PlayerMovement.instance.gameObject.transform.position, step);
         }
        
         //kill player when close enough
 
-        if(Vector3.Distance(player.transform.position, transform.position) <= 1.5f && !figureDespawning)
+        if(Vector3.Distance(PlayerMovement.instance.gameObject.transform.position, transform.position) <= 1.5f && !figureDespawning)
             Disappear();
     }
 
@@ -181,10 +184,27 @@ public class FigureDisappear : MonoBehaviour
         UIManager.instance.ResetEye("EyeVisible", false);
     }
 
-    public void Patrol(float step1, float step2, GameObject point)
+    public void Patrol()
     {
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, point.transform.rotation, -step1);
-        transform.position = Vector3.Lerp(transform.position, point.transform.position, step2);
+        agent.destination = currentWaypoint.transform.position;
+        Debug.Log(Vector3.Distance(transform.position, currentWaypoint.transform.position));
+
+        if(Vector3.Distance(transform.position, currentWaypoint.transform.position) <= 4.05)
+        {
+            Debug.Log("WORKINGGGG");
+
+            if (currentWaypoint == waypoints[0])
+            {
+                waypointLoop = 1;
+                currentWaypoint = waypoints[waypoints.Length - 1];
+                
+            }
+            else
+            {
+                waypointLoop++;
+                currentWaypoint = waypoints[waypoints.Length - waypointLoop];     
+            }
+        }
     }
 } 
 

@@ -12,11 +12,15 @@ public class LeaveGame : MonoBehaviour
     {
         leaveButton = GetComponent<Button>();
         leaveButton.onClick.AddListener(TaskOnClick);
+    }
+
+    private void OnEnable()
+    {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
 
-    void TaskOnClick()
+    public void TaskOnClick()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
