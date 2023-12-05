@@ -7,13 +7,14 @@ public class FigureDisappear : MonoBehaviour
     [SerializeField] float speed, sightDistance, hearingDistance, alertTime;
     [SerializeField] AudioSource scream;
     [SerializeField] GameObject[] waypoints;
+    [SerializeField] UIFigureTrigger trigger;
 
     public bool approachPlayer, isPatrolling;
     public LayerMask checkRaycast;
 
     bool approaching, alertTimeDecreasing, figureDespawning = false;
     int LayerIgnoreRaycast, waypointLoop;
-    float alertTimeSet = 4f;
+    float alertTimeSet = 2.5f;
 
     GameObject currentWaypoint;
     Animator animator;
@@ -75,9 +76,7 @@ public class FigureDisappear : MonoBehaviour
             {
                 alertTimeDecreasing = false;
                 StopAllCoroutines();
-
                 UIManager.instance.ResetEye("EyeRed", true);
-
                 alertTime = 0;
             }
         }
@@ -135,9 +134,6 @@ public class FigureDisappear : MonoBehaviour
         StopAllCoroutines();
         alertTime = alertTimeSet;
 
-        //change UI
-        UIManager.instance.ResetEye("EyeVisible", false);
-
         //Sanity is decreased
 
         InteractionManager.instance.sanity--;
@@ -151,8 +147,6 @@ public class FigureDisappear : MonoBehaviour
 
     public void Die()
     {
-        UIManager.instance.ResetEye("EyeVisible", false);
-
         figureDespawning = true;
         animator.SetBool("Disappear", true);
         scream.Play();
@@ -163,6 +157,12 @@ public class FigureDisappear : MonoBehaviour
 
     IEnumerator Despawn()
     {
+        trigger.disableSelf();
+
+        //change UI
+        UIManager.instance.ResetEye("EyeRed", false);
+        UIManager.instance.ResetEye("EyeVisible", false);
+
         yield return new WaitForSeconds(.4f);
         Destroy(gameObject);
         Debug.Log("despawned");
@@ -187,12 +187,10 @@ public class FigureDisappear : MonoBehaviour
     public void Patrol()
     {
         agent.destination = currentWaypoint.transform.position;
-        Debug.Log(Vector3.Distance(transform.position, currentWaypoint.transform.position));
+        //Debug.Log(Vector3.Distance(transform.position, currentWaypoint.transform.position));
 
         if(Vector3.Distance(transform.position, currentWaypoint.transform.position) <= 4.05)
         {
-            Debug.Log("WORKINGGGG");
-
             if (currentWaypoint == waypoints[0])
             {
                 waypointLoop = 1;

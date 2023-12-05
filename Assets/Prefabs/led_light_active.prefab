@@ -52,7 +52,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 3000
   m_Range: 70
-  m_SpotAngle: 67.912094
+  m_SpotAngle: 52.099373
   m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
@@ -148,8 +148,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5147.0093, y: 6116.052, z: 10010.262}
-  m_Center: {x: 187.68921, y: -41.526985, z: 4763.8823}
+  m_Size: {x: 5147.0093, y: 6075.023, z: 10010.262}
+  m_Center: {x: 0, y: 0, z: 4763.8823}
 --- !u!82 &4052692163980190148
 AudioSource:
   m_ObjectHideFlags: 0

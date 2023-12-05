@@ -24,10 +24,9 @@ public class DeathTimer : MonoBehaviour
     private void FixedUpdate()
     {
         //if (deathTime < 11 && vol.weight < 1 && playVisuals == true)
-        if (vol.weight < 1 && playVisuals == true)
+        if (vol.weight < 1 && playVisuals == true && !PlayerMovement.instance.isCrouching)
         {
             vol.weight += 0.002f;
-            //Debug.Log("working");
         }
             
         if(playVisuals == false && vol.weight > 0)
@@ -45,8 +44,9 @@ public class DeathTimer : MonoBehaviour
         {
             DeathAudioTrigger();
             yield return new WaitForSeconds(1f);
-            deathTime--;
-            //Debug.Log(deathTime);
+
+            if(!PlayerMovement.instance.isCrouching)
+                deathTime--;
         }    
     }
 
@@ -71,7 +71,8 @@ public class DeathTimer : MonoBehaviour
             case 10:
                 if (!metro.isPlaying)
                 {
-                    metro.Play();
+                    if(!PlayerMovement.instance.isCrouching)
+                        metro.Play();
                 }
                 break;
 

@@ -6,6 +6,12 @@ public class UIFigureTrigger : MonoBehaviour
 {
     [SerializeField] FigureDisappear figureDisappear;
 
+    Collider coll;
+    private void Start()
+    {
+        coll = GetComponent<Collider>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -25,12 +31,8 @@ public class UIFigureTrigger : MonoBehaviour
         }
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    public void disableSelf()
     {
-        if(hit.gameObject.tag == "Player")
-        {
-            Debug.Log("NEAR FIGURE collider");
-            UIManager.instance.ResetEye("EyeVisible", true);
-        }
+        coll.enabled = false;
     }
 }

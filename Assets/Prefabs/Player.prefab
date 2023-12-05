@@ -730,9 +730,9 @@ MonoBehaviour:
   sprintDisabled: 0
   hasFlashlight: 0
   speed: 0
-  sprintSpeed: 15
-  walkSpeed: 8
-  sneakSpeed: 3
+  sprintSpeed: 16
+  walkSpeed: 14
+  sneakSpeed: 4
   gravity: 2
   minAngle: -45
   maxAngle: 45
@@ -804,7 +804,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2b1104c5a085f0649a135560384d36d1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.156
+  m_Volume: 0.349
   m_Pitch: -0.12
   Loop: 0
   Mute: 0

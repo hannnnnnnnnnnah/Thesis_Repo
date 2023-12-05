@@ -130,12 +130,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 speed = sprintSpeed;
                 stepRateSet = 0.25f;
-                isSprinting = true;
+                //isSprinting = true;
 
                 animator.SetBool("StartCrouch", false);
                 mainCamera.transform.position = camHeight.transform.position;
             }
-
             if (Input.GetKey(KeyCode.LeftControl) && !isSprinting)
             {
                 isCrouching = true;
@@ -145,7 +144,6 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("StartCrouch", true);
                 mainCamera.transform.position = camCrouch.transform.position;
             }
-
             else
             {
                 isSprinting = false;
@@ -161,8 +159,9 @@ public class PlayerMovement : MonoBehaviour
             //step audio
 
             stepCoolDown -= Time.deltaTime;
+            //characterController.velocity.y == 0
 
-            if (characterController.velocity.magnitude > 0 && characterController.velocity.y == 0 && stepCoolDown < 0f)
+            if (characterController.velocity.magnitude > 0 && stepCoolDown < 0f)
             {
                 audioFoot.pitch = 1f + Random.Range(-0.1f, 0.1f);
                 audioFoot.Play();
@@ -177,17 +176,6 @@ public class PlayerMovement : MonoBehaviour
             characterController.Move(moveDirection * speed * Time.deltaTime);
         }
     }
-
-    IEnumerator StaminaDeplete()
-    {
-        yield return null;
-    }
-
-    IEnumerator StaminaRecharge()
-    {
-        yield return null;
-    }
-
 
     //Camera rotation stuff
     private void Rotate()

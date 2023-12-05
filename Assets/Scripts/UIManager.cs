@@ -52,6 +52,7 @@ public class UIManager : MonoBehaviour
         textAnimator.SetBool("EyeVisible", false);
         textAnimator.SetBool("EyeAware", false);
         textAnimator.SetBool("EyeRed", false);
+
         textAnimator.SetBool(anim, set);
     }
 }

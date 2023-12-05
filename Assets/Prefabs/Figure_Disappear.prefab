@@ -66,15 +66,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d05e5caeb7175d4287e9b1aa98ac240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.65
-  sightDistance: 13
-  hearingDistance: 12
+  speed: 0.8
+  sightDistance: 12
+  hearingDistance: 14
   alertTime: 0
   scream: {fileID: 4898246152441581321}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  trigger: {fileID: 104909659159192527}
   approachPlayer: 0
   isPatrolling: 1
   checkRaycast:
@@ -354,7 +355,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15.86
+  m_Radius: 12.139197
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6233674056280629140
 PrefabInstance:

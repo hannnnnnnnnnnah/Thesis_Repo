@@ -29,12 +29,11 @@ public class FigureBehavior : MonoBehaviour
             move = false;
             animator.SetBool("Push", true);
             ghostAnim.SetBool("Spawn", true);
+
+            StartCoroutine(FigureDelay());
+
             Scene1Manager.instance.figureKilled = true;
             Scene1Manager.instance.TriggerLevelSwitch();
-
-            //spawn figures
-            figures.SetActive(true);
-            textPrompt.SetActive(true);
         }
     }
 
@@ -55,5 +54,13 @@ public class FigureBehavior : MonoBehaviour
         {
             animator.SetBool("Turn", true);
         }
+    }
+
+    public IEnumerator FigureDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        //spawn figures
+        figures.SetActive(true);
+        textPrompt.SetActive(true);
     }
 }
