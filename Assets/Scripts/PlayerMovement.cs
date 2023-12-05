@@ -18,7 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 camRotation, moveDirection;
     private Camera mainCamera;
 
-    Animator animator;
+    public Animator animator;
+
+    public AudioSource flashback;
 
     CharacterController characterController;
 
@@ -116,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        stepRate = 0.4f;
+        stepRate = 0.3f;
 
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");

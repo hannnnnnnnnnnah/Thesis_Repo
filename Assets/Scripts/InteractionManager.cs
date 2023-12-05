@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -36,6 +37,13 @@ public class InteractionManager : MonoBehaviour
     {
         Debug.Log("sanity is at" + " " + sanity);
 
+        if(sanity < sanitySet)
+        {
+            PlayerMovement.instance.flashback.Play();
+            PlayerMovement.instance.animator.SetBool("Flashback", true);
+            StartCoroutine(StopFlashback());
+        }
+
         switch (sanity)
         {
             case 5:
@@ -72,5 +80,11 @@ public class InteractionManager : MonoBehaviour
 
                 break;
         }
+    }
+
+    IEnumerator StopFlashback()
+    {
+        yield return new WaitForSeconds(8f);
+        PlayerMovement.instance.animator.SetBool("Flashback", false);
     }
 }

@@ -45,8 +45,16 @@ public class DeathTimer : MonoBehaviour
             DeathAudioTrigger();
             yield return new WaitForSeconds(1f);
 
-            if(!PlayerMovement.instance.isCrouching)
+            //if(!PlayerMovement.instance.isCrouching)
+            //    deathTime--;
+            
+            if (PlayerMovement.instance.isCrouching)
+                metro.mute = true;
+            else
+            {
                 deathTime--;
+                metro.mute = false;
+            }
         }    
     }
 
@@ -60,7 +68,7 @@ public class DeathTimer : MonoBehaviour
 
                 breathing.mute = false;
                 heartbeat.mute = false;
-                metro.mute = false;
+                //metro.mute = false;
 
                 if (!breathing.isPlaying)
                 {
@@ -69,7 +77,7 @@ public class DeathTimer : MonoBehaviour
                 break;
 
             case 10:
-                if (!metro.isPlaying)
+                if (!metro.isPlaying && !PlayerMovement.instance.isCrouching)
                 {
                     if(!PlayerMovement.instance.isCrouching)
                         metro.Play();

@@ -13,28 +13,27 @@ public class FigureApproach : MonoBehaviour
     public bool approachPlayer;
     public float speed;
 
-    GameObject player;
     Animator animator;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
         float step = speed * Time.deltaTime;
+        float rotateStep = 165f * Time.deltaTime;
 
-        if (approachPlayer && !player.GetComponent<PlayerMovement>().inTracks)
+        if (approachPlayer && !PlayerMovement.instance.inTracks)
         {
             if (!approaching)
                 setAnim();
 
             Debug.Log("I AM CHASING YOU");
 
-            transform.position = Vector3.Lerp(transform.position, player.transform.position, step);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, player.transform.rotation, step);
+            transform.position = Vector3.Lerp(transform.position, PlayerMovement.instance.gameObject.transform.position, step);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, PlayerMovement.instance.gameObject.transform.rotation, rotateStep);
         }
 
         if (!approachPlayer && approaching)
@@ -48,7 +47,7 @@ public class FigureApproach : MonoBehaviour
         if (health <= 0 && !dying)
             StartCoroutine(Die());
 
-        if (Vector3.Distance(player.transform.position, transform.position) <= 3f && !player.GetComponent<PlayerMovement>().inTracks)
+        if (Vector3.Distance(PlayerMovement.instance.gameObject.transform.position, transform.position) <= 3f && !PlayerMovement.instance.inTracks)
         {
             StartCoroutine(emmaRevenge());
         }
@@ -98,10 +97,10 @@ public class FigureApproach : MonoBehaviour
         steps.Stop();
 
         //revenge
-        player.GetComponent<CharacterController>().enabled = false;
+        PlayerMovement.instance.gameObject.GetComponent<CharacterController>().enabled = false;
         Debug.Log("GOT YOU");
-        player.gameObject.transform.position = GameObject.FindGameObjectWithTag("Revenge").GetComponent<Transform>().position;
-        player.GetComponent<CharacterController>().enabled = true;
+        PlayerMovement.instance.gameObject.transform.position = GameObject.FindGameObjectWithTag("Revenge").GetComponent<Transform>().position;
+        PlayerMovement.instance.gameObject.GetComponent<CharacterController>().enabled = true;
 
         laugh.Play();
         yield return new WaitForSeconds(1f);

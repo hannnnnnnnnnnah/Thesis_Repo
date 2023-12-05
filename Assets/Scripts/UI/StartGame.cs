@@ -11,6 +11,9 @@ public class StartGame : MonoBehaviour
     {
         startButton = GetComponent<Button>();
         startButton.onClick.AddListener(TaskOnClick);
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void TaskOnClick()

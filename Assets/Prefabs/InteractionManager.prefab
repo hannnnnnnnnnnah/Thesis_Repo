@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsGlobal: 1
-  priority: 2.92
+  priority: 4
   blendDistance: 0.88
   weight: 0
-  sharedProfile: {fileID: 11400000, guid: 1c5ce745dde545140b02dd3b925f613d, type: 2}
+  sharedProfile: {fileID: 11400000, guid: f1db146320eb5794dacfbc8dbbd3402d, type: 2}
 --- !u!1 &2292571331332222010
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,9 +94,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ca26e7b77b5b540912c64f0a2389dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sanity: 5
+  sanityVolume: {fileID: 1953695172987355069}
   lightExplodes: 0
   surroundSound: 0
   whisper: 0
   steps: 0
-  sanityVolume: {fileID: 1953695172987355069}
+  emmaSpawned: 0
+  sanity: 5

@@ -83,7 +83,7 @@ public class FigureDisappear : MonoBehaviour
 
         //rotate towards the player
 
-        if (alertTime == 0 && !PlayerMovement.instance.inTracks)
+        if (alertTime <= 0 && !PlayerMovement.instance.inTracks)
         {
             UIManager.instance.ResetEye("EyeRed", true);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, PlayerMovement.instance.gameObject.transform.rotation, -rotateStep);
@@ -124,8 +124,6 @@ public class FigureDisappear : MonoBehaviour
 
     public void Disappear()
     {
-        figureDespawning = true;
-
         approachPlayer = false;
         Debug.Log("caught");
 
@@ -157,6 +155,7 @@ public class FigureDisappear : MonoBehaviour
 
     IEnumerator Despawn()
     {
+        figureDespawning = true;
         trigger.disableSelf();
 
         //change UI
@@ -203,6 +202,12 @@ public class FigureDisappear : MonoBehaviour
                 currentWaypoint = waypoints[waypoints.Length - waypointLoop];     
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        if(figureDespawning)
+            UIManager.instance.ResetEye("EyeRed", false);
     }
 } 
 

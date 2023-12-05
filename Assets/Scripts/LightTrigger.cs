@@ -44,6 +44,12 @@ public class LightTrigger : MonoBehaviour
             Debug.Log(other);
             other.gameObject.GetComponent<FigureDisappear>().Die();
         }
+
+        if (other.gameObject.layer == 7)
+        {
+            Debug.Log("emma died");
+            StartCoroutine(other.gameObject.GetComponent<FigureApproach>().Injure());
+        }
     }
 
     private void OnTriggerExit(Collider other)
