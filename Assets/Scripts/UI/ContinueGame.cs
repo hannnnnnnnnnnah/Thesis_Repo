@@ -23,10 +23,9 @@ public class ContinueGame : MonoBehaviour
 
     void TaskOnClick()
     {
-        if (EventSystem.current.currentSelectedGameObject == continueButton.gameObject) //unselect the button
-        {
+        //unselect the button
+        if (EventSystem.current.currentSelectedGameObject == continueButton.gameObject) 
             EventSystem.current.SetSelectedGameObject(null);
-        }
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

@@ -44,9 +44,6 @@ public class DeathTimer : MonoBehaviour
         {
             DeathAudioTrigger();
             yield return new WaitForSeconds(1f);
-
-            //if(!PlayerMovement.instance.isCrouching)
-            //    deathTime--;
             
             if (PlayerMovement.instance.isCrouching)
                 metro.mute = true;

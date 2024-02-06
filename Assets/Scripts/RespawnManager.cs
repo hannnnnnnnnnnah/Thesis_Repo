@@ -18,14 +18,10 @@ public class RespawnManager : MonoBehaviour
     void Awake()
     {
         if (instance == null)
-        {
             instance = this;
-        }
         else if (instance != this)
-        {
             Destroy(gameObject);
-        }
-
+        
         DontDestroyOnLoad(gameObject);
 
         SceneManager.sceneLoaded += OnLevelLoad;
@@ -34,15 +30,6 @@ public class RespawnManager : MonoBehaviour
     private void Start()
     {
         canvas = GetComponentInChildren<Canvas>();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            animator.SetBool("Respawn", false);
-            //SceneManager.LoadScene("TitleScreen");
-        }
     }
 
     private void OnDisable()

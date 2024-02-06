@@ -18,13 +18,9 @@ public class InteractionManager : MonoBehaviour
     void Awake()
     {
         if (instance == null)
-        {
             instance = this;
-        }
         else if (instance != this)
-        {
             Destroy(gameObject);
-        }
     }
 
     public void ResetSanity()

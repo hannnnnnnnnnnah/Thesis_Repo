@@ -13,14 +13,12 @@ public class PlayerMovement : MonoBehaviour
     public bool isSprinting, isCrouching, inTracks;
     public LayerMask checkRaycast;
     public Light flashlight;
+    public Animator animator;
+    public AudioSource flashback;
 
     private float stepRate, stepCoolDown, stepRateSet;
     private Vector3 camRotation, moveDirection;
     private Camera mainCamera;
-
-    public Animator animator;
-
-    public AudioSource flashback;
 
     CharacterController characterController;
 
@@ -29,13 +27,9 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         if (instance == null)
-        {
             instance = this;
-        }
         else if (instance != this)
-        {
             Destroy(gameObject);
-        }
     }
 
     private void Start()
@@ -109,9 +103,7 @@ public class PlayerMovement : MonoBehaviour
                     hitData.collider.gameObject.GetComponent<FigureDisappear>().Die();
 
                 if (hitData.collider.gameObject.tag == "Emma" && flashlight.intensity > 0 && !hitData.collider.gameObject.GetComponent<FigureApproach>().gettingInjured)
-                {
                     StartCoroutine(hitData.collider.gameObject.GetComponent<FigureApproach>().Injure());
-                }
             }
         }
     }
