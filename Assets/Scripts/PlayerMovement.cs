@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] bool sprintDisabled, hasFlashlight = false;
+    [SerializeField] bool sprintDisabled = false;
     [SerializeField] float speed, sprintSpeed, walkSpeed, sneakSpeed, gravity;
     [SerializeField] int minAngle, maxAngle, sensitivity;
     [SerializeField] GameObject SurroundSound, camHeight, camCrouch;
-    [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper, voice, flash_on, flash_off;
+    [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper, flash_on, flash_off;
     [SerializeField] DeathTimer deathTimer;
 
     public bool isSprinting, isCrouching, inTracks;
@@ -71,41 +71,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Move();
-        Rotate();
-            
-        //flashlight
-
-        if (Input.GetMouseButtonDown(0) && hasFlashlight)
-        {
-            if (flashlight.intensity == 0)
-            {
-                flashlight.intensity = 300;
-                flash_on.Play();
-            }
-               
-            else if (flashlight.intensity != 0)
-            {
-                flashlight.intensity = 0;
-                flash_off.Play();
-            }
-        }
-
-        //raycasting stuff
-
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hitData;
-
-        if (hasFlashlight)
-        {
-            if (Physics.Raycast(ray, out hitData, 15f, checkRaycast))
-            {
-                if (hitData.collider.gameObject.tag == "Figure" && !hitData.collider.gameObject.GetComponent<Animator>().GetBool("Disappear") && flashlight.intensity > 0)
-                    hitData.collider.gameObject.GetComponent<FigureDisappear>().Die();
-
-                if (hitData.collider.gameObject.tag == "Emma" && flashlight.intensity > 0 && !hitData.collider.gameObject.GetComponent<FigureApproach>().gettingInjured)
-                    StartCoroutine(hitData.collider.gameObject.GetComponent<FigureApproach>().Injure());
-            }
-        }
+        Rotate();   
     }
 
     private void Move()

@@ -34,7 +34,7 @@ public class TrackKillTrigger : MonoBehaviour
     public void StopTrain()
     {
         //Show normal trains
-        Scene1Manager.instance.ShowTrains();
+        NarrativeManager.instance.ShowTrains();
 
         foreach (GameObject metrocar in metrocars)
         {

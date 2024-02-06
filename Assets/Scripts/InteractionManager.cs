@@ -62,16 +62,6 @@ public class InteractionManager : MonoBehaviour
                 break;
 
             case <= 2:
-                if (!emmaSpawned)
-                {
-                    figureSpawner = GameObject.FindGameObjectWithTag("FigureSpawner");
-                    figureSpawner.GetComponent<FigureSpawner>().SpawnEmma();
-                    emmaSpawned = true;
-                }
-
-                if(emmaSpawned)
-                    GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().speed += .1f;
-
                 sanityVolume.weight += .2f;
 
                 break;

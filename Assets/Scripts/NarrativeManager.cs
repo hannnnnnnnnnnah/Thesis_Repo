@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class Scene1Manager : MonoBehaviour
+public class NarrativeManager : MonoBehaviour
 {
-    [SerializeField] GameObject overheadLight, startSpawn, newSpawn, firstVictim;
+    [SerializeField] GameObject overheadLight, startSpawn, newSpawn;
     [SerializeField] GameObject[] metrocars, lights;
 
     public bool figureKilled, trackDeathStart = false;
-    public static Scene1Manager instance;
+    public static NarrativeManager instance;
 
     void Awake()
     {
@@ -18,12 +18,9 @@ public class Scene1Manager : MonoBehaviour
 
     private void Start()
     {
-        //player = GameObject.FindGameObjectWithTag("Player");
+        TriggerLevelSwitch();
 
-        if (!RespawnManager.instance.spawnChange)
-            RespawnManager.instance.spawnPoint = startSpawn.transform.position;
-        else
-            TriggerLevelSwitch();
+        PlayerMovement.instance.StartDeathTimer();
     }
 
     private void Update()
@@ -49,17 +46,6 @@ public class Scene1Manager : MonoBehaviour
             light.GetComponent<Animator>().SetBool("LightExplode", true);
             light.GetComponentInChildren<LightTrigger>().lightBroken = true;
         } 
-
-        if (InteractionManager.instance.emmaSpawned)
-            GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().Despawn();
-
-        if (figureKilled)
-        {
-            PlayerMovement.instance.StartDeathTimer();
-            //UIManager.instance.ShowText("Hold shift to sprint");
-        }
-        else
-            firstVictim.SetActive(false);
     }
 
     public void TriggerTrainDeath()

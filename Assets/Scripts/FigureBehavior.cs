@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class FigureBehavior : MonoBehaviour
@@ -32,8 +30,8 @@ public class FigureBehavior : MonoBehaviour
 
             StartCoroutine(FigureDelay());
 
-            Scene1Manager.instance.figureKilled = true;
-            Scene1Manager.instance.TriggerLevelSwitch();
+            NarrativeManager.instance.figureKilled = true;
+            NarrativeManager.instance.TriggerLevelSwitch();
         }
     }
 
