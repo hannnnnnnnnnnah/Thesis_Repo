@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        ShowText(moveText);
+        //ShowText(moveText);
     }
 
     public void ShowText(string text)

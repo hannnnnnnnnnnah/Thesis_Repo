@@ -3,14 +3,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] bool sprintDisabled = false;
     [SerializeField] float speed, sprintSpeed, walkSpeed, sneakSpeed, gravity;
     [SerializeField] int minAngle, maxAngle, sensitivity;
     [SerializeField] GameObject SurroundSound, camHeight, camCrouch;
     [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper, flash_on, flash_off;
     [SerializeField] DeathTimer deathTimer;
 
-    public bool isSprinting, isCrouching, inTracks;
+    public bool isCrouching, inTracks;
     public LayerMask checkRaycast;
     public Light flashlight;
     public Animator animator;
@@ -35,17 +34,13 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         //Sets player position to spawn point
-
         gameObject.transform.position = RespawnManager.instance.spawnPoint;
-
-        //Camera stuff
 
         mainCamera = Camera.main;
         mainCamera.transform.position = camHeight.transform.position;
         
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-        flashlight = GetComponentInChildren<Light>();
         Cursor.lockState = CursorLockMode.Locked;
 
         speed = walkSpeed;
@@ -68,10 +63,10 @@ public class PlayerMovement : MonoBehaviour
         whisper.Stop();
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         Move();
-        Rotate();   
+        Rotate();
     }
 
     private void Move()
@@ -86,16 +81,7 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = new Vector3(horizontalMove, 0, verticalMove);
             moveDirection = transform.TransformDirection(moveDirection);
 
-            if (Input.GetKey(KeyCode.LeftShift) && !sprintDisabled)
-            {
-                speed = sprintSpeed;
-                stepRateSet = 0.25f;
-                //isSprinting = true;
-
-                animator.SetBool("StartCrouch", false);
-                mainCamera.transform.position = camHeight.transform.position;
-            }
-            if (Input.GetKey(KeyCode.LeftControl) && !isSprinting)
+            if (Input.GetKey(KeyCode.LeftControl))
             {
                 isCrouching = true;
                 speed = sneakSpeed;
@@ -106,7 +92,6 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                isSprinting = false;
                 isCrouching = false;
 
                 //Set walk speed to normal
@@ -132,9 +117,7 @@ public class PlayerMovement : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
 
         if (characterController.enabled)
-        {
             characterController.Move(moveDirection * speed * Time.deltaTime);
-        }
     }
 
     //Camera rotation stuff

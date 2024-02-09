@@ -71,14 +71,6 @@ public class FigureDisappear : MonoBehaviour
                 //change UI
                 UIManager.instance.ResetEye("EyeVisible", true);
             }
-
-            if (PlayerMovement.instance.isSprinting)
-            {
-                alertTimeDecreasing = false;
-                StopAllCoroutines();
-                UIManager.instance.ResetEye("EyeRed", true);
-                alertTime = 0;
-            }
         }
 
         //rotate towards the player
@@ -193,8 +185,7 @@ public class FigureDisappear : MonoBehaviour
             if (currentWaypoint == waypoints[0])
             {
                 waypointLoop = 1;
-                currentWaypoint = waypoints[waypoints.Length - 1];
-                
+                currentWaypoint = waypoints[waypoints.Length - 1];  
             }
             else
             {
@@ -210,4 +201,3 @@ public class FigureDisappear : MonoBehaviour
             UIManager.instance.ResetEye("EyeRed", false);
     }
 } 
-

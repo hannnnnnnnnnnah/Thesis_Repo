@@ -778,15 +778,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprintDisabled: 0
-  hasFlashlight: 0
   speed: 0
   sprintSpeed: 16
-  walkSpeed: 14
-  sneakSpeed: 4
+  walkSpeed: 15
+  sneakSpeed: 5
   gravity: 2
   minAngle: -45
   maxAngle: 45
-  sensitivity: 80
+  sensitivity: 100
   SurroundSound: {fileID: 7355836924932058856}
   camHeight: {fileID: 177134489698684601}
   camCrouch: {fileID: 8483788584246799139}
@@ -794,7 +793,6 @@ MonoBehaviour:
   audioBreath: {fileID: 1963335283}
   other_steps: {fileID: 5973447810356893738}
   whisper: {fileID: 709505170}
-  voice: {fileID: 0}
   flash_on: {fileID: 5213421673022883882}
   flash_off: {fileID: 3939695924661142068}
   deathTimer: {fileID: 3033862207555161544}
