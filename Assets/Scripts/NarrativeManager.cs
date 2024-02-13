@@ -1,10 +1,11 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class NarrativeManager : MonoBehaviour
 {
     [SerializeField] GameObject overheadLight, startSpawn, newSpawn;
-    [SerializeField] GameObject[] metrocars, lights;
 
+    public List<GameObject> metrocars, lights;
     public bool figureKilled, trackDeathStart = false;
     public static NarrativeManager instance;
 
@@ -21,6 +22,7 @@ public class NarrativeManager : MonoBehaviour
         TriggerLevelSwitch();
 
         PlayerMovement.instance.StartDeathTimer();
+        lights = new List<GameObject>();
     }
 
     private void Update()
@@ -43,7 +45,7 @@ public class NarrativeManager : MonoBehaviour
 
         foreach (GameObject light in lights)
         {
-            light.GetComponent<Animator>().SetBool("LightExplode", true);
+            light.GetComponentInParent<Animator>().SetBool("LightExplode", true);
             light.GetComponentInChildren<LightTrigger>().lightBroken = true;
         } 
     }

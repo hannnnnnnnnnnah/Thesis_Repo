@@ -1,21 +1,35 @@
+using System.Collections;
 using UnityEngine;
 
 public class LightTrigger : MonoBehaviour
 {
-    [SerializeField] bool lightFlicker, lightCanExplode;
+    [SerializeField] bool lightFlicker, lightCanExplode, lightOut, lightTimed;
     [SerializeField] AudioSource source;
+    [SerializeField] GameObject lmat;
+    [SerializeField] Material material1, material2;
 
-    public float deathTimeReset;
+    float intensitySet;
+    public float deathTimeReset, lightDelay;
     public bool lightBroken = false;
+    public bool lightTimer = true;
     
     Animator animator;
+    Light spotlight;
 
     private void Start()
     {
         animator = GetComponentInParent<Animator>();
+        spotlight = GetComponent<Light>();
+        intensitySet = spotlight.intensity;
 
         if (lightFlicker)
             animator.SetBool("LightFlicker", true);
+
+        if (lightOut)
+            NarrativeManager.instance.lights.Add(gameObject);
+
+        if (lightTimed)
+            StartCoroutine(LightTimed());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,30 +39,13 @@ public class LightTrigger : MonoBehaviour
             if (!lightBroken && RespawnManager.instance.spawnChange)
             {
                 if (!InteractionManager.instance.surroundSound)
-                    other.GetComponent<PlayerMovement>().StopSurroundSound();
+                    PlayerMovement.instance.StopSurroundSound();
 
                 //Death effects are reset
                 other.GetComponent<DeathTimer>().deathTime = deathTimeReset;
                 other.GetComponent<DeathTimer>().StopAllCoroutines();
                 other.GetComponent<DeathTimer>().DeathEffectsCancel();
-
-                //Figure stops chasing
-                if (InteractionManager.instance.emmaSpawned)
-                    GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = false;
             }
-        }
-
-        if (other.gameObject.layer == 3)
-        {
-            Debug.Log("figure died in the light uwu");
-            Debug.Log(other);
-            other.gameObject.GetComponent<FigureDisappear>().Die();
-        }
-
-        if (other.gameObject.layer == 7)
-        {
-            Debug.Log("emma died");
-            StartCoroutine(other.gameObject.GetComponent<FigureApproach>().Injure());
         }
     }
 
@@ -56,18 +53,14 @@ public class LightTrigger : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            if (RespawnManager.instance.spawnChange && !other.GetComponent<PlayerMovement>().inTracks)
+            if (RespawnManager.instance.spawnChange && !PlayerMovement.instance.inTracks)
             {
                 //Start and stop surround sound
                 if (InteractionManager.instance.surroundSound)
-                    other.GetComponent<PlayerMovement>().StartSurroundSound();
+                    PlayerMovement.instance.StartSurroundSound();
 
                 if (!InteractionManager.instance.surroundSound)
-                    other.GetComponent<PlayerMovement>().StopSurroundSound();
-
-                //Figure starts chasing
-                if (InteractionManager.instance.emmaSpawned)
-                    GameObject.FindGameObjectWithTag("Emma").GetComponent<FigureApproach>().approachPlayer = true;
+                    PlayerMovement.instance.StopSurroundSound();
 
                 //Death effects start
                 other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());
@@ -79,6 +72,18 @@ public class LightTrigger : MonoBehaviour
                     lightBroken = true;
                 }
             }
+        }
+    }
+
+    public IEnumerator LightTimed()
+    {
+        while (lightTimer)
+        {
+            spotlight.enabled = false;
+            lmat.GetComponent<MeshRenderer>().material = material1;
+            yield return new WaitForSeconds(lightDelay);
+            spotlight.enabled = true;
+            lmat.GetComponent<MeshRenderer>().material = material2;
         }
     }
 }
