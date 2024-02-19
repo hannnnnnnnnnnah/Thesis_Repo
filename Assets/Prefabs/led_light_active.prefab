@@ -50,9 +50,9 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3000
+  m_Intensity: 2984.97
   m_Range: 70
-  m_SpotAngle: 52.099373
+  m_SpotAngle: 30.171589
   m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
@@ -135,15 +135,12 @@ MonoBehaviour:
   lightFlicker: 0
   lightCanExplode: 0
   lightOut: 0
-  lightTimed: 0
   source: {fileID: 4052692163980190148}
   lmat: {fileID: 0}
   material1: {fileID: 2100000, guid: 043d1fab398131d448ba38a14a06eb5a, type: 2}
   material2: {fileID: 2100000, guid: d0f789ecf69de0843b6afb2d7e9e69b0, type: 2}
   deathTimeReset: 11
-  lightDelay: 0
   lightBroken: 0
-  lightTimer: 1
 --- !u!65 &8139676075817961368
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -155,8 +152,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3937.0898, y: 6660.2188, z: 10010.262}
-  m_Center: {x: 214.76611, y: 67.62581, z: 4763.883}
+  m_Size: {x: 3937.0898, y: 4990.838, z: 10010.262}
+  m_Center: {x: 214.76611, y: -77.55147, z: 4763.8823}
 --- !u!82 &4052692163980190148
 AudioSource:
   m_ObjectHideFlags: 0

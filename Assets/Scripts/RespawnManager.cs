@@ -28,6 +28,12 @@ public class RespawnManager : MonoBehaviour
         canvas = GetComponentInChildren<Canvas>();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+            Die();
+    }
+
     private void OnDisable()
     {
          SceneManager.sceneLoaded -= OnLevelLoad;

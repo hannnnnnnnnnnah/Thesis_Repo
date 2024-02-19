@@ -8,7 +8,7 @@ public class DeathTimer : MonoBehaviour
     [SerializeField] Volume vol;
     [SerializeField] Animator animator;
 
-    public bool playVisuals = false;
+    public bool playVisuals, deathRunning = false;
     public float deathTime = 11;
 
     private void Update()
@@ -39,6 +39,7 @@ public class DeathTimer : MonoBehaviour
     {
         while(deathTime > 0)
         {
+            deathRunning = true;
             DeathAudioTrigger();
             yield return new WaitForSeconds(1f);
             deathTime--;
@@ -82,6 +83,7 @@ public class DeathTimer : MonoBehaviour
 
     public IEnumerator DeathEffectFade()
     {
+        deathRunning = false;
         breathing.mute = true;
         heartbeat.mute = true;
         metro.mute = true;

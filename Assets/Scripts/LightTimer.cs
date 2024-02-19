@@ -4,24 +4,28 @@ using UnityEngine;
 public class LightTimer : MonoBehaviour
 {
     [SerializeField] float timerDelayLight, timerDelayDark;
+    [SerializeField] GameObject lInactive;
 
     public bool timerActive = true;
 
-    Animator animator;
+    LightTrigger trigger;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
-        StartCoroutine(Timer());
+        trigger = GetComponentInChildren<LightTrigger>();
     }
 
-    IEnumerator Timer()
+    public IEnumerator Timer()
     {
         while (timerActive)
         {
-            animator.SetBool("LightExplode", true);
+            lInactive.SetActive(false);
+            trigger.lightBroken = false;
+            trigger.spotlight.enabled = true;
             yield return new WaitForSeconds(timerDelayDark);
-            animator.SetBool("LightExplode", false);
+            lInactive.SetActive(true);
+            trigger.lightBroken = true;
+            trigger.spotlight.enabled = false;
             yield return new WaitForSeconds(timerDelayLight);
         }
     }

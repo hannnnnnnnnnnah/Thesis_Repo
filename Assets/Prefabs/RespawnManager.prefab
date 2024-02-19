@@ -47,12 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483fafc451d66da48904b5963511469e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1791131658182666554}
   inhale: {fileID: 1791131658182666557}
-  deathCount: 0
-  exitTriggered: 0
   gameStart: 0
-  canvas: {fileID: 1791131658765720695}
+  spawnChange: 0
+  deathCount: 0
+  animator: {fileID: 1791131658182666554}
+  spawnPoint: {x: 0, y: 0, z: 0}
 --- !u!82 &1791131658182666557
 AudioSource:
   m_ObjectHideFlags: 0
@@ -204,8 +204,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.000289917}
-  m_SizeDelta: {x: 800, y: 450.16}
+  m_AnchoredPosition: {x: 0, y: 0.00017071}
+  m_SizeDelta: {x: 800, y: 494.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1791131658318192241
 CanvasRenderer:

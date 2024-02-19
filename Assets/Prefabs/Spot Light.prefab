@@ -145,10 +145,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f41364b7b927845afb11aada5867a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathTimeReset: 11
-  source: {fileID: 4369175166800222005}
   lightFlicker: 0
   lightCanExplode: 0
+  lightOut: 0
+  source: {fileID: 4369175166800222005}
+  deathTimeReset: 11
+  lightBroken: 0
+  spotlight: {fileID: 0}
 --- !u!82 &3254627611687905615
 AudioSource:
   m_ObjectHideFlags: 0
