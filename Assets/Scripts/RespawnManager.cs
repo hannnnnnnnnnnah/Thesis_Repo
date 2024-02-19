@@ -11,7 +11,6 @@ public class RespawnManager : MonoBehaviour
     public Vector3 spawnPoint;
 
     Canvas canvas;
-    //GameObject Player;
 
     public static RespawnManager instance;
 
@@ -25,10 +24,7 @@ public class RespawnManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         SceneManager.sceneLoaded += OnLevelLoad;
-    }
 
-    private void Start()
-    {
         canvas = GetComponentInChildren<Canvas>();
     }
 

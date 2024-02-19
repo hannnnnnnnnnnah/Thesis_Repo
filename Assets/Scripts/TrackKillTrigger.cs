@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class TrackKillTrigger : MonoBehaviour
 {
@@ -15,7 +12,6 @@ public class TrackKillTrigger : MonoBehaviour
             other.GetComponent<DeathTimer>().StopAllCoroutines();
             other.GetComponent<DeathTimer>().DeathEffectsCancel();
 
-            //Set bool
             other.GetComponent<PlayerMovement>().inTracks = true;
 
             StartTrain();

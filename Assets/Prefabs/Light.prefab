@@ -310,8 +310,8 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 223.1
   m_Range: 36.72704
-  m_SpotAngle: 72.332726
-  m_InnerSpotAngle: 30.303123
+  m_SpotAngle: 57.398457
+  m_InnerSpotAngle: 17.997889
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -392,9 +392,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightFlicker: 0
   lightCanExplode: 0
+  lightOut: 0
+  lightTimed: 0
   source: {fileID: 5970550645509202921}
+  lmat: {fileID: 0}
+  material1: {fileID: 0}
+  material2: {fileID: 0}
   deathTimeReset: 11
+  lightDelay: 0
   lightBroken: 0
+  lightTimer: 1
 --- !u!82 &4851229015740915091
 AudioSource:
   m_ObjectHideFlags: 0
@@ -598,8 +605,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 17.997675, y: 17.58181, z: 19.784885}
-  m_Center: {x: 0.9063474, y: 0.4279491, z: 9.392445}
+  m_Size: {x: 12.563104, y: 17.58181, z: 19.784885}
+  m_Center: {x: 3.6236343, y: 0.42794895, z: 9.392445}
 --- !u!1 &1837582613774650886
 GameObject:
   m_ObjectHideFlags: 0

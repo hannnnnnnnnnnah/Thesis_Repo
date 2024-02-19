@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -104,7 +103,6 @@ public class PlayerMovement : MonoBehaviour
             //step audio
 
             stepCoolDown -= Time.deltaTime;
-            //characterController.velocity.y == 0
 
             if (characterController.velocity.magnitude > 0 && stepCoolDown < 0f)
             {

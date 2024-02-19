@@ -44,7 +44,6 @@ public class FigureDisappear : MonoBehaviour
         if (isPatrolling)
             Patrol();
 
-
         if (Physics.Raycast(ray, out hitData, sightDistance, checkRaycast))
         {
             Debug.Log("figure saw player");
@@ -178,7 +177,6 @@ public class FigureDisappear : MonoBehaviour
     public void Patrol()
     {
         agent.destination = currentWaypoint.transform.position;
-        //Debug.Log(Vector3.Distance(transform.position, currentWaypoint.transform.position));
 
         if(Vector3.Distance(transform.position, currentWaypoint.transform.position) <= 4.05)
         {

@@ -3,15 +3,13 @@ using UnityEngine;
 
 public class LightTrigger : MonoBehaviour
 {
-    [SerializeField] bool lightFlicker, lightCanExplode, lightOut, lightTimed;
+    [SerializeField] bool lightFlicker, lightCanExplode, lightOut;
     [SerializeField] AudioSource source;
     [SerializeField] GameObject lmat;
     [SerializeField] Material material1, material2;
 
-    float intensitySet;
-    public float deathTimeReset, lightDelay;
+    public float deathTimeReset;
     public bool lightBroken = false;
-    public bool lightTimer = true;
     
     Animator animator;
     Light spotlight;
@@ -20,16 +18,12 @@ public class LightTrigger : MonoBehaviour
     {
         animator = GetComponentInParent<Animator>();
         spotlight = GetComponent<Light>();
-        intensitySet = spotlight.intensity;
 
         if (lightFlicker)
             animator.SetBool("LightFlicker", true);
 
         if (lightOut)
             NarrativeManager.instance.lights.Add(gameObject);
-
-        if (lightTimed)
-            StartCoroutine(LightTimed());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -72,18 +66,6 @@ public class LightTrigger : MonoBehaviour
                     lightBroken = true;
                 }
             }
-        }
-    }
-
-    public IEnumerator LightTimed()
-    {
-        while (lightTimer)
-        {
-            spotlight.enabled = false;
-            lmat.GetComponent<MeshRenderer>().material = material1;
-            yield return new WaitForSeconds(lightDelay);
-            spotlight.enabled = true;
-            lmat.GetComponent<MeshRenderer>().material = material2;
         }
     }
 }
