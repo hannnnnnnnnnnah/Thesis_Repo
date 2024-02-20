@@ -71,5 +71,13 @@ public class LightTrigger : MonoBehaviour
     {
         if(other.tag == "Player" && lightBroken && !other.GetComponent<DeathTimer>().deathRunning)
             other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());
+
+        if(other.tag == "Player" && !lightBroken)
+        {
+            //Death effects are reset
+            other.GetComponent<DeathTimer>().deathTime = deathTimeReset;
+            other.GetComponent<DeathTimer>().StopAllCoroutines();
+            other.GetComponent<DeathTimer>().DeathEffectsCancel();
+        }
     }
 }
