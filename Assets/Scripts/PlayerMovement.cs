@@ -88,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
                 animator.SetBool("StartCrouch", true);
                 mainCamera.transform.position = camCrouch.transform.position;
+                characterController.height = 1.2f;
             }
             else
             {

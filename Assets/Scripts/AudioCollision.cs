@@ -15,7 +15,7 @@ public class AudioCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.impulse.magnitude >= Vector3.one.magnitude)
+        if (collision.impulse.magnitude >= Vector3.one.magnitude / 2)
             audioSource.Play();
     }
 }
