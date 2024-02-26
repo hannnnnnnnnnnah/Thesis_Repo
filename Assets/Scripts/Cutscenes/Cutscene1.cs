@@ -5,15 +5,9 @@ public class Cutscene1 : MonoBehaviour
 {
     [SerializeField] GameObject[] doors;
     [SerializeField] Collider a, b;
+    [SerializeField] AudioSource audioSource;
 
     bool cutsceneTriggered = false;
-
-    AudioSource audioSource;
-
-    private void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {

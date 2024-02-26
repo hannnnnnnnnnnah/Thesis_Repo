@@ -23,7 +23,7 @@ public class TrackKillTrigger : MonoBehaviour
         foreach(GameObject metrocar in metrocars)
         {
             metrocar.gameObject.SetActive(true);
-            metrocar.GetComponent<TrainMove>().move = true;
+            metrocar.GetComponent<TrainKill>().move = true;
         }
     }
 
@@ -34,9 +34,9 @@ public class TrackKillTrigger : MonoBehaviour
 
         foreach (GameObject metrocar in metrocars)
         {
-            metrocar.GetComponent<TrainMove>().move = false;
-            metrocar.GetComponent<TrainMove>().t_audio.Stop();
-            metrocar.gameObject.transform.position = metrocar.GetComponent<TrainMove>().storePos;
+            metrocar.GetComponent<TrainKill>().move = false;
+            metrocar.GetComponent<TrainKill>().t_audio.Stop();
+            metrocar.gameObject.transform.position = metrocar.GetComponent<TrainKill>().storePos;
             metrocar.gameObject.SetActive(false);
         }
            

@@ -1,20 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TrainMove : MonoBehaviour
 {
-    [SerializeField] bool move_right, move_left;
+    [SerializeField] bool move_right, move_left, move;
     [SerializeField] float speed;
-    [SerializeField] GameObject killTrigger;
-
-    public bool move;
-    public AudioSource t_audio;
-    public Vector3 storePos;
-
-    private void Start()
-    {
-        t_audio = GetComponent<AudioSource>();
-        storePos = transform.position;
-    }
+    [SerializeField] GameObject stopPos;
+    [SerializeField] AudioSource t_audio;
 
     private void FixedUpdate()
     {
@@ -22,7 +15,7 @@ public class TrainMove : MonoBehaviour
 
         if (move)
         {
-            if(!t_audio.isPlaying)
+            if (!t_audio.isPlaying)
                 t_audio.Play();
 
             if (move_right)
@@ -30,16 +23,9 @@ public class TrainMove : MonoBehaviour
 
             if (move_left)
                 transform.Translate(Vector3.forward * step);
-        }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            killTrigger.GetComponent<TrackKillTrigger>().StopTrain();
-            t_audio.Stop();
-            RespawnManager.instance.Die();
+            if (transform.position.z >= stopPos.transform.position.z)
+                move = false;
         }
     }
 }
