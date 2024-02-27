@@ -9,10 +9,10 @@ public class TrackKillTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //Death effects are reset
-            other.GetComponent<DeathTimer>().StopAllCoroutines();
-            other.GetComponent<DeathTimer>().DeathEffectsCancel();
+            DeathTimer.instance.StopAllCoroutines();
+            DeathTimer.instance.DeathEffectsCancel();
 
-            other.GetComponent<PlayerMovement>().inTracks = true;
+            PlayerMovement.instance.inTracks = true;
 
             StartTrain();
         }

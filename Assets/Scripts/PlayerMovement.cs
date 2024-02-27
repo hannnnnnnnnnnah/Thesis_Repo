@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
                 stepRateSet = stepRate;
                 animator.SetBool("StartCrouch", false);
                 mainCamera.transform.position = camHeight.transform.position;
-                characterController.height = 1.6f;
+                characterController.height = 1.49f;
             }
 
             //step audio

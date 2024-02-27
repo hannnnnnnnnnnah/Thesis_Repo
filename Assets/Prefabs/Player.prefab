@@ -185,7 +185,6 @@ MonoBehaviour:
   eye: {fileID: 2561553271413644088}
   flashlightShown: 0
   sneakShown: 0
-  textAnimator: {fileID: 8306975374502714441}
 --- !u!95 &8306975374502714441
 Animator:
   serializedVersion: 4
@@ -879,7 +878,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
+  m_Height: 1.5
   m_Radius: 0.5
   m_SlopeLimit: 90
   m_StepOffset: 0.3
@@ -1509,7 +1508,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3033862208218539582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.436, z: -0.951}
+  m_LocalPosition: {x: 0, y: 0.65, z: 0.196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
