@@ -6,11 +6,11 @@ public class LightTrigger : MonoBehaviour
     [SerializeField] bool lightFlicker, lightCanExplode, lightOut;
     [SerializeField] AudioSource source;
 
-    public float deathTimeReset;
     public bool lightBroken = false;
     public Light spotlight;
-
     public Animator animator;
+
+    float deathTimeReset = 8;
 
     private void Start()
     {
@@ -26,36 +26,33 @@ public class LightTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.CompareTag("Player"))
         {
             if (!lightBroken && RespawnManager.instance.spawnChange)
             {
-                if (!InteractionManager.instance.surroundSound)
-                    PlayerMovement.instance.StopSurroundSound();
+                if (InteractionManager.instance.surroundSound)
+                    InteractionManager.instance.StopSurround();
 
                 //Death effects are reset
-                other.GetComponent<DeathTimer>().deathTime = deathTimeReset;
-                other.GetComponent<DeathTimer>().StopAllCoroutines();
-                other.GetComponent<DeathTimer>().DeathEffectsCancel();
+                DeathTimer.instance.deathTime = deathTimeReset;
+                DeathTimer.instance.StopAllCoroutines();
+                DeathTimer.instance.DeathEffectsCancel();
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.CompareTag("Player"))
         {
             if (RespawnManager.instance.spawnChange && !PlayerMovement.instance.inTracks)
             {
                 //Start and stop surround sound
                 if (InteractionManager.instance.surroundSound)
-                    PlayerMovement.instance.StartSurroundSound();
-
-                if (!InteractionManager.instance.surroundSound)
-                    PlayerMovement.instance.StopSurroundSound();
+                    InteractionManager.instance.StartSurround();
 
                 //Death effects start
-                other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());
+                DeathTimer.instance.StartCoroutine(DeathTimer.instance.DeathTime());
 
                 if (InteractionManager.instance.lightExplodes && lightCanExplode)
                 {
@@ -69,15 +66,15 @@ public class LightTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "Player" && lightBroken && !other.GetComponent<DeathTimer>().deathRunning)
-            other.GetComponent<DeathTimer>().StartCoroutine(other.GetComponent<DeathTimer>().DeathTime());
+        if(other.CompareTag("Player") && lightBroken && !DeathTimer.instance.deathRunning)
+            DeathTimer.instance.StartCoroutine(DeathTimer.instance.DeathTime());
 
-        if(other.tag == "Player" && !lightBroken)
+        if(other.CompareTag("Player") && !lightBroken)
         {
             //Death effects are reset
-            other.GetComponent<DeathTimer>().deathTime = deathTimeReset;
-            other.GetComponent<DeathTimer>().StopAllCoroutines();
-            other.GetComponent<DeathTimer>().DeathEffectsCancel();
+            DeathTimer.instance.deathTime = deathTimeReset;
+            DeathTimer.instance.StopAllCoroutines();
+            DeathTimer.instance.DeathEffectsCancel();
         }
     }
 }

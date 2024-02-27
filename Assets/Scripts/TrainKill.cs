@@ -35,7 +35,7 @@ public class TrainKill : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             killTrigger.GetComponent<TrackKillTrigger>().StopTrain();
             t_audio.Stop();

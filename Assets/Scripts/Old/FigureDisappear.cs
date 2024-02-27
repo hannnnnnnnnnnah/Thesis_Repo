@@ -57,7 +57,7 @@ public class FigureDisappear : MonoBehaviour
 
             if (!PlayerMovement.instance.isCrouching)
             {
-                UIManager.instance.ResetEye("EyeAware", true);
+                //UIManager.instance.ResetEye("EyeAware", true);
                 startAlertTimer();
             }
             else
@@ -68,7 +68,7 @@ public class FigureDisappear : MonoBehaviour
                 alertTime = alertTimeSet;
 
                 //change UI
-                UIManager.instance.ResetEye("EyeVisible", true);
+                //UIManager.instance.ResetEye("EyeVisible", true);
             }
         }
 
@@ -76,7 +76,7 @@ public class FigureDisappear : MonoBehaviour
 
         if (alertTime <= 0 && !PlayerMovement.instance.inTracks)
         {
-            UIManager.instance.ResetEye("EyeRed", true);
+            //UIManager.instance.ResetEye("EyeRed", true);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, PlayerMovement.instance.gameObject.transform.rotation, -rotateStep);
         }
 
@@ -85,7 +85,7 @@ public class FigureDisappear : MonoBehaviour
         if (approachPlayer)
         {
             animator.SetBool("Aware", true);
-            UIManager.instance.ResetEye("EyeRed", true);
+            //UIManager.instance.ResetEye("EyeRed", true);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, PlayerMovement.instance.gameObject.transform.rotation, -rotateStep);
             transform.position = Vector3.Lerp(transform.position, PlayerMovement.instance.gameObject.transform.position, step);
         }
@@ -150,8 +150,8 @@ public class FigureDisappear : MonoBehaviour
         trigger.disableSelf();
 
         //change UI
-        UIManager.instance.ResetEye("EyeRed", false);
-        UIManager.instance.ResetEye("EyeVisible", false);
+        //UIManager.instance.ResetEye("EyeRed", false);
+        //UIManager.instance.ResetEye("EyeVisible", false);
 
         yield return new WaitForSeconds(.4f);
         Destroy(gameObject);
@@ -171,7 +171,7 @@ public class FigureDisappear : MonoBehaviour
         animator.SetBool("Aware", false);
 
         //change UI
-        UIManager.instance.ResetEye("EyeVisible", false);
+        //UIManager.instance.ResetEye("EyeVisible", false);
     }
 
     public void Patrol()
@@ -195,7 +195,7 @@ public class FigureDisappear : MonoBehaviour
 
     private void OnDisable()
     {
-        if(figureDespawning)
-            UIManager.instance.ResetEye("EyeRed", false);
+        //if(figureDespawning)
+            //UIManager.instance.ResetEye("EyeRed", false);
     }
 } 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TrainInteraction : MonoBehaviour
@@ -15,7 +13,7 @@ public class TrainInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.CompareTag("Player"))
         {
             animator.SetBool("NearDoor", true);
             door.Play();
@@ -24,7 +22,7 @@ public class TrainInteraction : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.CompareTag("Player"))
         {
             animator.SetBool("NearDoor", false);
             door.Play();

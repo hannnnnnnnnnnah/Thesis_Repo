@@ -1,33 +1,50 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class DeathTimer : MonoBehaviour
 {
     [SerializeField] AudioSource breathing, heartbeat, metro;
-    [SerializeField] Volume vol;
-    [SerializeField] Animator animator;
+    [SerializeField] Animator animator, surroundAnimator;
+
+    public Volume vol;
+    public List<AudioClip> wifeSounds;
 
     public bool playVisuals, deathRunning = false;
-    public float deathTime = 11;
+    public float deathTime = 8;
 
-    private void Update()
+    AudioSource audioSource;
+
+    public static DeathTimer instance;
+
+    void Awake()
     {
-        if(deathTime == 0)
-        {
-            RespawnManager.instance.Die();
-            DeathEffectsCancel();
-            deathTime = 11;
-        }
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
     {
-        if (vol.weight < 1 && playVisuals == true)
+        if (vol.weight < 1 && playVisuals)
             vol.weight += 0.002f;
         
-        if(playVisuals == false && vol.weight > 0)
+        if(!playVisuals && vol.weight > 0)
             vol.weight -= 0.01f;
+
+        if (deathTime == 0)
+        {
+            RespawnManager.instance.Die();
+            DeathEffectsCancel();
+            deathTime = 8;
+        }
     }
 
     public void startDeathTimer()
@@ -51,34 +68,41 @@ public class DeathTimer : MonoBehaviour
     {
         switch (deathTime)
         {
-            case 11:
+            case 8:
                 playVisuals = true;
                 animator.SetBool("DV", true);
 
                 breathing.mute = false;
                 heartbeat.mute = false;
-                //metro.mute = false;
+                metro.mute = false;
 
-                if (!breathing.isPlaying)
-                {
-                    breathing.Play();
-                }
-                break;
-
-            case 10:
-                if (!metro.isPlaying)
-                {
-                    metro.Play();
-                }
+                breathing.Stop();
+                heartbeat.Stop();
+                metro.Stop();
                 break;
 
             case 6:
+                if (!metro.isPlaying)
+                    metro.Play();
+                break;
+
+            case 5:
+                if (!breathing.isPlaying)
+                    breathing.Play();
+                break;
+
+            case 4:
                 if (!heartbeat.isPlaying)
-                {
                     heartbeat.Play();
-                }
                 break;
         }
+    }
+
+    public void DeathEffectsCancel()
+    {
+        StartCoroutine(DeathEffectFade());
+        animator.SetBool("DV", false);
+        playVisuals = false;
     }
 
     public IEnumerator DeathEffectFade()
@@ -87,16 +111,21 @@ public class DeathTimer : MonoBehaviour
         breathing.mute = true;
         heartbeat.mute = true;
         metro.mute = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         breathing.Stop();
         heartbeat.Stop();
         metro.Stop();
     }
 
-    public void DeathEffectsCancel()
+    public IEnumerator StartSurroundSound(int soundMin, int SoundMax)
     {
-        StartCoroutine(DeathEffectFade());
-        animator.SetBool("DV", false);
-        playVisuals = false;
+        surroundAnimator.SetBool("Rotate", true);
+
+        while (InteractionManager.instance.surroundSound)
+        {
+            yield return new WaitForSeconds(2f);
+            audioSource.PlayOneShot(wifeSounds[Random.Range(soundMin, SoundMax)]);
+            yield return new WaitForSeconds(1f);
+        }
     }
 }

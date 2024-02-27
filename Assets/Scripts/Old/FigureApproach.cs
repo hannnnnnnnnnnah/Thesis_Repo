@@ -52,7 +52,6 @@ public class FigureApproach : MonoBehaviour
 
     public void Despawn()
     {
-        InteractionManager.instance.emmaSpawned = false;
         Destroy(gameObject);
     }
 
@@ -69,7 +68,6 @@ public class FigureApproach : MonoBehaviour
 
     public IEnumerator Die()
     {
-        InteractionManager.instance.emmaSpawned = false;
         dying = true;
         approaching = false;
         approachPlayer = false;

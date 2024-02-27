@@ -9,10 +9,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image eye;
 
     public bool flashlightShown, sneakShown = false;
-    public Animator textAnimator;
 
     Animator animator;
-
     string moveText = "Use WASD to move";
 
     public static UIManager instance;
@@ -45,14 +43,5 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         animator.SetBool("ShowText", false);
-    }
-
-    public void ResetEye(string anim, bool set)
-    {
-        textAnimator.SetBool("EyeVisible", false);
-        textAnimator.SetBool("EyeAware", false);
-        textAnimator.SetBool("EyeRed", false);
-
-        textAnimator.SetBool(anim, set);
     }
 }

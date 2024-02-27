@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SavePoint : MonoBehaviour
 {
     [SerializeField] GameObject cam1, cam2;
+    [SerializeField] TrainMove trainMove;
 
     bool spawnPointSet = false;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "Player" && !spawnPointSet)
+        if(other.CompareTag("Player") && !spawnPointSet && !trainMove.move)
         {
             RespawnManager.instance.ChangeSpawn(gameObject.transform.position);
             cam1.GetComponent<Animator>().SetBool("CamSave", true);

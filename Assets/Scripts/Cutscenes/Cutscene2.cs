@@ -19,15 +19,12 @@ public class Cutscene2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player") && !cutsceneTriggered)
         {
-            if (!cutsceneTriggered)
-            {
                 Debug.Log("start cutscene2");
                 PlayerMovement.instance.animator.SetBool("Cutscene", true);
 
                 StartCoroutine(Cutscene());
-            }
         }
     }
 
@@ -35,9 +32,9 @@ public class Cutscene2 : MonoBehaviour
     {
         cutsceneTriggered = true;
         audioSource.Play();
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(5.5f);
         Instantiate(can, spawnLoc.transform.position, spawnLoc.transform.rotation);
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(7f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
 
         foreach (var light in lights)

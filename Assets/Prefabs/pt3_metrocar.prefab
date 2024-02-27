@@ -2470,10 +2470,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move_right: 0
   move_left: 0
-  move: 0
   speed: 0
   stopPos: {fileID: 0}
   t_audio: {fileID: 6563125596247238091}
+  move: 0
 --- !u!82 &6563125596247238091
 AudioSource:
   m_ObjectHideFlags: 0

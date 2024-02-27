@@ -6,7 +6,7 @@ public class TrackKillTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             //Death effects are reset
             other.GetComponent<DeathTimer>().StopAllCoroutines();

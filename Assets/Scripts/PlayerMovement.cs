@@ -1,13 +1,14 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed, sprintSpeed, walkSpeed, sneakSpeed, gravity;
     [SerializeField] int minAngle, maxAngle, sensitivity;
-    [SerializeField] GameObject SurroundSound, camHeight, camCrouch;
-    [SerializeField] AudioSource audioFoot, audioBreath, other_steps, whisper, flash_on, flash_off;
-    [SerializeField] DeathTimer deathTimer;
+    [SerializeField] GameObject camHeight, camCrouch;
+    [SerializeField] AudioSource audioFoot, audioBreath;
 
+    public Vector3 externalMovement;
     public bool isCrouching, inTracks;
     public LayerMask checkRaycast;
     public Light flashlight;
@@ -43,23 +44,6 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         speed = walkSpeed;
-    }
-
-    public void StartSurroundSound()
-    {
-        SurroundSound.GetComponent<Animator>().SetBool("Rotate", true);
-
-        if(InteractionManager.instance.steps)
-            other_steps.Play();
-        if(InteractionManager.instance.whisper)
-            whisper.Play();
-    }
-
-    public void StopSurroundSound()
-    {
-        SurroundSound.GetComponent<Animator>().SetBool("Rotate", false);
-        other_steps.Stop();
-        whisper.Stop();
     }
 
     private void FixedUpdate()
@@ -117,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
 
         if (characterController.enabled)
-            characterController.Move(moveDirection * speed * Time.deltaTime);
+            characterController.Move((moveDirection * speed * Time.deltaTime));
     }
 
     //Camera rotation stuff
@@ -133,6 +117,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void StartDeathTimer()
     {
-        deathTimer.startDeathTimer();
+        DeathTimer.instance.startDeathTimer();
     }
 }

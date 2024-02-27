@@ -6,12 +6,10 @@ public class InteractionManager : MonoBehaviour
 {
     [SerializeField] Volume sanityVolume;
 
-    public bool lightExplodes, surroundSound, whisper, steps, emmaSpawned = false;
-    public int sanity = 5;
+    public bool lightExplodes, surroundSound = false;
+    public int sanity, sanitySet = 5;
 
-    int sanitySet = 5;
-
-    GameObject figureSpawner;
+    public int surroundMin, surroundMax;
 
     public static InteractionManager instance;
 
@@ -33,37 +31,33 @@ public class InteractionManager : MonoBehaviour
     {
         Debug.Log("sanity is at" + " " + sanity);
 
-        if(sanity < sanitySet)
+        /*if(sanity < sanitySet)
         {
             PlayerMovement.instance.flashback.Play();
             PlayerMovement.instance.animator.SetBool("Flashback", true);
             StartCoroutine(StopFlashback());
-        }
+        }*/
 
         switch (sanity)
         {
             case 5:
-                lightExplodes = false;
-                surroundSound = false;
-                emmaSpawned = false;
                 sanityVolume.weight = 0.0f;
                 break;
 
             case 4:
                 surroundSound = true;
-                steps = true;
+                surroundMin = 0;
+                surroundMax = 3;
                 sanityVolume.weight += .2f;
                 break;
 
             case 3:
-                whisper = true;
                 lightExplodes = true;
                 sanityVolume.weight += .2f;
                 break;
 
             case <= 2:
                 sanityVolume.weight += .2f;
-
                 break;
         }
     }
@@ -72,5 +66,15 @@ public class InteractionManager : MonoBehaviour
     {
         yield return new WaitForSeconds(8f);
         PlayerMovement.instance.animator.SetBool("Flashback", false);
+    }
+
+    public void StartSurround()
+    {
+        DeathTimer.instance.StartCoroutine(DeathTimer.instance.StartSurroundSound(surroundMin, surroundMax));
+    }
+
+    public void StopSurround()
+    {
+        DeathTimer.instance.StopCoroutine(DeathTimer.instance.StartSurroundSound(surroundMin, surroundMax));
     }
 }

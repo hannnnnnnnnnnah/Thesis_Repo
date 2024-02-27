@@ -71,20 +71,12 @@ public class RespawnManager : MonoBehaviour
         PlayerMovement.instance.transform.position = spawnPoint;
         PlayerMovement.instance.GetComponent<CharacterController>().enabled = true;
 
-        //UI reset
-        UIManager.instance.ResetEye("EyeVisible", false);
-
         //"Awaken" effects
         inhale.Play();
         animator.SetBool("Respawn", true);
 
         //Reset player
         PlayerMovement.instance.inTracks = false;
-        PlayerMovement.instance.StopSurroundSound();
-
-        //Sanity is reset
-        InteractionManager.instance.sanity = 5;
-        InteractionManager.instance.UpdateSanity();
 
         //Increase death count
         deathCount++;

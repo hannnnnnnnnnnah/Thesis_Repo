@@ -1,19 +1,34 @@
 using System.Collections;
 using UnityEngine;
 
-public class Cutscene1 : MonoBehaviour
+public class Cutscene3 : MonoBehaviour
 {
     [SerializeField] GameObject[] doors;
     [SerializeField] Collider a, b;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] TrainRide trainRide;
+    [SerializeField] GameObject savePoint;
+
+    TrainMove trainMove;
 
     bool cutsceneTriggered = false;
+
+    private void Start()
+    {
+        trainMove = GetComponent<TrainMove>();
+    }
+
+    private void Update()
+    {
+        if (cutsceneTriggered && !trainMove.move)
+            RespawnManager.instance.ChangeSpawn(savePoint.transform.position);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !cutsceneTriggered)
         {
-            Debug.Log("start cutscene1");
+            Debug.Log("start cutscene3");
 
             foreach (var door in doors)
                 door.GetComponent<Collider>().enabled = false;
@@ -31,7 +46,7 @@ public class Cutscene1 : MonoBehaviour
     {
         cutsceneTriggered = true;
         audioSource.Play();
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(14f);
 
         foreach (var door in doors)
             door.GetComponent<Collider>().enabled = true;
@@ -40,5 +55,11 @@ public class Cutscene1 : MonoBehaviour
         b.enabled = false;
 
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
+        trainMove.move = true; 
+        trainRide.noCutscene = true;
+
+        //Sanity is decreased
+        InteractionManager.instance.sanity--;
+        InteractionManager.instance.UpdateSanity();
     }
 }
