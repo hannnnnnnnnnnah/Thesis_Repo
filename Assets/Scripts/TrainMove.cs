@@ -6,6 +6,7 @@ public class TrainMove : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] GameObject stopPos;
     [SerializeField] AudioSource t_audio;
+    [SerializeField] AudioClip t_audioStop;
 
     public bool move;
     public Vector3 moveDirection;
@@ -30,13 +31,12 @@ public class TrainMove : MonoBehaviour
                 transform.Translate(moveDirection * step);
 
                 if (!t_audio.isPlaying)
-                {
                     t_audio.Play();
-                }
             }
             else
             {
                 t_audio.Stop();
+                AudioSource.PlayClipAtPoint(t_audioStop, transform.position);
                 move = false;
             }      
         }

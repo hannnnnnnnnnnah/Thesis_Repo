@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class AudioCollision : MonoBehaviour
 {
+    public float impactAmount;
+
     Rigidbody body;
     AudioSource audioSource;
 
@@ -13,7 +15,9 @@ public class AudioCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.impulse.magnitude >= Vector3.one.magnitude / 2)
+        //Debug.Log(collision.impulse.magnitude);
+
+        if (collision.impulse.magnitude >= impactAmount)
             audioSource.Play();
     }
 }
