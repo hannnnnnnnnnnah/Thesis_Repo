@@ -8,10 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject camHeight, camCrouch;
     [SerializeField] AudioSource audioFoot, audioBreath;
 
-    public Vector3 externalMovement;
     public bool isCrouching, inTracks;
     public LayerMask checkRaycast;
-    public Light flashlight;
     public Animator animator;
     public AudioSource flashback;
 
@@ -77,10 +75,9 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 isCrouching = false;
-
-                //Set walk speed to normal
                 speed = walkSpeed;
                 stepRateSet = stepRate;
+
                 animator.SetBool("StartCrouch", false);
                 mainCamera.transform.position = camHeight.transform.position;
                 characterController.height = 1.49f;

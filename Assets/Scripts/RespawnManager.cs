@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,10 +8,7 @@ public class RespawnManager : MonoBehaviour
 
     public bool gameStart, spawnChange = false;
     public int deathCount = 0;
-    public Animator animator;
     public Vector3 spawnPoint;
-
-    Canvas canvas;
 
     public static RespawnManager instance;
 
@@ -24,8 +22,6 @@ public class RespawnManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         SceneManager.sceneLoaded += OnLevelLoad;
-
-        canvas = GetComponentInChildren<Canvas>();
     }
 
     private void Update()
@@ -46,14 +42,6 @@ public class RespawnManager : MonoBehaviour
             if (!spawnChange)
                 spawnPoint = GameObject.FindGameObjectWithTag("SpawnStart").transform.position;
 
-            if (canvas != null)
-                canvas.enabled = true;
-        }
-        else
-        {
-            if (canvas != null)
-                canvas.enabled = false;
-
             spawnChange = false;
         }
     }
@@ -73,7 +61,8 @@ public class RespawnManager : MonoBehaviour
 
         //"Awaken" effects
         inhale.Play();
-        animator.SetBool("Respawn", true);
+        StopAllCoroutines();
+        StartCoroutine(RespawnEffects());
 
         //Reset player
         PlayerMovement.instance.inTracks = false;
@@ -81,5 +70,12 @@ public class RespawnManager : MonoBehaviour
         //Increase death count
         deathCount++;
         Debug.Log("Death count:" + deathCount);
+    }
+
+    IEnumerator RespawnEffects()
+    {
+        PlayerMovement.instance.animator.SetBool("Respawn", true);
+        yield return new WaitForSeconds(.5f);
+        PlayerMovement.instance.animator.SetBool("Respawn", false);
     }
 }
