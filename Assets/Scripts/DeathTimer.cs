@@ -47,7 +47,7 @@ public class DeathTimer : MonoBehaviour
         }
     }
 
-    public void startDeathTimer()
+    public void StartDeathTimer()
     {
         StartCoroutine(DeathTime());
     }

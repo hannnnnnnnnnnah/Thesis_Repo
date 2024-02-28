@@ -111,9 +111,4 @@ public class PlayerMovement : MonoBehaviour
 
         mainCamera.transform.localEulerAngles = camRotation;
     }
-
-    public void StartDeathTimer()
-    {
-        DeathTimer.instance.startDeathTimer();
-    }
 }

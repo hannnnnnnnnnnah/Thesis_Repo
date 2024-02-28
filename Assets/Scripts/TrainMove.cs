@@ -27,8 +27,6 @@ public class TrainMove : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, stopPos.transform.position) >= 2f) 
             {
-                //Debug.Log(Vector3.Distance(transform.position, stopPos.transform.position));
-
                 transform.Translate(moveDirection * step);
 
                 if (!t_audio.isPlaying)

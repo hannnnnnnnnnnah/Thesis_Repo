@@ -21,7 +21,7 @@ public class NarrativeManager : MonoBehaviour
     {
         TriggerLevelSwitch();
 
-        PlayerMovement.instance.StartDeathTimer();
+        DeathTimer.instance.StartDeathTimer();
         lights = new List<GameObject>();
     }
 
