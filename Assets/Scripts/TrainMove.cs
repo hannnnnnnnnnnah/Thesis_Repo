@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class TrainMove : MonoBehaviour
 {
-    [SerializeField] bool move_right, move_left;
-    [SerializeField] float speed;
-    [SerializeField] GameObject stopPos;
     [SerializeField] AudioSource t_audio;
     [SerializeField] AudioClip t_audioStop;
 
-    public bool move;
+    public float speed;
+    public GameObject stopPos;
+    public bool move, move_right, move_left;
     public Vector3 moveDirection;
 
     private void Start()

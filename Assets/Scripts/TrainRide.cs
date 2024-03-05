@@ -13,11 +13,13 @@ public class TrainRide : MonoBehaviour
             PlayerMovement.instance.transform.SetParent(trainMove.transform);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-
         if (other.CompareTag("Player") && noCutscene)
+        {
             riding = true;
+            //trainMove.speed = 20f;
+        }
     }
 
     private void OnTriggerExit(Collider other)
