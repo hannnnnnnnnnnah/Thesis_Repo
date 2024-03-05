@@ -43,15 +43,15 @@ public class Cutscene4 : MonoBehaviour
         cutsceneTriggered = true;
         audioSource.Play();
 
+        foreach (var door in doors)
+            door.GetComponent<Collider>().enabled = true;
+
         yield return new WaitForSeconds(4f);
 
-        //trainMove.speed = 20f;
+        trainMove.speed = 15f;
         trainMove.moveDirection = Vector3.forward;
         trainMove.stopPos = newStopPos;
         trainMove.move = true;
-
-        foreach (var door in doors)
-            door.GetComponent<Collider>().enabled = true;
 
         yield return new WaitForSeconds(41f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
