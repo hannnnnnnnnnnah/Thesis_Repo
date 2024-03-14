@@ -134,13 +134,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightFlicker: 0
   lightCanExplode: 0
-  lightOut: 0
+  lightOut: 1
   source: {fileID: 4052692163980190148}
-  lmat: {fileID: 0}
-  material1: {fileID: 2100000, guid: 043d1fab398131d448ba38a14a06eb5a, type: 2}
-  material2: {fileID: 2100000, guid: d0f789ecf69de0843b6afb2d7e9e69b0, type: 2}
-  deathTimeReset: 11
   lightBroken: 0
+  spotlight: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!65 &8139676075817961368
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -392,16 +392,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightFlicker: 0
   lightCanExplode: 0
-  lightOut: 0
-  lightTimed: 0
+  lightOut: 1
   source: {fileID: 5970550645509202921}
-  lmat: {fileID: 0}
-  material1: {fileID: 0}
-  material2: {fileID: 0}
-  deathTimeReset: 11
-  lightDelay: 0
   lightBroken: 0
-  lightTimer: 1
+  spotlight: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!82 &4851229015740915091
 AudioSource:
   m_ObjectHideFlags: 0
