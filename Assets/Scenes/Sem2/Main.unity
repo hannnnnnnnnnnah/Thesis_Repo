@@ -1072,7 +1072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1668562138226477846, guid: d604f7ff46a786940bcb668f70a08556, type: 3}
       propertyPath: lightOut
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1668562138226477846, guid: d604f7ff46a786940bcb668f70a08556, type: 3}
       propertyPath: lightCanExplode
@@ -12017,7 +12017,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508971257}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 47.39502, y: 61.3015, z: -46.952393}
+  m_LocalPosition: {x: 47.39502, y: 61.3015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12038,6 +12038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   metrocars:
   - {fileID: 989564085}
+  offset: 350
 --- !u!65 &508971260
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12049,8 +12050,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.3976, y: 1, z: 1700}
-  m_Center: {x: 2.16, y: 0, z: 51.789368}
+  m_Size: {x: 9.3976, y: 1, z: 4000}
+  m_Center: {x: 2.16, y: 0, z: 0}
 --- !u!1 &519035275
 GameObject:
   m_ObjectHideFlags: 0
@@ -24517,7 +24518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1668562138226477846, guid: d604f7ff46a786940bcb668f70a08556, type: 3}
       propertyPath: lightOut
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1668562138226477846, guid: d604f7ff46a786940bcb668f70a08556, type: 3}
       propertyPath: lightCanExplode
@@ -32006,11 +32007,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3033862207555161588, guid: 9746520666e4cd248a629fad623d3418, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 39.73
+      value: 39.7
       objectReference: {fileID: 0}
     - target: {fileID: 3033862207555161588, guid: 9746520666e4cd248a629fad623d3418, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -140.4
+      value: -143.25899
       objectReference: {fileID: 0}
     - target: {fileID: 3033862207555161588, guid: 9746520666e4cd248a629fad623d3418, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34675,6 +34676,26 @@ PrefabInstance:
     - target: {fileID: 3418081936782896085, guid: 83264b1e3a5aaa24a83c59e90fac91cf, type: 3}
       propertyPath: m_LocalPosition.z
       value: -16.000366
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923511669651236482, guid: 83264b1e3a5aaa24a83c59e90fac91cf, type: 3}
+      propertyPath: m_Size.x
+      value: 813.5685
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923511669651236482, guid: 83264b1e3a5aaa24a83c59e90fac91cf, type: 3}
+      propertyPath: m_Size.y
+      value: 553.0743
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923511669651236482, guid: 83264b1e3a5aaa24a83c59e90fac91cf, type: 3}
+      propertyPath: m_Size.z
+      value: 375.8667
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923511669651236482, guid: 83264b1e3a5aaa24a83c59e90fac91cf, type: 3}
+      propertyPath: m_Center.x
+      value: 442.80566
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923511669651236482, guid: 83264b1e3a5aaa24a83c59e90fac91cf, type: 3}
+      propertyPath: m_Center.z
+      value: -1169.3784
       objectReference: {fileID: 0}
     - target: {fileID: 5323535133743709401, guid: 83264b1e3a5aaa24a83c59e90fac91cf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -39359,7 +39380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596974081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -183.86, y: 40.704, z: -142.72101}
+  m_LocalPosition: {x: -183.86, y: 39.566, z: -145.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39496,6 +39517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   metrocars:
   - {fileID: 241494871}
+  offset: 350
 --- !u!65 &1597873082
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39507,8 +39529,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.895484, y: 1, z: 1700}
-  m_Center: {x: 4.65, y: 0, z: 26.937958}
+  m_Size: {x: 9.895484, y: 1, z: 4000}
+  m_Center: {x: 4.65, y: 0, z: 0}
 --- !u!4 &1597873083
 Transform:
   m_ObjectHideFlags: 0
@@ -41678,6 +41700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   metrocars:
   - {fileID: 112660280}
+  offset: 350
 --- !u!65 &1674800471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41689,8 +41712,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.3976, y: 1, z: 1700}
-  m_Center: {x: 1.1583672, y: 0, z: 51.789368}
+  m_Size: {x: 9.3976, y: 1, z: 4000}
+  m_Center: {x: 1.1583672, y: 0, z: 0}
 --- !u!4 &1674800472
 Transform:
   m_ObjectHideFlags: 0
@@ -43962,6 +43985,8 @@ MonoBehaviour:
   metrocars:
   - {fileID: 1172410309}
   - {fileID: 764455565}
+  - {fileID: 417805504}
+  - {fileID: 1572402116}
   lights: []
   figureKilled: 0
   trackDeathStart: 0
@@ -46512,6 +46537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   metrocars:
   - {fileID: 1416025952}
+  offset: 350
 --- !u!65 &1830445302
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46523,8 +46549,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.32, y: 1, z: 1700}
-  m_Center: {x: 6.88, y: 0, z: 64.384705}
+  m_Size: {x: 9.32, y: 1, z: 4000}
+  m_Center: {x: 6.88, y: 0, z: 0}
 --- !u!1 &1831128818
 GameObject:
   m_ObjectHideFlags: 0
@@ -54381,6 +54407,26 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2538497177769690226, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Size.x
+      value: 835.4755
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538497177769690226, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Size.y
+      value: 553.0743
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538497177769690226, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Size.z
+      value: 375.8667
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538497177769690226, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Center.x
+      value: 431.85214
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538497177769690226, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Center.z
+      value: -1169.3784
+      objectReference: {fileID: 0}
     - target: {fileID: 2807816054249255726, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -54395,7 +54441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2807816054249255726, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -187.36
+      value: -190.219
       objectReference: {fileID: 0}
     - target: {fileID: 2807816054249255726, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54541,6 +54587,26 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5451221480821141641, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Size.x
+      value: 894.1074
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451221480821141641, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Size.y
+      value: 553.0743
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451221480821141641, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Size.z
+      value: 375.8667
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451221480821141641, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Center.x
+      value: 402.5362
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451221480821141641, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Center.z
+      value: -1169.3784
+      objectReference: {fileID: 0}
     - target: {fileID: 5541920485304133022, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -54584,6 +54650,26 @@ PrefabInstance:
     - target: {fileID: 5913726040843123322, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119123343958211962, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Size.x
+      value: 936.07367
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119123343958211962, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Size.y
+      value: 553.0743
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119123343958211962, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Size.z
+      value: 375.8667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119123343958211962, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Center.x
+      value: 381.55307
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119123343958211962, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
+      propertyPath: m_Center.z
+      value: -1169.3784
       objectReference: {fileID: 0}
     - target: {fileID: 6156086548486016803, guid: db64ba8758e762146aff0d255f7d8e7a, type: 3}
       propertyPath: m_Enabled

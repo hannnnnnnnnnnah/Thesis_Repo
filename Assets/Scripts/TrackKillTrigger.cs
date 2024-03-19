@@ -3,6 +3,7 @@ using UnityEngine;
 public class TrackKillTrigger : MonoBehaviour
 {
     public GameObject[] metrocars;
+    public float offset = 100;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,6 +24,8 @@ public class TrackKillTrigger : MonoBehaviour
         foreach(GameObject metrocar in metrocars)
         {
             metrocar.gameObject.SetActive(true);
+            metrocar.transform.position = new Vector3(metrocar.transform.position.x, metrocar.transform.position.y, PlayerMovement.instance.transform.position.z + offset);
+
             metrocar.GetComponent<TrainKill>().move = true;
         }
     }
