@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject camHeight, camCrouch;
     [SerializeField] AudioSource audioFoot, audioBreath;
 
-    public bool isCrouching, inTracks;
+    public bool isCrouching, inTracks, rotate;
     public LayerMask checkRaycast;
     public Animator animator;
     public AudioSource flashback;
@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = new Vector3(horizontalMove, 0, verticalMove);
             moveDirection = transform.TransformDirection(moveDirection);
 
-            if (Input.GetKey(KeyCode.LeftControl))
+            /*if (Input.GetKey(KeyCode.LeftControl))
             {
                 isCrouching = true;
                 speed = sneakSpeed;
@@ -71,9 +71,9 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("StartCrouch", true);
                 mainCamera.transform.position = camCrouch.transform.position;
                 characterController.height = 1f;
-            }
-            else
-            {
+            }*/
+            //else
+            //{
                 isCrouching = false;
                 speed = walkSpeed;
                 stepRateSet = stepRate;
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("StartCrouch", false);
                 mainCamera.transform.position = camHeight.transform.position;
                 characterController.height = 1.49f;
-            }
+            //}
 
             //step audio
 
@@ -104,11 +104,14 @@ public class PlayerMovement : MonoBehaviour
     //Camera rotation stuff
     private void Rotate()
     {
-        transform.Rotate(Vector3.up * sensitivity * Time.deltaTime * (Input.GetAxis("Mouse X")));
+        if (rotate)
+        {
+            transform.Rotate(Vector3.up * sensitivity * Time.deltaTime * (Input.GetAxis("Mouse X")));
 
-        camRotation.x -= Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
-        camRotation.x = Mathf.Clamp(camRotation.x, minAngle, maxAngle);
+            camRotation.x -= Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+            camRotation.x = Mathf.Clamp(camRotation.x, minAngle, maxAngle);
 
-        mainCamera.transform.localEulerAngles = camRotation;
+            mainCamera.transform.localEulerAngles = camRotation;
+        }
     }
 }

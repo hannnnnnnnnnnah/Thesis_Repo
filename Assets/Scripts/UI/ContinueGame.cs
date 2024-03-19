@@ -21,6 +21,8 @@ public class ContinueGame : MonoBehaviour
 
     public void TaskOnClick()
     {
+        Debug.Log("click");
+
         //unselect the button
         if (EventSystem.current.currentSelectedGameObject == continueButton.gameObject) 
             EventSystem.current.SetSelectedGameObject(null);

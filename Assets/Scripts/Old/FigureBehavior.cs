@@ -12,6 +12,7 @@ public class FigureBehavior : MonoBehaviour
     Vector3 pos2;
 
     bool move = false;
+    bool figurePushed = false;
 
     Animator animator;
 
@@ -24,14 +25,20 @@ public class FigureBehavior : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         { 
-            move = false;
+           // move = false;
+
+
+           // StartCoroutine(FigureDelay());
+        }
+    }
+
+    private void Update()
+    {
+        if (NarrativeManager.instance.figureKilled && !figurePushed)
+        {
+            figurePushed = true;
             animator.SetBool("Push", true);
-            ghostAnim.SetBool("Spawn", true);
-
-            StartCoroutine(FigureDelay());
-
-            NarrativeManager.instance.figureKilled = true;
-            NarrativeManager.instance.TriggerLevelSwitch();
+            //ghostAnim.SetBool("Spawn", true);
         }
     }
 
