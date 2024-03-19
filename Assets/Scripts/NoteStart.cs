@@ -6,6 +6,7 @@ public class NoteStart : MonoBehaviour
 {
     [SerializeField] TrainMove trainMove;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] GameObject letter;
 
     string moveText = "Use WASD to move";
 
@@ -31,11 +32,14 @@ public class NoteStart : MonoBehaviour
     {
         letterRead = true;
 
-        yield return new WaitForSeconds(1f);
         PlayerMovement.instance.rotate = true;
         PlayerMovement.instance.GetComponent<CharacterController>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
-        gameObject.SetActive(false);
+        letter.SetActive(false);
+        PlayerMovement.instance.transform.SetParent(trainMove.transform);
+
+        yield return new WaitForSeconds(1f);
+
         trainMove.move = true;
         audioSource.Play();
         UIManager.instance.ShowText(moveText);
