@@ -635,13 +635,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0763b9a008a628f4b91a10ec36528503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move_right: 0
-  move_left: 0
-  speed: 0
-  stopPos: {fileID: 0}
   t_audio: {fileID: 6563125596247238091}
   t_audioStop: {fileID: 8300000, guid: 39a3adfbe732bd64b9c1008dd0cfa131, type: 3}
+  speed: 0
+  stopPos: {fileID: 0}
   move: 0
+  move_right: 0
+  move_left: 0
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!82 &6563125596247238091
 AudioSource:
@@ -2299,6 +2299,27 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1822452877549cc408b640321a6b2cd5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1617f790a9746a94ba7386af23d65b69, type: 3}
+--- !u!1 &4705494206431904516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3380570775361647642, guid: 1617f790a9746a94ba7386af23d65b69, type: 3}
+  m_PrefabInstance: {fileID: 8045528148075820830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &8785440250489547581
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705494206431904516}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!4 &7506880747379773685 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1617f790a9746a94ba7386af23d65b69, type: 3}

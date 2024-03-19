@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NoteStart : MonoBehaviour
@@ -36,12 +35,12 @@ public class NoteStart : MonoBehaviour
         PlayerMovement.instance.GetComponent<CharacterController>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         letter.SetActive(false);
+        audioSource.Play();
         PlayerMovement.instance.transform.SetParent(trainMove.transform);
+        UIManager.instance.ShowText(moveText);
 
         yield return new WaitForSeconds(1f);
 
         trainMove.move = true;
-        audioSource.Play();
-        UIManager.instance.ShowText(moveText);
     }
 }
