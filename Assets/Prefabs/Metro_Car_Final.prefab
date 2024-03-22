@@ -600,6 +600,8 @@ GameObject:
   - component: {fileID: 2807816054249255726}
   - component: {fileID: 1629876920944806736}
   - component: {fileID: 6563125596247238091}
+  - component: {fileID: 8354242091817926853}
+  - component: {fileID: 2148378552801438676}
   m_Layer: 0
   m_Name: Metro_Car_Final
   m_TagString: Train
@@ -739,6 +741,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &8354242091817926853
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295664606992279956}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1034.5117, y: 1166.3168, z: 135.60791}
+  m_Center: {x: 87.458374, y: 453.3086, z: -1962.7502}
+--- !u!65 &2148378552801438676
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295664606992279956}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1034.5117, y: 1166.3168, z: 135.60791}
+  m_Center: {x: 87.458374, y: 453.3086, z: 2837}
 --- !u!1 &5134883389984626584
 GameObject:
   m_ObjectHideFlags: 0

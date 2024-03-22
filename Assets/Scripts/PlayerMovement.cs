@@ -3,11 +3,12 @@ using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float speed, sprintSpeed, walkSpeed, sneakSpeed, gravity;
+    [SerializeField] float sprintSpeed, walkSpeed, sneakSpeed, gravity;
     [SerializeField] int minAngle, maxAngle, sensitivity;
     [SerializeField] GameObject camHeight, camCrouch;
     [SerializeField] AudioSource audioFoot, audioBreath;
 
+    public float speed;
     public bool isCrouching, inTracks, rotate;
     public LayerMask checkRaycast;
     public Animator animator;
@@ -62,26 +63,7 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = new Vector3(horizontalMove, 0, verticalMove);
             moveDirection = transform.TransformDirection(moveDirection);
 
-            /*if (Input.GetKey(KeyCode.LeftControl))
-            {
-                isCrouching = true;
-                speed = sneakSpeed;
-                stepRateSet = 0.6f;
-
-                animator.SetBool("StartCrouch", true);
-                mainCamera.transform.position = camCrouch.transform.position;
-                characterController.height = 1f;
-            }*/
-            //else
-            //{
-                isCrouching = false;
-                speed = walkSpeed;
-                stepRateSet = stepRate;
-
-                animator.SetBool("StartCrouch", false);
-                mainCamera.transform.position = camHeight.transform.position;
-                characterController.height = 1.49f;
-            //}
+            stepRateSet = stepRate;
 
             //step audio
 

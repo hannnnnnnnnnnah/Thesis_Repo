@@ -1,10 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class NarrativeManager : MonoBehaviour
 {
     [SerializeField] GameObject overheadLight, startSpawn, newSpawn, firstLights;
-    [SerializeField] TrainMove trainMove;
+    [SerializeField] TrainMove trainMove, trainMove1;
+    [SerializeField] Animator wifeAnim;
+    [SerializeField] AudioSource crash, lightExplode;
 
     public List<GameObject> metrocars, lights;
     public bool figureKilled, trackDeathStart, levelSwitched = false;
@@ -30,16 +33,26 @@ public class NarrativeManager : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !levelSwitched)
-        {   
-            figureKilled = true;
+        {
+            PlayerMovement.instance.speed = 4f;
+            trainMove1.move = true;
+            StartCoroutine(WifeDeath());
 
-            TriggerLevelSwitch();
-
-            DeathTimer.instance.StartDeathTimer();
-            lights = new List<GameObject>();
-
-            trainMove.move = true;
+            levelSwitched = true;
         }
+    }
+
+    IEnumerator WifeDeath()
+    {
+        wifeAnim.SetBool("Die", true);
+        yield return new WaitForSeconds(3f);
+        crash.Play();
+        yield return new WaitForSeconds(1f);
+        lightExplode.Play();
+        PlayerMovement.instance.speed = 15f;
+        TriggerLevelSwitch();
+        yield return new WaitForSeconds(6f);
+        Destroy(trainMove1.gameObject);
     }
 
     public void TriggerLevelSwitch()
@@ -58,7 +71,9 @@ public class NarrativeManager : MonoBehaviour
             light.GetComponentInChildren<LightTrigger>().lightBroken = true;
         }
 
-        levelSwitched = true;
+        DeathTimer.instance.StartDeathTimer();
+
+        trainMove.move = true;
     }
 
     public void TriggerTrainDeath()
