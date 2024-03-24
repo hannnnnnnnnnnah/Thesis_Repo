@@ -1213,7 +1213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6184abf4d8e36840b7ca893df4ec530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
   sprintSpeed: 16
   walkSpeed: 15
   sneakSpeed: 5
@@ -1225,6 +1224,7 @@ MonoBehaviour:
   camCrouch: {fileID: 8483788584246799139}
   audioFoot: {fileID: 3033862207555161545}
   audioBreath: {fileID: 1963335283}
+  speed: 0
   isCrouching: 0
   inTracks: 0
   rotate: 0

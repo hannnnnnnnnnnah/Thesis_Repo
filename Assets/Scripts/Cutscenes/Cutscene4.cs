@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Cutscene4 : MonoBehaviour
 {
-    [SerializeField] GameObject newStopPos, phone, savePoint;
+    [SerializeField] GameObject newStopPos, savePoint;
     [SerializeField] AudioSource audioSource;
     [SerializeField] GameObject[] doors;
+    [SerializeField] PhoneTrigger phoneTrigger;
 
     TrainMove trainMove;
 
@@ -32,6 +33,7 @@ public class Cutscene4 : MonoBehaviour
             foreach (var door in doors)
                 door.GetComponent<Collider>().enabled = false;
 
+            phoneTrigger.PhoneStop();
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
 
             StartCoroutine(Cutscene());

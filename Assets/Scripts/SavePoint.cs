@@ -12,6 +12,7 @@ public class SavePoint : MonoBehaviour
         if(other.CompareTag("Player") && !spawnPointSet && !trainMove.move)
         {
             RespawnManager.instance.ChangeSpawn(gameObject.transform.position);
+            RespawnManager.instance.trainHop = false;
             cam1.GetComponent<Animator>().SetBool("CamSave", true);
             cam2.GetComponent<Animator>().SetBool("CamSave", true);
             spawnPointSet = true;

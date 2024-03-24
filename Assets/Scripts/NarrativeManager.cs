@@ -7,7 +7,7 @@ public class NarrativeManager : MonoBehaviour
     [SerializeField] GameObject overheadLight, startSpawn, newSpawn, firstLights;
     [SerializeField] TrainMove trainMove, trainMove1;
     [SerializeField] Animator wifeAnim;
-    [SerializeField] AudioSource crash, lightExplode;
+    [SerializeField] AudioSource crash, lightExplode, flashback;
 
     public List<GameObject> metrocars, lights;
     public bool figureKilled, trackDeathStart, levelSwitched = false;
@@ -49,6 +49,7 @@ public class NarrativeManager : MonoBehaviour
         crash.Play();
         yield return new WaitForSeconds(1f);
         lightExplode.Play();
+        //flashback.Play();
         PlayerMovement.instance.speed = 15f;
         TriggerLevelSwitch();
         yield return new WaitForSeconds(6f);
@@ -59,7 +60,7 @@ public class NarrativeManager : MonoBehaviour
     {
         //Change spawnpoint 
         RespawnManager.instance.ChangeSpawn(newSpawn.transform.position);
-        
+
         //Turn off lights; show trains; blackout some lights
         overheadLight.SetActive(false);
         firstLights.SetActive(false);

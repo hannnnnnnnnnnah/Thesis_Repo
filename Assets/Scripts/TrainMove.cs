@@ -6,7 +6,7 @@ public class TrainMove : MonoBehaviour
     [SerializeField] AudioClip t_audioStop;
 
     public float speed;
-    public GameObject stopPos;
+    public GameObject stopPos, startPos;
     public bool move, move_right, move_left;
     public Vector3 moveDirection;
 
@@ -39,5 +39,11 @@ public class TrainMove : MonoBehaviour
                 move = false;
             }      
         }
+    }
+
+    public void ResetPos()
+    {
+        transform.position = startPos.transform.position;
+        move = true;
     }
 }

@@ -7,7 +7,6 @@ public class Cutscene3 : MonoBehaviour
     [SerializeField] Collider a, b;
     [SerializeField] AudioSource audioSource;
     [SerializeField] TrainRide trainRide;
-    [SerializeField] GameObject savePoint;
 
     TrainMove trainMove;
 
@@ -20,8 +19,8 @@ public class Cutscene3 : MonoBehaviour
 
     private void Update()
     {
-        if (cutsceneTriggered && !trainMove.move)
-            RespawnManager.instance.ChangeSpawn(savePoint.transform.position);
+        if (RespawnManager.instance.respawning && RespawnManager.instance.trainHop)
+            trainMove.ResetPos();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -55,6 +54,7 @@ public class Cutscene3 : MonoBehaviour
         b.enabled = false;
 
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
+        RespawnManager.instance.trainHop = true;
         trainMove.move = true; 
         trainRide.noCutscene = true;
 

@@ -6,7 +6,7 @@ public class RespawnManager : MonoBehaviour
 {
     [SerializeField] AudioSource inhale;
 
-    public bool gameStart, spawnChange = false;
+    public bool gameStart, spawnChange, trainHop, respawning = false;
     public int deathCount = 0;
     public Vector3 spawnPoint;
 
@@ -54,6 +54,8 @@ public class RespawnManager : MonoBehaviour
 
     public void Die()
     {
+        respawning = true;
+
         if (deathCount == 0)
             UIManager.instance.ShowText("She can't find you in the light");
 
@@ -80,5 +82,6 @@ public class RespawnManager : MonoBehaviour
         PlayerMovement.instance.animator.SetBool("Respawn", true);
         yield return new WaitForSeconds(.5f);
         PlayerMovement.instance.animator.SetBool("Respawn", false);
+        respawning = false;
     }
 }
