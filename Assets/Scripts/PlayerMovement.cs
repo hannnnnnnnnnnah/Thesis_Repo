@@ -5,7 +5,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float sprintSpeed, walkSpeed, sneakSpeed, gravity;
     [SerializeField] int minAngle, maxAngle, sensitivity;
-    [SerializeField] GameObject camHeight, camCrouch;
     [SerializeField] AudioSource audioFoot, audioBreath;
 
     public float speed;
@@ -36,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         gameObject.transform.position = RespawnManager.instance.spawnPoint;
 
         mainCamera = Camera.main;
-        mainCamera.transform.position = camHeight.transform.position;
         
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();

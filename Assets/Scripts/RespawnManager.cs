@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class RespawnManager : MonoBehaviour
 {
     [SerializeField] AudioSource inhale;
+    [SerializeField] GameObject testloc;
 
     public bool gameStart, spawnChange, trainHop, respawning = false;
     public int deathCount = 0;
@@ -28,6 +29,9 @@ public class RespawnManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.R))
             Die();
+
+        if (Input.GetKeyDown(KeyCode.H))
+            Testing();
     }
 
     private void OnDisable()
@@ -44,6 +48,11 @@ public class RespawnManager : MonoBehaviour
 
             spawnChange = false;
         }
+    }
+
+    public void Testing()
+    {
+        ChangeSpawn(testloc.transform.position);
     }
 
     public void ChangeSpawn(Vector3 newSpawn)

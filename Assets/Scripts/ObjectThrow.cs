@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectThrow : MonoBehaviour
 {
-    public float force, triggerDist;
+    public float force, triggerDist, forceRadius;
     public bool toss = false;
+    public bool tossLeft, tossRight;    
 
     Rigidbody rb;
 
@@ -23,7 +22,11 @@ public class ObjectThrow : MonoBehaviour
 
         if (toss)
         {
-            rb.AddForce(transform.right * force);
+            if(tossLeft)
+                rb.AddExplosionForce(force, transform.position - Vector3.left, forceRadius);
+
+            if(tossRight)
+                rb.AddExplosionForce(force, transform.position + Vector3.left, forceRadius);
         }
     }
 }
