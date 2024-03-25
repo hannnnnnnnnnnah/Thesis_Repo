@@ -51564,7 +51564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7501806764569651335, guid: 3cb220fd8516bf047b3638a9ad6692af, type: 3}
       propertyPath: m_text
-      value: YOU LEFT ME
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8423630760188161588, guid: 3cb220fd8516bf047b3638a9ad6692af, type: 3}
       propertyPath: m_Name
@@ -52186,7 +52186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3033862207555161584, guid: 9746520666e4cd248a629fad623d3418, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3033862207555161587, guid: 9746520666e4cd248a629fad623d3418, type: 3}
       propertyPath: m_Height
