@@ -14,8 +14,6 @@ public class PhoneSlide : MonoBehaviour
 
         if (sliding)
         {
-            Debug.Log(Vector3.Distance(transform.position, PlayerMovement.instance.transform.position));
-
             if (Vector3.Distance(transform.position, PlayerMovement.instance.transform.position) <= 10f)
             {
                 transform.Translate(-Vector3.up * step);
