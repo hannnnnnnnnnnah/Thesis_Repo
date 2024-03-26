@@ -55,7 +55,7 @@ public class Cutscene4 : MonoBehaviour
         trainMove.stopPos = newStopPos;
         trainMove.move = true;
 
-        yield return new WaitForSeconds(41f);
+        yield return new WaitForSeconds(30f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
     }
 }

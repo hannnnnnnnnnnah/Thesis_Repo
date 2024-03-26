@@ -5,9 +5,8 @@ using UnityEngine;
 public class Cutscene5 : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
-    [SerializeField] Animator flashback;
-    [SerializeField] TrainMove trainMove;
     [SerializeField] PhoneTrigger phoneTrigger;
+    [SerializeField] GameObject can;
 
     bool cutsceneTriggered = false;
 
@@ -28,9 +27,6 @@ public class Cutscene5 : MonoBehaviour
     {
         cutsceneTriggered = true;
         audioSource.Play();
-
-        yield return new WaitForSeconds(4f);
-        trainMove.move = true;
 
         yield return new WaitForSeconds(20f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
