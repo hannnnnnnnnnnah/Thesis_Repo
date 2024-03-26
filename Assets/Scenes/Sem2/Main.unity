@@ -3252,7 +3252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d4523cd4dc83ce744a9d133d36001f1b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2785652501832666436, guid: d4523cd4dc83ce744a9d133d36001f1b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -52489,7 +52489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d4523cd4dc83ce744a9d133d36001f1b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2304244481032835489, guid: d4523cd4dc83ce744a9d133d36001f1b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53888,7 +53888,9 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.105882354
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1963335283, guid: 9746520666e4cd248a629fad623d3418, type: 3}
+    - {fileID: 6157518000326035645, guid: 9746520666e4cd248a629fad623d3418, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9746520666e4cd248a629fad623d3418, type: 3}
 --- !u!95 &1311216737 stripped
 Animator:
@@ -76827,6 +76829,48 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853810855}
   m_Mesh: {fileID: 3961840961851267165, guid: f1bade1503a1b844bbcf23c912dd7364, type: 3}
+--- !u!1 &1855070522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3033862207555161584, guid: 9746520666e4cd248a629fad623d3418, type: 3}
+  m_PrefabInstance: {fileID: 1311216736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1855070524 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1550487796, guid: 9746520666e4cd248a629fad623d3418, type: 3}
+  m_PrefabInstance: {fileID: 1311216736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1855070525 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 824110730361596461, guid: 9746520666e4cd248a629fad623d3418, type: 3}
+  m_PrefabInstance: {fileID: 1311216736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1855070526 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2074735087, guid: 9746520666e4cd248a629fad623d3418, type: 3}
+  m_PrefabInstance: {fileID: 1311216736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1855070535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855070522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e90731f9773974dac8dde97c8e061d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breathing: {fileID: 1855070526}
+  heartbeat: {fileID: 1855070525}
+  metro: {fileID: 1855070524}
+  animator: {fileID: 0}
+  surroundAnimator: {fileID: 0}
+  vol: {fileID: 0}
+  wifeSounds: []
+  playVisuals: 0
+  deathRunning: 0
+  deathTime: 8
 --- !u!1 &1857980964
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,13 +5,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float sprintSpeed, walkSpeed, sneakSpeed, gravity;
     [SerializeField] int minAngle, maxAngle, sensitivity;
-    [SerializeField] AudioSource audioFoot, audioBreath;
+    [SerializeField] AudioSource audioFoot, flashback;
 
     public float speed;
     public bool isCrouching, inTracks, rotate;
     public LayerMask checkRaycast;
     public Animator animator;
-    public AudioSource flashback;
 
     private float stepRate, stepCoolDown, stepRateSet;
     private Vector3 camRotation, moveDirection;
