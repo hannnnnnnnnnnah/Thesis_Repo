@@ -3252,7 +3252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d4523cd4dc83ce744a9d133d36001f1b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2785652501832666436, guid: d4523cd4dc83ce744a9d133d36001f1b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -37012,7 +37012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerDelayLight: 3
   timerDelayDark: 5
-  lInactive: {fileID: 0}
+  lInactive: {fileID: 785270241}
   timerActive: 1
 --- !u!1 &924046921
 GameObject:
@@ -52489,7 +52489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d4523cd4dc83ce744a9d133d36001f1b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2304244481032835489, guid: d4523cd4dc83ce744a9d133d36001f1b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53812,12 +53812,24 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.105882354
       objectReference: {fileID: 0}
+    - target: {fileID: 4937190847684398713, guid: 9746520666e4cd248a629fad623d3418, type: 3}
+      propertyPath: weight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4937190847684398713, guid: 9746520666e4cd248a629fad623d3418, type: 3}
+      propertyPath: priority
+      value: 20.69
+      objectReference: {fileID: 0}
     - target: {fileID: 4973148518646942286, guid: 9746520666e4cd248a629fad623d3418, type: 3}
       propertyPath: m_Color.a
       value: 0.105882354
       objectReference: {fileID: 0}
     - target: {fileID: 5538622546367315666, guid: 9746520666e4cd248a629fad623d3418, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6157518000326035645, guid: 9746520666e4cd248a629fad623d3418, type: 3}
+      propertyPath: playVisuals
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6176991936776137855, guid: 9746520666e4cd248a629fad623d3418, type: 3}
@@ -59229,7 +59241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerDelayLight: 3
   timerDelayDark: 2
-  lInactive: {fileID: 0}
+  lInactive: {fileID: 1091427994}
   timerActive: 1
 --- !u!1001 &1430314490
 PrefabInstance:
@@ -70717,7 +70729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerDelayLight: 3
   timerDelayDark: 3
-  lInactive: {fileID: 0}
+  lInactive: {fileID: 113801452}
   timerActive: 1
 --- !u!1 &1702861449
 GameObject:

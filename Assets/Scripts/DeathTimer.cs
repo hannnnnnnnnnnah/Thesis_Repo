@@ -29,14 +29,15 @@ public class DeathTimer : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        vol.weight = 0f;
     }
 
     private void FixedUpdate()
     {
-        if (vol.weight < 1 && playVisuals)
+        if (vol.weight < 1f && playVisuals)
             vol.weight += 0.002f;
-        
-        if(!playVisuals && vol.weight > 0)
+
+        if (!playVisuals && vol.weight > 0f)
             vol.weight -= 0.01f;
 
         if (deathTime == 0)
@@ -45,6 +46,8 @@ public class DeathTimer : MonoBehaviour
             DeathEffectsCancel();
             deathTime = 8;
         }
+
+        //Debug.Log(vol.weight);
     }
 
     public void StartDeathTimer()
