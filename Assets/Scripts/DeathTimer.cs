@@ -6,7 +6,8 @@ using UnityEngine.Rendering;
 public class DeathTimer : MonoBehaviour
 {
     [SerializeField] AudioSource breathing, heartbeat, metro;
-    [SerializeField] Animator animator, surroundAnimator;
+    [SerializeField] Animator visionCover;
+    [SerializeField] GameObject SurroundSound;
 
     public Volume vol;
     public List<AudioClip> wifeSounds;
@@ -29,7 +30,7 @@ public class DeathTimer : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        vol.weight = 0f;
+        //vol.weight = 0f;
     }
 
     private void FixedUpdate()
@@ -73,7 +74,7 @@ public class DeathTimer : MonoBehaviour
         {
             case 8:
                 playVisuals = true;
-                animator.SetBool("DV", true);
+                visionCover.SetBool("DV", true);
 
                 breathing.mute = false;
                 heartbeat.mute = false;
@@ -104,7 +105,7 @@ public class DeathTimer : MonoBehaviour
     public void DeathEffectsCancel()
     {
         StartCoroutine(DeathEffectFade());
-        animator.SetBool("DV", false);
+        visionCover.SetBool("DV", false);
         playVisuals = false;
     }
 
@@ -122,12 +123,13 @@ public class DeathTimer : MonoBehaviour
 
     public IEnumerator StartSurroundSound(int soundMin, int SoundMax)
     {
-        surroundAnimator.SetBool("Rotate", true);
+        SurroundSound.GetComponent<Animator>().SetBool("Rotate", true);
 
         while (InteractionManager.instance.surroundSound)
         {
             yield return new WaitForSeconds(2f);
-            audioSource.PlayOneShot(wifeSounds[Random.Range(soundMin, SoundMax)]);
+            //audioSource.PlayOneShot(wifeSounds[Random.Range(soundMin, SoundMax)]);
+            AudioSource.PlayClipAtPoint(wifeSounds[Random.Range(soundMin, SoundMax)], SurroundSound.transform.position);
             yield return new WaitForSeconds(1f);
         }
     }

@@ -130,9 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b297da0253d4bc942b1631d848d314d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 80
+  force: 50
   triggerDist: 10
+  forceRadius: 20
   toss: 0
+  tossLeft: 0
+  tossRight: 0
 --- !u!114 &8284825303581791196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5479f1932fd4b6643bf93a1a5fd3bb5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactAmount: 1
+  impactAmount: 5
 --- !u!82 &6021540660009003291
 AudioSource:
   m_ObjectHideFlags: 0
@@ -156,7 +159,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 67e90632a6dd82743adc9a6f9cc6b4bc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b95e8f03b0f756b41ac36aa3eba7046e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.489
   m_Pitch: 1

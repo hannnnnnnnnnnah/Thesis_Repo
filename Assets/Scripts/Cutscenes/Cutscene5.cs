@@ -16,6 +16,8 @@ public class Cutscene5 : MonoBehaviour
         {
             Debug.Log("start cutscene5");
 
+            InteractionManager.instance.StopSurround();
+
             phoneTrigger.PhoneStop();
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
 
@@ -28,7 +30,9 @@ public class Cutscene5 : MonoBehaviour
         cutsceneTriggered = true;
         audioSource.Play();
 
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(30f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
+
+        InteractionManager.instance.StartSurround();
     }
 }

@@ -645,9 +645,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b297da0253d4bc942b1631d848d314d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 50
+  force: 5
   triggerDist: 10
-  forceRadius: 30
+  forceRadius: 5
   toss: 0
   tossLeft: 1
   tossRight: 0
@@ -663,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5479f1932fd4b6643bf93a1a5fd3bb5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactAmount: 1
+  impactAmount: 5
 --- !u!82 &7019713013097975947
 AudioSource:
   m_ObjectHideFlags: 0
@@ -674,9 +674,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ecfbdc7825f0b3d4c8be6572a3f5329c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b980da81d414d7743a914e911e3c7f52, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.29
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -936,7 +936,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1294058508819152814, guid: 4f66c111ed936de4f826f4670c51a56b, type: 3}
+  - {fileID: 2100000, guid: 9bb87a3b7d5cc44469245583a486818a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 767906314159204912}
   - component: {fileID: 4875133720443831723}
   - component: {fileID: 5495295407328262428}
+  - component: {fileID: 7016816580237581802}
   m_Layer: 0
   m_Name: Rail_Throw2
   m_TagString: Untagged
@@ -147,7 +148,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 67e90632a6dd82743adc9a6f9cc6b4bc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b95e8f03b0f756b41ac36aa3eba7046e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.426
   m_Pitch: 1
@@ -246,6 +247,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactAmount: 5
+--- !u!114 &7016816580237581802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811901365401069263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe931eda0cd98514dbcb56f467f48330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifespan: 4
 --- !u!1 &1132084922217718227
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsGlobal: 1
-  priority: 4
+  priority: 50
   blendDistance: 0.88
   weight: 0
   sharedProfile: {fileID: 11400000, guid: f1db146320eb5794dacfbc8dbbd3402d, type: 2}
@@ -97,7 +97,7 @@ MonoBehaviour:
   sanityVolume: {fileID: 1953695172987355069}
   lightExplodes: 0
   surroundSound: 0
-  whisper: 0
-  steps: 0
-  emmaSpawned: 0
   sanity: 5
+  sanitySet: 5
+  surroundMin: 0
+  surroundMax: 0

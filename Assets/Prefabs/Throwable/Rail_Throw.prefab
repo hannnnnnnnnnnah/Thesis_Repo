@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8294882063142256040}
   - component: {fileID: 6715989020869271738}
   - component: {fileID: 1866892569137844558}
+  - component: {fileID: 1606165017}
   m_Layer: 0
   m_Name: Rail_Throw
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4249716536514141717}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
@@ -131,9 +132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b297da0253d4bc942b1631d848d314d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 80
-  triggerDist: 10
+  force: 130
+  triggerDist: 20
+  forceRadius: 10
   toss: 0
+  tossLeft: 0
+  tossRight: 0
 --- !u!114 &6715989020869271738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5479f1932fd4b6643bf93a1a5fd3bb5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactAmount: 1
+  impactAmount: 5
 --- !u!82 &1866892569137844558
 AudioSource:
   m_ObjectHideFlags: 0
@@ -157,7 +161,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 67e90632a6dd82743adc9a6f9cc6b4bc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b95e8f03b0f756b41ac36aa3eba7046e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.289
   m_Pitch: 1
@@ -243,6 +247,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1606165017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4249716536514141717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe931eda0cd98514dbcb56f467f48330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifespan: 4
 --- !u!1 &4470821454509316361
 GameObject:
   m_ObjectHideFlags: 0

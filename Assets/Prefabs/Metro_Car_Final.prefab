@@ -641,6 +641,7 @@ MonoBehaviour:
   t_audioStop: {fileID: 8300000, guid: 39a3adfbe732bd64b9c1008dd0cfa131, type: 3}
   speed: 0
   stopPos: {fileID: 0}
+  startPos: {fileID: 0}
   move: 0
   move_right: 0
   move_left: 0
@@ -2363,6 +2364,10 @@ PrefabInstance:
     - target: {fileID: 6639551914142962104, guid: 83264b1e3a5aaa24a83c59e90fac91cf, type: 3}
       propertyPath: m_Name
       value: Metro_Door (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6639551914142962104, guid: 83264b1e3a5aaa24a83c59e90fac91cf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8833661351331348868, guid: 83264b1e3a5aaa24a83c59e90fac91cf, type: 3}
       propertyPath: m_RootOrder
