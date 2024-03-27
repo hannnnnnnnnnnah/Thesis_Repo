@@ -6,7 +6,7 @@ public class Cutscene5 : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
     [SerializeField] PhoneTrigger phoneTrigger;
-    [SerializeField] GameObject can;
+    [SerializeField] TrainMove trainMove;
 
     bool cutsceneTriggered = false;
 
@@ -16,7 +16,7 @@ public class Cutscene5 : MonoBehaviour
         {
             Debug.Log("start cutscene5");
 
-            InteractionManager.instance.StopSurround();
+            InteractionManager.instance.surroundSound = false;
 
             phoneTrigger.PhoneStop();
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
@@ -32,7 +32,7 @@ public class Cutscene5 : MonoBehaviour
 
         yield return new WaitForSeconds(30f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
-
-        InteractionManager.instance.StartSurround();
+        InteractionManager.instance.surroundSound = true;
+        trainMove.move = true;
     }
 }

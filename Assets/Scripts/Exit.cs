@@ -7,7 +7,7 @@ public class Exit : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("TitleScreen");
+            SceneManager.LoadScene("Thanks");
         }
     }
 }

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sem2/Main.unity
     guid: 08848f304c7021c48b78c8c592e8fcc7
+  - enabled: 1
+    path: Assets/Scenes/Sem2/Thanks.unity
+    guid: 7ff1771ec3a96f4489908d5a9918468d
   m_configObjects: {}
