@@ -1832,7 +1832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6184abf4d8e36840b7ca893df4ec530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 12
+  walkSpeed: 15
   gravity: 2
   minAngle: -45
   maxAngle: 90

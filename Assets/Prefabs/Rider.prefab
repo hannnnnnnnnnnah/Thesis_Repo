@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trainMove: {fileID: 0}
   riding: 1
-  limiter: 70
+  limiter: 100
 --- !u!54 &5361366377452208174
 Rigidbody:
   m_ObjectHideFlags: 0
