@@ -8,13 +8,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioSource audioFoot, flashback;
 
     public float speed;
-    public bool isCrouching, inTracks, rotate;
+    public bool inTracks, rotate, move, riding;
     public LayerMask checkRaycast;
-    public Animator animator;
+    public Animator animator, flashbackAnim;
+
+    public Vector3 moveDirection;
 
     private float stepRate, stepCoolDown, stepRateSet;
-    private Vector3 camRotation, moveDirection;
-    private Camera mainCamera;
+    private Vector3 camRotation;
+    [SerializeField] Camera mainCamera;
 
     CharacterController characterController;
 
@@ -33,9 +35,7 @@ public class PlayerMovement : MonoBehaviour
         //Sets player position to spawn point
         gameObject.transform.position = RespawnManager.instance.spawnPoint;
 
-        mainCamera = Camera.main;
-        
-        animator = GetComponent<Animator>();
+
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -44,8 +44,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
-        Rotate();
+        if (move)
+        {
+            Move();
+            Rotate();
+        }
     }
 
     private void Move()
@@ -76,8 +79,8 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
 
-        if (characterController.enabled)
-            characterController.Move((moveDirection * speed * Time.deltaTime));
+        if (characterController.enabled && !riding)
+            characterController.Move(moveDirection * speed * Time.deltaTime);
     }
 
     //Camera rotation stuff

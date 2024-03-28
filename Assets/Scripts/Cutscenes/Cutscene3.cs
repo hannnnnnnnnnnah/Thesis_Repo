@@ -56,7 +56,6 @@ public class Cutscene3 : MonoBehaviour
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
         RespawnManager.instance.trainHop = true;
         trainMove.move = true; 
-        trainRide.noCutscene = true;
 
         //Sanity is decreased
         InteractionManager.instance.sanity--;

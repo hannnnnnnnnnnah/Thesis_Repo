@@ -2310,6 +2310,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: METRO_CAR
       objectReference: {fileID: 0}
+    - target: {fileID: 3380570775361647642, guid: 1617f790a9746a94ba7386af23d65b69, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6115757130002508204, guid: 1617f790a9746a94ba7386af23d65b69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

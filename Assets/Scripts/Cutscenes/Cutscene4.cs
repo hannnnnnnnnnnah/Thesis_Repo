@@ -43,6 +43,7 @@ public class Cutscene4 : MonoBehaviour
         cutsceneTriggered = true;
         audioSource.Play();
 
+        yield return new WaitForSeconds(2f);
         trainMove.speed = 15f;
         trainMove.moveDirection = Vector3.forward;
         trainMove.stopPos = newStopPos;

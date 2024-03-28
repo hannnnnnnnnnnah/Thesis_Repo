@@ -14,9 +14,7 @@ public class NoteStart : MonoBehaviour
 
     private void Start()
     {
-        PlayerMovement.instance.GetComponent<CharacterController>().enabled = false;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        PlayerMovement.instance.move = false;
     }
 
     private void Update()
@@ -31,8 +29,7 @@ public class NoteStart : MonoBehaviour
     {
         letterRead = true;
 
-        PlayerMovement.instance.rotate = true;
-        PlayerMovement.instance.GetComponent<CharacterController>().enabled = true;
+        PlayerMovement.instance.move = true;
         Cursor.lockState = CursorLockMode.Locked;
         letter.SetActive(false);
         audioSource.Play();

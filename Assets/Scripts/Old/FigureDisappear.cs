@@ -55,13 +55,13 @@ public class FigureDisappear : MonoBehaviour
             animator.SetBool("Aware", true);
             //UIManager.instance.ResetEye("EyeVisible", true);
 
-            if (!PlayerMovement.instance.isCrouching)
-            {
+            //if (!PlayerMovement.instance.isCrouching)
+            //{
                 //UIManager.instance.ResetEye("EyeAware", true);
                 startAlertTimer();
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 //reset everything
                 alertTimeDecreasing = false;
                 StopAllCoroutines();
@@ -69,7 +69,7 @@ public class FigureDisappear : MonoBehaviour
 
                 //change UI
                 //UIManager.instance.ResetEye("EyeVisible", true);
-            }
+            //}
         }
 
         //rotate towards the player
