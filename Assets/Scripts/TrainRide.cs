@@ -24,8 +24,17 @@ public class TrainRide : MonoBehaviour
         if (riding)
         {
             PlayerMovement.instance.transform.SetParent(trainMove.transform);
-            PlayerMovement.instance.riding = true;
             controller.Move((rb.velocity + (PlayerMovement.instance.moveDirection * PlayerMovement.instance.speed)) / limiter);
+        }
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("yep");
+            riding = true;
+            PlayerMovement.instance.riding = true;
         }
     }
 
@@ -34,6 +43,7 @@ public class TrainRide : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             riding = true;
+            PlayerMovement.instance.riding = true;
         }
     }
 

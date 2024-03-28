@@ -3,7 +3,7 @@ using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float sprintSpeed, walkSpeed, sneakSpeed, gravity;
+    [SerializeField] float walkSpeed, gravity;
     [SerializeField] int minAngle, maxAngle, sensitivity;
     [SerializeField] AudioSource audioFoot, flashback;
 
@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
             //step audio
 
-            stepCoolDown -= Time.deltaTime;
+            stepCoolDown -= Time.fixedDeltaTime;
 
             if (characterController.velocity.magnitude > 0 && stepCoolDown < 0f)
             {
@@ -77,10 +77,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        moveDirection.y -= gravity * Time.deltaTime;
+        moveDirection.y -= gravity * Time.fixedDeltaTime;
 
         if (characterController.enabled && !riding)
-            characterController.Move(moveDirection * speed * Time.deltaTime);
+            characterController.Move(moveDirection * speed * Time.fixedDeltaTime);
     }
 
     //Camera rotation stuff
@@ -88,9 +88,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (rotate)
         {
-            transform.Rotate(Vector3.up * sensitivity * Time.deltaTime * (Input.GetAxis("Mouse X")));
+            transform.Rotate(Vector3.up * sensitivity * Time.fixedDeltaTime * (Input.GetAxis("Mouse X")));
 
-            camRotation.x -= Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+            camRotation.x -= Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime;
             camRotation.x = Mathf.Clamp(camRotation.x, minAngle, maxAngle);
 
             mainCamera.transform.localEulerAngles = camRotation;
