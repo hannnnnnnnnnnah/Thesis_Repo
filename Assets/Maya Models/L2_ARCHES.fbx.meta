@@ -3,7 +3,27 @@ guid: df222df25107dfb4abb16ae294ecb9cb
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L2_ARCHES_ARCHES
+    second: {fileID: 2100000, guid: 21138b9458c29494fabbcbae03643dc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L2_ARCHES_DETAILS
+    second: {fileID: 2100000, guid: 72f5b4863fa298944a4c0bb5dead7802, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L2_ARCHES_FLOOR
+    second: {fileID: 2100000, guid: 8e0a9d477fe00ee4db68d78518ae3747, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L2_ARCHES_WALL
+    second: {fileID: 2100000, guid: 243e632f15188d34e8247c7cf7b47ac0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

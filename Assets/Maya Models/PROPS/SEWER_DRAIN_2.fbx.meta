@@ -3,7 +3,12 @@ guid: b95d3aad399c42141a7b29a8a37bc6a0
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_SEWER_2
+    second: {fileID: 2100000, guid: 89c64e5e7ddf7c7488f080c90c0b84ae, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,22 @@ guid: b4f4b4710fdc47a478f6176319bb10ce
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_HOSBED_BASE
+    second: {fileID: 2100000, guid: f293184a2991d5344a42d7acfc36a295, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_HOSBED_MATRESS
+    second: {fileID: 2100000, guid: 2da0f55553c82444cbe00befc0db291d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_HOSBED_WHEELS
+    second: {fileID: 2100000, guid: bb34adfff7632c04380312f76c48ea88, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

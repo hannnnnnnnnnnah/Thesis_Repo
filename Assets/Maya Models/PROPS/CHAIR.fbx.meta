@@ -3,7 +3,17 @@ guid: 39f068d0a778aa040bb4193955156c82
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_CHAIR_BASE
+    second: {fileID: 2100000, guid: aa6dbc2670e9adf499c04b7ba99236db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_CHAIR_PILLOW
+    second: {fileID: 2100000, guid: 9ce1b77baa8ec7347bc5429eda7b9a87, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

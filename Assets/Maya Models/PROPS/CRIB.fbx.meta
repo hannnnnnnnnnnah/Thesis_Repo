@@ -3,7 +3,17 @@ guid: 4e1dacab92bf6a6458071e78b2f49cbf
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_CRIB_BASE
+    second: {fileID: 2100000, guid: c87877eb157e8234987be3a202fbd4e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_CRIB_PILLOW
+    second: {fileID: 2100000, guid: 2dc301d46b1dbc84bb6f4a10f7258714, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

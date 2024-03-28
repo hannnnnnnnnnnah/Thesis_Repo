@@ -3,7 +3,12 @@ guid: 3eeaf0943451def4f8f24b088deb7967
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_FLOOR_BUMPY
+    second: {fileID: 2100000, guid: d4ef302ecbf70f348a5dfc4a48774473, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

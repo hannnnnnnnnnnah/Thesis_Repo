@@ -7,6 +7,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: MAT_RAIL_3_BASE
+    second: {fileID: 2100000, guid: 4d43823ba6f7fb047bc0e76275ff2f65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_RAIL_3_BTTM
+    second: {fileID: 2100000, guid: 5fbdbd649dd997449a4729b9863f9e68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: aiStandardSurface2
     second: {fileID: 2100000, guid: 66e3d7cbb83415d4abdc03baecb42292, type: 2}
   materials:

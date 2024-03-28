@@ -3,7 +3,17 @@ guid: 3a64cad3d6e692d4a9c44a3b0a1c0b55
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_DRESSER_BASE
+    second: {fileID: 2100000, guid: 383d6ac3c6ef5d74e879894a63f082ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_DRESSER_HANDLES
+    second: {fileID: 2100000, guid: 9784e7535d9cf144aa532e54625439ee, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

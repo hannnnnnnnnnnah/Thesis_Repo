@@ -3,7 +3,17 @@ guid: 8265a3e87011cca48bcee4a5dbc809b6
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_POP_METAL
+    second: {fileID: 2100000, guid: 31add570e1912cc45abbb86106d0099b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_POP_SURFACE
+    second: {fileID: 2100000, guid: a2659be01017e1247a346f5bab73d289, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
