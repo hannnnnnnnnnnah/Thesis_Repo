@@ -1,3 +1,4 @@
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -51,6 +52,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("Rideable"))
+        {
+            riding = true;
+            gameObject.transform.SetParent(hit.transform);
+        }
+    }
+
     private void Move()
     {
         stepRate = 0.3f;
@@ -79,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection.y -= gravity * Time.fixedDeltaTime;
 
-        if (characterController.enabled && !riding)
+        if (characterController.enabled)
             characterController.Move(moveDirection * speed * Time.fixedDeltaTime);
     }
 

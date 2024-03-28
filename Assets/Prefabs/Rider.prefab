@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5361366377452208179}
   - component: {fileID: 5361366377452208177}
   - component: {fileID: 5361366377452208176}
-  - component: {fileID: 5361366377452208174}
+  - component: {fileID: 4915044295577976285}
   m_Layer: 0
   m_Name: Rider
-  m_TagString: Untagged
+  m_TagString: Rideable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,21 +60,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trainMove: {fileID: 0}
-  riding: 1
-  limiter: 100
---- !u!54 &5361366377452208174
-Rigidbody:
+--- !u!65 &4915044295577976285
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5361366377452208178}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
+  m_Size: {x: 860.4675, y: 96.21, z: 4477.9165}
+  m_Center: {x: 64.05182, y: -141.1, z: 428.30542}

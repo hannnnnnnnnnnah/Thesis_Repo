@@ -98212,6 +98212,14 @@ PrefabInstance:
       propertyPath: stopPos
       value: 
       objectReference: {fileID: 750195896}
+    - target: {fileID: 4852456393659069500, guid: db76bc262bd52f744a3da8d450f2a1c7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 403.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587741820394476772, guid: db76bc262bd52f744a3da8d450f2a1c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8118834507340526354, guid: db76bc262bd52f744a3da8d450f2a1c7, type: 3}
       propertyPath: m_RootOrder
       value: 0

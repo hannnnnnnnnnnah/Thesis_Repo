@@ -12,6 +12,7 @@ TagManager:
   - TrainKill
   - Paused
   - Train
+  - Rideable
   layers:
   - Default
   - TransparentFX
