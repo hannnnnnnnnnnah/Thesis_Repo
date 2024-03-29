@@ -3,7 +3,142 @@ guid: ce18a44c3d9e2b140bee149ade349485
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_BGN_1
+    second: {fileID: 2100000, guid: 5e2e56d79b6a6f440a4a6cc90f6bc0a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_BGN_2
+    second: {fileID: 2100000, guid: af79392a57769924497378add08ce28d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_BGN_3
+    second: {fileID: 2100000, guid: f03e6b3cb9649324c989434e6ea44cb6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_BGN_4
+    second: {fileID: 2100000, guid: 06d82199cb47b614a85ae93e92aea0dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_BGN_5
+    second: {fileID: 2100000, guid: 952cc5b709d8cf949ad5d182918b0560, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_BGN_6
+    second: {fileID: 2100000, guid: c9a3598c1da1af940ad78204d0d28903, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_ENT_1
+    second: {fileID: 2100000, guid: 04637b2370dc7e44f8680f82ac531660, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_ENT_2
+    second: {fileID: 2100000, guid: 5360abd84682e4341bb72f1c3f09d224, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_ENT_3
+    second: {fileID: 2100000, guid: 824d0f501e5f7c744a4c49bec22816af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_ENT_4
+    second: {fileID: 2100000, guid: e98331be7f0374447b9ad46592651874, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_ENT_5
+    second: {fileID: 2100000, guid: fa2d9055829d6da479c499baac89257b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_ENT_6
+    second: {fileID: 2100000, guid: c1153e787da4f8c4e8409472da7cbcf5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_ENT_7
+    second: {fileID: 2100000, guid: 8aa052d25bc0a9744a577c5c2f14dc48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L1_ARCHES_ARCHES
+    second: {fileID: 2100000, guid: 2669e0bafff332a438002a2e2d964807, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L1_ARCHES_DETAILS
+    second: {fileID: 2100000, guid: 81b04dc6135b2054399379840b84f117, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L1_ARCHES_WALL
+    second: {fileID: 2100000, guid: a2663dd9fce03834b8bacbfd3a8e3e6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L1_CEILING_CYL
+    second: {fileID: 2100000, guid: 7b0b408e50e0d734cad476dbe504a45c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L1_CEILING_SUPPORT
+    second: {fileID: 2100000, guid: d9a60e10fc87bca488df787e5402c8ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L1_FLOOR
+    second: {fileID: 2100000, guid: 23358e02558f76649b147c210515b9d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L1_FLOOR_TOP
+    second: {fileID: 2100000, guid: 34036ab6d0c443e4ca077b8b3cb10c38, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L1_HANDRAILS
+    second: {fileID: 2100000, guid: 5ee45eff099c97a4d817f9fca08020c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_RAILS_FLOOR
+    second: {fileID: 2100000, guid: b4b22dd43e16814488c09bb8bef06a2c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_RAILS_HINGES
+    second: {fileID: 2100000, guid: 9ea22b996fd3e47438a170317d89bc6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_RAILS_METAL
+    second: {fileID: 2100000, guid: e844a36e10a95e1449aca9e17d4a1938, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_RAILS_SIDES
+    second: {fileID: 2100000, guid: 7d2b78dda7376f24ca05bc4392b9f3db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_STAIRS_BASE
+    second: {fileID: 2100000, guid: 127de5b450d8bf14aa1c9d084f8349b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_STAIRS_TOP
+    second: {fileID: 2100000, guid: 98898f86ba7caf247bb99b0204c91af5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

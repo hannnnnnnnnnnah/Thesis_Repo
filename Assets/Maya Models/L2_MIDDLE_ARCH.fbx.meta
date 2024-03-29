@@ -3,7 +3,22 @@ guid: 3580eb84baed73d4fb8725fecca92c64
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L2_MIDDLE_ARCH
+    second: {fileID: 2100000, guid: fe83358f1b8367645a7959a874023c31, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L2_MIDDLE_DETAILS
+    second: {fileID: 2100000, guid: f3861dd847a30bb4a92c63446b5acb13, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L2_MIDDLE_WALL
+    second: {fileID: 2100000, guid: d321140a3cbf92e4abee3e99d1585bf1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

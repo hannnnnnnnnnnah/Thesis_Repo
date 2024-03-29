@@ -3,7 +3,22 @@ guid: bf6d15fa97f422d4f814afdabc31c69e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L2_EXIT_STAIRS
+    second: {fileID: 2100000, guid: 091f54cd4fc1ee645af26942c50cca72, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L2_EXIT_TOP_STAIRS
+    second: {fileID: 2100000, guid: ba31ddd749222664ebbb563796735a71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_L2_EXIT_WALLS
+    second: {fileID: 2100000, guid: c5345edeb5c75fc4d976f7c0d6cd8ad9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

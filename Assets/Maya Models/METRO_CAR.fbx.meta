@@ -3,7 +3,57 @@ guid: 1617f790a9746a94ba7386af23d65b69
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_MC_BACK_DOOR
+    second: {fileID: 2100000, guid: 027c826a1119d2c4c99ba920608a1fb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_MC_BACK_DOOR_WINDOW
+    second: {fileID: 2100000, guid: ce08528755edd994bbd436b958e9f3bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_MC_CHAIRS
+    second: {fileID: 2100000, guid: 0135bac59ea78ee418b9d48685750f9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_MC_EXTERIOR
+    second: {fileID: 2100000, guid: dda2dc1331655464b8cc00d4b809cff5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_MC_EXTERIOR_BOTTOM
+    second: {fileID: 2100000, guid: 8a1f4c50e06d4de439bdffc4818b1a86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_MC_FRONT_DOOR
+    second: {fileID: 2100000, guid: 9627cb91c80870d429a1ae612a2341c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_MC_FRONT_DOOR_WINDOW
+    second: {fileID: 2100000, guid: 04b3588ea65c68c4d81e8e11623e2102, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_MC_INNERWALLS
+    second: {fileID: 2100000, guid: 05d2ee9fd279a174e927349fa6a5a29a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_MC_POLES
+    second: {fileID: 2100000, guid: 548dafab925bd7d4db04faf5e6aee3f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_MC_WINDOWS
+    second: {fileID: 2100000, guid: 1140ed935460e1b4fa84ab8e061931e2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
