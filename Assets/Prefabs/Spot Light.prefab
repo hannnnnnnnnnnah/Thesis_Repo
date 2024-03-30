@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8745473615949742028}
   - component: {fileID: 8745473615949742031}
   - component: {fileID: 8745473615949742030}
-  - component: {fileID: 8745473615949742029}
   - component: {fileID: 8745473615949742026}
   - component: {fileID: 3254627611687905615}
   - component: {fileID: 4369175166800222005}
+  - component: {fileID: 8212728414100222799}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -119,20 +119,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!136 &8745473615949742029
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8745473615949742017}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 4.7242136
-  m_Height: 10.543206
-  m_Direction: 1
-  m_Center: {x: 0.5473838, y: -1.09651735e-14, z: 4.7716045}
 --- !u!114 &8745473615949742026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,9 +135,9 @@ MonoBehaviour:
   lightCanExplode: 0
   lightOut: 0
   source: {fileID: 4369175166800222005}
-  deathTimeReset: 11
   lightBroken: 0
   spotlight: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!82 &3254627611687905615
 AudioSource:
   m_ObjectHideFlags: 0
@@ -344,3 +330,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &8212728414100222799
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8745473615949742017}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1485.6438, y: 1500, z: 2112.3547}
+  m_Center: {x: 7.178092, y: -7.730649e-12, z: 1049.9968}

@@ -11,7 +11,7 @@ public class KillSelf : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInChildren<Rigidbody>();
     }
 
     private void Update()
