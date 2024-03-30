@@ -1,12 +1,15 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectThrow : MonoBehaviour
 {
-    public float force, triggerDist, forceRadius;
-    public bool toss = false;
-    public bool tossLeft, tossRight;    
+    [SerializeField] float force, triggerDist, forceRadius;
+    [SerializeField] bool toss = false;
+    [SerializeField] bool tossLeft, tossRight;    
 
     Rigidbody rb;
+
+    public bool debug = false;
 
     private void Start()
     {
@@ -15,17 +18,17 @@ public class ObjectThrow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Vector3.Distance(transform.position, PlayerMovement.instance.transform.position) < triggerDist)
+        if (Vector3.Distance(transform.position, PlayerMovement.instance.transform.position) < triggerDist)
             toss = true;
         else
             toss = false;
 
         if (toss)
         {
-            if(tossLeft)
+            if (tossLeft)
                 rb.AddExplosionForce(force, transform.position - Vector3.left, forceRadius);
 
-            if(tossRight)
+            if (tossRight)
                 rb.AddExplosionForce(force, transform.position + Vector3.left, forceRadius);
         }
     }
