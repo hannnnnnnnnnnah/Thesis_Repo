@@ -31,7 +31,11 @@ public class Cutscene6 : MonoBehaviour
         cutsceneTriggered = true;
 
         foreach (GameObject hospObj in hospitalObjects)
-            hospObj.GetComponent<ObjectThrow>().toss = true;
+        {
+            if(hospObj != null)
+                hospObj.GetComponent<ObjectThrow>().toss = true;
+        }
+
 
         audioSource.Play();
 

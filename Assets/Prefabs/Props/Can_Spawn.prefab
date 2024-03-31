@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 5273923073887703736}
   - component: {fileID: 5960973222677692781}
   - component: {fileID: 8161960504246375063}
+  - component: {fileID: 7334957264550931719}
   m_Layer: 0
-  m_Name: Can
+  m_Name: Can_Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +131,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 67e90632a6dd82743adc9a6f9cc6b4bc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.01
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -226,7 +227,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5479f1932fd4b6643bf93a1a5fd3bb5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactAmount: 1
+  impactAmount: 3
+--- !u!114 &7334957264550931719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206997386412732689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe931eda0cd98514dbcb56f467f48330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifespan: 3
 --- !u!1 &2542453040938698539
 GameObject:
   m_ObjectHideFlags: 0
