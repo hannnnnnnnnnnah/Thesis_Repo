@@ -7,6 +7,7 @@ public class Flashback : MonoBehaviour
     [SerializeField] Animator animator;
 
     bool flashbackTriggered = false;
+    public int animNum = 6;
 
     public List<GameObject> lights;
 
@@ -21,8 +22,7 @@ public class Flashback : MonoBehaviour
     public void FlashbackStart()
     {
         flashbackTriggered = true;
-        animator.SetBool("Flashback1", true);
-        StartCoroutine(FlashbackFade());
+        animator.SetInteger("FlashbackNum", animNum);
 
         lightBreak.Play();
         laugh.Play();
@@ -34,9 +34,8 @@ public class Flashback : MonoBehaviour
         }
     }
 
-    public IEnumerator FlashbackFade()
+    public void SetAnim(int num)
     {
-        yield return new WaitForSeconds(.1f);
-        animator.SetBool("Flashback1", false);
+        animator.SetInteger("FlashbackNum", num);
     }
 }
