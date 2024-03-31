@@ -4,12 +4,11 @@ using UnityEngine;
 public class ObjectThrow : MonoBehaviour
 {
     [SerializeField] float force, triggerDist, forceRadius;
-    [SerializeField] bool toss = false;
     [SerializeField] bool tossLeft, tossRight;    
 
     Rigidbody rb;
 
-    public bool debug = false;
+    public bool hasTrigger, toss = false;
 
     private void Start()
     {
@@ -18,10 +17,13 @@ public class ObjectThrow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Vector3.Distance(transform.position, PlayerMovement.instance.transform.position) < triggerDist)
-            toss = true;
-        else
-            toss = false;
+        if (!hasTrigger)
+        {
+            if (Vector3.Distance(transform.position, PlayerMovement.instance.transform.position) < triggerDist)
+                toss = true;
+            else
+                toss = false;
+        }
 
         if (toss)
         {

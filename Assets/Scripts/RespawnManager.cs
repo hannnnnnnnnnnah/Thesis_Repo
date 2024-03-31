@@ -52,6 +52,7 @@ public class RespawnManager : MonoBehaviour
 
     public void Testing()
     {
+        NarrativeManager.instance.TriggerLevelSwitch();
         ChangeSpawn(testloc.transform.position);
     }
 

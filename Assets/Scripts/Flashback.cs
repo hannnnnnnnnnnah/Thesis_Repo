@@ -34,8 +34,8 @@ public class Flashback : MonoBehaviour
         }
     }
 
-    public void SetAnim(int num)
-    {
-        animator.SetInteger("FlashbackNum", num);
-    }
+    //public void SetAnim(int num)
+    //{
+    //    animator.SetInteger("FlashbackNum", num);
+    //}
 }
