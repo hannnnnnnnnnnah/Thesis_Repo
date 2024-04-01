@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5273923073887703736}
   - component: {fileID: 5960973222677692781}
   - component: {fileID: 8161960504246375063}
-  - component: {fileID: 7334957264550931719}
+  - component: {fileID: 3773848749780133886}
   m_Layer: 0
   m_Name: Can_Spawn
   m_TagString: Untagged
@@ -175,7 +175,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.42
+      value: 0.8
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactAmount: 3
---- !u!114 &7334957264550931719
+--- !u!114 &3773848749780133886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206997386412732689}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe931eda0cd98514dbcb56f467f48330, type: 3}
+  m_Script: {fileID: 11500000, guid: 96c5701c779a2cd4485e5b108281b924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 3

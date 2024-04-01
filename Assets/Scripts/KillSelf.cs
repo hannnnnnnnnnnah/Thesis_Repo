@@ -1,24 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class KillSelf : MonoBehaviour
 {
     public float lifespan;
     bool dieTriggered = false;
-    Rigidbody rb;
+    ObjectThrow objThrow;
 
     private void Start()
     {
-        rb = GetComponentInChildren<Rigidbody>();
+        objThrow = GetComponent<ObjectThrow>();
     }
 
     private void Update()
     {
-        //Debug.Log(rb.velocity.magnitude);
-
-        if (rb.velocity.magnitude > 1f && !dieTriggered)
+        if (objThrow.toss && !dieTriggered)
         {
             StartCoroutine(Die());
             dieTriggered = true;
