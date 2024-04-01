@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class StartGame : MonoBehaviour
 {
     public Button startButton;
+    public GameObject titleScreen;
+    public GameObject warningScreen;
 
     void Start()
     {
@@ -18,6 +20,7 @@ public class StartGame : MonoBehaviour
 
     void TaskOnClick()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        warningScreen.SetActive(true);
+        titleScreen.SetActive(false);
     }
 }
