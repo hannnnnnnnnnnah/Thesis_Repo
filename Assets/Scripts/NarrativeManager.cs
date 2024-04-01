@@ -4,7 +4,7 @@ using System.Collections;
 
 public class NarrativeManager : MonoBehaviour
 {
-    [SerializeField] GameObject overheadLight, startSpawn, newSpawn, firstLights;
+    [SerializeField] GameObject overheadLight, startSpawn, newSpawn, firstLights, startProps, endProps, endWife;
     [SerializeField] TrainMove trainMove, trainMove1;
     [SerializeField] Animator wifeAnim;
     [SerializeField] AudioSource crash, lightExplode, flashback;
@@ -95,6 +95,15 @@ public class NarrativeManager : MonoBehaviour
 
         foreach (GameObject metrocar in metrocars)
             metrocar.gameObject.SetActive(true);
+    }
+
+    public void EndOfGame()
+    {
+        overheadLight.SetActive(true);
+        firstLights.SetActive(true);
+        startProps.SetActive(false); 
+        endProps.SetActive(true);
+        endWife.SetActive(true);
     }
 
 }

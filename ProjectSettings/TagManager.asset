@@ -13,6 +13,7 @@ TagManager:
   - Paused
   - Train
   - Rideable
+  - PlayerCutscene
   layers:
   - Default
   - TransparentFX

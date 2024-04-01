@@ -31,7 +31,7 @@ public class Cutscene7 : MonoBehaviour
 
         audioSource.Play();
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(11f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
 
 

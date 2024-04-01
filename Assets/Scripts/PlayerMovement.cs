@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float stepRate, stepCoolDown, stepRateSet;
     private Vector3 camRotation;
-    [SerializeField] Camera mainCamera;
+    public Camera mainCamera;
 
     CharacterController characterController;
 

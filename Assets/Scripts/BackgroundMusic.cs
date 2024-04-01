@@ -22,4 +22,9 @@ public class BackgroundMusic : MonoBehaviour
     {
         audioSource.Play();
     }
+
+    public void StopBackgroundMusic() 
+    {
+        audioSource.Stop();
+    }
 }
