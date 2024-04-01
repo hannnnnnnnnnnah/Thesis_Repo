@@ -68,7 +68,8 @@ public class NarrativeManager : MonoBehaviour
 
         foreach (GameObject light in lights)
         {
-            light.GetComponentInParent<Animator>().SetBool("LightExplode", true);
+            if(light.GetComponentInParent<Animator>() != null)
+                light.GetComponentInParent<Animator>().SetBool("LightExplode", true);
             light.GetComponentInChildren<LightTrigger>().lightBroken = true;
         }
 
