@@ -23,7 +23,7 @@ public class ObjectFloat : MonoBehaviour
     {
         if (floating) 
         {
-            rb.AddForce(Vector3.up * Random.Range(1, FloatStrength));
+            rb.AddForce(Vector3.up * Random.Range(1, FloatStrength), ForceMode.Force);
             transform.Rotate(RandomRotation, RandomRotation, RandomRotation);
         }
     }

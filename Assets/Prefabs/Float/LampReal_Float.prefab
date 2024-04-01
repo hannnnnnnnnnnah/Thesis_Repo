@@ -145,10 +145,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 95.6
-  m_Range: 7.538779
-  m_SpotAngle: 70.32214
-  m_InnerSpotAngle: 54.849987
+  m_Intensity: 106.1
+  m_Range: 7.1815295
+  m_SpotAngle: 89.1283
+  m_InnerSpotAngle: 70.81971
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -359,7 +359,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8234462524437548893}
   serializedVersion: 2
-  m_Mass: 0.45
+  m_Mass: 0.47
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1

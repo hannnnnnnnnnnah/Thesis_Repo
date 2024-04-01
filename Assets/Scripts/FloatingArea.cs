@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FloatingArea : MonoBehaviour
 {
+
+    [SerializeField] TrainMove trainMove;
+
     bool entered = false;
     public List<GameObject> floatables;
     public static FloatingArea instance;
@@ -26,6 +29,21 @@ public class FloatingArea : MonoBehaviour
             }
 
             entered = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            foreach (GameObject floatable in floatables)
+            {
+                floatable.GetComponent<ObjectFloat>().floating = false;
+                floatable.GetComponent<Rigidbody>().mass = 1.0f;
+            }
+
+
+            trainMove.move = true;
         }
     }
 }
