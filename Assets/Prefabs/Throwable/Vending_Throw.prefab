@@ -232,9 +232,10 @@ MonoBehaviour:
   force: 20
   triggerDist: 20
   forceRadius: 10
-  toss: 0
   tossLeft: 1
   tossRight: 0
+  hasTrigger: 0
+  toss: 0
 --- !u!114 &7203041400147278136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +305,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.43
+      value: 0.95
       inSlope: 0
       outSlope: 0
       tangentMode: 0
