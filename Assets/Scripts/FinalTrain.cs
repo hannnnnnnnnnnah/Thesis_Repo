@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FinalTrain : MonoBehaviour
 {
-    [SerializeField] GameObject newStopPos;
+    [SerializeField] GameObject newStopPos, save;
     TrainMove trainMove;
     bool triggered = false;
 
@@ -13,14 +13,22 @@ public class FinalTrain : MonoBehaviour
         trainMove = GetComponent<TrainMove>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Player") && !triggered)
+        if(other.CompareTag("Player"))
         {
-            trainMove.stopPos = newStopPos;
-            trainMove.moveDirection = Vector3.forward;
-            trainMove.move = true;
-            triggered = true;
+            if (!triggered)
+            {
+                trainMove.stopPos = newStopPos;
+                trainMove.moveDirection = Vector3.forward;
+                trainMove.move = true;
+                triggered = true;
+            }
+
+            if (!trainMove.move)
+            {
+                RespawnManager.instance.ChangeSpawn(save.transform.position);
+            }
         }
     }
 }
