@@ -67,7 +67,10 @@ public class RespawnManager : MonoBehaviour
         respawning = true;
 
         if (deathCount == 0)
+        {
             UIManager.instance.ShowText("She can't find you in the light");
+            PlayerMovement.instance.speed = 15f;
+        }
 
         //Set player position to spawn point
         PlayerMovement.instance.GetComponent<CharacterController>().enabled = false;

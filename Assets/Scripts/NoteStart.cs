@@ -5,7 +5,8 @@ public class NoteStart : MonoBehaviour
 {
     [SerializeField] TrainMove trainMove;
     [SerializeField] AudioSource audioSource;
-    [SerializeField] GameObject letter;
+    [SerializeField] Animator body, cam;
+    [SerializeField] GameObject newCam, controls;
 
     string moveText = "Use WASD to move";
 
@@ -15,29 +16,37 @@ public class NoteStart : MonoBehaviour
     private void Start()
     {
         PlayerMovement.instance.move = false;
+        PlayerMovement.instance.mainCamera.enabled = false;
+
+        trainMove.move = true;
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space) && !letterRead)
         {
-            StartCoroutine(LetterRead());
+            LetterRead();
         }
     }
 
-    IEnumerator LetterRead()
+    public void LetterRead()
     {
         letterRead = true;
+        body.SetBool("Hands", true);
+        audioSource.Play();
+    }
 
+    public void PlayStand()
+    {
+        cam.SetBool("Stand", true);
+    }
+
+    public void StandUp()
+    {
+        newCam.SetActive(false);
+        PlayerMovement.instance.mainCamera.enabled = true;
         PlayerMovement.instance.move = true;
         Cursor.lockState = CursorLockMode.Locked;
-        letter.SetActive(false);
-        audioSource.Play();
-        PlayerMovement.instance.transform.SetParent(trainMove.transform);
         UIManager.instance.ShowText(moveText);
-
-        yield return new WaitForSeconds(1f);
-
-        trainMove.move = true;
     }
 }

@@ -49,8 +49,6 @@ public class NarrativeManager : MonoBehaviour
         crash.Play();
         yield return new WaitForSeconds(1f);
         lightExplode.Play();
-        //flashback.Play();
-        PlayerMovement.instance.speed = 15f;
         TriggerLevelSwitch();
         yield return new WaitForSeconds(6f);
         Destroy(trainMove1.gameObject);

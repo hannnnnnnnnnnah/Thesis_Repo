@@ -14,10 +14,7 @@ public class Cutscene7 : MonoBehaviour
         if (other.CompareTag("Player") && !cutsceneTriggered)
         {
             Debug.Log("start cutscene7");
-
-            InteractionManager.instance.surroundSound = false;
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
-
             StartCoroutine(Cutscene());
         }
     }
@@ -27,7 +24,10 @@ public class Cutscene7 : MonoBehaviour
         cutsceneTriggered = true;
 
         foreach (GameObject obj in phones)
+        {
             obj.GetComponent<PhoneTrigger>().PhoneStop();
+            obj.GetComponent<BoxCollider>().enabled = false;
+        }
 
         audioSource.Play();
 

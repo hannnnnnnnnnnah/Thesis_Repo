@@ -53,5 +53,7 @@ public class LongTrain : MonoBehaviour
 
         phoneTrigger.PhoneStop();
         call.Play();
+        InteractionManager.instance.surroundSound = false;
+        InteractionManager.instance.StopSurround();
     }
 }
