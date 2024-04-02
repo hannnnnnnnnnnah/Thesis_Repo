@@ -14801,7 +14801,7 @@ PrefabInstance:
     - target: {fileID: 1791131658182666559, guid: fd69b494a1840274d9fe670a7191b270, type: 3}
       propertyPath: testloc
       value: 
-      objectReference: {fileID: 314280975}
+      objectReference: {fileID: 1591721922}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd69b494a1840274d9fe670a7191b270, type: 3}
 --- !u!1 &299359060 stripped
@@ -47679,6 +47679,8 @@ GameObject:
   m_Component:
   - component: {fileID: 886727404}
   - component: {fileID: 886727405}
+  - component: {fileID: 886727407}
+  - component: {fileID: 886727406}
   m_Layer: 0
   m_Name: LongCar
   m_TagString: Untagged
@@ -47730,6 +47732,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &886727406
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886727403}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6865768, y: 10.076553, z: 145.50024}
+  m_Center: {x: 10.36, y: 65.95461, z: 3017.5967}
+--- !u!65 &886727407
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886727403}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6865766, y: 10.076553, z: 195.65845}
+  m_Center: {x: -1.1, y: 65.95461, z: 2992.5176}
 --- !u!1 &890194916 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7994679033117759381, guid: 3ecf44ad18f3c484da9165a681017d6f, type: 3}
