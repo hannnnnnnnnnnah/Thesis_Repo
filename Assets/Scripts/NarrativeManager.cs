@@ -50,6 +50,7 @@ public class NarrativeManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         lightExplode.Play();
         TriggerLevelSwitch();
+        PlayerMovement.instance.speed = 2f;
         yield return new WaitForSeconds(6f);
         Destroy(trainMove1.gameObject);
     }

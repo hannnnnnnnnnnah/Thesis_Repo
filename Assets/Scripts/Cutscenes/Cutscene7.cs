@@ -26,7 +26,6 @@ public class Cutscene7 : MonoBehaviour
         foreach (GameObject obj in phones)
         {
             obj.GetComponent<PhoneTrigger>().PhoneStop();
-            obj.GetComponent<BoxCollider>().enabled = false;
         }
 
         audioSource.Play();
