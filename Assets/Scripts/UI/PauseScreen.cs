@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PauseScreen : MonoBehaviour
 {
+    [SerializeField] GameObject settingsScreen;
+    [SerializeField] GameObject pauseScreen;
+    [SerializeField] GameObject quitScreen;
+
     private void OnEnable()
     {
         Cursor.visible = true;
@@ -29,4 +33,29 @@ public class PauseScreen : MonoBehaviour
     {
         SceneManager.LoadScene("TitleScreen");
     }
+
+    public void Settings()
+    {
+        settingsScreen.SetActive(true);
+        pauseScreen.SetActive(false);
+    }
+
+    public void Yes()
+    {
+        SceneManager.LoadScene("TitleScreen");
+    }
+
+    public void No()
+    {
+        pauseScreen.SetActive(true);
+        quitScreen.SetActive(false);
+    }
+
+    public void QuitGame()
+    {
+        quitScreen.SetActive(true);
+        pauseScreen.SetActive(false);
+    }
+
+
 }

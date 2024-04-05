@@ -14,7 +14,6 @@ public class MouseLook : MonoBehaviour
     {
         mouseSensitivity = PlayerPrefs.GetFloat("currentSensitivity", 100);
         slider.value = mouseSensitivity / 10;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame

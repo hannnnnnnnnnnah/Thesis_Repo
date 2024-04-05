@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject pauseScreen;
-
+    [SerializeField] GameObject pauseScreen;
+    [SerializeField] GameObject settingsScreen;
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (pauseScreen.activeSelf == false && settingsScreen.activeSelf == false)
         {
-            Time.timeScale = 0;
-            pauseScreen.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pauseScreen.SetActive(true);
+                Time.timeScale = 0;
+            }
         }
     }
 }
