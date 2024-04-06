@@ -23,8 +23,9 @@ public class Cutscene2 : MonoBehaviour
         {
                 Debug.Log("start cutscene2");
                 PlayerMovement.instance.animator.SetBool("Cutscene", true);
+                PlayerMovement.instance.speed = 5f;
 
-                StartCoroutine(Cutscene());
+            StartCoroutine(Cutscene());
         }
     }
 
@@ -36,6 +37,7 @@ public class Cutscene2 : MonoBehaviour
         Instantiate(can, spawnLoc.transform.position, spawnLoc.transform.rotation);
         yield return new WaitForSeconds(7f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
+        PlayerMovement.instance.speed = 15f;
 
         foreach (var light in lights)
         {

@@ -33,6 +33,7 @@ public class Cutscene4 : MonoBehaviour
 
             phoneTrigger.PhoneStop();
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
+            PlayerMovement.instance.speed = 5f;
 
             StartCoroutine(Cutscene());
         }
@@ -57,6 +58,7 @@ public class Cutscene4 : MonoBehaviour
 
         yield return new WaitForSeconds(35f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
+        PlayerMovement.instance.speed = 15f;
         yield return new WaitForSeconds(10f);
 
         foreach (var door in doors)

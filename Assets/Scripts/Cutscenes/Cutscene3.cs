@@ -36,6 +36,7 @@ public class Cutscene3 : MonoBehaviour
             b.enabled = true;
 
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
+            PlayerMovement.instance.speed = 5f;
 
             StartCoroutine(Cutscene());
         }
@@ -54,6 +55,7 @@ public class Cutscene3 : MonoBehaviour
         b.enabled = false;
 
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
+        PlayerMovement.instance.speed = 15f;
         RespawnManager.instance.trainHop = true;
         trainMove.move = true; 
 

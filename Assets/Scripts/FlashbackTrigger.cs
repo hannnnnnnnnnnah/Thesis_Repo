@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FlashbackTrigger : MonoBehaviour
 {
+    [SerializeField] Animator playerAnim;
     Animator animator;
 
     private void Start()
@@ -14,5 +15,6 @@ public class FlashbackTrigger : MonoBehaviour
     public void SetAnim()
     {
         animator.SetInteger("FlashbackNum", 0);
+        playerAnim.SetBool("Flashback", false);
     }
 }

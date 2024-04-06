@@ -21,6 +21,7 @@ public class Cutscene6 : MonoBehaviour
 
             InteractionManager.instance.surroundSound = false;
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
+            PlayerMovement.instance.speed = 5f;
 
             StartCoroutine(Cutscene());
         }
@@ -41,6 +42,7 @@ public class Cutscene6 : MonoBehaviour
 
         yield return new WaitForSeconds(14f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
+        PlayerMovement.instance.speed = 15f;
         InteractionManager.instance.surroundSound = true;
 
         bedFloat.enabled = true;

@@ -48,7 +48,7 @@ public class InteractionManager : MonoBehaviour
                 surroundSound = true;
                 surroundMin = 0;
                 surroundMax = 3;
-                sanityVolume.weight += .2f;
+                //sanityVolume.weight += .2f;
                 break;
 
             case 3:

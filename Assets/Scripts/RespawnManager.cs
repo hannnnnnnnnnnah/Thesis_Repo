@@ -92,8 +92,10 @@ public class RespawnManager : MonoBehaviour
 
     IEnumerator RespawnEffects()
     {
+        PlayerMovement.instance.speed = 3f;
         PlayerMovement.instance.animator.SetBool("Respawn", true);
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.75f);
+        PlayerMovement.instance.speed = 15f;
         PlayerMovement.instance.animator.SetBool("Respawn", false);
         respawning = false;
     }
