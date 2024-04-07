@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2834311175242097439}
   - component: {fileID: 5859862806382866874}
   - component: {fileID: 7122240623222210050}
+  - component: {fileID: 8075767512694290182}
   m_Layer: 0
   m_Name: TV_Float
   m_TagString: Untagged
@@ -245,6 +246,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactAmount: 5
+--- !u!95 &8075767512694290182
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760973772491551110}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3006705867743061630
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8745473615949742026}
   - component: {fileID: 3254627611687905615}
   - component: {fileID: 4369175166800222005}
-  - component: {fileID: 8212728414100222799}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -330,16 +329,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &8212728414100222799
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8745473615949742017}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1485.6438, y: 1500, z: 2112.3547}
-  m_Center: {x: 7.178092, y: -7.730649e-12, z: 1049.9968}

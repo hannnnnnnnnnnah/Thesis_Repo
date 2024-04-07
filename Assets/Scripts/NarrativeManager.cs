@@ -77,7 +77,7 @@ public class NarrativeManager : MonoBehaviour
         trainMove.move = true;
 
         //Play background music
-        BackgroundMusic.instance.PlayBackgroundMusic();
+        BackgroundMusic.instance.PlayBackgroundMusic(1);
     }
 
     public void TriggerTrainDeath()

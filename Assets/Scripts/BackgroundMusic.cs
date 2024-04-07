@@ -3,7 +3,7 @@ using UnityEngine;
 public class BackgroundMusic : MonoBehaviour
 {
     public static BackgroundMusic instance;
-    public AudioSource audioSource;
+    [SerializeField] AudioSource bgMusic1, bgMusic2, bgMusic3;
 
     private void Awake()
     {
@@ -13,18 +13,26 @@ public class BackgroundMusic : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void Start()
+    public void PlayBackgroundMusic(int Track)
     {
-        audioSource = GetComponent<AudioSource>();  
-    }
-
-    public void PlayBackgroundMusic()
-    {
-        audioSource.Play();
+        switch (Track)
+        {
+            case 1:
+                bgMusic1.Play();
+                break;
+            case 2:
+                bgMusic2.Play();
+                break;
+            case 3: 
+                bgMusic3.Play();
+                break;
+        }
     }
 
     public void StopBackgroundMusic() 
     {
-        audioSource.Stop();
+        bgMusic1.Stop();
+        bgMusic2.Stop();
+        bgMusic3.Stop();
     }
 }
