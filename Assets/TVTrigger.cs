@@ -28,4 +28,12 @@ public class TVTrigger : MonoBehaviour
             isTriggered = true;
         }
     }
+
+    public void Reset()
+    {
+        foreach (var anim in TVanims)
+            anim.SetBool("TVActive", false);
+
+        audioSource.Stop();
+    }
 }

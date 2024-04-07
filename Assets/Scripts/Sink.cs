@@ -5,12 +5,10 @@ using UnityEngine;
 public class Sink : MonoBehaviour
 {
     MeshCollider mesh;
-    Rigidbody rb;
 
     private void Start()
     {
         mesh = GetComponent<MeshCollider>();
-        rb = GetComponent<Rigidbody>();
     }
 
     public void StartSink()
