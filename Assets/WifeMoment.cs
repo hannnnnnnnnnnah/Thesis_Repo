@@ -36,7 +36,7 @@ public class WifeMoment : MonoBehaviour
 
         if (blendRotation)
         {
-            PlayerMovement.instance.mainCamera.transform.rotation = Quaternion.RotateTowards(PlayerMovement.instance.mainCamera.transform.rotation, storedRotation, (rotateSpeed * Time.deltaTime) * 2);
+            PlayerMovement.instance.mainCamera.transform.rotation = Quaternion.RotateTowards(PlayerMovement.instance.mainCamera.transform.rotation, storedRotation, (rotateSpeed * Time.deltaTime) * 1.5f);
         }
 
     }
@@ -77,7 +77,7 @@ public class WifeMoment : MonoBehaviour
     {
         forceRotate = false;
         blendRotation = true;
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(1.2f);
         PlayerMovement.instance.rotate = true;
         animator.SetBool("WifeFlash", false);
         PlayerMovement.instance.speed = 15f;
