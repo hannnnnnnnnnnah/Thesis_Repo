@@ -34,7 +34,7 @@ public class PauseScreen : MonoBehaviour
         SceneManager.LoadScene("TitleScreen");
     }
 
-    public void Settings()
+    public void Settings() 
     {
         settingsScreen.SetActive(true);
         pauseScreen.SetActive(false);
