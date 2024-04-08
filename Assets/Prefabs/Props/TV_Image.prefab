@@ -557,7 +557,7 @@ MonoBehaviour:
   lightOut: 0
   source: {fileID: 0}
   lightBroken: 0
-  spotlight: {fileID: 0}
+  spotlight: {fileID: 7643156983337307189}
   animator: {fileID: 0}
 --- !u!95 &1730796650526868250
 Animator:
@@ -591,8 +591,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8e4fef29006c146afd81bad54dab9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loop: {fileID: 2085457214060188322}
   channel: {fileID: 525628685474311506}
+  loop: {fileID: 2085457214060188322}
 --- !u!82 &2085457214060188322
 AudioSource:
   m_ObjectHideFlags: 0

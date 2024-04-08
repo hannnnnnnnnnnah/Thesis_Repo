@@ -1,12 +1,16 @@
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float walkSpeed, gravity;
-    [SerializeField] int minAngle, maxAngle, sensitivity;
+    [SerializeField] int minAngle, maxAngle;
     [SerializeField] AudioSource audioFoot, flashback;
+
+    public Slider slider;
+    public float sensitivity = 100f;
 
     public float speed;
     public bool inTracks, rotate, move, riding;
@@ -33,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        slider.value = sensitivity / 10;
+
         //Sets player position to spawn point
         gameObject.transform.position = RespawnManager.instance.spawnPoint;
 
@@ -41,6 +47,12 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         speed = walkSpeed;
+    }
+
+    public void AdjustSpeed(float newSpeed)
+    {
+        sensitivity = newSpeed * 10;
+        Debug.Log("Changed to: " + sensitivity);
     }
 
     private void FixedUpdate()
@@ -63,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        stepRate = 0.3f;
+        stepRate = 0.2f;
 
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");
@@ -96,6 +108,9 @@ public class PlayerMovement : MonoBehaviour
     //Camera rotation stuff
     private void Rotate()
     {
+        if (Input.GetKey(KeyCode.O))
+            Debug.Log(rotate);
+
         if (rotate)
         {
             transform.Rotate(Vector3.up * sensitivity * Time.fixedDeltaTime * (Input.GetAxis("Mouse X")));

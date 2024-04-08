@@ -32,7 +32,10 @@ public class TVTrigger : MonoBehaviour
     public void Reset()
     {
         foreach (var anim in TVanims)
+        {
             anim.SetBool("TVActive", false);
+            anim.GetComponentInParent<TVLoop>().loop.Stop();
+        }
 
         audioSource.Stop();
     }

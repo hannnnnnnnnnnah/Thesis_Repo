@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectExplode : MonoBehaviour
 {
-    [SerializeField] float force, forceRadius;
+    [SerializeField] float force, forceRadius, forceUp;
     Sink sink;
     Rigidbody rb;
     public bool explode = false;
@@ -20,8 +20,8 @@ public class ObjectExplode : MonoBehaviour
     {
         if (explode)
         {
-            //rb.isKinematic = false;
-            rb.AddExplosionForce(force, transform.position + Vector3.up, forceRadius);
+            rb.isKinematic = false;
+            rb.AddExplosionForce(force, transform.position - Vector3.up, forceRadius, forceUp, ForceMode.Impulse);
 
             if (!triggered)
             {
@@ -33,7 +33,9 @@ public class ObjectExplode : MonoBehaviour
 
     IEnumerator StartSink()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
+        explode = false;
+        yield return new WaitForSeconds(10f);
         sink.StartSink();
     }
 }

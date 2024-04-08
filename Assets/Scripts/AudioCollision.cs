@@ -21,7 +21,7 @@ public class AudioCollision : MonoBehaviour
 
         if (collision.impulse.magnitude >= impactAmount)
         {
-            audioSource.pitch = 1f + Random.Range(-0.1f, 0.1f);
+            audioSource.pitch = 1f + Random.Range(-0.2f, 0.1f);
             audioSource.Play();
         }
     }

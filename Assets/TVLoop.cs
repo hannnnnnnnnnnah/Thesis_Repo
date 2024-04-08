@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TVLoop : MonoBehaviour
 {
-    [SerializeField] AudioSource loop, channel;
+    [SerializeField] AudioSource channel;
+    public AudioSource loop;
 
     public void Loop()
     {
