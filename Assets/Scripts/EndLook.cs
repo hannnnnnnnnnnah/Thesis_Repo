@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EndLook : MonoBehaviour
 {
-    [SerializeField] AudioSource crying;
+    [SerializeField] AudioSource crying, explode, breathe, metro, flash, bg, lastWords;
     Animator animator;
 
     private void Start()
@@ -27,6 +27,43 @@ public class EndLook : MonoBehaviour
     public void StopCrying()
     {
         crying.Stop();
+    }
+
+    public void Explode()
+    {
+        explode.Play();
+    }
+
+    public void Breathe()
+    {
+        breathe.Play();
+    }
+
+    public void Metro()
+    {
+        metro.Play();
+    }
+
+    public void Flash()
+    {
+        flash.Play();
+    }
+
+    public void BG()
+    {
+        bg.Play();
+    }
+
+    public void StopAll()
+    {
+        bg.Stop();
+        metro.Stop();
+        breathe.Stop();
+    }
+
+    public void LastWords()
+    {
+        lastWords.Play();
     }
 
     public void SwitchScene()

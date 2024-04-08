@@ -5,7 +5,7 @@ using UnityEngine;
 public class LongTrain : MonoBehaviour
 {
     TrainMove trainMove;
-    [SerializeField] GameObject canSpawner, NewSpawn;
+    [SerializeField] GameObject NewSpawn;
     [SerializeField] PhoneTrigger phoneTrigger;
     [SerializeField] List<Collider> colliders;
     [SerializeField] AudioSource call;
@@ -32,21 +32,13 @@ public class LongTrain : MonoBehaviour
             foreach (var collider in colliders)
                 collider.enabled = true;
 
-            StartCoroutine(canTime());
             triggered = true;
         }
     }
 
-    IEnumerator canTime()
-    {
-        yield return new WaitForSeconds(4f);
-        canSpawner.SetActive(true);
-    }
-
     void StopAction()
     {
-        startStop = true;   
-        canSpawner.SetActive(false);
+        startStop = true;
 
         foreach (var collider in colliders)
             collider.enabled = false;

@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     public static AudioSource soundManager;
     private static float highestVolume = 1f;
     //private static float highVolume = 0.75f;
-    private static float mediumVolume = 0.5f;
+    //private static float mediumVolume = 0.5f;
     private static float lowVolume = 0.25f;
     //private static float lowestVolume = 0.1f;
 

@@ -8,8 +8,6 @@ public class FinalCutscene : MonoBehaviour
     [SerializeField] Animator animator, playerAnim;
     [SerializeField] AudioSource wifeShout, bg;
 
-    bool endReady = false;
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -34,26 +32,28 @@ public class FinalCutscene : MonoBehaviour
         PlayerMovement.instance.mainCamera.enabled = false;
         yield return new WaitForSeconds(.5f);
         animator.SetBool("End", true);
-        //yield return new WaitForSeconds(2f);
         wifeShout.Play();
-        endReady = true;
     }
 
     public void Exit()
     {
-        bg.Stop();
+        StartCoroutine(ExitDelay());
+    }
 
-        RespawnManager.instance.ChangeSpawn(newSpawn.transform.position);
-        NarrativeManager.instance.EndOfGame();
+    IEnumerator ExitDelay()
+    {
+        yield return new WaitForSeconds(.25f);
 
-        //Player reenabled 
         newPlayer.SetActive(false);
         PlayerMovement.instance.mainCamera.enabled = true;
         PlayerMovement.instance.move = true;
         PlayerMovement.instance.rotate = true;
+        NarrativeManager.instance.EndOfGame();
 
+        //yield return new WaitForSeconds(.25f);
+
+        RespawnManager.instance.ChangeSpawn(newSpawn.transform.position);
         RespawnManager.instance.Die();
-
         Part3.SetActive(false);
     }
 }

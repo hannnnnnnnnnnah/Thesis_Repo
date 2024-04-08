@@ -98,7 +98,7 @@ public class NarrativeManager : MonoBehaviour
 
     public void EndOfGame()
     {
-        overheadLight.SetActive(true);
+        //overheadLight.SetActive(true);
         firstLights.SetActive(true);
         startProps.SetActive(false); 
         endProps.SetActive(true);
