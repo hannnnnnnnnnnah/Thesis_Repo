@@ -6,20 +6,9 @@ public class FinalCutscene : MonoBehaviour
 {
     [SerializeField] GameObject wife, newPlayer, furniture, particles, newSpawn;
     [SerializeField] Animator animator, playerAnim;
-    [SerializeField] TrainMove trainMove;
     [SerializeField] AudioSource wifeShout, bg, wind;
 
     bool endReady = false;
-
-    private void Update()
-    {
-        if(!trainMove.move && endReady)
-        {
-            Exit();
-            endReady = false;
-        }
-
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -44,7 +33,6 @@ public class FinalCutscene : MonoBehaviour
         yield return new WaitForSeconds(.25f);
         playerAnim.SetBool("EndCover", false);
         PlayerMovement.instance.mainCamera.enabled = false;
-        trainMove.move = true;
         yield return new WaitForSeconds(.5f);
         animator.SetBool("End", true);
         yield return new WaitForSeconds(2f);

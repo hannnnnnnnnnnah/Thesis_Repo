@@ -52,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
     public void AdjustSpeed(float newSpeed)
     {
         sensitivity = newSpeed * 10;
-        Debug.Log("Changed to: " + sensitivity);
     }
 
     private void FixedUpdate()
@@ -75,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        stepRate = 0.2f;
+        stepRate = 0.25f;
 
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");

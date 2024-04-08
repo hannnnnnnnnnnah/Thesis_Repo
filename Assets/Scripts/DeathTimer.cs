@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class DeathTimer : MonoBehaviour
 {
     [SerializeField] AudioSource breathing, heartbeat, metro;
-    [SerializeField] Animator visionCover;
+    public Animator visionCover;
     [SerializeField] GameObject SurroundSound;
 
     public Volume vol;

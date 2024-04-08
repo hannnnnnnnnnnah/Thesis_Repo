@@ -6,6 +6,7 @@ public class Cutscene7 : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
     [SerializeField] List<GameObject> phones, lights;
+    [SerializeField] GameObject OldStuff, NewStuff;
 
     bool cutsceneTriggered = false;
 
@@ -16,6 +17,7 @@ public class Cutscene7 : MonoBehaviour
             Debug.Log("start cutscene7");
             BackgroundMusic.instance.StopBackgroundMusic();
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
+            DeathTimer.instance.visionCover.SetBool("Transition", true);
             PlayerMovement.instance.speed = 5f;
             StartCoroutine(Cutscene());
         }
@@ -32,10 +34,16 @@ public class Cutscene7 : MonoBehaviour
 
         audioSource.Play();
 
-        yield return new WaitForSeconds(11f);
-        PlayerMovement.instance.animator.SetBool("Cutscene", false);
-        PlayerMovement.instance.speed = 15f;
+        yield return new WaitForSeconds(10f);
 
+        OldStuff.SetActive(false);
+        NewStuff.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+
+        PlayerMovement.instance.animator.SetBool("Cutscene", false);
+        DeathTimer.instance.visionCover.SetBool("Transition", false);
+        PlayerMovement.instance.speed = 15f;
 
         foreach (GameObject obj in lights)
             obj.SetActive(true);
