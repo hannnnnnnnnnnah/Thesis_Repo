@@ -7,6 +7,7 @@ public class Cutscene5 : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] PhoneTrigger phoneTrigger;
     [SerializeField] TrainMove trainMove;
+    [SerializeField] GameObject NewSpawn, Part1;
 
     bool cutsceneTriggered = false;
 
@@ -34,5 +35,8 @@ public class Cutscene5 : MonoBehaviour
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
         InteractionManager.instance.surroundSound = true;
         trainMove.move = true;
+        RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
+        Part1.SetActive(false);
+        phoneTrigger.GetComponentInChildren<BoxCollider>().enabled = false;
     }
 }

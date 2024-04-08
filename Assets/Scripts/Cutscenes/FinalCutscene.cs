@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FinalCutscene : MonoBehaviour
 {
-    [SerializeField] GameObject wife, newPlayer, furniture, particles, newSpawn;
+    [SerializeField] GameObject wife, newPlayer, furniture, particles, newSpawn, Part3;
     [SerializeField] Animator animator, playerAnim;
-    [SerializeField] AudioSource wifeShout, bg, wind;
+    [SerializeField] AudioSource wifeShout, bg;
 
     bool endReady = false;
 
@@ -15,7 +15,6 @@ public class FinalCutscene : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             bg.Play();
-            wind.Play();
             BackgroundMusic.instance.StopBackgroundMusic();
             particles.SetActive(true);
             playerAnim.SetBool("EndCover", true);
@@ -35,14 +34,13 @@ public class FinalCutscene : MonoBehaviour
         PlayerMovement.instance.mainCamera.enabled = false;
         yield return new WaitForSeconds(.5f);
         animator.SetBool("End", true);
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(2f);
         wifeShout.Play();
         endReady = true;
     }
 
     public void Exit()
     {
-        wind.Stop();
         bg.Stop();
 
         RespawnManager.instance.ChangeSpawn(newSpawn.transform.position);
@@ -55,5 +53,7 @@ public class FinalCutscene : MonoBehaviour
         PlayerMovement.instance.rotate = true;
 
         RespawnManager.instance.Die();
+
+        Part3.SetActive(false);
     }
 }

@@ -17,10 +17,16 @@ public class EndLook : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            crying.Stop();
-            animator.SetBool("Look", true);
-            PlayerMovement.instance.speed = 4f;
+            PlayerMovement.instance.move = false;
+            PlayerMovement.instance.rotate = false;
+            PlayerMovement.instance.mainCamera.enabled = false;
+            animator.SetBool("Reach", true);
         }
+    }
+
+    public void StopCrying()
+    {
+        crying.Stop();
     }
 
     public void SwitchScene()

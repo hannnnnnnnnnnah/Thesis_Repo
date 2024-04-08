@@ -5,7 +5,7 @@ using UnityEngine;
 public class LongTrain : MonoBehaviour
 {
     TrainMove trainMove;
-    [SerializeField] GameObject canSpawner;
+    [SerializeField] GameObject canSpawner, NewSpawn;
     [SerializeField] PhoneTrigger phoneTrigger;
     [SerializeField] List<Collider> colliders;
     [SerializeField] AudioSource call;
@@ -55,5 +55,7 @@ public class LongTrain : MonoBehaviour
         call.Play();
         InteractionManager.instance.surroundSound = false;
         InteractionManager.instance.StopSurround();
+
+        RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
     }
 }

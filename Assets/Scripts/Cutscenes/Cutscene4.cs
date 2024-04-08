@@ -19,12 +19,6 @@ public class Cutscene4 : MonoBehaviour
         trainMove = GetComponent<TrainMove>();
     }
 
-    private void Update()
-    {
-        if (cutsceneTriggered && !trainMove.move)
-            RespawnManager.instance.ChangeSpawn(savePoint.transform.position);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !cutsceneTriggered)
@@ -66,5 +60,7 @@ public class Cutscene4 : MonoBehaviour
 
         colliderA.enabled = false;
         colliderB.enabled = false;
+
+        RespawnManager.instance.ChangeSpawn(savePoint.transform.position);
     }
 }

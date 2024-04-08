@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FinalTrain : MonoBehaviour
 {
-    [SerializeField] GameObject newStopPos, save;
+    [SerializeField] GameObject newStopPos, save, Part2;
     TrainMove trainMove;
     bool triggered = false;
 
@@ -22,6 +22,7 @@ public class FinalTrain : MonoBehaviour
                 trainMove.stopPos = newStopPos;
                 trainMove.moveDirection = Vector3.forward;
                 trainMove.move = true;
+                Part2.SetActive(false);
                 triggered = true;
             }
 

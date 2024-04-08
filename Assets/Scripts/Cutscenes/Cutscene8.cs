@@ -6,7 +6,7 @@ public class Cutscene8 : MonoBehaviour
 {
     [SerializeField] AudioSource lastLine;
     [SerializeField] GameObject[] doors;
-    [SerializeField] GameObject newStopPos, signs;
+    [SerializeField] GameObject newStopPos, signs, NewSpawn;
     [SerializeField] Collider a, b;
     [SerializeField] PhoneTrigger phoneTrigger;
     bool triggered = false;
@@ -56,7 +56,7 @@ public class Cutscene8 : MonoBehaviour
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
         BackgroundMusic.instance.PlayBackgroundMusic(3);
 
-        yield return new WaitForSeconds(70f);
+        yield return new WaitForSeconds(60f);
 
         PlayerMovement.instance.speed = 15f;
 
@@ -65,5 +65,7 @@ public class Cutscene8 : MonoBehaviour
 
         a.enabled = false;
         b.enabled = false;
+
+        RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
     }
 }
