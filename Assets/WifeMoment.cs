@@ -4,15 +4,21 @@ using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
 public class WifeMoment : MonoBehaviour
 {
     //me when wife
 
-    bool triggered, forceRotate = false;
+    bool triggered, forceRotate, blendRotation = false;
     Animator animator;
     [SerializeField] AudioSource ChannelSwitch, man;
     [SerializeField] GameObject rotTarget;
+    [SerializeField] List<GameObject> lights = new List<GameObject>();
+
+    Quaternion storedRotation;
+
+    float rotateSpeed = 150f;
 
     private void Start()
     {
@@ -21,8 +27,18 @@ public class WifeMoment : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(forceRotate)
-            PlayerMovement.instance.mainCamera.transform.rotation = Quaternion.Lerp(PlayerMovement.instance.mainCamera.transform.rotation, rotTarget.transform.rotation, 10f * Time.deltaTime);
+        if (forceRotate)
+        {
+            var targetRotation = Quaternion.LookRotation(rotTarget.transform.position - PlayerMovement.instance.mainCamera.transform.position);
+            PlayerMovement.instance.mainCamera.transform.rotation = Quaternion.RotateTowards(PlayerMovement.instance.mainCamera.transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+            //PlayerMovement.instance.mainCamera.transform.rotation = Quaternion.Slerp(PlayerMovement.instance.mainCamera.transform.rotation, new Vector3(), 7f * Time.deltaTime);
+        }
+
+        if (blendRotation)
+        {
+            PlayerMovement.instance.mainCamera.transform.rotation = Quaternion.RotateTowards(PlayerMovement.instance.mainCamera.transform.rotation, storedRotation, (rotateSpeed * Time.deltaTime) * 2);
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,16 +49,16 @@ public class WifeMoment : MonoBehaviour
             man.Play();
             PlayerMovement.instance.speed = 2f;
             PlayerMovement.instance.rotate = false;
-            forceRotate = true;
-
-            //god forgive me for what I must do
             triggered = true;
         }
     }
 
     IEnumerator WifeTime()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
+        storedRotation = Quaternion.LookRotation(PlayerMovement.instance.mainCamera.transform.position);
+        forceRotate = true;
+        yield return new WaitForSeconds(.75f);
         PlayerMovement.instance.animator.SetBool("Flashback", true);
         animator.SetBool("WifeFlash", true);
     }
@@ -54,9 +70,18 @@ public class WifeMoment : MonoBehaviour
 
     public void EndWifeTime()
     {
-        animator.SetBool("WifeFlash", false);
-        PlayerMovement.instance.rotate = true;
+        StartCoroutine(EndingWifeTime());
+    }
+
+    IEnumerator EndingWifeTime()
+    {
         forceRotate = false;
+        blendRotation = true;
+        yield return new WaitForSeconds(1.1f);
+        PlayerMovement.instance.rotate = true;
+        animator.SetBool("WifeFlash", false);
         PlayerMovement.instance.speed = 15f;
+        foreach (var obj in lights)
+            obj.SetActive(true);
     }
 }

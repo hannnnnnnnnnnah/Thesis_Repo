@@ -14,6 +14,7 @@ public class Cutscene7 : MonoBehaviour
         if (other.CompareTag("Player") && !cutsceneTriggered)
         {
             Debug.Log("start cutscene7");
+            BackgroundMusic.instance.StopBackgroundMusic();
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
             PlayerMovement.instance.speed = 5f;
             StartCoroutine(Cutscene());
