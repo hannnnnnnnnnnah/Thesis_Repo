@@ -31,6 +31,8 @@ public class Cutscene1 : MonoBehaviour
     IEnumerator Cutscene()
     {
         cutsceneTriggered = true;
+        PlayerMovement.instance.dr.StartDialogue("Line1");
+
         audioSource.Play();
         yield return new WaitForSeconds(10f);
 

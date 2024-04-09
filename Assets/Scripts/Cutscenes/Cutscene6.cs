@@ -39,6 +39,7 @@ public class Cutscene6 : MonoBehaviour
 
 
         audioSource.Play();
+        PlayerMovement.instance.dr.StartDialogue("Line6");
 
         yield return new WaitForSeconds(14f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);

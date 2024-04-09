@@ -37,6 +37,7 @@ public class Cutscene4 : MonoBehaviour
     {
         cutsceneTriggered = true;
         audioSource.Play();
+        PlayerMovement.instance.dr.StartDialogue("Line4");
 
         yield return new WaitForSeconds(2f);
         trainMove.speed = 15f;
@@ -48,7 +49,7 @@ public class Cutscene4 : MonoBehaviour
         colliderB.enabled = true;
 
         foreach (var door in doors)
-            door.GetComponent<Collider>().enabled = false;
+            door.GetComponentInChildren<Collider>().enabled = false;
 
         yield return new WaitForSeconds(35f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
@@ -56,7 +57,7 @@ public class Cutscene4 : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         foreach (var door in doors)
-            door.GetComponent<Collider>().enabled = true;
+            door.GetComponentInChildren<Collider>().enabled = true;
 
         colliderA.enabled = false;
         colliderB.enabled = false;

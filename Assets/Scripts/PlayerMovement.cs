@@ -2,6 +2,7 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public bool inTracks, rotate, move, riding;
     public LayerMask checkRaycast;
     public Animator animator, flashbackAnim;
+
+    public DialogueRunner dr;
 
     public Vector3 moveDirection;
 

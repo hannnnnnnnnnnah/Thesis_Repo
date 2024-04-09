@@ -13,7 +13,7 @@ public class NarrativeManager : MonoBehaviour
     public bool figureKilled, trackDeathStart, levelSwitched = false;
     bool forceRotate, blendRotation;
     Quaternion storedRotation;
-    float rotateSpeed = 150f;
+    float rotateSpeed = 5f;
     public static NarrativeManager instance;
 
     void Awake()

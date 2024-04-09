@@ -33,6 +33,7 @@ public class Cutscene7 : MonoBehaviour
         }
 
         audioSource.Play();
+        PlayerMovement.instance.dr.StartDialogue("Line7");
 
         yield return new WaitForSeconds(10f);
 

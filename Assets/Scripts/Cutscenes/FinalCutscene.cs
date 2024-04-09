@@ -33,6 +33,7 @@ public class FinalCutscene : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         animator.SetBool("End", true);
         wifeShout.Play();
+        PlayerMovement.instance.dr.StartDialogue("lookatme");
     }
 
     public void Exit()

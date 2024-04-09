@@ -1,0 +1,116 @@
+﻿title: Line1
+---
+I see you on this line all the time. 
+You’re not following me, are you? 
+<<wait 1.5>>
+I’m just joking, I like seeing a familiar face. 
+===
+
+title: Line2
+---
+Here. You owe me one now.
+<<wait 1>>
+Maybe something a little nicer than a soda can next time.
+<<wait 1>>
+===
+
+title: Line3
+---
+Are you sure you have to leave right now? 
+A work trip? I’m eight months pregnant. Are you kidding? 
+<<wait 2>>
+No, I understand, I just… I don’t want to do this alone. 
+<<wait 2>>
+Does it have to be now?
+===
+
+title: Line4
+---
+Your call has been forwarded to an automatic voice message system. 
+At the tone, please record your message.
+<<wait 3>>
+Hey, um… Things aren’t going so well.
+<<wait 2>>
+I know you’re busy but… I really wish you were here right now.
+<<wait 2>>
+She’s the most beautiful thing I’ve ever seen but… 
+<<wait 1>>
+I don’t know. The doctors are saying she’s not breathing normally.
+<<wait 2>>
+But it’s probably nothing, right?
+<<wait 1>>
+Um… anyways… 
+I just really wish you were here right now.
+<<wait 1>>
+I love you. Call me back, ok?
+===
+
+title: Line5
+---
+You have… 15… missed calls.
+<<wait 2>>
+It’s getting worse. She's not breathing- she can’t breathe! 
+I don’t know, I just don’t know.
+<<wait 2>>
+Please! There’s no way you’re doing anything more fucking important right now.
+I need you here. That’s our baby in there.
+<<wait 2>>
+Where the fuck are you?! Why aren’t you answering?! 
+Our baby’s dying and you’re just-
+Just- you know what? Don’t even bother. 
+It’s too late. It’s too fucking late!
+===
+
+title: Line6
+---
+Don’t touch me! Where the fuck were you?!
+I don’t want to see you anymore!
+She’s gone, gone!
+You were in a fucking meeting? A meeting?! 
+What about our baby? She’s dead!
+You never even got to see her...
+===
+
+title: LineMiddle
+---
+What are you doing?! 
+We’re done!
+The mailbox is full and cannot accept any messages at this time.
+Goodbye.
+===
+
+title: Line7
+---
+Hey… 
+<<wait 1>>
+I just wanted to call… and say that I’m sorry.
+<<wait 1>>
+Please don’t leave again.
+<<wait 1>>
+I really need you, I’m… I’m so alone.
+===
+
+title: Line8
+---
+I can’t keep doing this to you.
+<<wait 1>>
+This was never going to work but… 
+If anyone could have saved it would have been you.
+I just wanted you to see me.
+<<wait 2>>
+I’ve got to go, my train’s almost here.
+<<wait 2>>
+I love you.
+<<wait 2>>
+===
+
+title: lookatme
+---
+Look at me!
+===
+
+title: Line9
+---
+<<wait 1>>
+It's too late.
+===

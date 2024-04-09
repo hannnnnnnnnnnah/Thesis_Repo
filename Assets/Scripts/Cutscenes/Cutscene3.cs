@@ -30,7 +30,7 @@ public class Cutscene3 : MonoBehaviour
             Debug.Log("start cutscene3");
 
             foreach (var door in doors)
-                door.GetComponent<Collider>().enabled = false;
+                door.GetComponentInChildren<Collider>().enabled = false;
 
             a.enabled = true;
             b.enabled = true;
@@ -46,10 +46,11 @@ public class Cutscene3 : MonoBehaviour
     {
         cutsceneTriggered = true;
         audioSource.Play();
+        PlayerMovement.instance.dr.StartDialogue("Line3");
         yield return new WaitForSeconds(14f);
 
         foreach (var door in doors)
-            door.GetComponent<Collider>().enabled = true;
+            door.GetComponentInChildren<Collider>().enabled = true;
 
         a.enabled = false;
         b.enabled = false;

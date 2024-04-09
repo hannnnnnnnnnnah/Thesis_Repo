@@ -30,6 +30,7 @@ public class Cutscene5 : MonoBehaviour
     {
         cutsceneTriggered = true;
         audioSource.Play();
+        PlayerMovement.instance.dr.StartDialogue("Line5");
 
         yield return new WaitForSeconds(30f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
@@ -37,6 +38,6 @@ public class Cutscene5 : MonoBehaviour
         trainMove.move = true;
         RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
         Part1.SetActive(false);
-        phoneTrigger.GetComponentInChildren<BoxCollider>().enabled = false;
+        phoneTrigger.gameObject.SetActive(false);
     }
 }

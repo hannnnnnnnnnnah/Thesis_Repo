@@ -26,7 +26,7 @@ public class Cutscene8 : MonoBehaviour
             Debug.Log("Starting cutscene 8");
 
             foreach (var door in doors)
-                door.GetComponent<Collider>().enabled = false;
+                door.GetComponentInChildren<Collider>().enabled = false;
 
             a.enabled = true;
             b.enabled = true;
@@ -45,6 +45,7 @@ public class Cutscene8 : MonoBehaviour
     IEnumerator Cutscene()
     {
         lastLine.Play();
+        PlayerMovement.instance.dr.StartDialogue("Line8");
 
         trainMove.speed = 11f;
         trainMove.moveDirection = Vector3.forward;
@@ -61,7 +62,7 @@ public class Cutscene8 : MonoBehaviour
         PlayerMovement.instance.speed = 15f;
 
         foreach (var door in doors)
-            door.GetComponent<Collider>().enabled = true;
+            door.GetComponentInChildren<Collider>().enabled = true;
 
         a.enabled = false;
         b.enabled = false;

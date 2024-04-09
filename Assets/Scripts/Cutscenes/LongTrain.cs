@@ -45,6 +45,7 @@ public class LongTrain : MonoBehaviour
 
         phoneTrigger.PhoneStop();
         call.Play();
+        PlayerMovement.instance.dr.StartDialogue("LineMiddle");
         InteractionManager.instance.surroundSound = false;
         InteractionManager.instance.StopSurround();
 

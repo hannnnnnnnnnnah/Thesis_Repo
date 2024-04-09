@@ -10,7 +10,7 @@ public class NoteStart : MonoBehaviour
 
     string moveText = "Use WASD to move";
 
-    bool letterRead = false;
+    bool letterRead, triggerReady = false;
 
 
     private void Start()
@@ -27,14 +27,26 @@ public class NoteStart : MonoBehaviour
         {
             LetterRead();
         }
+        if(!trainMove.move && triggerReady)
+        {
+            PlayStand();
+            triggerReady = false;
+        }
     }
 
     public void LetterRead()
     {
         letterRead = true;
         body.SetBool("Hands", true);
-        trainMove.move = true;
         audioSource.Play();
+        StartCoroutine(DelayStand());
+    }
+
+    IEnumerator DelayStand()
+    {
+        yield return new WaitForSeconds(2f);
+        trainMove.move = true;
+        triggerReady = true;
     }
 
     public void PlayStand()

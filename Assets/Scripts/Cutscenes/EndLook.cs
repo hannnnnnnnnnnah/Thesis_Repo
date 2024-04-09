@@ -64,6 +64,7 @@ public class EndLook : MonoBehaviour
     public void LastWords()
     {
         lastWords.Play();
+        PlayerMovement.instance.dr.StartDialogue("Line9");
     }
 
     public void SwitchScene()

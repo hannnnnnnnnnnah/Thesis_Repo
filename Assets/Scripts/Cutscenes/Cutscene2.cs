@@ -35,6 +35,7 @@ public class Cutscene2 : MonoBehaviour
         audioSource.Play();
         yield return new WaitForSeconds(5.5f);
         Instantiate(can, spawnLoc.transform.position, spawnLoc.transform.rotation);
+        PlayerMovement.instance.dr.StartDialogue("Line2");
         yield return new WaitForSeconds(7f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
         PlayerMovement.instance.speed = 15f;
