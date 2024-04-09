@@ -87,7 +87,6 @@ public class RespawnManager : MonoBehaviour
 
         //Increase death count
         deathCount++;
-        Debug.Log("Death count:" + deathCount);
     }
 
     IEnumerator RespawnEffects()

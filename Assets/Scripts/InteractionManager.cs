@@ -29,15 +29,6 @@ public class InteractionManager : MonoBehaviour
 
     public void UpdateSanity()
     {
-        Debug.Log("sanity is at" + " " + sanity);
-
-        /*if(sanity < sanitySet)
-        {
-            PlayerMovement.instance.flashback.Play();
-            PlayerMovement.instance.animator.SetBool("Flashback", true);
-            StartCoroutine(StopFlashback());
-        }*/
-
         switch (sanity)
         {
             case 5:

@@ -5,7 +5,7 @@ using UnityEngine;
 public class LongTrain : MonoBehaviour
 {
     TrainMove trainMove;
-    [SerializeField] GameObject NewSpawn;
+    [SerializeField] GameObject NewSpawn, FloatArea;
     [SerializeField] PhoneTrigger phoneTrigger;
     [SerializeField] List<Collider> colliders;
     [SerializeField] AudioSource call;
@@ -32,6 +32,7 @@ public class LongTrain : MonoBehaviour
             foreach (var collider in colliders)
                 collider.enabled = true;
 
+            FloatArea.SetActive(true);
             triggered = true;
         }
     }

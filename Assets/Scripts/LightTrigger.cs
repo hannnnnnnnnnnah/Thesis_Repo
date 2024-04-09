@@ -24,7 +24,7 @@ public class LightTrigger : MonoBehaviour
             NarrativeManager.instance.lights.Add(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Player"))
         {
@@ -61,20 +61,6 @@ public class LightTrigger : MonoBehaviour
                     lightBroken = true;
                 }
             }
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.CompareTag("Player") && lightBroken && !DeathTimer.instance.deathRunning)
-            DeathTimer.instance.StartCoroutine(DeathTimer.instance.DeathTime());
-
-        if(other.CompareTag("Player") && !lightBroken)
-        {
-            //Death effects are reset
-            DeathTimer.instance.deathTime = deathTimeReset;
-            DeathTimer.instance.StopAllCoroutines();
-            DeathTimer.instance.DeathEffectsCancel();
         }
     }
 }

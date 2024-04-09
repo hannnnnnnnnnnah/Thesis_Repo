@@ -17,9 +17,11 @@ Maybe something a little nicer than a soda can next time.
 title: Line3
 ---
 Are you sure you have to leave right now? 
-A work trip? I’m eight months pregnant. Are you kidding? 
+A work trip? I’m eight months pregnant. 
+Are you kidding? 
 <<wait 2>>
-No, I understand, I just… I don’t want to do this alone. 
+No, I understand, I just… 
+I don’t want to do this alone. 
 <<wait 2>>
 Does it have to be now?
 ===
@@ -31,11 +33,13 @@ At the tone, please record your message.
 <<wait 3>>
 Hey, um… Things aren’t going so well.
 <<wait 2>>
-I know you’re busy but… I really wish you were here right now.
+I know you’re busy but… 
+I really wish you were here right now.
 <<wait 2>>
 She’s the most beautiful thing I’ve ever seen but… 
 <<wait 1>>
-I don’t know. The doctors are saying she’s not breathing normally.
+I don’t know. 
+The doctors are saying she’s not breathing normally.
 <<wait 2>>
 But it’s probably nothing, right?
 <<wait 1>>
@@ -49,15 +53,20 @@ title: Line5
 ---
 You have… 15… missed calls.
 <<wait 2>>
-It’s getting worse. She's not breathing- she can’t breathe! 
+It’s getting worse. 
+She's not breathing- she can’t breathe! 
 I don’t know, I just don’t know.
 <<wait 2>>
-Please! There’s no way you’re doing anything more fucking important right now.
-I need you here. That’s our baby in there.
+Please! 
+There’s no way you’re doing anything more fucking important right now.
+I need you here. 
+That’s our baby in there.
 <<wait 2>>
-Where the fuck are you?! Why aren’t you answering?! 
+Where the fuck are you?! 
+Why aren’t you answering?! 
 Our baby’s dying and you’re just-
-Just- you know what? Don’t even bother. 
+Just- you know what? 
+Don’t even bother. 
 It’s too late. It’s too fucking late!
 ===
 
@@ -66,7 +75,8 @@ title: Line6
 Don’t touch me! Where the fuck were you?!
 I don’t want to see you anymore!
 She’s gone, gone!
-You were in a fucking meeting? A meeting?! 
+You were in a fucking meeting? 
+A meeting?! 
 What about our baby? She’s dead!
 You never even got to see her...
 ===
@@ -75,8 +85,6 @@ title: LineMiddle
 ---
 What are you doing?! 
 We’re done!
-The mailbox is full and cannot accept any messages at this time.
-Goodbye.
 ===
 
 title: Line7
