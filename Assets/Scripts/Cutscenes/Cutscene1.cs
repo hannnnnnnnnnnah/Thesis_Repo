@@ -16,7 +16,7 @@ public class Cutscene1 : MonoBehaviour
             Debug.Log("start cutscene1");
 
             foreach (var door in doors)
-                door.GetComponent<Collider>().enabled = false;
+                door.GetComponentInChildren<Collider>().enabled = false;
 
             a.enabled = true;
             b.enabled = true;
@@ -35,7 +35,7 @@ public class Cutscene1 : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         foreach (var door in doors)
-            door.GetComponent<Collider>().enabled = true;
+            door.GetComponentInChildren<Collider>().enabled = true;
 
         a.enabled = false;
         b.enabled = false;

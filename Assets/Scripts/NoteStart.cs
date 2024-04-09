@@ -18,7 +18,7 @@ public class NoteStart : MonoBehaviour
         PlayerMovement.instance.move = false;
         PlayerMovement.instance.mainCamera.enabled = false;
 
-        trainMove.move = true;
+        //trainMove.move = true;
     }
 
     private void Update()
@@ -33,6 +33,7 @@ public class NoteStart : MonoBehaviour
     {
         letterRead = true;
         body.SetBool("Hands", true);
+        trainMove.move = true;
         audioSource.Play();
     }
 

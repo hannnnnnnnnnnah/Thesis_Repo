@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
-    [SerializeField] AudioSource d_audio;
-    [SerializeField] AudioSource d_audioClose;
+    AudioSource d_audio;
     Animator animator;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        d_audio = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)

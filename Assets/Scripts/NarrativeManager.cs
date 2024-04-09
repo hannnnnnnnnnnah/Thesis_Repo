@@ -4,13 +4,16 @@ using System.Collections;
 
 public class NarrativeManager : MonoBehaviour
 {
-    [SerializeField] GameObject overheadLight, startSpawn, newSpawn, firstLights, startProps, endProps, endWife;
+    [SerializeField] GameObject overheadLight, startSpawn, newSpawn, firstLights, startProps, endProps, endWife, rotTarget;
     [SerializeField] TrainMove trainMove, trainMove1;
     [SerializeField] Animator wifeAnim;
-    [SerializeField] AudioSource crash, lightExplode, flashback;
+    [SerializeField] AudioSource crash, lightExplode, flashback, scared, deathBG;
 
     public List<GameObject> metrocars, lights;
     public bool figureKilled, trackDeathStart, levelSwitched = false;
+    bool forceRotate, blendRotation;
+    Quaternion storedRotation;
+    float rotateSpeed = 150f;
     public static NarrativeManager instance;
 
     void Awake()
@@ -30,14 +33,33 @@ public class NarrativeManager : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (forceRotate)
+        {
+            //it's fine it's fine it's fine look away ahahhaha
+            var targetRotation = Quaternion.LookRotation(rotTarget.transform.position - PlayerMovement.instance.mainCamera.transform.position);
+            PlayerMovement.instance.mainCamera.transform.rotation = Quaternion.RotateTowards(PlayerMovement.instance.mainCamera.transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+        }
+
+        if (blendRotation)
+        {
+            PlayerMovement.instance.mainCamera.transform.rotation = Quaternion.RotateTowards(PlayerMovement.instance.mainCamera.transform.rotation, storedRotation, rotateSpeed * Time.deltaTime);
+        }
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !levelSwitched)
         {
             PlayerMovement.instance.speed = 4f;
             trainMove1.move = true;
-            StartCoroutine(WifeDeath());
+            storedRotation = Quaternion.LookRotation(PlayerMovement.instance.mainCamera.transform.position);
+            PlayerMovement.instance.rotate = false;
+            forceRotate = true;
 
+            StartCoroutine(WifeDeath());
             levelSwitched = true;
         }
     }
@@ -46,8 +68,14 @@ public class NarrativeManager : MonoBehaviour
     {
         wifeAnim.SetBool("Die", true);
         yield return new WaitForSeconds(3f);
+        deathBG.Play();
         crash.Play();
+        scared.Play();
         yield return new WaitForSeconds(1f);
+
+        //Play background music
+        BackgroundMusic.instance.PlayBackgroundMusic(1);
+
         lightExplode.Play();
         TriggerLevelSwitch();
         PlayerMovement.instance.speed = 2f;
@@ -73,11 +101,11 @@ public class NarrativeManager : MonoBehaviour
         }
 
         DeathTimer.instance.StartDeathTimer();
+        forceRotate = false;
+        blendRotation = true;
+        PlayerMovement.instance.rotate = true;
 
         trainMove.move = true;
-
-        //Play background music
-        BackgroundMusic.instance.PlayBackgroundMusic(1);
     }
 
     public void TriggerTrainDeath()
