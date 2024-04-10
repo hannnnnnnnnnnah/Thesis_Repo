@@ -27,6 +27,8 @@ public class Flashback : MonoBehaviour
         lightBreak.Play();
         laugh.Play();
 
+        DeathTimer.instance.StartDeathTimer();
+
         foreach (GameObject light in lights)
         {
             light.GetComponentInParent<Animator>().SetBool("LightExplode", true);
