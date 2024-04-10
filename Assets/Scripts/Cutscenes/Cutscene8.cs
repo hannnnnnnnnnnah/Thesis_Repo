@@ -5,16 +5,17 @@ using UnityEngine;
 public class Cutscene8 : MonoBehaviour
 {
     [SerializeField] AudioSource lastLine;
-    [SerializeField] GameObject[] doors;
     [SerializeField] GameObject newStopPos, signs, NewSpawn;
-    [SerializeField] Collider a, b;
     [SerializeField] PhoneTrigger phoneTrigger;
+
     bool triggered = false;
     TrainMove trainMove;
+    DoorHandler doorHandler;
 
     private void Start()
     {
         trainMove = GetComponent<TrainMove>();
+        doorHandler = GetComponent<DoorHandler>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,14 +23,8 @@ public class Cutscene8 : MonoBehaviour
         if(other.CompareTag("Player") && !triggered)
         {
             signs.SetActive(true);
-
-            Debug.Log("Starting cutscene 8");
-
-            foreach (var door in doors)
-                door.GetComponentInChildren<Collider>().enabled = false;
-
-            a.enabled = true;
-            b.enabled = true;
+            doorHandler.DisableDoors();
+            doorHandler.leftSided = false;
 
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
             PlayerMovement.instance.speed = 5f;
@@ -61,11 +56,7 @@ public class Cutscene8 : MonoBehaviour
 
         PlayerMovement.instance.speed = 15f;
 
-        foreach (var door in doors)
-            door.GetComponentInChildren<Collider>().enabled = true;
-
-        a.enabled = false;
-        b.enabled = false;
+        doorHandler.EnableDoors();
 
         RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
     }

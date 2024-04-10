@@ -3,24 +3,19 @@ using UnityEngine;
 
 public class Cutscene3 : MonoBehaviour
 {
-    [SerializeField] GameObject[] doors;
-    [SerializeField] Collider a, b;
     [SerializeField] AudioSource audioSource;
     [SerializeField] TrainRide trainRide;
+    [SerializeField] GameObject NewSpawn;
 
+    DoorHandler doorHandler;
     TrainMove trainMove;
 
     bool cutsceneTriggered = false;
 
     private void Start()
     {
+        doorHandler = GetComponent<DoorHandler>();  
         trainMove = GetComponent<TrainMove>();
-    }
-
-    private void Update()
-    {
-        if (RespawnManager.instance.respawning && RespawnManager.instance.trainHop)
-            trainMove.ResetPos();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,11 +24,7 @@ public class Cutscene3 : MonoBehaviour
         {
             Debug.Log("start cutscene3");
 
-            foreach (var door in doors)
-                door.GetComponentInChildren<Collider>().enabled = false;
-
-            a.enabled = true;
-            b.enabled = true;
+            doorHandler.DisableDoors();
 
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
             PlayerMovement.instance.speed = 5f;
@@ -44,24 +35,20 @@ public class Cutscene3 : MonoBehaviour
 
     IEnumerator Cutscene()
     {
+        trainMove.move = true;
         cutsceneTriggered = true;
         audioSource.Play();
         PlayerMovement.instance.dr.StartDialogue("Line3");
         yield return new WaitForSeconds(14f);
 
-        foreach (var door in doors)
-            door.GetComponentInChildren<Collider>().enabled = true;
-
-        a.enabled = false;
-        b.enabled = false;
-
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
         PlayerMovement.instance.speed = 15f;
-        RespawnManager.instance.trainHop = true;
-        trainMove.move = true; 
 
         //Sanity is decreased
         InteractionManager.instance.sanity--;
         InteractionManager.instance.UpdateSanity();
+
+        doorHandler.EnableDoors();
+        RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
     }
 }

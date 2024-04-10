@@ -11,7 +11,6 @@ public class SavePoint : MonoBehaviour
         if(other.CompareTag("Player") && !spawnPointSet && !trainMove.move)
         {
             RespawnManager.instance.ChangeSpawn(gameObject.transform.position);
-            RespawnManager.instance.trainHop = false;
             spawnPointSet = true;
         }
     }

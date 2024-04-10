@@ -20,7 +20,7 @@ public class RespawnManager : MonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
         
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         SceneManager.sceneLoaded += OnLevelLoad;
     }

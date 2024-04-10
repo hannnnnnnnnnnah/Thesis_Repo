@@ -3,23 +3,21 @@ using UnityEngine;
 
 public class Cutscene1 : MonoBehaviour
 {
-    [SerializeField] GameObject[] doors;
-    [SerializeField] Collider a, b;
     [SerializeField] AudioSource audioSource;
+    DoorHandler doorHandler;
 
     bool cutsceneTriggered = false;
+
+    private void Start()
+    {
+        doorHandler = GetComponent<DoorHandler>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !cutsceneTriggered)
         {
-            Debug.Log("start cutscene1");
-
-            foreach (var door in doors)
-                door.GetComponentInChildren<Collider>().enabled = false;
-
-            a.enabled = true;
-            b.enabled = true;
+            doorHandler.DisableDoors();
 
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
             PlayerMovement.instance.speed = 5f;
@@ -36,11 +34,7 @@ public class Cutscene1 : MonoBehaviour
         audioSource.Play();
         yield return new WaitForSeconds(10f);
 
-        foreach (var door in doors)
-            door.GetComponentInChildren<Collider>().enabled = true;
-
-        a.enabled = false;
-        b.enabled = false;
+        doorHandler.EnableDoors();
 
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
         PlayerMovement.instance.speed = 15f;
