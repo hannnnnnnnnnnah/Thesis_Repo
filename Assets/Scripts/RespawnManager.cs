@@ -41,13 +41,10 @@ public class RespawnManager : MonoBehaviour
 
     void OnLevelLoad(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name != "TitleScreen")
-        {
-            if (!spawnChange)
-                spawnPoint = GameObject.FindGameObjectWithTag("SpawnStart").transform.position;
+        if (!spawnChange)
+            spawnPoint = GameObject.FindGameObjectWithTag("SpawnStart").transform.position;
 
-            spawnChange = false;
-        }
+        spawnChange = false;
     }
 
     public void Testing()

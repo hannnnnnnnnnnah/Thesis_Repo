@@ -31,7 +31,7 @@ public class FinalCutscene : MonoBehaviour
         playerAnim.SetBool("EndCover", false);
         PlayerMovement.instance.mainCamera.enabled = false;
         yield return new WaitForSeconds(.5f);
-        animator.SetBool("End", true);
+        //animator.SetBool("End", true);
         wifeShout.Play();
         PlayerMovement.instance.dr.StartDialogue("lookatme");
     }
