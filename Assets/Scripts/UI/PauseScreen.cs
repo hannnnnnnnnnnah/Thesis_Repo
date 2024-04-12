@@ -20,7 +20,7 @@ public class PauseScreen : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
-
+        GameManager.instance.ManageDialogue(GameManager.instance.SetDialogue);
         gameObject.SetActive(false);
     }
 

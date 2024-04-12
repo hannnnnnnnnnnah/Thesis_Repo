@@ -46,11 +46,14 @@ public class MiddleCar : MonoBehaviour
         doorHandler.EnableDoors();
 
         phoneTrigger.PhoneStop();
+        GameManager.instance.SetDialogue = call;
         call.Play();
         PlayerMovement.instance.dr.StartDialogue("LineMiddle");
         InteractionManager.instance.surroundSound = false;
         InteractionManager.instance.StopSurround();
 
         RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
+
+        GameManager.instance.SetDialogue = null;
     }
 }

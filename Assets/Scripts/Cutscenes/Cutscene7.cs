@@ -32,6 +32,7 @@ public class Cutscene7 : MonoBehaviour
             obj.GetComponent<PhoneTrigger>().PhoneStop();
         }
 
+        GameManager.instance.SetDialogue = audioSource;
         audioSource.Play();
         PlayerMovement.instance.dr.StartDialogue("Line7");
 
@@ -48,5 +49,7 @@ public class Cutscene7 : MonoBehaviour
 
         foreach (GameObject obj in lights)
             obj.SetActive(true);
+
+        GameManager.instance.SetDialogue = null;
     }
 }

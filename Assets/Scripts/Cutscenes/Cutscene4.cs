@@ -36,6 +36,7 @@ public class Cutscene4 : MonoBehaviour
     IEnumerator Cutscene()
     {
         cutsceneTriggered = true;
+        GameManager.instance.SetDialogue = audioSource;
         audioSource.Play();
         PlayerMovement.instance.dr.StartDialogue("Line4");
 
@@ -55,5 +56,7 @@ public class Cutscene4 : MonoBehaviour
         doorHandler.EnableDoors();
 
         RespawnManager.instance.ChangeSpawn(savePoint.transform.position);
+
+        GameManager.instance.SetDialogue = null;
     }
 }

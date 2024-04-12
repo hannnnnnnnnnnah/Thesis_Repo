@@ -39,6 +39,7 @@ public class Cutscene8 : MonoBehaviour
 
     IEnumerator Cutscene()
     {
+        GameManager.instance.SetDialogue = lastLine;
         lastLine.Play();
         PlayerMovement.instance.dr.StartDialogue("Line8");
 
@@ -59,5 +60,7 @@ public class Cutscene8 : MonoBehaviour
         doorHandler.EnableDoors();
 
         RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
+
+        GameManager.instance.SetDialogue = null;
     }
 }

@@ -37,6 +37,7 @@ public class Cutscene3 : MonoBehaviour
     {
         trainMove.move = true;
         cutsceneTriggered = true;
+        GameManager.instance.SetDialogue = audioSource;
         audioSource.Play();
         PlayerMovement.instance.dr.StartDialogue("Line3");
         yield return new WaitForSeconds(14f);
@@ -50,5 +51,7 @@ public class Cutscene3 : MonoBehaviour
 
         doorHandler.EnableDoors();
         RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
+
+        GameManager.instance.SetDialogue = null;
     }
 }

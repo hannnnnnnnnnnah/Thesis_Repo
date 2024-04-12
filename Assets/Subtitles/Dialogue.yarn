@@ -22,15 +22,15 @@ Are you kidding?
 <<wait 2>>
 No, I understand, I just… 
 I don’t want to do this alone. 
-<<wait 2>>
 Does it have to be now?
 ===
 
 title: Line4
 ---
 Your call has been forwarded to an automatic voice message system. 
-At the tone, please record your message.
-<<wait 3>>
+At the tone, 
+please record your message.
+<<wait 2>>
 Hey, um… Things aren’t going so well.
 <<wait 2>>
 I know you’re busy but… 
@@ -40,7 +40,7 @@ She’s the most beautiful thing I’ve ever seen but…
 <<wait 1>>
 I don’t know. 
 The doctors are saying she’s not breathing normally.
-<<wait 2>>
+<<wait 1>>
 But it’s probably nothing, right?
 <<wait 1>>
 Um… anyways… 
@@ -52,21 +52,18 @@ I love you. Call me back, ok?
 title: Line5
 ---
 You have… 15… missed calls.
-<<wait 2>>
+<<wait 1.5>>
 It’s getting worse. 
 She's not breathing- she can’t breathe! 
 I don’t know, I just don’t know.
-<<wait 2>>
+<<wait 1>>
 Please! 
 There’s no way you’re doing anything more fucking important right now.
-I need you here. 
-That’s our baby in there.
-<<wait 2>>
+I need you here. That’s our baby in there.
 Where the fuck are you?! 
 Why aren’t you answering?! 
 Our baby’s dying and you’re just-
-Just- you know what? 
-Don’t even bother. 
+Just- you know what? Don’t even bother. 
 It’s too late. It’s too fucking late!
 ===
 

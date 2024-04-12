@@ -4,6 +4,19 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject pauseScreen;
     [SerializeField] GameObject settingsScreen;
+
+    public AudioSource SetDialogue;
+
+    public static GameManager instance;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
     void Update()
     {
         if (pauseScreen.activeSelf == false && settingsScreen.activeSelf == false)
@@ -11,8 +24,22 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 pauseScreen.SetActive(true);
+                ManageDialogue(SetDialogue);
                 Time.timeScale = 0;
             }
         }
+    }
+
+    public void ManageDialogue(AudioSource CurrentDialogue)
+    {
+        if (CurrentDialogue != null)
+        {
+            if (!CurrentDialogue.isPlaying)
+                CurrentDialogue.Play();
+            else
+                CurrentDialogue.Pause();
+        }
+        else
+            return;
     }
 }

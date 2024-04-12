@@ -32,6 +32,7 @@ public class Cutscene2 : MonoBehaviour
     IEnumerator Cutscene()
     {
         cutsceneTriggered = true;
+        GameManager.instance.SetDialogue = audioSource;
         audioSource.Play();
         yield return new WaitForSeconds(5.5f);
         Instantiate(can, spawnLoc.transform.position, spawnLoc.transform.rotation);
@@ -46,5 +47,7 @@ public class Cutscene2 : MonoBehaviour
             light.GetComponentInChildren<LightTrigger>().spotlight.enabled = true;
             light.GetComponentInChildren<LightTrigger>().lightBroken = false;
         }
+
+        GameManager.instance.SetDialogue = null;
     }
 }

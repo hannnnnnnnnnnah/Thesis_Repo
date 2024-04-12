@@ -2509,7 +2509,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6735572219091851344}
         m_TargetAssemblyTypeName: SettingsScreen, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: ChangeSubtitles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4135,6 +4135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsScreen: {fileID: 4381235110414883260}
   pauseScreen: {fileID: 7276054998334662074}
+  SubtitleText: {fileID: 8761938421408739967}
 --- !u!1 &4620189123799630283
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,7 +37,7 @@ public class Cutscene6 : MonoBehaviour
                 hospObj.GetComponent<ObjectThrow>().toss = true;
         }
 
-
+        GameManager.instance.SetDialogue = audioSource;
         audioSource.Play();
         PlayerMovement.instance.dr.StartDialogue("Line6");
 
@@ -48,5 +48,7 @@ public class Cutscene6 : MonoBehaviour
 
         bedFloat.enabled = true;
         bedObject.GetComponent<MeshCollider>().enabled = false;
+
+        GameManager.instance.SetDialogue = null;
     }
 }

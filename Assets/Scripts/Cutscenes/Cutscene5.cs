@@ -29,6 +29,7 @@ public class Cutscene5 : MonoBehaviour
     IEnumerator Cutscene()
     {
         cutsceneTriggered = true;
+        GameManager.instance.SetDialogue = audioSource;
         audioSource.Play();
         PlayerMovement.instance.dr.StartDialogue("Line5");
 
@@ -39,5 +40,7 @@ public class Cutscene5 : MonoBehaviour
         RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
         Part1.SetActive(false);
         phoneTrigger.gameObject.SetActive(false);
+
+        GameManager.instance.SetDialogue = null;
     }
 }

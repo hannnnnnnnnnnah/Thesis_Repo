@@ -29,14 +29,18 @@ public class Cutscene1 : MonoBehaviour
     IEnumerator Cutscene()
     {
         cutsceneTriggered = true;
-        PlayerMovement.instance.dr.StartDialogue("Line1");
 
+        GameManager.instance.SetDialogue = audioSource;
+        PlayerMovement.instance.dr.StartDialogue("Line1");
         audioSource.Play();
+
         yield return new WaitForSeconds(10f);
 
         doorHandler.EnableDoors();
 
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
         PlayerMovement.instance.speed = 15f;
+
+        GameManager.instance.SetDialogue = null;
     }
 }
