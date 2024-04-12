@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class EndLook : MonoBehaviour
 {
     [SerializeField] AudioSource crying, explode, breathe, metro, flash, bg, lastWords;
+    [SerializeField] GameObject endingCreditsUi;
     Animator animator;
 
     private void Start()
@@ -71,4 +72,10 @@ public class EndLook : MonoBehaviour
     {
         SceneManager.LoadScene("TitleScreen");
     }
+
+    public void EndingCreditsUI()
+    {
+        endingCreditsUi.SetActive(true);
+    }
+
 }

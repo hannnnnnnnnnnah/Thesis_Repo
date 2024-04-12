@@ -22,4 +22,12 @@ public class AnimationTriggers : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    void LookSound()
+    {
+        SoundManager.PlaySound("look");
+    }
+    void TitleScreen()
+    {
+        SceneManager.LoadScene("TitleScreen");
+    }
 }

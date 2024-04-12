@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
 
     [Header("Audios")]
-    public static AudioClip lightSound, hitSound;
+    public static AudioClip lightSound, hitSound, lookSound;
     public static AudioSource soundManager;
     private static float highestVolume = 1f;
     //private static float highVolume = 0.75f;
@@ -20,6 +20,7 @@ public class SoundManager : MonoBehaviour
         soundManager = GetComponent<AudioSource>();
         lightSound = Resources.Load<AudioClip>("light") as AudioClip;
         hitSound = Resources.Load<AudioClip>("hit") as AudioClip;
+        lookSound = Resources.Load<AudioClip>("lookatme") as AudioClip;
     }
 
     public static void PlaySound(string clip)
@@ -31,6 +32,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case "hit":
                 soundManager.PlayOneShot(hitSound, lowVolume);
+                break;
+            case "look":
+                soundManager.PlayOneShot(lookSound, highestVolume);
                 break;
         }
     }
