@@ -16,13 +16,8 @@ public class Cutscene6 : MonoBehaviour
         if (other.CompareTag("Player") && !cutsceneTriggered)
         {
             wifeCrying.Stop();
-
-            Debug.Log("start cutscene6");
-
             InteractionManager.instance.surroundSound = false;
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
-            PlayerMovement.instance.speed = 5f;
-
             StartCoroutine(Cutscene());
         }
     }
@@ -37,18 +32,17 @@ public class Cutscene6 : MonoBehaviour
                 hospObj.GetComponent<ObjectThrow>().toss = true;
         }
 
+        GameManager.instance.dialogueFinished = false;
         GameManager.instance.SetDialogue = audioSource;
         audioSource.Play();
         PlayerMovement.instance.dr.StartDialogue("Line6");
 
         yield return new WaitForSeconds(14f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
-        PlayerMovement.instance.speed = 15f;
+        GameManager.instance.dialogueFinished = true;
         InteractionManager.instance.surroundSound = true;
 
         bedFloat.enabled = true;
         bedObject.GetComponent<MeshCollider>().enabled = false;
-
-        GameManager.instance.SetDialogue = null;
     }
 }

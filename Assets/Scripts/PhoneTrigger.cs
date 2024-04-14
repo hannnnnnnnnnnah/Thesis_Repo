@@ -28,6 +28,6 @@ public class PhoneTrigger : MonoBehaviour
     {
         animator.SetBool("Call", false);
         audioSource.Stop();
-        coll.enabled = false;
+        //coll.enabled = false;
     }
 }

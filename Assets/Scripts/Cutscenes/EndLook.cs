@@ -12,6 +12,7 @@ public class EndLook : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        GameManager.instance.escapeActive = false;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -22,13 +22,7 @@ public class Cutscene3 : MonoBehaviour
     {
         if (other.CompareTag("Player") && !cutsceneTriggered)
         {
-            Debug.Log("start cutscene3");
-
             doorHandler.DisableDoors();
-
-            PlayerMovement.instance.animator.SetBool("Cutscene", true);
-            PlayerMovement.instance.speed = 5f;
-
             StartCoroutine(Cutscene());
         }
     }
@@ -37,13 +31,16 @@ public class Cutscene3 : MonoBehaviour
     {
         trainMove.move = true;
         cutsceneTriggered = true;
+        GameManager.instance.dialogueFinished = false;
         GameManager.instance.SetDialogue = audioSource;
         audioSource.Play();
         PlayerMovement.instance.dr.StartDialogue("Line3");
-        yield return new WaitForSeconds(14f);
+        yield return new WaitForSeconds(2f);
+        PlayerMovement.instance.animator.SetBool("Cutscene", true);
+        yield return new WaitForSeconds(12f);
 
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
-        PlayerMovement.instance.speed = 15f;
+        GameManager.instance.dialogueFinished = true;
 
         //Sanity is decreased
         InteractionManager.instance.sanity--;
@@ -51,7 +48,5 @@ public class Cutscene3 : MonoBehaviour
 
         doorHandler.EnableDoors();
         RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
-
-        GameManager.instance.SetDialogue = null;
     }
 }

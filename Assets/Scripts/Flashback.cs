@@ -11,7 +11,7 @@ public class Flashback : MonoBehaviour
 
     public List<GameObject> lights;
 
-    [SerializeField] AudioSource lightBreak, laugh;
+    [SerializeField] AudioSource lightBreak, scared;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,10 +22,7 @@ public class Flashback : MonoBehaviour
     public void FlashbackStart()
     {
         flashbackTriggered = true;
-        animator.SetInteger("FlashbackNum", animNum);
-
         lightBreak.Play();
-        laugh.Play();
 
         DeathTimer.instance.StartDeathTimer();
 
@@ -35,9 +32,4 @@ public class Flashback : MonoBehaviour
             light.GetComponentInChildren<LightTrigger>().lightBroken = true;
         }
     }
-
-    //public void SetAnim(int num)
-    //{
-    //    animator.SetInteger("FlashbackNum", num);
-    //}
 }

@@ -25,20 +25,16 @@ public class Cutscene8 : MonoBehaviour
             signs.SetActive(true);
             doorHandler.DisableDoors();
             doorHandler.leftSided = false;
-
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
-            PlayerMovement.instance.speed = 5f;
-
             phoneTrigger.PhoneStop();
-
             StartCoroutine(Cutscene());
-
             triggered = true;
         }
     }
 
     IEnumerator Cutscene()
     {
+        GameManager.instance.dialogueFinished = false;
         GameManager.instance.SetDialogue = lastLine;
         lastLine.Play();
         PlayerMovement.instance.dr.StartDialogue("Line8");
@@ -51,13 +47,10 @@ public class Cutscene8 : MonoBehaviour
         yield return new WaitForSeconds(9f);
 
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
-        GameManager.instance.SetDialogue = null;
+        GameManager.instance.dialogueFinished = true;
         BackgroundMusic.instance.PlayBackgroundMusic(3);
 
         yield return new WaitForSeconds(60f);
-
-        PlayerMovement.instance.speed = 15f;
-
         doorHandler.EnableDoors();
 
         RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);

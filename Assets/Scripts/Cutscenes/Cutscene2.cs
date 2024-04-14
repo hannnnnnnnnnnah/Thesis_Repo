@@ -21,10 +21,7 @@ public class Cutscene2 : MonoBehaviour
     {
         if (other.CompareTag("Player") && !cutsceneTriggered)
         {
-                Debug.Log("start cutscene2");
-                PlayerMovement.instance.animator.SetBool("Cutscene", true);
-                PlayerMovement.instance.speed = 5f;
-
+            PlayerMovement.instance.animator.SetBool("Cutscene", true);
             StartCoroutine(Cutscene());
         }
     }
@@ -32,6 +29,7 @@ public class Cutscene2 : MonoBehaviour
     IEnumerator Cutscene()
     {
         cutsceneTriggered = true;
+        GameManager.instance.dialogueFinished = false;
         GameManager.instance.SetDialogue = audioSource;
         audioSource.Play();
         yield return new WaitForSeconds(5.5f);
@@ -39,7 +37,8 @@ public class Cutscene2 : MonoBehaviour
         PlayerMovement.instance.dr.StartDialogue("Line2");
         yield return new WaitForSeconds(7f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
-        PlayerMovement.instance.speed = 15f;
+        GameManager.instance.dialogueFinished = true;
+        GameManager.instance.dialogueFinished = true;
 
         foreach (var light in lights)
         {
@@ -47,7 +46,5 @@ public class Cutscene2 : MonoBehaviour
             light.GetComponentInChildren<LightTrigger>().spotlight.enabled = true;
             light.GetComponentInChildren<LightTrigger>().lightBroken = false;
         }
-
-        GameManager.instance.SetDialogue = null;
     }
 }

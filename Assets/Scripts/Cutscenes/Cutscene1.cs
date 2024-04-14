@@ -20,8 +20,6 @@ public class Cutscene1 : MonoBehaviour
             doorHandler.DisableDoors();
 
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
-            PlayerMovement.instance.speed = 5f;
-
             StartCoroutine(Cutscene());
         }
     }
@@ -30,6 +28,7 @@ public class Cutscene1 : MonoBehaviour
     {
         cutsceneTriggered = true;
 
+        GameManager.instance.dialogueFinished = false;
         GameManager.instance.SetDialogue = audioSource;
         PlayerMovement.instance.dr.StartDialogue("Line1");
         audioSource.Play();
@@ -39,8 +38,6 @@ public class Cutscene1 : MonoBehaviour
         doorHandler.EnableDoors();
 
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
-        PlayerMovement.instance.speed = 15f;
-
-        GameManager.instance.SetDialogue = null;
+        GameManager.instance.dialogueFinished = true;
     }
 }

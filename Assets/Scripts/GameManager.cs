@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject settingsScreen;
 
     public AudioSource SetDialogue;
+    public bool dialogueFinished, escapeActive;
 
     public static GameManager instance;
 
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         if (pauseScreen.activeSelf == false && settingsScreen.activeSelf == false)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && escapeActive)
             {
                 pauseScreen.SetActive(true);
                 ManageDialogue(SetDialogue);
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
     {
         if (CurrentDialogue != null)
         {
-            if (!CurrentDialogue.isPlaying)
+            if (!CurrentDialogue.isPlaying && !dialogueFinished)
                 CurrentDialogue.Play();
             else
                 CurrentDialogue.Pause();

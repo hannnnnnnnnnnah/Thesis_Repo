@@ -42,6 +42,7 @@ public class MiddleCar : MonoBehaviour
     void StopAction()
     {
         startStop = true;
+        GameManager.instance.dialogueFinished = false;
 
         doorHandler.EnableDoors();
 
@@ -53,7 +54,6 @@ public class MiddleCar : MonoBehaviour
         InteractionManager.instance.StopSurround();
 
         RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
-
-        GameManager.instance.SetDialogue = null;
+        GameManager.instance.dialogueFinished = true;
     }
 }

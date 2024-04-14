@@ -2,12 +2,10 @@ using UnityEngine;
 
 public class ObjectFlicker : MonoBehaviour
 {
-    [SerializeField] Animator animator, playerAnimator;
     [SerializeField] GameObject wife;
 
-    public int animNumber;
     bool flickerStarted = false;
-
+    public bool invisible = true;
     AudioSource audioSource;
 
     private void Start()
@@ -15,15 +13,36 @@ public class ObjectFlicker : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        if (invisible)
+        {
+            if (DeathTimer.instance.deathRunning && !flickerStarted)
+                wife.SetActive(true);
+            else
+                wife.SetActive(false);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !flickerStarted)
         {
-            flickerStarted = true;
+            PlayerMovement.instance.animator.SetBool("Flashback", true);
             wife.SetActive(false);
-            animator.SetInteger("FlashbackNum", animNumber);
             audioSource.Play();
-            playerAnimator.SetBool("Flashback", true);
+            flickerStarted = true;
+        }
+    }
+
+    public void Disappear()
+    {
+        if(!flickerStarted && wife.activeSelf) 
+        {
+            PlayerMovement.instance.animator.SetBool("Flashback", true);
+            wife.SetActive(false);
+            audioSource.Play();
+            flickerStarted = true;
         }
     }
 }

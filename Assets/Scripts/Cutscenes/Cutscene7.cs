@@ -14,11 +14,9 @@ public class Cutscene7 : MonoBehaviour
     {
         if (other.CompareTag("Player") && !cutsceneTriggered)
         {
-            Debug.Log("start cutscene7");
             BackgroundMusic.instance.StopBackgroundMusic();
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
             DeathTimer.instance.visionCover.SetBool("Transition", true);
-            PlayerMovement.instance.speed = 5f;
             StartCoroutine(Cutscene());
         }
     }
@@ -32,6 +30,7 @@ public class Cutscene7 : MonoBehaviour
             obj.GetComponent<PhoneTrigger>().PhoneStop();
         }
 
+        GameManager.instance.dialogueFinished = false;
         GameManager.instance.SetDialogue = audioSource;
         audioSource.Play();
         PlayerMovement.instance.dr.StartDialogue("Line7");
@@ -44,12 +43,10 @@ public class Cutscene7 : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
+        GameManager.instance.dialogueFinished = true;
         DeathTimer.instance.visionCover.SetBool("Transition", false);
-        PlayerMovement.instance.speed = 15f;
 
         foreach (GameObject obj in lights)
             obj.SetActive(true);
-
-        GameManager.instance.SetDialogue = null;
     }
 }
