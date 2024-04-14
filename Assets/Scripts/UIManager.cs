@@ -22,8 +22,6 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-
-        ShowText("Press space to continue");
     }
 
     public void ShowText(string text)

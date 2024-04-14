@@ -51,6 +51,7 @@ public class Cutscene8 : MonoBehaviour
         yield return new WaitForSeconds(9f);
 
         PlayerMovement.instance.animator.SetBool("Cutscene", false);
+        GameManager.instance.SetDialogue = null;
         BackgroundMusic.instance.PlayBackgroundMusic(3);
 
         yield return new WaitForSeconds(60f);
@@ -60,7 +61,5 @@ public class Cutscene8 : MonoBehaviour
         doorHandler.EnableDoors();
 
         RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
-
-        GameManager.instance.SetDialogue = null;
     }
 }

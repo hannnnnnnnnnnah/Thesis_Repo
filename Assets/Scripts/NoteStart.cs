@@ -5,7 +5,7 @@ public class NoteStart : MonoBehaviour
 {
     [SerializeField] TrainMove trainMove;
     [SerializeField] AudioSource audioSource;
-    [SerializeField] Animator body, cam;
+    [SerializeField] Animator body, cam, UI;
     [SerializeField] GameObject newCam, controls;
 
     string moveText = "Use WASD to move";
@@ -17,6 +17,8 @@ public class NoteStart : MonoBehaviour
     {
         PlayerMovement.instance.move = false;
         PlayerMovement.instance.mainCamera.enabled = false;
+
+        UI.SetBool("PulseText", true);
 
         //trainMove.move = true;
     }
@@ -38,6 +40,7 @@ public class NoteStart : MonoBehaviour
     {
         letterRead = true;
         body.SetBool("Hands", true);
+        UI.SetBool("PulseText", false);
         audioSource.Play();
         StartCoroutine(DelayStand());
     }

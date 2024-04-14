@@ -11,9 +11,7 @@ public class NarrativeManager : MonoBehaviour
 
     public List<GameObject> metrocars, lights;
     public bool figureKilled, trackDeathStart, levelSwitched = false;
-    bool forceRotate, blendRotation;
-    Quaternion storedRotation;
-    float rotateSpeed = 5f;
+
     public static NarrativeManager instance;
 
     void Awake()
@@ -33,31 +31,12 @@ public class NarrativeManager : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        if (forceRotate)
-        {
-            //it's fine it's fine it's fine look away ahahhaha
-            var targetRotation = Quaternion.LookRotation(rotTarget.transform.position - PlayerMovement.instance.mainCamera.transform.position);
-            PlayerMovement.instance.mainCamera.transform.rotation = Quaternion.RotateTowards(PlayerMovement.instance.mainCamera.transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
-        }
-
-        if (blendRotation)
-        {
-            PlayerMovement.instance.mainCamera.transform.rotation = Quaternion.RotateTowards(PlayerMovement.instance.mainCamera.transform.rotation, storedRotation, rotateSpeed * Time.deltaTime);
-        }
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !levelSwitched)
         {
             PlayerMovement.instance.speed = 4f;
             trainMove1.move = true;
-            storedRotation = Quaternion.LookRotation(PlayerMovement.instance.mainCamera.transform.position);
-            PlayerMovement.instance.rotate = false;
-            forceRotate = true;
 
             StartCoroutine(WifeDeath());
             levelSwitched = true;
@@ -78,7 +57,7 @@ public class NarrativeManager : MonoBehaviour
 
         lightExplode.Play();
         TriggerLevelSwitch();
-        PlayerMovement.instance.speed = 2f;
+        PlayerMovement.instance.speed = 15f;
         yield return new WaitForSeconds(6f);
         Destroy(trainMove1.gameObject);
     }
@@ -101,9 +80,6 @@ public class NarrativeManager : MonoBehaviour
         }
 
         DeathTimer.instance.StartDeathTimer();
-        forceRotate = false;
-        blendRotation = true;
-        PlayerMovement.instance.rotate = true;
 
         trainMove.move = true;
     }
