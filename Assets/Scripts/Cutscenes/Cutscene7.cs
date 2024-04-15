@@ -6,7 +6,7 @@ public class Cutscene7 : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
     [SerializeField] List<GameObject> phones, lights;
-    [SerializeField] GameObject OldStuff, NewStuff;
+    [SerializeField] GameObject OldStuff, NewStuff, NewSpawn;
 
     bool cutsceneTriggered = false;
 
@@ -48,5 +48,7 @@ public class Cutscene7 : MonoBehaviour
 
         foreach (GameObject obj in lights)
             obj.SetActive(true);
+
+        RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
     }
 }
