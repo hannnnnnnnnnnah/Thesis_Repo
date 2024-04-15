@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public bool inTracks, rotate, move, riding;
     public LayerMask checkRaycast;
-    public Animator animator, flashbackAnim;
+    public Animator animator;
 
     public DialogueRunner dr;
 
@@ -122,5 +122,10 @@ public class PlayerMovement : MonoBehaviour
 
             mainCamera.transform.localEulerAngles = camRotation;
         }
+    }
+
+    public void FlashbackReset()
+    {
+        animator.SetBool("Flashback", false);
     }
 }

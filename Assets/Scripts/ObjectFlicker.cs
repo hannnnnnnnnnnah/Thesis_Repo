@@ -5,7 +5,7 @@ public class ObjectFlicker : MonoBehaviour
     [SerializeField] GameObject wife;
 
     bool flickerStarted = false;
-    public bool invisible = true;
+    public bool invisible, approachable = true;
     AudioSource audioSource;
 
     private void Start()
@@ -28,21 +28,18 @@ public class ObjectFlicker : MonoBehaviour
     {
         if (other.CompareTag("Player") && !flickerStarted)
         {
-            PlayerMovement.instance.animator.SetBool("Flashback", true);
-            wife.SetActive(false);
-            audioSource.Play();
-            flickerStarted = true;
-        }
-    }
-
-    public void Disappear()
-    {
-        if(!flickerStarted && wife.activeSelf) 
-        {
-            PlayerMovement.instance.animator.SetBool("Flashback", true);
-            wife.SetActive(false);
-            audioSource.Play();
-            flickerStarted = true;
+            if (approachable)
+            {
+                PlayerMovement.instance.animator.SetBool("Flashback", true);
+                wife.SetActive(false);
+                audioSource.Play();
+                flickerStarted = true;
+            }
+            else
+            {
+                wife.SetActive(false);
+                flickerStarted = true;
+            }
         }
     }
 }

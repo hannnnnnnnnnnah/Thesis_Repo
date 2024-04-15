@@ -39,6 +39,5 @@ public class Cutscene5 : MonoBehaviour
         trainMove.move = true;
         RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
         Part1.SetActive(false);
-        phoneTrigger.gameObject.SetActive(false);
     }
 }

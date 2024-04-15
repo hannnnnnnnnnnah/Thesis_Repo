@@ -35,7 +35,7 @@ public class Cutscene3 : MonoBehaviour
         GameManager.instance.SetDialogue = audioSource;
         audioSource.Play();
         PlayerMovement.instance.dr.StartDialogue("Line3");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         PlayerMovement.instance.animator.SetBool("Cutscene", true);
         yield return new WaitForSeconds(12f);
 

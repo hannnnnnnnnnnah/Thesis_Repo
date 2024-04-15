@@ -35,7 +35,7 @@ public class NarrativeManager : MonoBehaviour
     {
         if (other.CompareTag("Player") && !levelSwitched)
         {
-            PlayerMovement.instance.speed = 4f;
+            PlayerMovement.instance.speed = 8f;
             trainMove1.move = true;
 
             StartCoroutine(WifeDeath());

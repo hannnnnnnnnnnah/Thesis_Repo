@@ -8,7 +8,7 @@ public class PhoneDestroy : MonoBehaviour
     {
         if (other.CompareTag("Phone"))
         {
-            other.GetComponent<Collider>().enabled = false;
+            Destroy(other.gameObject);
         }
     }
 }

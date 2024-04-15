@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cutscene4 : MonoBehaviour
 {
-    [SerializeField] GameObject newStopPos, savePoint;
+    [SerializeField] GameObject newStopPos, savePoint, Wife;
     [SerializeField] AudioSource audioSource;
     [SerializeField] PhoneTrigger phoneTrigger;
 
@@ -31,6 +31,9 @@ public class Cutscene4 : MonoBehaviour
 
     IEnumerator Cutscene()
     {
+        doorHandler.DisableDoors();
+        Wife.SetActive(true);
+
         cutsceneTriggered = true;
         GameManager.instance.dialogueFinished = false;
         GameManager.instance.SetDialogue = audioSource;
@@ -42,8 +45,6 @@ public class Cutscene4 : MonoBehaviour
         trainMove.moveDirection = Vector3.forward;
         trainMove.stopPos = newStopPos;
         trainMove.move = true;
-
-        doorHandler.DisableDoors();
 
         yield return new WaitForSeconds(35f);
         PlayerMovement.instance.animator.SetBool("Cutscene", false);

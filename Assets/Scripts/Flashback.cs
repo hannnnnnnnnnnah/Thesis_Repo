@@ -24,7 +24,7 @@ public class Flashback : MonoBehaviour
         flashbackTriggered = true;
         lightBreak.Play();
 
-        DeathTimer.instance.StartDeathTimer();
+        //DeathTimer.instance.StartDeathTimer();
 
         foreach (GameObject light in lights)
         {
