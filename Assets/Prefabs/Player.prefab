@@ -1700,7 +1700,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'press space to continue
+  m_text: 'press tab to continue
 
 '
   m_isRightToLeft: 0

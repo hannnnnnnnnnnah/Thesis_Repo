@@ -8,6 +8,7 @@ public class Cutscene6 : MonoBehaviour
     [SerializeField] ObjectFloat bedFloat;
     [SerializeField] GameObject bedObject;
     [SerializeField] List<GameObject> hospitalObjects;
+    [SerializeField] Animator BackDoor;
 
     bool cutsceneTriggered = false;
 
@@ -16,6 +17,10 @@ public class Cutscene6 : MonoBehaviour
         if (other.CompareTag("Player") && !cutsceneTriggered)
         {
             wifeCrying.Stop();
+
+            bedFloat.enabled = true;
+            bedObject.GetComponent<MeshCollider>().enabled = false;
+
             InteractionManager.instance.surroundSound = false;
             PlayerMovement.instance.animator.SetBool("Cutscene", true);
             StartCoroutine(Cutscene());
@@ -42,7 +47,6 @@ public class Cutscene6 : MonoBehaviour
         GameManager.instance.dialogueFinished = true;
         InteractionManager.instance.surroundSound = true;
 
-        bedFloat.enabled = true;
-        bedObject.GetComponent<MeshCollider>().enabled = false;
+        BackDoor.SetBool("Open", true);
     }
 }

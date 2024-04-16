@@ -23,6 +23,8 @@ public class Cutscene7 : MonoBehaviour
 
     IEnumerator Cutscene()
     {
+        RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
+
         cutsceneTriggered = true;
 
         foreach (GameObject obj in phones)
@@ -48,7 +50,5 @@ public class Cutscene7 : MonoBehaviour
 
         foreach (GameObject obj in lights)
             obj.SetActive(true);
-
-        RespawnManager.instance.ChangeSpawn(NewSpawn.transform.position);
     }
 }

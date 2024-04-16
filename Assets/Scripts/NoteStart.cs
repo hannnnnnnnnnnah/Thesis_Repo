@@ -19,13 +19,11 @@ public class NoteStart : MonoBehaviour
         PlayerMovement.instance.mainCamera.enabled = false;
 
         UI.SetBool("PulseText", true);
-
-        //trainMove.move = true;
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !letterRead)
+        if(Input.GetKeyDown(KeyCode.Tab) && !letterRead)
         {
             LetterRead();
         }

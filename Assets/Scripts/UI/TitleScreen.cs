@@ -5,10 +5,12 @@ using UnityEngine.EventSystems;
 
 public class TitleScreen : MonoBehaviour
 {
-    [SerializeField] GameObject titleScreen;
-    [SerializeField] GameObject twScreen;
-    [SerializeField] GameObject controlsScreen;
-    [SerializeField] GameObject creditsScreen;
+    [SerializeField] GameObject titleScreen, twScreen, controlsScreen, creditsScreen;
+
+    private void Start()
+    {
+        Time.timeScale = 1.0f;
+    }
 
     public void QuitGameTT()
     {
