@@ -25,14 +25,14 @@ public class RespawnManager : MonoBehaviour
         SceneManager.sceneLoaded += OnLevelLoad;
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.R))
-            Die();
+    //private void Update()
+    //{
+        //if(Input.GetKeyDown(KeyCode.R))
+        //    Die();
 
-        if (Input.GetKeyDown(KeyCode.H))
-            Testing();
-    }
+        //if (Input.GetKeyDown(KeyCode.H))
+        //    Testing();
+    //}
 
     private void OnDisable()
     {
